@@ -42,15 +42,12 @@
 <img src="https://img.shields.io/badge/Docker-20.10.12-4479A1?style=flat-square&logo=Docker&logoColor=white"/>
 <img src="https://img.shields.io/badge/Docker compose-1.29.2-4479A1?style=flat-square&logo=Docker&logoColor=white"/>
 <img src="https://img.shields.io/badge/NGINX-1.18.0(Ubuntu)-009639?style=flat-square&logo=NGINX&logoColor=white"/>
-
-
-
 </td>
     </tr>
     <td><b>Block-chain</td>
     <td></td>
     </tr>
-        </tr>
+    <tr>
     <td><b>Tools</td>
     <td>
     <img src="https://img.shields.io/badge/Notion-333333?style=flat-square&logo=Notion&logoColor=white"/>
@@ -58,7 +55,6 @@
 <img src="https://img.shields.io/badge/JIRA-0052CC?style=flat-square&logo=JIRA Software&logoColor=white"/>
     </td>
     </tr>
-
 </table>
 <div>
 
