@@ -35,9 +35,8 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
         .headers()
         .disable()
 
-        .authorizeRequests()
-        .antMatchers("api/").permitAll()
-        .anyRequest().authenticated()
+        .authorizeRequests()        
+        .anyRequest().permitAll()
         .and()
 
         .formLogin()
