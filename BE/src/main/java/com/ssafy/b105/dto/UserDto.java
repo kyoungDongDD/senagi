@@ -43,7 +43,7 @@ public class UserDto {
       .credential(user.getCredential())
       .name(user.getName())
       .nickname(user.getNickname())
-      .type(user.getType())
+      .type(String.valueOf(user.getType()))
       .registDate(user.getRegistDate())
 //      .authorityDtoSet(user.getAuthorities().stream()
 //        .map(authority -> AuthorityDto.builder().authorityName(authority.getAuthorityName()).build())
