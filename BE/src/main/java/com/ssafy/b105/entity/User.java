@@ -33,7 +33,7 @@ public class User {
   private UserType type;
 
   @Column(name = "regist_date", length = 30)
-  private LocalDateTime registDate;
+  private LocalDateTime registDate = LocalDateTime.now();
 
   @Column(name = "account", length = 300)
   private String account;
