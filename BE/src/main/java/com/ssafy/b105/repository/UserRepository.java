@@ -13,9 +13,9 @@ public interface UserRepository extends JpaRepository<User, Long> {
 
   //동명 이인이 있을수 있으므로 아이디로 중복 검증
   @EntityGraph(attributePaths = "authorities")
-  Optional<User> findOneWithAuthoritiesByPrincipal(String username);
+  Optional<User> findOneWithAuthoritiesByPrincipal(String principal);
 
   //사용중인 닉네임인지 확인
-  Optional<User> findOneByNickname(String username);
+  Optional<User> findOneByName(String username);
 
 }

@@ -3,6 +3,7 @@ package com.ssafy.b105.service;
 import com.ssafy.b105.dto.UserDto;
 import com.ssafy.b105.entity.Authority;
 import com.ssafy.b105.entity.User;
+import com.ssafy.b105.entity.UserAuthority;
 import com.ssafy.b105.entity.UserType;
 import com.ssafy.b105.exception.DuplicateException;
 import com.ssafy.b105.repository.UserRepository;
@@ -10,7 +11,6 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import java.time.LocalDateTime;
 import java.util.Collections;
 
 @Service
@@ -29,13 +29,13 @@ public class UserService {
     // 중복 검증증
 
     //아이디 검증
-    if (userRepository.findOneWithAuthoritiesByPrincipal(userDto.getName()).orElse(null) != null) {
-      throw new DuplicateException("이미 가입되어 있는 유저입니다.");
+    if (userRepository.findOneWithAuthoritiesByPrincipal(userDto.getPrincipal()).orElse(null) != null) {
+      throw new DuplicateException("이미 가입되어 있는 아이디 입니다.");
     }
 
     //닉네임 검증
-    if(userRepository.findOneByNickname(userDto.getNickname()).orElse(null) != null){
-      throw new DuplicateException("이미 사용중인 닉네임 입니다.");
+    if(userRepository.findOneByName(userDto.getName()).orElse(null) != null){
+      throw new DuplicateException("이미 사용중인 이름 입니다.");
     }
 
     //권한 설정
@@ -43,7 +43,7 @@ public class UserService {
 
     //보호소 롤 입력
     if(userDto.getType().equals("SHELTER")){
-      role="ROLE_SUPPORTER";
+      role="ROLE_SHELTER";
     }
     //후원자 롤 입력
     else if(userDto.getType().equals("SUPPORTER")){
@@ -54,14 +54,17 @@ public class UserService {
       .authorityName(role)
       .build();
 
+    UserAuthority userAuthority = UserAuthority.builder()
+      .authority(authority)
+      .build();
+
    User user = User.builder()
       .name(userDto.getName())
       .principal(userDto.getPrincipal())
       .credential(passwordEncoder.encode(userDto.getCredential()))
-      .nickname(userDto.getNickname())
-      .authorities(Collections.singleton(authority)) // 유저 권한 빌드
+      .authorities(Collections.singleton(userAuthority)) // 유저 권한 빌드
       .type(UserType.valueOf(userDto.getType()))
-      .registDate(LocalDateTime.now())
+      .phone(userDto.getPhone())
       .build();
 
     return UserDto.from(userRepository.save(user));

@@ -14,8 +14,9 @@ public class UserController {
   private final UserService userService;
   public UserController(UserService userService) { this.userService = userService; }
 
-  @PostMapping("/signUp")
+  @PostMapping("")
   public ResponseEntity<UserDto> signup(@RequestBody UserDto userDto  ) {
+    System.out.println("phone1 : "+userDto.getPhone());
     return ResponseEntity.ok(userService.signup(userDto));
   }
 }
