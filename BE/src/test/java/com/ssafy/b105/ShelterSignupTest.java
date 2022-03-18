@@ -17,7 +17,7 @@ import java.util.List;
 import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 
 @SpringBootTest
-class UserTest {
+class ShelterSignupTest {
 
   @Autowired
   private UserRepository userRepository;
@@ -27,7 +27,7 @@ class UserTest {
 
   @Test
   @DisplayName("단순 user DB저장 테스트")
-  void userSaveTest() {
+  void shelterSaveTest() {
 
     int k=userRepository.findAll().size();
 
@@ -35,7 +35,7 @@ class UserTest {
       .principal("rlarudehd321@naver.com")
       .credential("Asd123!!")
       .name("김디디다")
-      .type(UserType.valueOf("SUPPORTER"))
+      .type(UserType.valueOf("SHELTER"))
       .phone("010-2321-1231")
       .build();
 
@@ -48,7 +48,7 @@ class UserTest {
 
   @Test
   @DisplayName("유저 일반회원가입 테스트")
-  void userSignupSaveTest() {
+  void shelterSignupSaveTest() {
     //문제없는 userDTO
     int k=userRepository.findAll().size();
     
@@ -56,11 +56,11 @@ class UserTest {
       .principal("rlarudehd32@naver.com")
       .credential("Asd123!!")
       .name("김디디")
-      .type(String.valueOf(UserType.valueOf("SUPPORTER")))
+      .type(String.valueOf(UserType.valueOf("SHELTER")))
       .phone("010-2321-1231")
       .build();
 
-    userService.signup(userDto);
+    userService.shelterSignup(userDto);
     //기본 admin유저1개 존재
     List<User> users= userRepository.findAll();
     // 저장이 되었다면 k+1개 안되었다면 k개
@@ -70,7 +70,7 @@ class UserTest {
 
   @Test
   @DisplayName("유저 중복 id exception 테스트")
-  void userSignupIdDuplicateTest() {
+  void shelterSignupIdDuplicateTest() {
     // 중복 id userDto
     int k=userRepository.findAll().size();
 
@@ -78,14 +78,15 @@ class UserTest {
       .principal("admin@b105.io")// 저장되어있는 admin과 같은 principal
       .credential("Asd123!!")
       .name("김디디")
-      .type(String.valueOf(UserType.valueOf("SUPPORTER")))
+      .type(String.valueOf(UserType.valueOf("SHELTER")))
       .phone("010-2321-1231")
       .build();
     try {
-      userService.signup(userDto);
+      userService.shelterSignup(userDto);
     }
     catch (DuplicateException msg){
       //메시지 테스트
+      System.out.println("msg = " + msg);
       assertThat(msg.getMessage()).isEqualTo("이미 가입되어 있는 아이디 입니다.");
     }
     //기본 admin유저1개 존재
@@ -96,19 +97,19 @@ class UserTest {
 
   @Test
   @DisplayName("유저 중복 name exception 테스트")
-  void userSignupNameDuplicateTest() {
+  void shelterSignupNameDuplicateTest() {
     // 중복 name userDto
     int k=userRepository.findAll().size();
 
     UserDto userDto = UserDto.builder()
-      .principal("rlarudehd32@naver.com")
+      .principal("rlarudehd132@naver.com")
       .credential("Asd123!!")
       .name("동동스") // 저장되어있는 admin과 같은 name
-      .type(String.valueOf(UserType.valueOf("SUPPORTER")))
+      .type(String.valueOf(UserType.valueOf("SHELTER")))
       .phone("010-2321-1231")
       .build();
     try {
-      userService.signup(userDto);
+      userService.shelterSignup(userDto);
     }
     catch (DuplicateException msg){
       //메시지 테스트
@@ -122,7 +123,7 @@ class UserTest {
 
   @Test
   @DisplayName("빈 principal exception 테스트")
-  void userSignupIdIsBlankTest() {
+  void shelterSignupIdIsBlankTest() {
     // 빈 principal userDto
     int k=userRepository.findAll().size();
 
@@ -130,11 +131,11 @@ class UserTest {
       .principal("")  //빈 principal
       .credential("Asd123!!")
       .name("동동스")
-      .type(String.valueOf(UserType.valueOf("SUPPORTER")))
+      .type(String.valueOf(UserType.valueOf("SHELTER")))
       .phone("010-2321-1231")
       .build();
     try {
-      userService.signup(userDto);
+      userService.shelterSignup(userDto);
     }
     catch (NullPointerException msg){
       //메시지 테스트
@@ -148,7 +149,7 @@ class UserTest {
 
   @Test
   @DisplayName("빈 principal exception 테스트")
-  void userSignupCredentialIsBlankTest() {
+  void shelterSignupCredentialIsBlankTest() {
     // 빈 credential userDto
     int k=userRepository.findAll().size();
 
@@ -156,11 +157,11 @@ class UserTest {
       .principal("rlarudehd32@naver.com")
       .credential("") //빈 credential
       .name("동동스")
-      .type(String.valueOf(UserType.valueOf("SUPPORTER")))
+      .type(String.valueOf(UserType.valueOf("SHELTER")))
       .phone("010-2321-1231")
       .build();
     try {
-      userService.signup(userDto);
+      userService.shelterSignup(userDto);
     }
     catch (NullPointerException msg){
       //메시지 테스트
@@ -174,7 +175,7 @@ class UserTest {
 
   @Test
   @DisplayName("빈 name exception 테스트")
-  void userSignupNameIsBlankTest() {
+  void shelterSignupNameIsBlankTest() {
     // 빈 name userDto
     int k=userRepository.findAll().size();
 
@@ -182,11 +183,11 @@ class UserTest {
       .principal("rlarudehd32@naver.com")
       .credential("Asd123!!")
       .name("") //빈 name
-      .type(String.valueOf(UserType.valueOf("SUPPORTER")))
+      .type(String.valueOf(UserType.valueOf("SHELTER")))
       .phone("010-2321-1231")
       .build();
     try {
-      userService.signup(userDto);
+      userService.shelterSignup(userDto);
     }
     catch (NullPointerException msg){
       //메시지 테스트
@@ -200,7 +201,7 @@ class UserTest {
 
   @Test
   @DisplayName("principal 정규식 exception 테스트")
-  void userSignupPrincipalExpressionValidateTest() {
+  void shelterSignupPrincipalExpressionValidateTest() {
     // 정규식에 맞지 않는 principal userDto
     int k=userRepository.findAll().size();
 
@@ -208,11 +209,11 @@ class UserTest {
       .principal("rlarudehd") // 형식에 맞지 않는 principal
       .credential("Asd123!!")
       .name("동동스")
-      .type(String.valueOf(UserType.valueOf("SUPPORTER")))
+      .type(String.valueOf(UserType.valueOf("SHELTER")))
       .phone("010-2321-1231")
       .build();
     try {
-      userService.signup(userDto);
+      userService.shelterSignup(userDto);
     }
     catch (ExpressionValidateException msg){
       //메시지 테스트
@@ -226,7 +227,7 @@ class UserTest {
 
   @Test
   @DisplayName("credential 정규식 exception 테스트")
-  void userSignupCredentialExpressionValidateTest() {
+  void shelterSignupCredentialExpressionValidateTest() {
     // 정규식에 맞지 않는 credential userDto
     int k=userRepository.findAll().size();
 
@@ -234,11 +235,11 @@ class UserTest {
       .principal("rlarudehd32@naver.com")
       .credential("Asd") // 형식에 맞지 않는 credential
       .name("동동스")
-      .type(String.valueOf(UserType.valueOf("SUPPORTER")))
+      .type(String.valueOf(UserType.valueOf("SHELTER")))
       .phone("010-2321-1231")
       .build();
     try {
-      userService.signup(userDto);
+      userService.shelterSignup(userDto);
     }
     catch (ExpressionValidateException msg){
       //메시지 테스트
@@ -252,7 +253,7 @@ class UserTest {
 
   @Test
   @DisplayName("credential 정규식 exception 테스트")
-  void userSignupNameExpressionValidateTest() {
+  void shelterSignupNameExpressionValidateTest() {
     // 정규식에 맞지 않는 credential userDto
     int k=userRepository.findAll().size();
 
@@ -260,11 +261,11 @@ class UserTest {
       .principal("rlarudehd32@naver.com")
       .credential("Asd123!!") // 형식에 맞지 않는 credential
       .name("동동스@@!")
-      .type(String.valueOf(UserType.valueOf("SUPPORTER")))
+      .type(String.valueOf(UserType.valueOf("SHELTER")))
       .phone("010-2321-1231")
       .build();
     try {
-      userService.signup(userDto);
+      userService.shelterSignup(userDto);
     }
     catch (ExpressionValidateException msg){
       //메시지 테스트
