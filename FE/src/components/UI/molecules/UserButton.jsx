@@ -1,6 +1,6 @@
 import { Button as Btn} from "@mui/material";
 
-function Button(props) {
+function UserButton(props) {
   return (
     <div>
       <Btn
@@ -8,7 +8,7 @@ function Button(props) {
         fullWidth={props.fullWidth}
         variant={props.variant}
         sx={{ mt: 3, mb: 2 }}
-        size="large"
+        size={props.size}
         style={{
           backgroundColor: "#F4BA34",
         }}
@@ -19,4 +19,4 @@ function Button(props) {
   );
 }
 
-export default Button;
+export default UserButton;
