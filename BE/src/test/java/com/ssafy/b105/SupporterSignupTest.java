@@ -2,7 +2,6 @@ package com.ssafy.b105;
 
 import com.ssafy.b105.dto.UserDto;
 import com.ssafy.b105.entity.User;
-import com.ssafy.b105.entity.UserType;
 import com.ssafy.b105.exception.DuplicateException;
 import com.ssafy.b105.exception.ExpressionValidateException;
 import com.ssafy.b105.repository.UserRepository;
@@ -35,8 +34,6 @@ class SupporterSignupTest {
       .principal("rlarudehd321@naver.com")
       .credential("Asd123!!")
       .name("김디디다")
-      .type(UserType.valueOf("SUPPORTER"))
-      
       .build();
 
     userRepository.save(user);
@@ -56,7 +53,6 @@ class SupporterSignupTest {
       .principal("rlarudehd32@naver.com")
       .credential("Asd123!!")
       .name("김디디")
-      .type(String.valueOf(UserType.valueOf("SUPPORTER")))
       .build();
 
     userService.supporterSignup(userDto);
@@ -77,7 +73,6 @@ class SupporterSignupTest {
       .principal("admin@b105.io")// 저장되어있는 admin과 같은 principal
       .credential("Asd123!!")
       .name("김디디")
-      .type(String.valueOf(UserType.valueOf("SUPPORTER")))
       .build();
     try {
       userService.supporterSignup(userDto);
@@ -103,7 +98,6 @@ class SupporterSignupTest {
       .principal("rlarudehd132@naver.com")
       .credential("Asd123!!")
       .name("동동스") // 저장되어있는 admin과 같은 name
-      .type(String.valueOf(UserType.valueOf("SUPPORTER")))
       .build();
     try {
       userService.supporterSignup(userDto);
@@ -128,7 +122,6 @@ class SupporterSignupTest {
       .principal("")  //빈 principal
       .credential("Asd123!!")
       .name("동동스")
-      .type(String.valueOf(UserType.valueOf("SUPPORTER")))
       .build();
     try {
       userService.supporterSignup(userDto);
@@ -153,7 +146,6 @@ class SupporterSignupTest {
       .principal("rlarudehd32@naver.com")
       .credential("") //빈 credential
       .name("동동스")
-      .type(String.valueOf(UserType.valueOf("SUPPORTER")))
       .build();
     try {
       userService.supporterSignup(userDto);
@@ -178,7 +170,6 @@ class SupporterSignupTest {
       .principal("rlarudehd32@naver.com")
       .credential("Asd123!!")
       .name("") //빈 name
-      .type(String.valueOf(UserType.valueOf("SUPPORTER")))
       .build();
     try {
       userService.supporterSignup(userDto);
@@ -203,7 +194,6 @@ class SupporterSignupTest {
       .principal("rlarudehd") // 형식에 맞지 않는 principal
       .credential("Asd123!!")
       .name("동동스")
-      .type(String.valueOf(UserType.valueOf("SUPPORTER")))
       .build();
     try {
       userService.supporterSignup(userDto);
@@ -228,7 +218,6 @@ class SupporterSignupTest {
       .principal("rlarudehd32@naver.com")
       .credential("Asd") // 형식에 맞지 않는 credential
       .name("동동스")
-      .type(String.valueOf(UserType.valueOf("SUPPORTER")))
       .build();
     try {
       userService.supporterSignup(userDto);
@@ -253,7 +242,6 @@ class SupporterSignupTest {
       .principal("rlarudehd32@naver.com")
       .credential("Asd123!!") // 형식에 맞지 않는 credential
       .name("동동스@@!")
-      .type(String.valueOf(UserType.valueOf("SUPPORTER")))
       .build();
     try {
       userService.supporterSignup(userDto);

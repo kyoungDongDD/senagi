@@ -21,12 +21,10 @@ public class UserController {
   }
   @PostMapping("/signup/supporter")
   public ResponseEntity<UserDto> supporterSignup(@RequestBody UserDto userDto  ) {
-    System.out.println("phone1 : "+userDto.getPhone());
     return ResponseEntity.ok(userService.supporterSignup(userDto));
   }
   @PostMapping("/signup/shelter")
   public ResponseEntity<UserDto> shelterSignup(@RequestBody UserDto userDto  ) {
-    System.out.println("phone1 : "+userDto.getPhone());
     return ResponseEntity.ok(userService.shelterSignup(userDto));
   }
 }

@@ -18,12 +18,12 @@ public class DuplicationTest {
   @Test
   @DisplayName("아이디 중복 확인 테스트(중복)")
   void duplicatePrincipalCheckTest(){
-    String principal="admin@b105.io";
+    String principal="admin@b105.io"; //기본 들어가있는 admin id
     String state="아이디 사용 가능";
     try {
-      userService.duplicatePrincipalCheck(principal);
+      userService.duplicatePrincipalCheck(principal); //검증
     }
-    catch (DuplicateException msg){
+    catch (DuplicateException msg){ //중복 에러 발생
       state="아이디 사용 불가";
       System.out.println("msg = " + msg.getMessage());
       assertThat(msg.getMessage()).isEqualTo("이미 가입되어 있는 아이디 입니다.");

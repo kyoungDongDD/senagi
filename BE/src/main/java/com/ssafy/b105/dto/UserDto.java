@@ -7,8 +7,6 @@ import com.sun.istack.Nullable;
 import lombok.*;
 
 import java.time.LocalDateTime;
-import java.util.Set;
-import java.util.stream.Collectors;
 
 @Getter
 @Setter
@@ -27,15 +25,12 @@ public class UserDto {
   @NotNull
   private String name;
 
-  @NotNull
-  private String type;
-
   private LocalDateTime registDate = LocalDateTime.now();
 
   @Nullable
   private String phone;
 
-  private Set<AuthorityDto> authorityDtoSet;
+
 
   public static UserDto from(User user) {
     if(user == null) return null;
@@ -44,11 +39,8 @@ public class UserDto {
       .principal(user.getPrincipal())
       .credential(user.getCredential())
       .name(user.getName())
-      .type(String.valueOf(user.getType()))
+      .registDate(user.getRegistDate())
       .phone(user.getPhone())
-      .authorityDtoSet(user.getAuthorities().stream()
-        .map(authority -> AuthorityDto.builder().authorityName(authority.getAuthority().getAuthorityName()).build())
-        .collect(Collectors.toSet()))
       .build();
   }
 }

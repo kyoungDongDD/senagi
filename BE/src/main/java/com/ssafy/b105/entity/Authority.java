@@ -3,8 +3,8 @@ package com.ssafy.b105.entity;
 import lombok.*;
 
 import javax.persistence.*;
-import java.util.HashSet;
-import java.util.Set;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 @Getter
@@ -22,6 +22,6 @@ public class Authority {
   private String authorityName;
 
   @OneToMany(mappedBy = "authority")
-  private Set<UserAuthority> users = new HashSet<UserAuthority>();
+  private List<UserAuthority> users = new ArrayList<>();
 
 }
