@@ -2,12 +2,9 @@ package com.ssafy.b105.entity;
 
 import lombok.*;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.OneToMany;
-import java.util.HashSet;
-import java.util.Set;
+import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 @Getter
@@ -17,10 +14,14 @@ import java.util.Set;
 public class Authority {
 
   @Id
+  @Column(name = "authority_id")
+  @GeneratedValue(strategy = GenerationType.IDENTITY)
+  private Long authorityId;
+
   @Column(name = "authority_name", length = 50)
   private String authorityName;
 
   @OneToMany(mappedBy = "authority")
-  private Set<UserAuthority> users = new HashSet<UserAuthority>();
+  private List<UserAuthority> users = new ArrayList<>();
 
 }

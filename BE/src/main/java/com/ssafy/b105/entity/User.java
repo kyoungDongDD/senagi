@@ -4,8 +4,8 @@ import lombok.*;
 
 import javax.persistence.*;
 import java.time.LocalDateTime;
-import java.util.HashSet;
-import java.util.Set;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 @Getter
@@ -28,11 +28,8 @@ public class User {
   @Column(name = "name", length = 60, unique = true)
   private String name;
 
-  @Enumerated(EnumType.STRING) // 반환타입 int(Default) -> String 으로 바꿔줌
-  @Column(name = "type", length = 60)
-  private UserType type;
-
   @Column(name = "regist_date", length = 30)
+  @Builder.Default
   private LocalDateTime registDate = LocalDateTime.now();
 
   @Column(name = "account", length = 300)
@@ -42,8 +39,9 @@ public class User {
   private String phone;
 
   //연관 관계 매핑
-  @OneToMany (mappedBy = "user",cascade = CascadeType.ALL,orphanRemoval = true) //고아객체 삭제 넣었는데 수정삭제가 없는데 필요할까?
-  private Set<UserAuthority> authorities = new HashSet<UserAuthority>();
+  @OneToMany (mappedBy = "user",cascade = CascadeType.ALL)
+  @Builder.Default
+  private List<UserAuthority> userAuthorities= new ArrayList<>();
 
   //비지니스 메서드
 

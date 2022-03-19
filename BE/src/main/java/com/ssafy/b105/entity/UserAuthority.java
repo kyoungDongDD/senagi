@@ -19,6 +19,6 @@ public class UserAuthority {
   private User user;
 
   @ManyToOne(fetch = FetchType.LAZY)
-  @JoinColumn(name = "authority_name")
+  @JoinColumn(name = "authority_id")
   private Authority authority;
 }

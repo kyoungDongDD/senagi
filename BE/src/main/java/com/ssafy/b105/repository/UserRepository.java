@@ -12,8 +12,8 @@ public interface UserRepository extends JpaRepository<User, Long> {
   //@EntityGraph로 authority를 함께 패치해 오도록 해서 1번의 조인 쿼리만 실행됨
 
   //동명 이인이 있을수 있으므로 아이디로 중복 검증
-  @EntityGraph(attributePaths = "authorities")
-  Optional<User> findOneWithAuthoritiesByPrincipal(String principal);
+  @EntityGraph(attributePaths = "userAuthorities")
+  Optional<User> findOneWithUserAuthoritiesByPrincipal(String principal);
 
   //사용중인 닉네임인지 확인
   Optional<User> findOneByName(String username);
