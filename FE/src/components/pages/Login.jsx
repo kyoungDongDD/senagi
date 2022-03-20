@@ -1,4 +1,4 @@
-import GoogleLoginButton from '../UI/atoms/GoogleLoginButton'
+import GoogleLoginButton from '../UI/atoms/GoogleLoginButton';
 
 function Login() {
   return (
