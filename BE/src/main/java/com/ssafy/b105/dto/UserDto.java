@@ -3,6 +3,7 @@ package com.ssafy.b105.dto;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.ssafy.b105.entity.User;
 import com.sun.istack.NotNull;
+import com.sun.istack.Nullable;
 import lombok.*;
 
 import java.time.LocalDateTime;
@@ -24,16 +25,12 @@ public class UserDto {
   @NotNull
   private String name;
 
-  @NotNull
-  private String nickname;
+  private LocalDateTime registDate = LocalDateTime.now();
 
-  @NotNull
-  private String type;
+  @Nullable
+  private String phone;
 
 
-  private LocalDateTime registDate;
-
-//  private Set<AuthorityDto> authorityDtoSet;
 
   public static UserDto from(User user) {
     if(user == null) return null;
@@ -42,12 +39,8 @@ public class UserDto {
       .principal(user.getPrincipal())
       .credential(user.getCredential())
       .name(user.getName())
-      .nickname(user.getNickname())
-      .type(user.getType())
       .registDate(user.getRegistDate())
-//      .authorityDtoSet(user.getAuthorities().stream()
-//        .map(authority -> AuthorityDto.builder().authorityName(authority.getAuthorityName()).build())
-//        .collect(Collectors.toSet()))
+      .phone(user.getPhone())
       .build();
   }
 }

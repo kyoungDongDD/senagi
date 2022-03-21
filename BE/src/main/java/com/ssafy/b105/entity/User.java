@@ -4,14 +4,14 @@ import lombok.*;
 
 import javax.persistence.*;
 import java.time.LocalDateTime;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
-@Table(name = "user")
 @Getter
-@Setter
 @Builder
-@AllArgsConstructor
-@NoArgsConstructor
+@AllArgsConstructor(access = AccessLevel.PROTECTED)
+@NoArgsConstructor(access = AccessLevel.PROTECTED)
 public class User {
 
   @Id
@@ -25,22 +25,24 @@ public class User {
   @Column(name = "credential", length = 255)
   private String credential;
 
-  @Column(name = "name", length = 60)
+  @Column(name = "name", length = 60, unique = true)
   private String name;
 
-  @Column(name = "nickname", length = 20,  unique = true)
-  private String nickname;
-
-  @Column(name = "type", length = 60)
-  private String type;
-
-  @Column(name = "registDate", length = 60)
-  private LocalDateTime registDate;
+  @Column(name = "regist_date", length = 30)
+  @Builder.Default
+  private LocalDateTime registDate = LocalDateTime.now();
 
   @Column(name = "account", length = 300)
   private String account;
 
-  @Column(name = "phone", length = 60)
+  @Column(name = "phone", length = 100)
   private String phone;
+
+  //연관 관계 매핑
+  @OneToMany (mappedBy = "user",cascade = CascadeType.ALL)
+  @Builder.Default
+  private List<UserAuthority> userAuthorities= new ArrayList<>();
+
+  //비지니스 메서드
 
 }
