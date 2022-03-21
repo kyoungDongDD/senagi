@@ -5,7 +5,7 @@ import { Global } from '@emotion/react';
 
 import Home from './components/pages/Home';
 import NavBar from './components/UI/organisms/NavBar';
-import Welcome from './components/pages/Welcome';
+import Welcome from './components/pages/OnBoarding/Welcome';
 import MyPage from './components/pages/MyPage';
 import Login from './components/pages/Login';
 import commonStyles from './styles/commonStyles';
