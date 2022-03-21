@@ -82,7 +82,7 @@ const NavBar = () => {
             component="div"
             sx={{ mr: 2, display: { xs: 'none', md: 'flex' } }}
           >
-            <Link to="/">
+            <Link to="/nav">
               <img src={require('../../../assets/logo.png')} alt="logo" />
             </Link>
           </Typography>
