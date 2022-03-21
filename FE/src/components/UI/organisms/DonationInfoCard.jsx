@@ -13,7 +13,7 @@ import Dday from '../molecules/D-Day';
 
 export default function ImgCard() {
   return (
-    <Card sx={{ maxWidth: 345 }} style={{ position: 'relative'}}>
+    <Card sx={{ maxWidth: 345 }} style={{ position: 'relative', margin: '15px'}}>
       <Dday />
       <CardMedia
         component="img"
@@ -37,11 +37,12 @@ export default function ImgCard() {
   );
 }
 
+
 const Money = styled.div`
   margin-top: 15px;
   display: inline-block
-  
 `
+
 const Progress = styled.div`
   margin-top: 15px;
   float: right;

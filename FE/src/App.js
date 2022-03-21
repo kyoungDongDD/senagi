@@ -9,7 +9,9 @@ import Welcome from './components/pages/OnBoarding/Welcome';
 import MyPage from './components/pages/MyPage';
 import Login from './components/pages/Login';
 import SignUp from './components/pages/SignUp';
+import SearchResult from './components/pages/SearchResult';
 import commonStyles from './styles/commonStyles';
+
 
 export default function App() {
   return (
@@ -17,15 +19,15 @@ export default function App() {
       <Global styles={commonStyles} />
       <Routes>
         <Route path="/" element={<Welcome />} />
-        <Route path="login" element={<Login />} />
-        <Route path="signup" element={<SignUp />} />
-        <Route path="nav" element={<NavBar />}>
-          <Route path="home" element={<Home />} />
-          <Route path="mypage" element={<MyPage />} />
+        <Route path="/login" element={<Login />} />
+        <Route path="/signup" element={<SignUp />} />
+        <Route path="/nav" element={<NavBar />} />
+        <Route path="/home" element={<Home />} />
+        <Route path="/mypage" element={<MyPage />} />
+        <Route path="/searchresult" element={<SearchResult />} />
 
-          {/* 404 Not Found*/}
-          <Route path="*" element={<NoMatch />} />
-        </Route>
+        {/* 404 Not Found*/}
+        <Route path="/*" element={<NoMatch />} />
       </Routes>
     </div>
   );
