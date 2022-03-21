@@ -8,19 +8,20 @@ import NavBar from './components/UI/organisms/NavBar';
 import Welcome from './components/pages/OnBoarding/Welcome';
 import MyPage from './components/pages/MyPage';
 import Login from './components/pages/Login';
+import SignUp from './components/pages/SignUp';
 import commonStyles from './styles/commonStyles';
 
 export default function App() {
   return (
     <div>
       <Global styles={commonStyles} />
-      <h1 className="header1">세나기 리액트 시작하쥬아</h1>
       <Routes>
-        <Route path="/" element={<NavBar />}>
-          <Route index element={<Home />} />
-          <Route path="welcome" element={<Welcome />} />
+        <Route path="/" element={<Welcome />} />
+        <Route path="login" element={<Login />} />
+        <Route path="signup" element={<SignUp />} />
+        <Route path="nav" element={<NavBar />}>
+          <Route path="home" element={<Home />} />
           <Route path="mypage" element={<MyPage />} />
-          <Route path="login" element={<Login />} />
 
           {/* 404 Not Found*/}
           <Route path="*" element={<NoMatch />} />
