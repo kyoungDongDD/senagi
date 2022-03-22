@@ -14,36 +14,36 @@ function Slide() {
               <img
                 src={ require('../../../assets/test4.jpg')}
                 alt='logo'
-                width= {'1000px'}
+                width= {'100%'}
                 height= {'278px'}
-                object-fit= {'cover'}
+                object-fit= {'fit'}
               />
             </div>
             <div padding={'30px'}>
               <img
                 src={ require('../../../assets/test1.jpg')}
                 alt='logo'
-                width= {'1000px'}
+                width= {'100%'}
                 height= {'278px'}
-                object-fit= {'cover'}
+                object-fit= {'fit'}
               />
             </div>
             <div>
               <img
                   src={ require('../../../assets/test2.jpg')}
                   alt='logo'
-                  width= {'1000px'}
+                  width= {'100%'}
                   height= {'278px'}
-                  object-fit= {'cover'}
+                  object-fit= {'fit'}
                 />
             </div>
             <div>
               <img
                   src={ require('../../../assets/test3.jpg')}
                   alt='logo'
-                  width= {'1000px'}
+                  width= {'100%'}
                   height= {'278px'}
-                  object-fit= {'cover'}
+                  object-fit= {'fit'}
                 />
             </div>
           </StyledSlider>
@@ -56,9 +56,10 @@ export default Slide;
 
 const settings = {
   dots: false,
+  arrows: false,
   fade: true,
   infinite: true,
-  speed: 1000,
+  speed: 800,
   slidesToShow: 1,
   slidesToScroll: 1,
   autoplay: true,
@@ -73,22 +74,11 @@ const Container = styled.div`
   height: 250PX;
   padding-top: 30px;
   margin-bottom: 30px;
+  padding: 25px 180px 0px 180px;
 `
 // 슬라이드 CSS
 const StyledSlider = styled(Slider)`
     .slick-list {
-      width: 1000px;
-      margin: 0 auto;
       height: 342px;
     }
-    @media (max-width: 1000px) {
-      .slick-list {
-        width: 450px;
-        margin: 0 auto;
-        height: 342px;
-    }
-    img {
-      width: 450px;
-    }
-  }
   `

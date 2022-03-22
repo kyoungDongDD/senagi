@@ -1,19 +1,22 @@
 import styled from "@emotion/styled";
 import { useEffect } from "react";
 
+import ChevronLeftIcon from '@mui/icons-material/ChevronLeft';
+import ChevronRightIcon from '@mui/icons-material/ChevronRight';
+
 function Pagination({ total, limit, page, setPage }) {
   const numPages = Math.ceil(total / limit);
 
-  //페이지 맨위로 올리는 코드
+  //페이지 버튼 클릭시 스크롤 위로
   useEffect(() => {
-    window.scrollTo(0, 0);
+    window.scrollTo(0, 300);
   }, [page]);
 
   return (
     <div>
       <Nav>
         <Button onClick={() => setPage(page - 1)} disabled={page === 1}>
-          &lt;
+         <ChevronLeftIcon fontSize="small"/>
         </Button>
         {Array(numPages)
           .fill()
@@ -27,7 +30,7 @@ function Pagination({ total, limit, page, setPage }) {
             </Button>
           ))}
         <Button onClick={() => setPage(page + 1) } disabled={page === numPages}>
-          &gt;
+         <ChevronRightIcon fontSize="small"/>
         </Button>
       </Nav>
     </div>
@@ -43,6 +46,8 @@ const Nav = styled.nav`
 `;
 
 const Button = styled.button`
+  height: 40px;
+  width: 40px;
   border: none;
   border-radius: 3px;
   padding: 10px;

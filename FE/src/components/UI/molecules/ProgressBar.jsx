@@ -4,7 +4,7 @@ import "./ProgressBar.css"
 
 
 
-const ProgressBar =  ({width = 320, percent}) => {
+const ProgressBar =  ({width, percent}) => {
   
     let progress = percent * width;
 

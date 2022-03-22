@@ -11,10 +11,14 @@ import Typography from '@mui/material/Typography';
 import ProgressBar from "./../molecules/ProgressBar";
 import Dday from '../molecules/D-Day';
 
+
 export default function ImgCard() {
+
   return (
-    <Card sx={{ maxWidth: 345 }} style={{ position: 'relative', margin: '15px'}}>
-      <Dday />
+
+    //max min 똑같은 이유, ProgressBar에 영향을 안주기위해 고정값으로 주려고..
+    <Card sx={{ maxWidth: 345, minWidth: 345 }} style={{ position: 'relative', margin: '15px'}}>
+      <Dday dday={"15"}/>
       <CardMedia
         component="img"
         alt="green iguana"
@@ -29,7 +33,7 @@ export default function ImgCard() {
         <Typography variant="body2" color="text.secondary">
           마석유기견보호소
         </Typography>
-        <ProgressBar percent="0.5" />
+        <ProgressBar percent="0.5" width="313" />
         <Money className='body1'>1,500,000원</Money>
         <Progress className='body1'>50%</Progress>
       </CardContent>
