@@ -9,7 +9,7 @@ import javax.persistence.*;
 @Builder
 @AllArgsConstructor(access = AccessLevel.PROTECTED)
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
-public class CampaignHashtag {
+public class CampaignHashtag{
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -19,7 +19,7 @@ public class CampaignHashtag {
     @JoinColumn(name = "campaign_id")
     private Campaign campaign;
 
-    @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "hashtag_id")
     private Hashtag hashtag;
 

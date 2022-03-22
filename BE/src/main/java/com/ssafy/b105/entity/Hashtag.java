@@ -28,7 +28,7 @@ public class Hashtag {
 
     private String name;
 
-    @OneToMany(mappedBy = "hashtag", cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "hashtag", cascade = CascadeType.PERSIST)
     @Builder.Default
     private List<CampaignHashtag> campaigns = new ArrayList<>();
 }

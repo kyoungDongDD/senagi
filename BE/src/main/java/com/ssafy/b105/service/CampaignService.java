@@ -1,6 +1,7 @@
 package com.ssafy.b105.service;
 
-import com.ssafy.b105.dto.CampaignPostDto;
+import com.ssafy.b105.dto.CampaignRequestDto;
+import com.ssafy.b105.dto.CampaignResponseDto;
 import com.ssafy.b105.entity.Campaign;
 import com.ssafy.b105.entity.CampaignHashtag;
 import com.ssafy.b105.entity.Hashtag;
@@ -8,6 +9,7 @@ import com.ssafy.b105.repository.CampaignRepository;
 import com.ssafy.b105.repository.HashtagRepository;
 import java.util.ArrayList;
 import java.util.List;
+import lombok.Builder;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -15,6 +17,7 @@ import org.springframework.transaction.annotation.Transactional;
 @Service
 @Transactional(readOnly = true)
 @RequiredArgsConstructor
+@Builder
 public class CampaignService {
 
     private final CampaignRepository campaignRepository;
@@ -22,20 +25,10 @@ public class CampaignService {
 
 
     @Transactional
-    public CampaignPostDto createCampaign(CampaignPostDto campaignPostDto) {
+    public CampaignResponseDto createCampaign(CampaignRequestDto campaignPostDto) {
 
-        Campaign campaign = Campaign.builder()
-            .type(campaignPostDto.getType())
-            .title(campaignPostDto.getTitle())
-            .thumbnailImageUrl(campaignPostDto.getThumbnailImageUrl())
-            .contentImageUrl(campaignPostDto.getContentImageUrl())
-            .isEnd(campaignPostDto.getIs_end())
-            .targetDonation(campaignPostDto.getTargetDonation())
-            .endDate(campaignPostDto.getEndDate())
-            .viewCount(campaignPostDto.getViewCount())
-            .resistDate(campaignPostDto.getResistDate())
-            .account(campaignPostDto.getAccount())
-            .build();
+
+        Campaign campaign = Campaign.from(campaignPostDto);
 
         List<Hashtag> hashtags = findAndSaveHashtags(campaignPostDto.getHashtags());
 
@@ -49,7 +42,7 @@ public class CampaignService {
             }
         );
 
-        return CampaignPostDto.from(campaignRepository.save(campaign));
+        return CampaignResponseDto.from(campaignRepository.save(campaign));
     }
 
     private List<Hashtag> findAndSaveHashtags(List<String> hashtags) {

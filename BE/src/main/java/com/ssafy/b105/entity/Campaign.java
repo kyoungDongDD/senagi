@@ -1,10 +1,9 @@
 package com.ssafy.b105.entity;
 
+import com.ssafy.b105.dto.CampaignRequestDto;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
-import java.util.HashSet;
 import java.util.List;
-import java.util.Set;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -25,38 +24,38 @@ import lombok.NoArgsConstructor;
 @Builder
 @AllArgsConstructor(access = AccessLevel.PROTECTED)
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
-public class Campaign {
+public class Campaign extends BaseEntity{
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "campaignId")
+    @Column(name = "campaign_id")
     private Long id;
 
-    @Column(name = "title", length = 255)
+    @Column(length = 255)
     private String title;
 
-    @Column(name = "thumbnailImageUrl", length = 255)
-    private String thumbnailImageUrl;
+    @Column(length = 255)
+    private String thumbnail_image_url;
 
-    @Column(name = "contentImageUrl", length = 255)
-    private String contentImageUrl;
+    @Column(length = 255)
+    private String content_image_url;
 
-    @Column(name = "isEnd")
-    private Boolean isEnd;
+    @Builder.Default
+    private Boolean is_end = false; //종료 여부 true: 종료됨 ,false : 진행중
 
-    @Column(name = "resistDate", length = 30)
-    private LocalDateTime resistDate;
+    @Column(length = 300)
+    private String account; //블록체인 계좌정보
 
-    @Column(name = "account", length = 300)
-    private String account;
+    @Builder.Default
+    private Long view_count = 0L; //조회수
 
-    private Long viewCount;
+    @Builder.Default
+    private Long target_donation = 0L;
 
-    private Long targetDonation;
+    @Builder.Default
+    private LocalDateTime end_date = LocalDateTime.of(11111,1,1,1,1);
 
-    private LocalDateTime endDate;
-
-    @Enumerated(EnumType.STRING) // 반환타입 int(Default) -> String 으로 바꿔줌
+    @Enumerated(EnumType.STRING) 
     private CampaignType type;
 
     @OneToMany(mappedBy = "campaign", cascade = CascadeType.ALL, orphanRemoval = true)
@@ -65,9 +64,25 @@ public class Campaign {
 
     //==비즈니스 로직==//
 
+    //조회수 증가 함수
     public void addViewCount() {
-        this.viewCount += 1;
+        this.view_count += 1;
     }
 
+    public static Campaign from(CampaignRequestDto campaignRequestDto) {
+        if (campaignRequestDto == null) {
+            return null;
+        }
 
+        return Campaign.builder()
+            .title(campaignRequestDto.getTitle())
+            .thumbnail_image_url(campaignRequestDto.getThumbnailImageUrl())
+            .target_donation(campaignRequestDto.getTargetDonation())
+            .content_image_url(campaignRequestDto.getContentImageUrl())
+            .is_end(campaignRequestDto.getIsEnd())
+            .target_donation(campaignRequestDto.getTargetDonation())
+            .end_date(campaignRequestDto.getEndDate())
+            .type(campaignRequestDto.getType())
+            .build();
+    }
 }
