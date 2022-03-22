@@ -20,7 +20,6 @@ public class CampaignController {
 
     @PostMapping("/project")
     public ResponseEntity<CampaignResponseDto> CreateCampaign(@RequestBody CampaignRequestDto campaignRequestDto) {
-        System.out.println("@@@@@@@@@@@@");
         return ResponseEntity.ok(campaignService.createCampaign(campaignRequestDto));
     }
 

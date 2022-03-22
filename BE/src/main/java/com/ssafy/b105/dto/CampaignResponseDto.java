@@ -33,9 +33,6 @@ public class CampaignResponseDto {
     private Boolean isEnd = false;
 
     @Builder.Default
-    private LocalDateTime resistDate = LocalDateTime.now();
-
-    @Builder.Default
     private Long viewCount = 0L;
 
     @Nullable
@@ -50,6 +47,8 @@ public class CampaignResponseDto {
     @NotNull
     private CampaignType type;
 
+    private LocalDateTime resistDate;
+
     private LocalDateTime lastModifiedDate;
 
 
@@ -60,16 +59,15 @@ public class CampaignResponseDto {
 
         return CampaignResponseDto.builder()
             .id(campaign.getId())
-            .thumbnailImageUrl(campaign.getThumbnail_image_url())
+            .thumbnailImageUrl(campaign.getThumbnailImageUrl())
             .type(campaign.getType())
             .account(campaign.getAccount())
             .title(campaign.getTitle())
-            .viewCount(campaign.getView_count())
             .resistDate(campaign.getRegist_date())
-            .targetDonation(campaign.getTarget_donation())
-            .contentImageUrl(campaign.getContent_image_url())
-            .targetDonation(campaign.getTarget_donation())
-            .endDate(campaign.getEnd_date())
+            .targetDonation(campaign.getTargetDonation())
+            .contentImageUrl(campaign.getContentImageUrl())
+            .targetDonation(campaign.getTargetDonation())
+            .endDate(campaign.getEndDate())
             .lastModifiedDate(campaign.getLast_modified_date())
             .build();
     }

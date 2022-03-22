@@ -35,25 +35,25 @@ public class Campaign extends BaseEntity{
     private String title;
 
     @Column(length = 255)
-    private String thumbnail_image_url;
+    private String thumbnailImageUrl;
 
     @Column(length = 255)
-    private String content_image_url;
+    private String contentImageUrl;
 
     @Builder.Default
-    private Boolean is_end = false; //종료 여부 true: 종료됨 ,false : 진행중
+    private Boolean isEnd = false; //종료 여부 true: 종료됨 ,false : 진행중
 
     @Column(length = 300)
     private String account; //블록체인 계좌정보
 
     @Builder.Default
-    private Long view_count = 0L; //조회수
+    private Long viewCount = 0L; //조회수
 
     @Builder.Default
-    private Long target_donation = 0L;
+    private Long targetDonation = 0L;
 
     @Builder.Default
-    private LocalDateTime end_date = LocalDateTime.of(11111,1,1,1,1);
+    private LocalDateTime endDate = LocalDateTime.of(11111,1,1,1,1);
 
     @Enumerated(EnumType.STRING) 
     private CampaignType type;
@@ -66,7 +66,7 @@ public class Campaign extends BaseEntity{
 
     //조회수 증가 함수
     public void addViewCount() {
-        this.view_count += 1;
+        this.viewCount += 1;
     }
 
     public static Campaign from(CampaignRequestDto campaignRequestDto) {
@@ -76,12 +76,12 @@ public class Campaign extends BaseEntity{
 
         return Campaign.builder()
             .title(campaignRequestDto.getTitle())
-            .thumbnail_image_url(campaignRequestDto.getThumbnailImageUrl())
-            .target_donation(campaignRequestDto.getTargetDonation())
-            .content_image_url(campaignRequestDto.getContentImageUrl())
-            .is_end(campaignRequestDto.getIsEnd())
-            .target_donation(campaignRequestDto.getTargetDonation())
-            .end_date(campaignRequestDto.getEndDate())
+            .thumbnailImageUrl(campaignRequestDto.getThumbnailImageUrl())
+            .targetDonation(campaignRequestDto.getTargetDonation())
+            .contentImageUrl(campaignRequestDto.getContentImageUrl())
+            .isEnd(campaignRequestDto.getIsEnd())
+            .targetDonation(campaignRequestDto.getTargetDonation())
+            .endDate(campaignRequestDto.getEndDate())
             .type(campaignRequestDto.getType())
             .build();
     }

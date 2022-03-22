@@ -59,11 +59,11 @@ public class CampaignRequestDto {
         return CampaignRequestDto.builder()
             .type(campaign.getType())
             .title(campaign.getTitle())
-            .thumbnailImageUrl(campaign.getThumbnail_image_url())
-            .targetDonation(campaign.getTarget_donation())
-            .contentImageUrl(campaign.getContent_image_url())
-            .targetDonation(campaign.getTarget_donation())
-            .endDate(campaign.getEnd_date())
+            .thumbnailImageUrl(campaign.getThumbnailImageUrl())
+            .targetDonation(campaign.getTargetDonation())
+            .contentImageUrl(campaign.getContentImageUrl())
+            .targetDonation(campaign.getTargetDonation())
+            .endDate(campaign.getEndDate())
             .build();
     }
 }
