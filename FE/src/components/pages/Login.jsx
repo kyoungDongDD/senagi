@@ -1,14 +1,12 @@
 import * as React from 'react';
 import {
   CssBaseline,
-  FormHelperText,
   Grid,
   Box,
   Paper,
   Tabs,
   Tab,
   Typography,
-  AppBar,
 } from '@mui/material/';
 import img2 from '../../assets/login_side.png';
 import ShelterLoginForm from '../UI/organisms/ShelterLoginForm';
