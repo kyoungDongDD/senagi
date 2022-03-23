@@ -1,15 +1,9 @@
 import * as React from 'react';
-import Dialog from '@mui/material/Dialog';
-import DialogActions from '@mui/material/DialogActions';
-import DialogContent from '@mui/material/DialogContent';
-import DialogContentText from '@mui/material/DialogContentText';
-import DialogTitle from '@mui/material/DialogTitle';
+import { Dialog, DialogActions, DialogContent, DialogTitle, Button, Grid} from '@mui/material';
 import Text from '../../atoms/Text';
-import { Button, Grid,
-        Table, TableBody, TableCell, TableContainer, TableHead, TableRow, Paper} from '@mui/material';
-import styled from '@emotion/styled';
-import { makeStyles } from '@mui/styles';
 import BillTable from '../../molecules/BillTable';
+import { makeStyles } from '@mui/styles';
+import styled from '@emotion/styled';
 
 const useStyles = makeStyles((theme) => {
   return {
@@ -33,7 +27,7 @@ const useStyles = makeStyles((theme) => {
       "&.MuiDialogTitle-root": {
         margin: "auto",
       },
-    }
+    },
   };
 });
 
@@ -58,6 +52,16 @@ const CancelButton = styled(Button)`
   margin: auto;
   width: 200px;
 `
+const AttachButton = styled(Button)`
+  background-color: white;
+  &:hover {
+    background-color: black;
+    color: white;
+  }
+  color: black;
+  margin: auto;
+`
+
 function WithdrawModal(props) {
   const classes = useStyles();
 
@@ -76,7 +80,7 @@ function WithdrawModal(props) {
           <Grid container spacing={2}>
             <Grid item xs={6} md={4}>
               <img src="" alt="" />
-              <Button>영수증 첨부</Button>
+              <AttachButton className={classes.root} fullWidth>영수증 첨부</AttachButton>
             </Grid>
             <Grid item xs={6} md={8}>
               <BillTable />
