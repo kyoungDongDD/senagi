@@ -1,4 +1,3 @@
-import * as React from 'react';
 import { Table, TableBody, TableCell, TableContainer, TableHead, TableRow, Paper } from '@mui/material';
 
 function createData(name, amount) {

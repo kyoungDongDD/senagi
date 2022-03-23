@@ -1,4 +1,3 @@
-import * as React from 'react';
 import { Dialog, DialogActions, DialogContent, DialogTitle, Button, Grid} from '@mui/material';
 import Text from '../../atoms/Text';
 import BillTable from '../../molecules/BillTable';
