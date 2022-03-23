@@ -1,15 +1,9 @@
-import GoogleLoginButton from "../atoms/GoogleLoginButton";
+import JoinButton from '../molecules/JoinButton';
 import UserButton from '../molecules/UserButton';
-import Text from "../atoms/Text"
-
+import Text from '../atoms/Text';
 import {
-  Link,
-  Typography,
   Box,
   TextField,
-  FormControlLabel,
-  Checkbox,
-  Button,
 } from "@mui/material";
 
 function ShelterLoginForm() {
@@ -63,6 +57,7 @@ function ShelterLoginForm() {
         text="로그인"
         size="large"
       />
+      <JoinButton />
     </Box>
   </Box>
   );

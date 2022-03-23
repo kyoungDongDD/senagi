@@ -1,20 +1,42 @@
-import GoogleLogin from '../../../assets/google_signin_buttons/btn_google_signin_light_normal_web@2x.png';
-import { Button } from "@mui/material";
+import GoogleLogo from '../../../assets/g-logo.png';
+import styled from '@emotion/styled';
 
-function GoogleLoginButton(props) {
+const StyledButton = styled.button`
+  border: none;
+  border-radius: 2px;
+  box-shadow: 0 1px 1px 0 rgba(0, 0, 0, 0.24), 0 0 1px 0 rgba(0, 0, 0, 0.12);
+  display: flex;
+  align-items: center;
+  padding: 1px;
+  color: rgba(0,0,0,0.54);
+  &:hover {box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.24), 0 0 2px 0 rgba(0, 0, 0, 0.12);}
+  &:active {background: #EEEEEE;}
+  background: #FFF;
+  width: 100%;
+`
+
+const StyledImg = styled.img`
+  width: 2rem;
+  margin-left: 1rem;
+  
+`
+const StyledP = styled.p`
+  margin-left: 3rem;
+  font-size: 0.9375rem;
+  font-family: "Roboto";
+	font-weight: 500;
+	letter-spacing: 0.2px;
+	text-align: left;
+  white-space: nowrap;
+`
+
+function GoogleLoginButton() {
   return (
-    <Button
-    type={props.type}
-    fullWidth={props.fullWidth}
-    variant={props.variant}
-    sx={{ mt: 3, mb: 2 }}
-    size={props.size}
-    style={{
-      backgroundColor: "#F4BA34",
-    }}
-  >
-    Google 계정으로 로그인
-  </Button>
+    <StyledButton
+    >
+      <StyledImg src={GoogleLogo} alt="GoogleLogo" />
+      <StyledP>Google 계정으로 로그인</StyledP>
+    </StyledButton>
   );
 };
 

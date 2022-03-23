@@ -1,33 +1,9 @@
-import GoogleLoginButton from '../atoms/GoogleLoginButton';
-import UserButton from '../molecules/UserButton';
-import Text from '../atoms/Text';
 import { Link } from 'react-router-dom';
-
-import { Typography, Box, TextField, FormControlLabel, Checkbox, Button } from '@mui/material';
-
-import styled from '@emotion/styled';
-
-const StyledText = styled(Text)`
-  display: inline-block;
-
-  color: black;
-`;
-
-const StyledLink = styled(Link)`
-  display: inline-block;
-
-  color: blue;
-
-  text-decoration: none;
-
-  &:focus,
-  &:hover,
-  &:visited,
-  &:link,
-  &:active {
-    text-decoration: none;
-  }
-`;
+import GoogleLoginButton from '../atoms/GoogleLoginButton';
+import Text from '../atoms/Text';
+import JoinButton from '../molecules/JoinButton';
+import UserButton from '../molecules/UserButton';
+import { Box, TextField } from '@mui/material';
 
 function UserLoginForm() {
   const handleSubmit = (event) => {
@@ -75,10 +51,7 @@ function UserLoginForm() {
         </Link>
         <GoogleLoginButton />
         <br />
-        <StyledText className="linktext" text="아직도 세나기를 이용하고 있지 않으신가요? &nbsp;" />
-        <StyledLink to="/signup" className="linktext">
-          {'가입하기'}
-        </StyledLink>
+        <JoinButton />
       </Box>
     </Box>
   );
