@@ -1,6 +1,6 @@
 // SPDX-License-Identifier: MIT
 
-pragma solidity ^0.8.0;
+pragma solidity >=0.7.0 <0.9.0;
 
 import "./standard/IERC20.sol";
 import "./standard/IERC20Metadata.sol";
@@ -106,10 +106,8 @@ contract Token is IERC20, IERC20Metadata, Ownable {
         uint256 destBalance = _balances[to] + amount;
         require(fromBalance >= amount,"TokenError : transfer amount exceeds balance");
         require(destBalance >= _balances[to], "TokenError : transfer amount overflow" );
-        unchecked {
-            _balances[from] -= amount;
-            _balances[to] += amount;
-        }
+        _balances[from] -= amount;
+        _balances[to] += amount;
         emit Transfer(from, to, amount);
     }
 
@@ -139,9 +137,7 @@ contract Token is IERC20, IERC20Metadata, Ownable {
     function transferFrom(address from, address to, uint256 amount) external override returns (bool) {
         require(_allowances[from][owner()] >= amount, "TokenError : transfer amount exceeds allowance");
         _transfer(from, to, amount);
-        unchecked {
-            _approve(from, owner(), _allowances[from][owner()]-amount);
-        }
+        _approve(from, owner(), _allowances[from][owner()]-amount);
         return true;
     }
 }
