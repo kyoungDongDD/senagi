@@ -4,6 +4,11 @@ import Text from '../atoms/Text';
 import JoinButton from '../molecules/JoinButton';
 import UserButton from '../molecules/UserButton';
 import { Box, TextField } from '@mui/material';
+import styled from '@emotion/styled';
+
+const StyledLink = styled(Link)`
+  text-decoration: none;
+`;
 
 function UserLoginForm() {
   const handleSubmit = (event) => {
@@ -46,9 +51,9 @@ function UserLoginForm() {
           id="password"
           autoComplete="current-password"
         />
-        <Link to="/nav">
+        <StyledLink to="/home">
           <UserButton type="submit" fullWidth variant="contained" text="로그인" size="large" />
-        </Link>
+        </StyledLink>
         <GoogleLoginButton />
         <br />
         <JoinButton />

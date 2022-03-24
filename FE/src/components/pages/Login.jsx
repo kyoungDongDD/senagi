@@ -1,13 +1,5 @@
 import * as React from 'react';
-import {
-  CssBaseline,
-  Grid,
-  Box,
-  Paper,
-  Tabs,
-  Tab,
-  Typography,
-} from '@mui/material/';
+import { CssBaseline, Grid, Box, Paper, Tabs, Tab, Typography } from '@mui/material/';
 import img2 from '../../assets/login_side.png';
 import ShelterLoginForm from '../UI/organisms/ShelterLoginForm';
 import UserLoginForm from '../UI/organisms/UserLoginForm';

@@ -4,27 +4,27 @@ import { Box } from '@mui/material';
 import styled from '@emotion/styled';
 
 const StyledBox = styled(Box)`
-justify-content: center;
-display: flex;
-align-items: center;
-`
+  justify-content: center;
+  display: flex;
+  align-items: center;
+`;
 
 const StyledText = styled(Text)`
-display: inline-block;
-color: black;
+  display: inline-block;
+  color: black;
 `;
 
 const StyledLink = styled(Link)`
-display: inline-block;
-color: blue;
-text-decoration: none;
-&:focus,
-&:hover,
-&:visited,
-&:link,
-&:active {
+  display: inline-block;
+  color: blue;
   text-decoration: none;
-}
+  &:focus,
+  &:hover,
+  &:visited,
+  &:link,
+  &:active {
+    text-decoration: none;
+  }
 `;
 
 function JoinButton() {
@@ -36,6 +36,6 @@ function JoinButton() {
       </StyledLink>
     </StyledBox>
   );
-};
+}
 
 export default JoinButton;

@@ -2,14 +2,14 @@ import { Button } from '@mui/material';
 import styled from '@emotion/styled';
 
 const StyledButton = styled(Button)`
-  background-color: #F4BA34;
+  background-color: #f4ba34;
 
   &:focus,
   &:hover,
   &:visited,
   &:link,
   &:active {
-    background-color: #F4BA34;
+    background-color: #f4ba34;
   }
 
   .MuiTouchRipple-child {
