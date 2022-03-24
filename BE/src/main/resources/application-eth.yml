@@ -7,7 +7,7 @@ spring:
 # Ethereum accounts
 eth:
   key:
-    path: 'classpath:keystore/'
+    path: './keystore/'
   gas:
     limit: '8000000'
     price: '0'
