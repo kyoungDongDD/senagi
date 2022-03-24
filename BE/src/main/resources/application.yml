@@ -8,6 +8,11 @@ spring:
     password:
     driver-class-name: org.h2.Driver
 
+#run과 동시에 data.sql 실행
+  sql:
+    init:
+      mode: always
+
   jpa:
     hibernate:
       ddl-auto: create
