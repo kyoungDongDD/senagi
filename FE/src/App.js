@@ -4,13 +4,14 @@ import { Routes, Route, Link } from 'react-router-dom';
 import { Global } from '@emotion/react';
 
 import Home from './components/pages/Home';
-import NavBar from './components/UI/organisms/NavBar';
 import Welcome from './components/pages/OnBoarding/Welcome';
 import MyPage from './components/pages/MyPage';
 import Login from './components/pages/Login';
 import SignUp from './components/pages/SignUp';
 import SearchResult from './components/pages/SearchResult';
 import CampaignDetail from './components/pages/CampaignDetail';
+import UsageHistory from './components/pages/UsageHistory';
+
 import commonStyles from './styles/commonStyles';
 
 
@@ -22,11 +23,11 @@ export default function App() {
         <Route path="/" element={<Welcome />} />
         <Route path="/login" element={<Login />} />
         <Route path="/signup" element={<SignUp />} />
-        <Route path="/nav" element={<NavBar />} />
         <Route path="/home" element={<Home />} />
         <Route path="/mypage" element={<MyPage />} />
         <Route path="/searchresult" element={<SearchResult />} />
         <Route path="/CampaignDetail" element={<CampaignDetail />} />
+        <Route path="/UsageHistory" element={<UsageHistory />} />
 
         {/* 404 Not Found*/}
         <Route path="/*" element={<NoMatch />} />

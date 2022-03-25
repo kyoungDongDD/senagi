@@ -4,7 +4,7 @@ import styled from "@emotion/styled";
 import Pagination from "../UI/organisms/Pagination";
 import DonationInfoCard from "../UI/organisms/DonationInfoCard";
 import NavBar from "../UI/organisms/NavBar";
-import Slide from "../UI/organisms/Carousel";
+import BannerSlide from "../UI/organisms/BannerSlide";
 import SelectBox from "../UI/molecules/SelectBox";
 import { Outlet } from 'react-router-dom';
 
@@ -24,7 +24,7 @@ function SearchResult() {
   return (
     <div>
       <NavBar />
-      <Slide />
+      <BannerSlide />
       <Layout>
         <Outlet />
         <div>
@@ -47,13 +47,13 @@ function SearchResult() {
               </select>
             </label>
         </SelectOption>
-
         <Grid 
           container
           justifyContent={'space-evenly'}
+
         >
         {posts.slice(offset, offset + limit).map(({ id, title, body }) => (
-            <Grid item xs={8} md={4}> 
+            <Grid item sm={7} md={5} lg={4}> 
               <div key={id}>
                   <DonationInfoCard>
                     {id}. {title}
@@ -86,4 +86,5 @@ const Layout = styled.div`
 const SelectOption = styled.div`
   display: flex;
   justify-content: space-between;
+  flex-direction: row;
 `

@@ -1,13 +1,15 @@
-import React from 'react';
-import ProgressButton from '../UI/molecules/ProgressButton';
-import CampaignCard from '../UI/organisms/CampaignCard';
+import NavBar from '../UI/organisms/NavBar';
+import BannerSlide from '../UI/organisms/BannerSlide';
+import MainSlide from '../UI/organisms/MainSlide';
 
 function Home() {
   return (
     <div>
-      <ProgressButton/>
-      <h2 className="body3">Home</h2>
-      <CampaignCard />
+      <NavBar />
+      <BannerSlide />
+      <h2 className="body1">Home</h2>
+      <MainSlide />
+
     </div>
   );
 }

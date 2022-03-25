@@ -11,7 +11,8 @@ import styled from '@emotion/styled';
 
 
 
-export default function CampaignCard() {
+export default function CampaignCard () {
+
   return (
     //max min 똑같은 이유, ProgressBar에 영향을 안주기위해 고정값으로 주려고..
     <Card sx={{ maxWidth: 321, minWidth: 321 }} style={{ position: 'relative'}}>

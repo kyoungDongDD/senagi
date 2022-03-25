@@ -7,6 +7,7 @@ import CampaignTable from '../UI/organisms/CampaignTable';
 
 import styled from "@emotion/styled";
 
+
 function CampaignDetail() {
   return (
     <div>
@@ -15,7 +16,7 @@ function CampaignDetail() {
       <br></br>
         <Grid container justifyContent={'space-evenly'}>
         <Grid item xs={1}></Grid>
-          <Grid item xs={6}>
+          <Grid item xs={12} md={6}>
             <CampaginImg src={ require('../../assets/test5.jpg')} />
             <p
             >후원금은 보호소의 영수증 제출을 
@@ -26,8 +27,10 @@ function CampaignDetail() {
             </p>
             <CampaignTable />
           </Grid>
-          <Grid item xs={2}>
-            <CampaignCard />
+          <Grid item xs={6} md={2}>
+            <CardPosition>
+              <CampaignCard />
+            </CardPosition>
           </Grid>
            <Grid item xs={1}></Grid>
         </Grid>
@@ -42,4 +45,7 @@ const CampaginImg = styled.img`
   height: 100%;
   border-radius: 3px;
   object-fit: fill;
+`
+const CardPosition = styled.div`
+  position: fixed;
 `

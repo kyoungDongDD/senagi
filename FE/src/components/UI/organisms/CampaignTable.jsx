@@ -1,5 +1,6 @@
-import React from "react";
-import "./CampaignTable.css"
+
+import UserButton from "../molecules/UserButton";
+import '../../../styles/CampaignTable.css';
 
 function CampaignTable() {
   return (
@@ -19,9 +20,13 @@ function CampaignTable() {
           <td><button>태그버튼 만들기!</button></td>
         </tr>
       </table>
+      <UserButton
+        type="submit" 
+        fullWidth variant="contained" 
+        text="캠페인 기부하기" 
+        size="large" />
     </div>
   );
 }
 
 export default CampaignTable;
-

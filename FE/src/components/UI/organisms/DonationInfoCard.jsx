@@ -1,6 +1,5 @@
 // Text, ProgressBar
 // D-Day, Button
-import * as React from 'react';
 import styled from '@emotion/styled';
 import Card from '@mui/material/Card';
 import CardContent from '@mui/material/CardContent';
