@@ -1,19 +1,22 @@
 package com.ssafy.b105;
 
 import com.ssafy.b105.exception.DuplicateException;
-import com.ssafy.b105.service.UserService;
+import com.ssafy.b105.service.UserServiceImpl;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
+import javax.transaction.Transactional;
+
 import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 
 
 @SpringBootTest
+@Transactional
 public class DuplicationTest {
   @Autowired
-  private UserService userService;
+  private UserServiceImpl userService;
 
   @Test
   @DisplayName("아이디 중복 확인 테스트(중복)")

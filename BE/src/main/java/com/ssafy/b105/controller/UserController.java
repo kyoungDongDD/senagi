@@ -1,15 +1,22 @@
 package com.ssafy.b105.controller;
 
-import com.ssafy.b105.dto.UserDto;
-import com.ssafy.b105.service.UserService;
+import com.ssafy.b105.dto.UserFormDTO;
+import com.ssafy.b105.entity.User;
+import com.ssafy.b105.service.UserServiceImpl;
+import lombok.RequiredArgsConstructor;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
+
+import javax.validation.Valid;
 
 @RestController
 @RequestMapping("/api/auth")
+@RequiredArgsConstructor
 public class UserController {
-  private final UserService userService;
-  public UserController(UserService userService) { this.userService = userService; }
+
+  private final UserServiceImpl userService;
 
   @GetMapping("/duplicate/principal")
   public ResponseEntity<Boolean> duplicatePrincipalCheck(@RequestParam String principal){
@@ -19,12 +26,29 @@ public class UserController {
   public ResponseEntity<Boolean> duplicateNameCheck(@RequestParam String name){
     return ResponseEntity.ok(userService.duplicateNameCheck(name));
   }
+
   @PostMapping("/signup/supporter")
-  public ResponseEntity<UserDto> supporterSignup(@RequestBody UserDto userDto  ) {
-    return ResponseEntity.ok(userService.supporterSignup(userDto));
+  public ResponseEntity<?> insertSupporter(
+    @Valid @RequestBody UserFormDTO dto,
+    BindingResult bindingResult  ) {
+    if (bindingResult.hasErrors()) {
+      return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+    }
+
+    User accountDB = userService.saveOrUpdateUser(dto.toEntity());
+
+    return new ResponseEntity<>(accountDB, HttpStatus.CREATED);
   }
+
   @PostMapping("/signup/shelter")
-  public ResponseEntity<UserDto> shelterSignup(@RequestBody UserDto userDto  ) {
-    return ResponseEntity.ok(userService.shelterSignup(userDto));
+  public ResponseEntity<?> insertShelter(
+    @Valid @RequestBody UserFormDTO dto,
+    BindingResult bindingResult  ) {
+    if (bindingResult.hasErrors()) {
+      return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+    }
+    User accountDB = userService.saveOrUpdateUser(dto.toEntity());
+
+    return new ResponseEntity<>(accountDB, HttpStatus.CREATED);
   }
 }

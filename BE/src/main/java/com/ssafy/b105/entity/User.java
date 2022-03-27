@@ -1,11 +1,10 @@
 package com.ssafy.b105.entity;
 
 import lombok.*;
+import org.springframework.security.crypto.password.PasswordEncoder;
 
 import javax.persistence.*;
 import java.time.LocalDateTime;
-import java.util.ArrayList;
-import java.util.List;
 
 @Entity
 @Getter
@@ -17,32 +16,42 @@ public class User {
   @Id
   @Column(name = "user_id")
   @GeneratedValue(strategy = GenerationType.IDENTITY)
-  private Long userId;
+  private Long id;
 
-  @Column(name = "principal", length = 60, unique = true)
+  @Column(unique = true)
   private String principal;
 
-  @Column(name = "credential", length = 255)
+
   private String credential;
 
-  @Column(name = "name", length = 60, unique = true)
+  @Column(unique = true)
   private String name;
 
-  @Column(name = "regist_date", length = 30)
   @Builder.Default
   private LocalDateTime registDate = LocalDateTime.now();
 
-  @Column(name = "account", length = 300)
-  private String account;
+  @Enumerated(EnumType.STRING)
+  private UserRole role;
 
-  @Column(name = "phone", length = 100)
   private String phone;
 
+  // OAuth를 위해 구성한 추가 필드 2개
+  private String provider;
+
+  private String providerId;
+
   //연관 관계 매핑
-  @OneToMany (mappedBy = "user",cascade = CascadeType.ALL)
-  @Builder.Default
-  private List<UserAuthority> userAuthorities= new ArrayList<>();
+
 
   //비지니스 메서드
+  public void encodePassword(PasswordEncoder passwordEncoder) {
+    this.credential = passwordEncoder.encode(this.credential);
+  }
 
+  public User(String principal, String name,String credential, UserRole role){
+    this.principal= principal;
+    this.credential=credential;
+    this.name=name;
+    this.role=role;
+  }
 }
