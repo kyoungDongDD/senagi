@@ -61,7 +61,7 @@ public class CampaignRepositoryImpl implements CampaignSearchRepository {
                 isEndEq(condition.getIsEnd()),
                 //제목 or 태그에 검색어가 있으면
                 (searchTitle(condition.getSearchWord())).or(searchTag(condition.getSearchWord())))
-            .orderBy(sortCam(condition.getSortType(), condition.getDesc()))
+            .orderBy(sortConditon(condition.getSortType(), condition.getDesc()))
             .offset(pageable.getOffset())
             .limit(pageable.getPageSize())
             .fetch();
@@ -102,7 +102,7 @@ public class CampaignRepositoryImpl implements CampaignSearchRepository {
     }
 
     //정렬 조건
-    private OrderSpecifier sortCam(SortType sortType, Boolean desc) {
+    private OrderSpecifier sortConditon(SortType sortType, Boolean desc) {
         if (desc == null) {
             desc = false;
         }
@@ -140,32 +140,4 @@ public class CampaignRepositoryImpl implements CampaignSearchRepository {
         }
     }
 
-    // 조회수 증가 쿼리
-    @Override
-    public void addViewCount(Long id) {
-      queryFactory
-            .update(QCampaign.campaign)
-            .set(QCampaign.campaign.viewCount, QCampaign.campaign.viewCount.add(1))
-            .where(QCampaign.campaign.id.eq(id))
-            .execute();
-
-        //영속성 초기화
-        em.flush();
-        em.clear();
-    }
-
-    //태그 검색
-    @Override
-    public List<HashtagDto> searchTag(Campaign campaign) {
-
-         List<HashtagDto> tags = queryFactory
-            .select(new QHashtagDto(
-                QHashtag.hashtag.id,
-                QHashtag.hashtag.name))
-            .from(QCampaignHashtag.campaignHashtag)
-             .where(QCampaignHashtag.campaignHashtag.campaign.eq(campaign))
-            .fetch();
-
-        return tags;
-    }
 }

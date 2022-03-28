@@ -50,13 +50,13 @@ public class CampaignService {
         return CampaignResponseDto.from(campaignRepository.save(campaign));
     }
 
+
     @Transactional
-    public CampaignResponseDto detailCampaign(Long id) {
+    public CampaignResponseDto detailCampaign(Campaign campaign) {
         //조회수 증가
-        campaignRepository.addViewCount(id);
+        campaign.addViewCount();
         //id로 캠페인 찾기
-        Optional<Campaign> campaign = campaignRepository.findById(id);
-        return CampaignResponseDto.from(campaign.get());
+        return CampaignResponseDto.from(campaign);
     }
 
     //해쉬태그 저장 및 중복검사
@@ -77,16 +77,5 @@ public class CampaignService {
         return results;
     }
 
-    //localDateTime => UnixTime
-    public Long localDateTimeToUnix(LocalDateTime localDateTime) {
-        return Timestamp.valueOf(localDateTime).getTime();
 
-    }
-
-    //UnixTime => localDateTime
-    public LocalDateTime UnixTolocalDateTime(Long UnixTime) {
-        LocalDateTime systemLocalDateTime = LocalDateTime.ofInstant(Instant.ofEpochMilli(UnixTime), TimeZone.getDefault().toZoneId());
-        return systemLocalDateTime;
-
-    }
 }

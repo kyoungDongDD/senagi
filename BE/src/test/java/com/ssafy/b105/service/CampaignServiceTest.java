@@ -8,6 +8,7 @@ import com.ssafy.b105.entity.CampaignType;
 import com.ssafy.b105.entity.Hashtag;
 import com.ssafy.b105.repository.CampaignRepository;
 import com.ssafy.b105.repository.HashtagRepository;
+import com.ssafy.b105.utils.TimeConverter;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
@@ -33,6 +34,7 @@ public class CampaignServiceTest {
     JPAQueryFactory queryFactory;
     @Autowired CampaignService campaignService;
 
+    @Autowired TimeConverter timeConverter
     @Autowired
     CampaignRepository campaignRepository;
 
@@ -90,9 +92,9 @@ public class CampaignServiceTest {
     @DisplayName("유닉스변환")
     public void 유닉스변환() {
         System.out.println("시간");
-        Long unix =  campaignService.localDateTimeToUnix(LocalDateTime.now());
+        Long unix =  timeConverter.localDateTimeToUnix(LocalDateTime.now());
         System.out.println(unix);
-        System.out.println(campaignService.UnixTolocalDateTime(unix));
+        System.out.println(timeConverter.unixToLocalDateTime(unix));
     }
 
 }

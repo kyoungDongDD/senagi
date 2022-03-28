@@ -6,6 +6,7 @@ import com.ssafy.b105.dto.CampaignResponseDto;
 import com.ssafy.b105.dto.CampaignSearchCondition;
 import com.ssafy.b105.dto.HashtagDto;
 import com.ssafy.b105.entity.Campaign;
+import com.ssafy.b105.entity.CampaignHashtag;
 import com.ssafy.b105.repository.CampaignRepository;
 import com.ssafy.b105.service.CampaignService;
 import java.util.List;
@@ -33,12 +34,12 @@ public class CampaignController {
 
     //detail 조회
     @GetMapping("/api/campaign/detail/{id}")
-    public ResponseEntity<CampaignResponseDto> DetailCampaign(@PathVariable("id") Long id) {
-        return ResponseEntity.ok(campaignService.detailCampaign(id));
+    public ResponseEntity<CampaignResponseDto> DetailCampaign(@PathVariable("id") Campaign campaign) {
+        return ResponseEntity.ok(campaignService.detailCampaign(campaign));
     }
     @GetMapping("/api/campaign/tags/{id}")
-    public ResponseEntity<List<HashtagDto>> DetailCampaign(@PathVariable("id") Campaign campaign) {
-        return ResponseEntity.ok(campaignRepository.searchTag(campaign));
+    public ResponseEntity<List<String>> CampaignTag(@PathVariable("id") Campaign campaign) {
+        return ResponseEntity.ok(campaign.getHashtag());
     }
     //캠페인 리스트 조회
     @GetMapping("/api/campaigns")

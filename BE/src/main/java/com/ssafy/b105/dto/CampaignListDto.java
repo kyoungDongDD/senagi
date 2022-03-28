@@ -8,9 +8,13 @@ import com.ssafy.b105.entity.CampaignType;
 
 import java.time.LocalDateTime;
 
-import lombok.Data;
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
 
-@Data
+@Getter
+@AllArgsConstructor
+@NoArgsConstructor
 public class CampaignListDto {
 
     private Long id;

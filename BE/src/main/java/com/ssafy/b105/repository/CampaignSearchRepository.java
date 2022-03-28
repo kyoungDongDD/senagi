@@ -10,7 +10,4 @@ import org.springframework.data.domain.Pageable;
 
 public interface CampaignSearchRepository {
     Page<CampaignListDto> searchList(CampaignSearchCondition condition, Pageable pageable);
-    List<HashtagDto> searchTag(Campaign campaign);
-    void addViewCount(Long id);
-
 }
