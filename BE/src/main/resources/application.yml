@@ -20,7 +20,25 @@ spring:
       hibernate:
         format_sql: true
         show_sql: true
+        use_sql_comments: true
     defer-datasource-initialization: true
+
+
+  security:
+    oauth2:
+      client:
+        registration:
+          google:
+              client-id: 1016569789271-jgg8dcis0dvb9avb4n7jfo5nv43p4897.apps.googleusercontent.com
+              client-secret: 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
+              scope:
+              - email
+              - profile
+  data:
+    web:
+      pageable:
+        #페이지 기본 사이즈
+        default-page-size: 12
 
 jwt:
   header: Authorization
@@ -29,7 +47,7 @@ jwt:
   secret: c2lsdmVybmluZS10ZWNoLXNwcm
   token-validity-in-seconds: 86400
 
+
 logging.level:
   org.hibernate.SQL: debug
   org.hibernate.type: trace
-

@@ -1,11 +1,16 @@
 package com.ssafy.b105.entity.blockchain;
 
 import com.ssafy.b105.dto.blockchain.NewWalletDto;
+import com.ssafy.b105.entity.User;
+import java.math.BigInteger;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToOne;
 import lombok.AccessLevel;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -21,19 +26,28 @@ public class Wallet {
   @Column(name = "wallet_id")
   private Long id;
 
-  // TODO Member와 연관관계 맺어야함
-  private Long memberId;
+  @OneToOne(fetch = FetchType.LAZY)
+  @JoinColumn(name = "user_id")
+  private User user;
 
+  @Column(length =  40)
   private String account;
 
   private String keyFileName;
 
+  @Column(length = 32)
   private String password;
 
-  // TODO memberId -> Member
-  public static Wallet of(Long memberId, NewWalletDto walletDto) {
-    return new Wallet(null, memberId,
-        walletDto.getAccount(), walletDto.getFileName(), walletDto.getPassword());
+  private BigInteger balance;
+
+
+  public static Wallet of(User user, NewWalletDto walletDto) {
+    return new Wallet(null, user,
+        walletDto.getAccount(), walletDto.getFileName(), walletDto.getPassword(),BigInteger.ZERO);
+  }
+
+  public void chargeBalance(BigInteger amount) {
+    balance.add(amount);
   }
 
 }

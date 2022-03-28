@@ -1,10 +1,11 @@
 package com.ssafy.b105.service.blockchain;
 
 import com.ssafy.b105.dto.blockchain.NewWalletDto;
+import com.ssafy.b105.entity.User;
 import com.ssafy.b105.entity.blockchain.Transaction;
 import com.ssafy.b105.entity.blockchain.Wallet;
 import com.ssafy.b105.repository.TransactionRepository;
-import com.ssafy.b105.repository.WalletRepository;
+import com.ssafy.b105.repository.blockchain.WalletRepository;
 import com.ssafy.b105.utils.BalanceConverter;
 import com.ssafy.b105.utils.BlockchainConnector;
 import java.math.BigInteger;
@@ -36,10 +37,10 @@ public class WalletServiceImpl implements WalletService {
   }
 
   @Override
-  public Optional<Wallet> createAccount(Long memberId) {
+  public Optional<Wallet> createAccount(User user) {
     try {
       NewWalletDto newWalletDto = connector.createAccount();
-      Wallet wallet = Wallet.of(memberId, newWalletDto);
+      Wallet wallet = Wallet.of(user, newWalletDto);
       walletRepository.save(wallet);
       return Optional.ofNullable(wallet);
     } catch (Exception e) {
@@ -49,32 +50,20 @@ public class WalletServiceImpl implements WalletService {
   }
 
   @Override
-  public String findAccountByMemberId(Long memberId) {
-    Wallet wallet = findByMemberId(memberId);
+  public String findAccountByUser(User user) {
+    Wallet wallet = findByUser(user);
     return wallet.getAccount();
   }
 
   @Override
-  public Long findBalanceByMemberId(Long memberId) throws ExecutionException, InterruptedException {
-    Wallet wallet = findByMemberId(memberId);
+  public Long findBalanceByUser(User user) throws ExecutionException, InterruptedException {
+    Wallet wallet = findByUser(user);
     BigInteger balance = tokenMgr.balanceOf(wallet.getAccount()).sendAsync().get();
     return BalanceConverter.bigIntegerToLong(balance, decimals);
   }
 
-  @Override
-  public Long chargeToken(Long memberId, Long amount)
-      throws ExecutionException, InterruptedException {
-    Wallet wallet = findByMemberId(memberId);
-    TransactionReceipt receipt = tokenMgr.chargeToken(
-            wallet.getAccount(),
-            BalanceConverter.longToBigInteger(amount, decimals))
-        .sendAsync().get();
-    Transaction save = transactionRepository.save(Transaction.from(receipt));
-    return 0L;
-  }
-
-  private Wallet findByMemberId(Long memberId) {
-    return walletRepository.findWalletByMemberId(memberId)
+  private Wallet findByUser(User user) {
+    return walletRepository.findWalletByUser(user)
         .orElseThrow(() -> new IllegalArgumentException());
   }
 

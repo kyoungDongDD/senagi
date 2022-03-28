@@ -1,28 +1,30 @@
 package com.ssafy.b105;
 
-import com.ssafy.b105.dto.UserDto;
+import com.ssafy.b105.dto.UserDTO;
 import com.ssafy.b105.entity.User;
 import com.ssafy.b105.exception.DuplicateException;
 import com.ssafy.b105.exception.ExpressionValidateException;
 import com.ssafy.b105.repository.UserRepository;
-import com.ssafy.b105.service.UserService;
+import com.ssafy.b105.service.UserServiceImpl;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
+import javax.transaction.Transactional;
 import java.util.List;
 
 import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 
 @SpringBootTest
+@Transactional
 class SupporterSignupTest {
 
   @Autowired
   private UserRepository userRepository;
 
   @Autowired
-  private UserService userService;
+  private UserServiceImpl userService;
 
   @Test
   @DisplayName("단순 user DB저장 테스트")
@@ -49,7 +51,7 @@ class SupporterSignupTest {
     //문제없는 userDTO
     int k=userRepository.findAll().size();
     
-    UserDto userDto = UserDto.builder()
+    UserDTO userDto = UserDTO.builder()
       .principal("rlarudehd32@naver.com")
       .credential("Asd123!!")
       .name("김디디")
@@ -69,7 +71,7 @@ class SupporterSignupTest {
     // 중복 id userDto
     int k=userRepository.findAll().size();
 
-    UserDto userDto = UserDto.builder()
+    UserDTO userDto = UserDTO.builder()
       .principal("admin@b105.io")// 저장되어있는 admin과 같은 principal
       .credential("Asd123!!")
       .name("김디디")
@@ -94,7 +96,7 @@ class SupporterSignupTest {
     // 중복 name userDto
     int k=userRepository.findAll().size();
 
-    UserDto userDto = UserDto.builder()
+    UserDTO userDto = UserDTO.builder()
       .principal("rlarudehd132@naver.com")
       .credential("Asd123!!")
       .name("동동스") // 저장되어있는 admin과 같은 name
@@ -118,7 +120,7 @@ class SupporterSignupTest {
     // 빈 principal userDto
     int k=userRepository.findAll().size();
 
-    UserDto userDto = UserDto.builder()
+    UserDTO userDto = UserDTO.builder()
       .principal("")  //빈 principal
       .credential("Asd123!!")
       .name("동동스")
@@ -142,7 +144,7 @@ class SupporterSignupTest {
     // 빈 credential userDto
     int k=userRepository.findAll().size();
 
-    UserDto userDto = UserDto.builder()
+    UserDTO userDto = UserDTO.builder()
       .principal("rlarudehd32@naver.com")
       .credential("") //빈 credential
       .name("동동스")
@@ -166,7 +168,7 @@ class SupporterSignupTest {
     // 빈 name userDto
     int k=userRepository.findAll().size();
 
-    UserDto userDto = UserDto.builder()
+    UserDTO userDto = UserDTO.builder()
       .principal("rlarudehd32@naver.com")
       .credential("Asd123!!")
       .name("") //빈 name
@@ -190,7 +192,7 @@ class SupporterSignupTest {
     // 정규식에 맞지 않는 principal userDto
     int k=userRepository.findAll().size();
 
-    UserDto userDto = UserDto.builder()
+    UserDTO userDto = UserDTO.builder()
       .principal("rlarudehd") // 형식에 맞지 않는 principal
       .credential("Asd123!!")
       .name("동동스")
@@ -214,7 +216,7 @@ class SupporterSignupTest {
     // 정규식에 맞지 않는 credential userDto
     int k=userRepository.findAll().size();
 
-    UserDto userDto = UserDto.builder()
+    UserDTO userDto = UserDTO.builder()
       .principal("rlarudehd32@naver.com")
       .credential("Asd") // 형식에 맞지 않는 credential
       .name("동동스")
@@ -238,7 +240,7 @@ class SupporterSignupTest {
     // 정규식에 맞지 않는 credential userDto
     int k=userRepository.findAll().size();
 
-    UserDto userDto = UserDto.builder()
+    UserDTO userDto = UserDTO.builder()
       .principal("rlarudehd32@naver.com")
       .credential("Asd123!!") // 형식에 맞지 않는 credential
       .name("동동스@@!")
