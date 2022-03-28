@@ -67,6 +67,8 @@ public class BlockchainConnector {
   private Credentials credentials;
   private ContractGasProvider gasProvider;
 
+  private BigInteger decimals;
+
 
   @PostConstruct
   public void init() {
@@ -79,6 +81,7 @@ public class BlockchainConnector {
       credentials = WalletUtils.loadCredentials("pass0", wallet);
       this.memberMgr = Member.load(memberAddr, web3j, credentials, gasProvider);
       this.tokenMgr = Token.load(tokenAddr, web3j, credentials, gasProvider);
+      this.decimals = getDecimals();
     } catch (IOException e) {
       e.printStackTrace();
     } catch (CipherException e) {
@@ -89,12 +92,13 @@ public class BlockchainConnector {
   }
 
   public Campaign deployCampaignContract(ContractRequestDto dto) throws Exception {
+
     return Campaign.deploy(
         web3j,
         credentials,
         gasProvider,
-        dto.getTargetAmount(),
-        dto.getDeadLine(),
+        BalanceConverter.longToBigInteger(dto.getTargetAmount(),decimals),
+        BalanceConverter.longToBigInteger(dto.getDeadLine(),decimals),
         memberAddr,
         tokenAddr).send();
   }
