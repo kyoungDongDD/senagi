@@ -2,6 +2,8 @@ plugins {
     id 'org.springframework.boot' version '2.6.4'
     id 'io.spring.dependency-management' version '1.0.11.RELEASE'
     id 'java'
+    id 'org.web3j' version '4.8.8'
+    id 'org.web3j.solidity' version '0.3.3'
 }
 
 group = 'com.ssafy'
@@ -31,11 +33,30 @@ dependencies {
     annotationProcessor 'org.projectlombok:lombok'
     testImplementation 'org.springframework.boot:spring-boot-starter-test'
 
-    implementation group: 'io.jsonwebtoken', name: 'jjwt', version: '0.9.1'
-    runtimeOnly group: 'io.jsonwebtoken', name: 'jjwt-impl', version: '0.9.1'
-    runtimeOnly group: 'io.jsonwebtoken', name: 'jjwt-jackson', version: '0.9.1'
+    implementation group: 'io.jsonwebtoken', name: 'jjwt-api', version: '0.11.2'
+    runtimeOnly group: 'io.jsonwebtoken', name: 'jjwt-impl', version: '0.11.2'
+    runtimeOnly group: 'io.jsonwebtoken', name: 'jjwt-jackson', version: '0.11.2'
+
+    implementation 'org.web3j:web3j-spring-boot-starter:1.6.0'
+
+    implementation("com.squareup.okhttp3:okhttp:4.9.3")
 }
 
 tasks.named('test') {
     useJUnitPlatform()
+}
+
+solidity {
+    allowPaths = ['../BC/src','../BC/src/utils']
+}
+
+sourceSets {
+    main {
+        solidity {
+            srcDir {
+                '../BC/src'
+                '../BC/src/utils'
+            }
+        }
+    }
 }

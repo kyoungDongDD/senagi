@@ -10,38 +10,37 @@ import {
   Typography,
   AppBar,
 } from '@mui/material/';
-import img2 from "../../assets/login_side.png";
-import ShelterLoginForm from "../UI/organisms/ShelterLoginForm";
-import UserLoginForm from "../UI/organisms/UserLoginForm";
+import img2 from '../../assets/login_side.png';
+import ShelterLoginForm from '../UI/organisms/ShelterLoginForm';
+import UserLoginForm from '../UI/organisms/UserLoginForm';
 import { ThemeProvider } from '@mui/material/styles';
-import { createTheme } from "@mui/material/styles";
-import { makeStyles } from "@mui/styles";
+import { createTheme } from '@mui/material/styles';
+import { makeStyles } from '@mui/styles';
 import PropTypes from 'prop-types';
 import styled from '@emotion/styled';
 
 // #F4BA34
 
 const tabStyles = makeStyles({
-  customStyleOnTab:{
-    fontSize:'15px',
-    color:'grey'
+  customStyleOnTab: {
+    fontSize: '15px',
+    color: 'grey',
   },
-  customStyleOnActiveTab:{
-    color:'#F4BA34'
+  customStyleOnActiveTab: {
+    color: '#F4BA34',
   },
-  activeTab:{
-    fontSize:'16px',
-    fontWeight:'600',
-    color:'#F4BA34'
-  }
-})
+  activeTab: {
+    fontSize: '16px',
+    fontWeight: '600',
+    color: '#F4BA34',
+  },
+});
 
 const StyledTab = styled(Tab)`
-    .MuiTouchRipple-child {
-        background-color: #F4BA34;
-    }
+  .MuiTouchRipple-child {
+    background-color: #f4ba34;
+  }
 `;
-
 
 function TabPanel(props) {
   const { children, value, index, ...other } = props;
@@ -69,7 +68,6 @@ TabPanel.propTypes = {
   value: PropTypes.number.isRequired,
 };
 
-
 function Login() {
   const [value, setValue] = React.useState(0);
 
@@ -86,29 +84,48 @@ function Login() {
       <Grid container component="main" sx={{ height: '100vh' }}>
         <CssBaseline />
         <Grid
-            item
-            xs={false}
-            sm={4}
-            md={6}
-            sx={{
-              backgroundImage: `url(${img2})`,
-              backgroundRepeat: 'no-repeat',
-              backgroundSize: 'cover',
-              backgroundPosition: 'center',
-            }}
-          />
+          item
+          xs={false}
+          sm={4}
+          md={6}
+          sx={{
+            backgroundImage: `url(${img2})`,
+            backgroundRepeat: 'no-repeat',
+            backgroundSize: 'cover',
+            backgroundPosition: 'center',
+          }}
+        />
         <Grid item xs={12} sm={8} md={6} component={Paper} elevation={6} square>
           <Tabs
-            TabIndicatorProps={{style: {background:'#F4BA34'}}}
+            TabIndicatorProps={{ style: { background: '#F4BA34' } }}
             sx={{
               mt: 8,
               mx: 4,
             }}
             variant="fullWidth"
-            value={value} onChange={handleChange} aria-label="basic tabs example" centered>
+            value={value}
+            onChange={handleChange}
+            aria-label="basic tabs example"
+            centered
+          >
             <StyledTab
-              label={<span className={ value === 0 ? tabClasses.activeTab : tabClasses.customStyleOnTab}>일반 회원</span>} id="0" aria-controls="0" />
-            <StyledTab label={<span className={ value === 1 ? tabClasses.activeTab : tabClasses.customStyleOnTab}>보호소 회원</span>} id="1" aria-controls="1" />
+              label={
+                <span className={value === 0 ? tabClasses.activeTab : tabClasses.customStyleOnTab}>
+                  일반 회원
+                </span>
+              }
+              id="0"
+              aria-controls="0"
+            />
+            <StyledTab
+              label={
+                <span className={value === 1 ? tabClasses.activeTab : tabClasses.customStyleOnTab}>
+                  보호소 회원
+                </span>
+              }
+              id="1"
+              aria-controls="1"
+            />
           </Tabs>
           <TabPanel value={value} index={0}>
             <UserLoginForm />

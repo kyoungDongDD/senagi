@@ -1,26 +1,27 @@
-import * as React from "react";
-import { Routes, Route, Link } from "react-router-dom";
-
-import { Global } from '@emotion/react'
-
-import Home from "./components/pages/Home"
-import NavBar from "./components/UI/organisms/NavBar";
-import Welcome from "./components/pages/Welcome";
-import MyPage from "./components/pages/MyPage";
-import Login from "./components/pages/Login";
-import commonStyles from "./styles/commonStyles";
+import { Routes, Route, Link } from 'react-router-dom';
+import { Global } from '@emotion/react';
+import Layout from './components/UI/organisms/Layout';
+import Home from './components/pages/Home';
+import Welcome from './components/pages/OnBoarding/Welcome';
+import MyPage from './components/pages/MyPage';
+import Login from './components/pages/Login';
+import SignUp from './components/pages/SignUp';
+import CampaignManagement from './components/pages/CampaignManagement';
+import commonStyles from './styles/commonStyles';
 
 export default function App() {
   return (
     <div>
       <Global styles={commonStyles} />
-      <h1 className="header1">세나기 리액트 시작하쥬아</h1>
       <Routes>
-        <Route path="/" element={<NavBar />}>
-          <Route index element={<Home />} />
-          <Route path="welcome" element={<Welcome />} />
-          <Route path="mypage" element={<MyPage />} />
-          <Route path="login" element={<Login />} />
+        <Route path="/" element={<Welcome />} />
+        <Route path="/login" element={<Login />} />
+        <Route path="/signup" element={<SignUp />} />
+
+        <Route element={<Layout />}>
+          <Route path="/home" element={<Home />} />
+          <Route path="/campaign" element={<CampaignManagement />} />
+          <Route path="/mypage" element={<MyPage />} />
 
           {/* 404 Not Found*/}
           <Route path="*" element={<NoMatch />} />
@@ -29,7 +30,6 @@ export default function App() {
     </div>
   );
 }
-
 
 // 404 Not Found
 function NoMatch() {
