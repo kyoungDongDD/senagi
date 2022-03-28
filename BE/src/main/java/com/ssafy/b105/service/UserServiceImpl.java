@@ -34,6 +34,7 @@ public class UserServiceImpl implements UserService {
   @Override
   public boolean duplicateNameCheck(String name) {
     //닉네임 중복 검증
+
     if (userRepository.findOneByName(name).orElse(null) != null) {
       throw new DuplicateException("이미 사용중인 이름 입니다.");
     }

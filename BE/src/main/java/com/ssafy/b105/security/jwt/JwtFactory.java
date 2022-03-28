@@ -12,6 +12,8 @@ import java.util.Date;
 import java.util.Set;
 import java.util.stream.Collectors;
 
+import static java.lang.System.currentTimeMillis;
+
 @Component
 public class JwtFactory {
 
@@ -28,7 +30,7 @@ public class JwtFactory {
                     .withIssuer("jjunpro")
                     .withClaim("USERNAME", userDetails.getUsername())
                     .withClaim("USER_ROLE", role)
-                    .withClaim("EXP", new Date(System.currentTimeMillis() + 864000000))
+                    .withClaim("EXP", new Date(currentTimeMillis() + 864000000))
                     .sign(generateAlgorithm());
         } catch (Exception e) {
             log.error(e.getMessage());

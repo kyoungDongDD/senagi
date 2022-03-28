@@ -19,8 +19,8 @@ public class EnumController {
 
     @GetMapping("/enum")
     public Map<String, Object> getEnum() {
-        Map<String, Object> enums    = new LinkedHashMap<>();
-        Class               userRole = UserRole.class;
+        Map<String, Object> enums = new LinkedHashMap<>();
+        Class userRole = UserRole.class;
         enums.put("userRole", userRole.getEnumConstants());
 
         return enums;

@@ -21,6 +21,10 @@ import org.springframework.security.config.annotation.web.configuration.WebSecur
 import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
+import org.springframework.web.cors.CorsConfiguration;
+import org.springframework.web.cors.CorsConfigurationSource;
+import org.springframework.web.cors.CorsUtils;
+import org.springframework.web.cors.UrlBasedCorsConfigurationSource;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -37,6 +41,21 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     private final FormLoginAuthenticationProvider provider;
     private final JWTAuthenticationProvider jwtProvider;
     private final HeaderTokenExtractor headerTokenExtractor;
+
+    @Bean
+    public CorsConfigurationSource corsConfigurationSource() {
+        CorsConfiguration configuration = new CorsConfiguration();
+
+        configuration.addAllowedOrigin("*");
+        configuration.addAllowedHeader("*");
+        configuration.addAllowedMethod("*");
+        configuration.setAllowCredentials(true);
+
+        UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
+        source.registerCorsConfiguration("/**", configuration);
+        return source;
+    }
+
 
     @Bean
     public AuthenticationManager getAuthenticationManager() throws Exception {
@@ -65,7 +84,10 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
     @Override
     protected void configure(HttpSecurity http) throws Exception {
-        http
+
+        http    .httpBasic().disable()
+                .cors().configurationSource(corsConfigurationSource())
+                .and()
                 .csrf()
                 .disable();
 
@@ -96,22 +118,21 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 );
 
         // api/auth 에는 모두 허용
+        //preflightRequest 처리 회원가입 로그인 api 는 토큰 없는 상태의 요청에 permitAll
         http
                 .authorizeRequests()
+                .requestMatchers(request -> CorsUtils.isPreFlightRequest(request)).permitAll()
                 .mvcMatchers(
-                        HttpMethod.GET,
                         "/api/auth/**"
                 )
                 .permitAll()
-          //TODO:롤 입력이 안된건지 or hasRole이 안된건지 확인 필요..
                 .mvcMatchers(
-                        HttpMethod.POST,
                         "/api/auth/signup/shelter"
                 )
                 .hasRole("ADMIN")
+                .anyRequest().authenticated() //이외 모든 요청은 권한있어야함
           .and()
                 .oauth2Login()
-                .loginPage("/login")
                 .userInfoEndpoint()
                 .userService(principalOauth2UserService);
     }

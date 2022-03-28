@@ -2,7 +2,7 @@ package com.ssafy.b105.controller;
 
 import com.ssafy.b105.dto.UserFormDTO;
 import com.ssafy.b105.entity.User;
-import com.ssafy.b105.service.UserServiceImpl;
+import com.ssafy.b105.service.UserService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -16,7 +16,7 @@ import javax.validation.Valid;
 @RequiredArgsConstructor
 public class UserController {
 
-  private final UserServiceImpl userService;
+  private final UserService userService;
 
   @GetMapping("/duplicate/principal")
   public ResponseEntity<Boolean> duplicatePrincipalCheck(@RequestParam String principal){

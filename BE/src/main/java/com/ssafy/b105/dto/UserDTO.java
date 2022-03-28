@@ -27,6 +27,7 @@ public class UserDTO {
 
   private String role;
 
+  @Builder.Default
   private LocalDateTime registDate = LocalDateTime.now();
 
   @Nullable
@@ -39,7 +40,7 @@ public class UserDTO {
   }
 
 
-  public static UserDTO from(User user) {
+  protected static UserDTO from(User user) {
     if(user == null) return null;
 
     return UserDTO.builder()

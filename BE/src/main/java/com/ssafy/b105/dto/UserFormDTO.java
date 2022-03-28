@@ -4,10 +4,8 @@ package com.ssafy.b105.dto;
 import com.ssafy.b105.entity.User;
 import com.ssafy.b105.entity.UserRole;
 import lombok.Getter;
-import lombok.Setter;
 
 
-@Setter
 @Getter
 public class UserFormDTO {
 

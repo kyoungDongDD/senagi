@@ -18,7 +18,7 @@ public class User {
   @GeneratedValue(strategy = GenerationType.IDENTITY)
   private Long id;
 
-  @Column(unique = true)
+  @Column(length = 60,unique = true)
   private String principal;
 
 
@@ -35,23 +35,13 @@ public class User {
 
   private String phone;
 
-  // OAuth를 위해 구성한 추가 필드 2개
+  //연관 관계 매핑
   private String provider;
 
   private String providerId;
 
-  //연관 관계 매핑
-
-
   //비지니스 메서드
   public void encodePassword(PasswordEncoder passwordEncoder) {
     this.credential = passwordEncoder.encode(this.credential);
-  }
-
-  public User(String principal, String name,String credential, UserRole role){
-    this.principal= principal;
-    this.credential=credential;
-    this.name=name;
-    this.role=role;
   }
 }
