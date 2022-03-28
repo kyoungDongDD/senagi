@@ -1,10 +1,14 @@
 package com.ssafy.b105.dto;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonFormat.Shape;
 import com.ssafy.b105.entity.Campaign;
 import com.ssafy.b105.entity.CampaignType;
 import com.sun.istack.NotNull;
 import com.sun.istack.Nullable;
+import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.util.List;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
@@ -29,16 +33,15 @@ public class CampaignResponseDto {
     private String contentImageUrl;
 
     @NotNull
-    @Builder.Default
-    private Boolean isEnd = false;
+    private Boolean isEnd ;
 
-    @Builder.Default
-    private Long viewCount = 0L;
+    private Long viewCount;
 
     @Nullable
     private Long targetDonation;
 
     @Nullable
+    @JsonFormat(shape = Shape.STRING,pattern = "yyyy-MM-dd",timezone = "Asia/Seoul")
     private LocalDateTime endDate;
 
     //@NotNull
@@ -47,10 +50,14 @@ public class CampaignResponseDto {
     @NotNull
     private CampaignType type;
 
-    private LocalDateTime resistDate;
+    @JsonFormat(shape = Shape.STRING,pattern = "yyyy-MM-dd",timezone = "Asia/Seoul")
+    private LocalDateTime registDate;
 
+    @JsonFormat(shape = Shape.STRING,pattern = "yyyy-MM-dd",timezone = "Asia/Seoul")
     private LocalDateTime lastModifiedDate;
 
+    @Nullable
+    private List<String> hashtags;
 
     public static CampaignResponseDto from(Campaign campaign) {
         if (campaign == null) {
@@ -60,15 +67,18 @@ public class CampaignResponseDto {
         return CampaignResponseDto.builder()
             .id(campaign.getId())
             .thumbnailImageUrl(campaign.getThumbnailImageUrl())
+            .isEnd(campaign.getIsEnd())
             .type(campaign.getType())
             .account(campaign.getAccount())
+            .viewCount(campaign.getViewCount())
             .title(campaign.getTitle())
-            .resistDate(campaign.getRegist_date())
+            .registDate(campaign.getRegistDate())
             .targetDonation(campaign.getTargetDonation())
             .contentImageUrl(campaign.getContentImageUrl())
             .targetDonation(campaign.getTargetDonation())
             .endDate(campaign.getEndDate())
-            .lastModifiedDate(campaign.getLast_modified_date())
+            .lastModifiedDate(campaign.getLastModifiedDate())
+            .hashtags(campaign.getHashtag())
             .build();
     }
 }

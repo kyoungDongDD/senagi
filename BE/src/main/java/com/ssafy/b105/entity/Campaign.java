@@ -4,6 +4,7 @@ import com.ssafy.b105.dto.CampaignRequestDto;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -53,7 +54,7 @@ public class Campaign extends BaseEntity{
     private Long targetDonation = 0L;
 
     @Builder.Default
-    private LocalDateTime endDate = LocalDateTime.of(11111,1,1,1,1);
+    private LocalDateTime endDate = LocalDateTime.of(1,1,1,1,1);
 
     @Enumerated(EnumType.STRING) 
     private CampaignType type;
@@ -69,6 +70,12 @@ public class Campaign extends BaseEntity{
         this.viewCount += 1;
     }
 
+    public List<String> getHashtag(){
+        return campaignHashtags.stream()
+            .map(campaignHashtags -> campaignHashtags.getHashtag().getName())
+            .collect(Collectors.toList());
+    }
+
     public static Campaign from(CampaignRequestDto campaignRequestDto) {
         if (campaignRequestDto == null) {
             return null;
@@ -79,7 +86,6 @@ public class Campaign extends BaseEntity{
             .thumbnailImageUrl(campaignRequestDto.getThumbnailImageUrl())
             .targetDonation(campaignRequestDto.getTargetDonation())
             .contentImageUrl(campaignRequestDto.getContentImageUrl())
-            .isEnd(campaignRequestDto.getIsEnd())
             .targetDonation(campaignRequestDto.getTargetDonation())
             .endDate(campaignRequestDto.getEndDate())
             .type(campaignRequestDto.getType())
