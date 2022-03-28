@@ -27,6 +27,10 @@ function UserButton(props) {
         variant={props.variant}
         sx={{ mt: 3, mb: 2 }}
         size={props.size}
+        style={{
+          backgroundColor: '#F4BA34',
+        }}
+        onClick={props.func}
       >
         {props.text}
       </StyledButton>
