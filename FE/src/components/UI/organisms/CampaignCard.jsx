@@ -1,6 +1,4 @@
-// atom : Text, ProgressBar
-// molecule : D-Day,
-import * as React from 'react';
+
 import Dday from '../molecules/D-Day';
 import Card from '@mui/material/Card';
 import CardContent from '@mui/material/CardContent';
@@ -18,7 +16,7 @@ export default function CampaignCard () {
     <Card sx={{ maxWidth: 321, minWidth: 321 }} style={{ position: 'relative'}}>
       <CardContent>
         <Dday dday="15"  />
-        <Typography variant="h5" component="div">
+        <Typography variant="h5" component="div" >
           100,100,000 원
         </Typography>
         <ProgressBar percent="0.5" width="321" />
@@ -34,7 +32,7 @@ export default function CampaignCard () {
         <Typography sx={{ fontSize: 14 }}>
           모금단체
         </Typography>
-        <Typography className='body1'>
+        <Typography >
           마석유기견보호소
         </Typography>
       </CardContent>

@@ -1,8 +1,28 @@
 
-import UserButton from "../molecules/UserButton";
+import { useEffect, useState } from 'react';
 import '../../../styles/CampaignTable.css';
+import UserButton from "../molecules/UserButton";
+import Dday from '../molecules/D-Day';
+import Card from '@mui/material/Card';
+import CardContent from '@mui/material/CardContent';
+import Typography from '@mui/material/Typography';
+import ProgressBar from '../molecules/ProgressBar';
+import styled from '@emotion/styled';
+
+
 
 function CampaignTable() {
+
+const [width, setwidth] = useState(0);
+
+const resizeWindow = () => {
+  setwidth(window.innerWidth)
+}
+
+useEffect(() => {
+  console.log(width)
+},[width]);
+
   return (
     <div>
       <p>캠페인 및 보호소 정보</p>
@@ -20,6 +40,21 @@ function CampaignTable() {
           <td><button>태그버튼 만들기!</button></td>
         </tr>
       </table>
+      <Card sx={{ maxWidth: 900, minWidth: 321 }} style={{ position: 'relative'}}>
+        <CardContent>
+          <Dday dday="15" />
+          <Typography variant="h5" component="div">
+            100,100,000 원
+          </Typography>
+          <ProgressBar id="size" percent="0.5" width={350} />
+          <RightContainer>
+            <Typography sx={{ fontSize: 16 }} style={{ marginTop: '10px'}} color="text.secondary" gutterBottom>
+              50,000,000원
+            </Typography>
+          </RightContainer>
+        </CardContent>
+      </Card>
+
       <UserButton
         type="submit" 
         fullWidth variant="contained" 
@@ -30,3 +65,9 @@ function CampaignTable() {
 }
 
 export default CampaignTable;
+
+const RightContainer = styled.div`
+  width: 100%;
+  display: block;
+  text-align: right; 
+`
