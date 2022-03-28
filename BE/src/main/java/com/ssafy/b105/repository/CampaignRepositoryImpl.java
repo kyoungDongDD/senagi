@@ -52,8 +52,7 @@ public class CampaignRepositoryImpl implements CampaignSearchRepository {
                 QCampaign.campaign.type,
                 QCampaign.campaign.registDate,
                 QCampaign.campaign.lastModifiedDate
-            )
-            ).distinct()
+            )).distinct()
             .from(campaign)
             .join(campaign.campaignHashtags,QCampaignHashtag.campaignHashtag)
             .join(QCampaignHashtag.campaignHashtag.hashtag,QHashtag.hashtag)

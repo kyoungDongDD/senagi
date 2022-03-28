@@ -48,22 +48,4 @@ public class CampaignListDto {
         this.lastModifiedDate = lastModifiedDate;
     }
 
-//    private static CampaignListDto from(Campaign campaign) {
-//        if (campaign == null) {
-//            return null;
-//        }
-//        return CampaignListDto.builder()
-//            .id(campaign.getId())
-//            .title(campaign.getTitle())
-//            .thumbnailImageUrl(campaign.getThumbnailImageUrl())
-//            .isEnd(campaign.getIsEnd())
-//            .viewCount(campaign.getViewCount())
-//            .targetDonation(campaign.getTargetDonation())
-//            .endDate(campaign.getEndDate())
-//            .type(campaign.getType())
-//            .registDate(campaign.getRegistDate())
-//            .lastModifiedDate(campaign.getLastModifiedDate())
-//            .build();
-//    }
-
 }

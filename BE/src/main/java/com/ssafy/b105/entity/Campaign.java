@@ -54,7 +54,7 @@ public class Campaign extends BaseEntity{
     private Long targetDonation = 0L;
 
     @Builder.Default
-    private LocalDateTime endDate = LocalDateTime.of(2099,12,30,23,59);
+    private LocalDateTime endDate = LocalDateTime.of(1,1,1,1,1);
 
     @Enumerated(EnumType.STRING) 
     private CampaignType type;

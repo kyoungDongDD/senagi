@@ -1,21 +1,18 @@
 package com.ssafy.b105.service;
 
-import com.querydsl.core.types.Projections;
 import com.querydsl.jpa.impl.JPAQueryFactory;
 import com.ssafy.b105.dto.CampaignRequestDto;
 import com.ssafy.b105.dto.CampaignResponseDto;
 import com.ssafy.b105.entity.Campaign;
 import com.ssafy.b105.entity.CampaignType;
 import com.ssafy.b105.entity.Hashtag;
-import com.ssafy.b105.entity.QCampaign;
-import com.ssafy.b105.entity.QCampaign.*;
 import com.ssafy.b105.repository.CampaignRepository;
 import com.ssafy.b105.repository.HashtagRepository;
-import java.time.Instant;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Optional;
+import javax.persistence.EntityManager;
+import javax.persistence.PersistenceContext;
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -23,15 +20,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.annotation.Rollback;
 import org.springframework.transaction.annotation.Transactional;
-import javax.persistence.EntityManager;
-import javax.persistence.PersistenceContext;
-
-import static com.ssafy.b105.entity.QCampaign.campaign;
-import static org.hamcrest.MatcherAssert.assertThat;
-import static org.hamcrest.CoreMatchers.is;
 
 
 @SpringBootTest
+@Transactional
+@Rollback(false)
 public class CampaignServiceTest {
 
     @PersistenceContext
@@ -47,9 +40,6 @@ public class CampaignServiceTest {
     HashtagRepository hashtagRepository;
 
     @Test
-    @Transactional
-    @Rollback(false)
-    @DisplayName("캠페인-태그등록테스트")
     public void 캠페인등록() {
         // 서울,부산 태그 추가
         List<String> hashtags = new ArrayList<>();

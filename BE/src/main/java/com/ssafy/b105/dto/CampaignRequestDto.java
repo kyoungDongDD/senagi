@@ -28,11 +28,10 @@ public class CampaignRequestDto {
     private String contentImageUrl;
 
     @Nullable
-    @Builder.Default
     private Long targetDonation  = 0L;
 
-    @Builder.Default
-    private LocalDateTime endDate = LocalDateTime.of(11111,1,1,1,1);
+    @Nullable
+    private LocalDateTime endDate = LocalDateTime.of(1,1,1,1,1);
 
     @NotNull
     private CampaignType type;
