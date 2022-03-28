@@ -11,6 +11,8 @@ plugins {
     //querydsl 추가
     id "com.ewerk.gradle.plugins.querydsl" version "1.0.10"
     id 'java'
+    id 'org.web3j' version '4.8.8'
+    id 'org.web3j.solidity' version '0.3.3'
 }
 
 group = 'com.ssafy'
@@ -36,11 +38,11 @@ dependencies {
     runtimeOnly 'mysql:mysql-connector-java'
     annotationProcessor 'org.projectlombok:lombok'
     testImplementation 'org.springframework.boot:spring-boot-starter-test'
-    //testImplementation 'org.springframework.boot:spring-boot-startet-security-test'
 
     implementation group: 'io.jsonwebtoken', name: 'jjwt-api', version: '0.11.2'
     runtimeOnly group: 'io.jsonwebtoken', name: 'jjwt-impl', version: '0.11.2'
     runtimeOnly group: 'io.jsonwebtoken', name: 'jjwt-jackson', version: '0.11.2'
+
 
     //test 추가
     compileOnly("org.projectlombok:lombok")
@@ -50,11 +52,17 @@ dependencies {
     //querydsl 추가
     implementation "com.querydsl:querydsl-jpa:${queryDslVersion}"
     implementation "com.querydsl:querydsl-apt:${queryDslVersion}"
+
+    implementation 'org.web3j:web3j-spring-boot-starter:1.6.0'
+
+    implementation("com.squareup.okhttp3:okhttp:4.9.3")
+
 }
 
 tasks.named('test') {
     useJUnitPlatform()
 }
+
 
 //querydsl 추가 시작
 def querydslDir = "$buildDir/generated/querydsl"
@@ -76,3 +84,19 @@ configurations {
     querydsl.extendsFrom compileClasspath
 }
 //querydsl 추가 끝
+
+solidity {
+    allowPaths = ['../BC/src','../BC/src/utils']
+}
+
+sourceSets {
+    main {
+        solidity {
+            srcDir {
+                '../BC/src'
+                '../BC/src/utils'
+            }
+        }
+    }
+}
+
