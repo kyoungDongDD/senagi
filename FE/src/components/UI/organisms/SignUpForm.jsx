@@ -1,8 +1,9 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import Text from "../atoms/Text"
+import Text from '../atoms/Text';
 import UserButton from '../molecules/UserButton';
-// import axios from 'axios';
+import AccountsAPI from '../../../api/accountsAPI';
+import { validateEmail, validateName, validatePwd } from '../../../utils/validation';
 import {
   Button,
   TextField,
@@ -14,7 +15,6 @@ import {
 } from '@mui/material/';
 import styled from '@emotion/styled';
 
-
 const FormHelperTexts = styled(FormHelperText)`
   width: 100%;
   padding-left: 16px;
@@ -23,107 +23,171 @@ const FormHelperTexts = styled(FormHelperText)`
 `;
 
 function SignUpForm() {
-  const [checked, setChecked] = useState(false);
-  const [emailError, setEmailError] = useState('');
+  const [joinData, setJoinData] = useState([]); // 회원가입 정보 저장
+  const [idError, setIdError] = useState('');
+  const [idFl, setIdFl] = useState(false);
   const [passwordState, setPasswordState] = useState('');
   const [passwordError, setPasswordError] = useState('');
   const [nameError, setNameError] = useState('');
+  const [nameFl, setNameFl] = useState(false);
+  const [checkedFl, setCheckedFl] = useState(false);
   const [registerError, setRegisterError] = useState('');
-  const history = useNavigate();
+  const navigate = useNavigate();
 
-  const handleAgree = (event) => {
-    setChecked(event.target.checked);
+  // 나중에 loader 추가하기
+  // 회원가입 처리
+  const signUp = async () => {
+    console.log('signUp API', joinData);
+
+    const { userId, userName, userPw } = joinData;
+    const postData = {
+      principal: userId,
+      credential: userPw,
+      name: userName,
+    };
+    await AccountsAPI.signUp(postData)
+      .then((response) => {
+        if (response.status === 201) {
+          alert('가입 성공');
+          navigate('/login');
+        } else {
+          alert('이미 사용중인 아이디입니다.');
+        }
+      })
+      .catch((error) => {
+        console.log(error);
+        setRegisterError('회원가입에 실패하였습니다. 다시한번 확인해 주세요.');
+      });
   };
 
-  // // API 요청
-  // const onhandlePost = async (data) => {
-  //   const { email, name, password } = data;
-  //   const postData = { email, name, password };
+  // 회원 정보 저장
+  const setJoin = (e, names) => {
+    // 아이디, 닉네임 입력할때 -> 중복체크 false로 변경
+    if (names === 'userId') setIdFl(false);
+    if (names === 'userName') setNameFl(false);
+    setJoinData(Object.assign(joinData, { [names]: e.target.value }));
+  };
 
-  //   // post
-  //   await axios
-  //     .post('/user/signUp', postData)
-  //     .then(function (response) {
-  //       console.log(response, '성공');
-  //       history.push('/login');
-  //     })
-  //     .catch(function (err) {
-  //       console.log(err);
-  //       setRegisterError('회원가입에 실패하였습니다. 다시한번 확인해 주세요.');
-  //     });
-  // };
+  const handleAgree = (event) => {
+    setCheckedFl(event.target.checked);
+  };
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
+  // 아이디 중복체크
+  const idCheck = async (event) => {
+    event.preventDefault();
+    console.log(joinData);
+    // 이메일 regex 형식 검사
+    if (!validateEmail(joinData.userId)) {
+      setIdFl(false);
+      setIdError('올바른 이메일 형식이 아닙니다.');
+    } else {
+      setIdFl(true);
+      setIdError('');
+    }
 
-    const data = new FormData(e.currentTarget);
-    const joinData = {
-      email: data.get('email'),
-      name: data.get('name'),
-      password: data.get('password'),
-      rePassword: data.get('rePassword'),
-    };
-    const { email, name, password, rePassword } = joinData;
+    // 이메일 중복 검사
+    await AccountsAPI.checkEmail(joinData.userId)
+      .then((response) => {
+        console.log(response);
+        if (response.status === 200) {
+          setIdFl(true);
+          // toast 예쁜 걸로 바꾸기
+          alert('사용할 수 있는 아이디입니다.');
+        } else {
+          setIdFl(false);
+          alert('이미 사용중인 아이디입니다.');
+        }
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  };
 
+  // 닉네임 중복체크
+  const nameCheck = async (event) => {
+    event.preventDefault();
+    // 닉네임 regex 형식 검사
+    if (!validateName(joinData.userName)) {
+      setNameError('올바른 닉네임 형식이 아닙니다.');
+    } else setNameError('');
+
+    // 닉네임 중복 검사
+    await AccountsAPI.checkName(joinData.userName)
+      .then((response) => {
+        if (response.status === 200) {
+          setNameFl(true);
+          alert('사용할 수 있는 닉네임입니다.');
+        } else {
+          setNameFl(false);
+          alert('이미 사용중인 닉네임입니다.');
+        }
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  };
+
+  const handleSubmit = (event) => {
+    event.preventDefault();
+
+    // 필수값 체크
     // 이메일 유효성 검사
-    const emailRegex = /([\w-.]+)@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.)|(([\w-]+\.)+))([a-zA-Z]{2,4}|[0-9]{1,3})(\]?)$/;
-    if (!emailRegex.test(email)) setEmailError('올바른 이메일 형식이 아닙니다.');
-    else setEmailError('');
+    if (!validateEmail(joinData.userId)) setIdError('올바른 이메일 형식이 아닙니다.');
+    else setIdError('');
 
     // 비밀번호 유효성 검사
-    const passwordRegex = /^(?=.*[a-zA-Z])(?=.*[!@#$%^*+=-])(?=.*[0-9]).{8,25}$/;
-    if (!passwordRegex.test(password))
-      setPasswordState('숫자+영문자+특수문자 조합으로 8자리 이상 입력해주세요!');
+    if (!validatePwd(joinData.userPw))
+      setPasswordState('숫자+영문자+특수문자 조합으로 8자리 이상 입력해주세요.');
     else setPasswordState('');
 
     // 비밀번호 확인 검사
-    if (password !== rePassword) setPasswordError('비밀번호가 일치하지 않습니다.');
+    if (joinData.userPw !== joinData.userPwOk) setPasswordError('비밀번호가 일치하지 않습니다.');
     else setPasswordError('');
 
     // 이름 유효성 검사
-    const nameRegex = /^[가-힣a-zA-Z]+$/;
-    if (!nameRegex.test(name) || name.length < 1) setNameError('올바른 닉네임을 입력해주세요.');
+    if (!validateName(joinData.userName) || joinData.userName.length < 1)
+      setNameError('올바른 닉네임을 입력해주세요.');
     else setNameError('');
 
-    // // 회원가입 동의 체크
-    // if (!checked) alert('회원가입 약관에 동의해주세요.');
+    // 회원가입 동의 체크
+    if (!checkedFl) alert('회원가입 약관에 동의해주세요.');
 
-    // if (
-    //   emailRegex.test(email) &&
-    //   passwordRegex.test(password) &&
-    //   password === rePassword &&
-    //   nameRegex.test(name) &&
-    //   checked
-    // ) {
-    //   onhandlePost(joinData);
-    // }
+    // 모든 조건을 만족하면 회원가입 function 실행
+    if (
+      idFl &&
+      validatePwd(joinData.userPw) &&
+      joinData.userPw === joinData.userPwOk &&
+      nameFl &&
+      checkedFl
+    ) {
+      signUp();
+    }
   };
+
   return (
     <Box
-        sx={{
-          my: 8,
-          mx: 4,
-          display: 'flex',
-          flexDirection: 'column',
-          alignItems: 'center',
-        }}
-      >
-      <Text
-        className="header1"
-        text="회원가입"
-      />
-      <Box component="form" noValidate onSubmit={handleSubmit} sx={{ mt: 1 }}>
+      sx={{
+        my: 8,
+        mx: 4,
+        display: 'flex',
+        flexDirection: 'column',
+        alignItems: 'center',
+      }}
+    >
+      <Text className="header1" text="회원가입" />
+      <Box component="form" noValidate sx={{ mt: 1 }}>
         <Grid container spacing={1}>
           <Grid item xs={8}>
             <TextField
               required
               autoFocus
               fullWidth
-              type="email"
-              id="email"
-              name="email"
+              type="id"
+              id="id"
+              name="id"
               label="이메일 주소"
-              error={emailError !== '' || false}
+              error={idError !== '' || false}
+              onChange={(e) => setJoin(e, 'userId')}
             />
           </Grid>
           <Grid item xs={4}>
@@ -131,17 +195,19 @@ function SignUpForm() {
               type="submit"
               variant="outlined"
               style={{
-                color: "#F4BA34",
-                borderColor: "#F4BA34",
-                backgroundColor: "white",
-                height: "100%",
+                color: '#F4BA34',
+                borderColor: '#F4BA34',
+                backgroundColor: 'white',
+                height: '100%',
               }}
               fullWidth
-              onClick={() => console.log("아이디중복체크API")}
-            >중복확인</Button>
+              onClick={idCheck}
+            >
+              중복확인
+            </Button>
           </Grid>
         </Grid>
-        <FormHelperTexts>{emailError}</FormHelperTexts>
+        <FormHelperTexts>{idError}</FormHelperTexts>
         <TextField
           required
           fullWidth
@@ -150,6 +216,7 @@ function SignUpForm() {
           name="password"
           label="비밀번호 (숫자+영문자+특수문자 8자리 이상)"
           error={passwordState !== '' || false}
+          onChange={(e) => setJoin(e, 'userPw')}
         />
         <FormHelperTexts>{passwordState}</FormHelperTexts>
         <TextField
@@ -160,6 +227,7 @@ function SignUpForm() {
           name="rePassword"
           label="비밀번호 확인"
           error={passwordError !== '' || false}
+          onChange={(e) => setJoin(e, 'userPwOk')}
         />
         <FormHelperTexts>{passwordError}</FormHelperTexts>
         <Grid container spacing={1}>
@@ -171,6 +239,7 @@ function SignUpForm() {
               name="name"
               label="닉네임"
               error={nameError !== '' || false}
+              onChange={(e) => setJoin(e, 'userName')}
             />
           </Grid>
           <Grid item xs={4}>
@@ -178,14 +247,16 @@ function SignUpForm() {
               type="submit"
               variant="outlined"
               style={{
-                color: "#F4BA34",
-                borderColor: "#F4BA34",
-                backgroundColor: "white",
-                height: "100%",
+                color: '#F4BA34',
+                borderColor: '#F4BA34',
+                backgroundColor: 'white',
+                height: '100%',
               }}
               fullWidth
-              onClick={() => console.log("닉네임중복체크API")}
-            >중복확인</Button>
+              onClick={nameCheck}
+            >
+              중복확인
+            </Button>
           </Grid>
         </Grid>
         <FormHelperTexts>{nameError}</FormHelperTexts>
@@ -199,6 +270,7 @@ function SignUpForm() {
           variant="contained"
           text="회원가입"
           size="large"
+          func={handleSubmit}
         />
         <FormHelperTexts>{registerError}</FormHelperTexts>
         <Button
@@ -206,10 +278,10 @@ function SignUpForm() {
           fullWidth
           variant="text"
           disableRipple
-          href="#"
-          // 보호소 회원으로 가입하기 구글 폼
-          style={{ backgroundColor: 'transparent' , justifyContent: "flex-end"}} >
-          <span style={{color: 'black'}}>보호소 회원으로&nbsp;</span>가입하기
+          onClick={() => window.open('https://forms.gle/yEsAD4UyDmoP1z7z8', '_blank')}
+          style={{ backgroundColor: 'transparent', justifyContent: 'flex-end' }}
+        >
+          <span style={{ color: 'black' }}>보호소 회원으로&nbsp;</span>가입하기
         </Button>
       </Box>
     </Box>

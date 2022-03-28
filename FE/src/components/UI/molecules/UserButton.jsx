@@ -1,4 +1,4 @@
-import { Button as Btn} from "@mui/material";
+import { Button as Btn } from '@mui/material';
 
 function UserButton(props) {
   return (
@@ -10,8 +10,9 @@ function UserButton(props) {
         sx={{ mt: 3, mb: 2 }}
         size={props.size}
         style={{
-          backgroundColor: "#F4BA34",
+          backgroundColor: '#F4BA34',
         }}
+        onClick={props.func}
       >
         {props.text}
       </Btn>
