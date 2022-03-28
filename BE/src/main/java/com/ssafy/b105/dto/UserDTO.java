@@ -13,7 +13,7 @@ import java.time.LocalDateTime;
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
-public class UserDto {
+public class UserDTO {
 
   @NotNull
   private String principal;
@@ -25,17 +25,25 @@ public class UserDto {
   @NotNull
   private String name;
 
+  private String role;
+
+  @Builder.Default
   private LocalDateTime registDate = LocalDateTime.now();
 
   @Nullable
   private String phone;
 
+  public UserDTO(String username, String role) {
+    super();
+    this.name = username;
+    this.role = role;
+  }
 
 
-  public static UserDto from(User user) {
+  protected static UserDTO from(User user) {
     if(user == null) return null;
 
-    return UserDto.builder()
+    return UserDTO.builder()
       .principal(user.getPrincipal())
       .credential(user.getCredential())
       .name(user.getName())
