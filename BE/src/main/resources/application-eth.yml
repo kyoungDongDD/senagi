@@ -12,9 +12,9 @@ eth:
     limit: '8000000'
     price: '0'
   contract:
-    token: '0x9155408Dd7EEf3c07bB35cAED4763dEF83E329e9'
-    member: '0x93d9d77106AA24bADd14D215EFBe08097Ba09De1'
+    token: '0x801F978c976C3dAC1ffe91c3b57cCE94FcCaedF2'
+    member: '0x1Feb06059E98C1886EA307C78a81Cd4bb75B06b2'
   admin:
     wallet: 'admin.wallet'
-    password: 'pass0'
-    account: '0xfe30597e880ffc5d4b32b4a746be6facd4629ed2'
+    password: 'ssafyb105'
+    account: '0xadeedb149af852ed80162ebd607205544c88f7bf'

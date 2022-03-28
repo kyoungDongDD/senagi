@@ -1,6 +1,7 @@
 package com.ssafy.b105.utils;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.ssafy.b105.dto.blockchain.ContractRequestDto;
 import com.ssafy.b105.dto.blockchain.NewWalletDto;
 import java.io.File;
 import java.io.IOException;
@@ -18,6 +19,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 import org.springframework.util.ResourceUtils;
+import org.web3j.campaign.Campaign;
 import org.web3j.crypto.CipherException;
 import org.web3j.crypto.Credentials;
 import org.web3j.crypto.ECKeyPair;
@@ -86,6 +88,19 @@ public class BlockchainConnector {
 
   }
 
+  public Campaign deployCampaignContract(ContractRequestDto dto) throws Exception {
+    return Campaign.deploy(
+        web3j,
+        credentials,
+        gasProvider,
+        dto.getTargetAmount(),
+        dto.getDeadLine(),
+        memberAddr,
+        tokenAddr).send();
+  }
+  public Campaign loadContract(String address) {
+    return Campaign.load(address,web3j,credentials,gasProvider);
+  }
 
   public Member getMemberMgr() {
     return memberMgr;
