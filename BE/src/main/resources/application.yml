@@ -23,6 +23,17 @@ spring:
         use_sql_comments: true
     defer-datasource-initialization: true
 
+
+  security:
+    oauth2:
+      client:
+        registration:
+          google:
+              client-id: 1016569789271-jgg8dcis0dvb9avb4n7jfo5nv43p4897.apps.googleusercontent.com
+              client-secret: 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
+              scope:
+              - email
+              - profile
   data:
     web:
       pageable:
@@ -35,6 +46,7 @@ jwt:
   #echo 'silvernine-tech-spring-boot-jwt-tutorial-secret-silvernine-tech-spring-boot-jwt-tutorial-secret'|base64
   secret: c2lsdmVybmluZS10ZWNoLXNwcm
   token-validity-in-seconds: 86400
+
 
 logging.level:
   org.hibernate.SQL: debug
