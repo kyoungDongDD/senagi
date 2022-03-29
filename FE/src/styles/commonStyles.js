@@ -22,9 +22,15 @@ const commonStyles = css`
     font-weight: normal;
     font-style: normal;
   }
-  body {
+
+  * {
     font-family: 'GM';
   }
+  
+  body {
+    margin: 0;
+  }
+  
   .header1 {
     font-style: normal;
     font-weight: 700;

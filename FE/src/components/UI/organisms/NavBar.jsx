@@ -63,8 +63,8 @@ const NavBar = () => {
       transition: theme.transitions.create('width'),
       width: '100%',
       [theme.breakpoints.up('sm')]: {
-        width: '12ch',
-        '&:focus': {
+        width: '0ch',
+        '&:hover': {
           width: '20ch',
         },
       },
@@ -137,7 +137,7 @@ const NavBar = () => {
               flexGrow: 1,
               display: { xs: 'none', md: 'flex' },
               justifyContent: 'center',
-              marginLeft: '78px',
+              alignItems: 'center',
             }}
           >
             {pages.map((page) => (
@@ -145,18 +145,30 @@ const NavBar = () => {
                 key={page}
                 onClick={handleCloseNavMenu}
                 // 폰트 색,사이즈 변경
-                sx={{ my: 2, color: 'black', display: 'block', fontSize: '18px', paddingX: '40px' }}
+                sx={{
+                  my: 2,
+                  color: 'black',
+                  display: 'block',
+                  fontSize: '18px',
+                  fontFamily: 'GM',
+                  paddingX: '40px',
+                }}
               >
                 {page}
               </Button>
             ))}
+            {/* 닉네임아이콘/닉네임/로그아웃 */}
+            {/* <AccountCircleIcon 
+              color='action'
+              padding='1000px'
+            />
+            <p>나는김경동</p> */}
           </Box>
-
           <Box sx={{ flexGrow: 0 }}>
-            <Tooltip title="Open settings">
+            <Tooltip title="Enter를 눌러 찾기">
               <Search>
                 <SearchIconWrapper>
-                  <SearchIcon />
+                  <SearchIcon color="action" />
                 </SearchIconWrapper>
                 <StyledInputBase placeholder="검색하기" inputProps={{ 'aria-label': 'search' }} />
               </Search>

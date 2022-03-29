@@ -70,7 +70,7 @@ function UserLoginForm() {
           id="password"
           autoComplete="current-password"
         />
-        <Link to="/nav">
+        <Link to="/home">
           <UserButton type="submit" fullWidth variant="contained" text="로그인" size="large" />
         </Link>
         <GoogleLoginButton />
