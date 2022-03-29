@@ -9,8 +9,8 @@ import MyPage from './components/pages/MyPage';
 import Login from './components/pages/Login';
 import SignUp from './components/pages/SignUp';
 import SearchResult from './components/pages/SearchResult';
-import CampaignDetail from './components/pages/CampaignDetail';
-import UsageHistory from './components/pages/UsageHistory';
+import Campaigns from './components/pages/Campaigns';
+
 
 import commonStyles from './styles/commonStyles';
 
@@ -26,8 +26,9 @@ export default function App() {
         <Route path="/home" element={<Home />} />
         <Route path="/mypage" element={<MyPage />} />
         <Route path="/searchresult" element={<SearchResult />} />
-        <Route path="/CampaignDetail" element={<CampaignDetail />} />
-        <Route path="/UsageHistory" element={<UsageHistory />} />
+        <Route path="/Campaigns" element={<Campaigns />} />
+
+
 
         {/* 404 Not Found*/}
         <Route path="/*" element={<NoMatch />} />

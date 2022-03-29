@@ -2,31 +2,31 @@
 import {useEffect, useState} from 'react'
 import styled from '@emotion/styled';
 
-const Banner = () => {
+import NavBar from '../UI/organisms/NavBar';
+import CampaignDetail from '../UI/organisms/CampaignDetail';
+import UsageHistory from '../UI/organisms/UsageHistory';
 
-  const [currentClick, setCurrentClick] = useState(0);
-  const [prevClick, setPrevClick] = useState(0);
-  
-  const GetClick1 = (e) => {
-    setCurrentClick(e.target.id);
-    window.location.href  = "/CampaignDetail"
-  };
+const Campaigns = () => {
 
-  const GetClick2 = (e) => {
+  const [ viewCalendar, setViewCalendar ] = useState(true)
+
+  const [currentClick, setCurrentClick] = useState(null);
+  const [prevClick, setPrevClick] = useState(null);
+
+  const GetClikc = (e) => {
     setCurrentClick(e.target.id);
-    window.location.href  = "/UsageHistory"
   };
 
   useEffect(
       (e) => {
-        if (currentClick !== 0) {
+        if (currentClick !== null) {
           let current = document.getElementById(currentClick);
           current.style.color = "black";
           current.style.borderBottom = "2px solid";
           current.style.borderBottomColor = "#F4BA3499";
         }
   
-        if (prevClick !== 0) {
+        if (prevClick !== null) {
           let prev = document.getElementById(prevClick);
           prev.style.color = "#bebcbc";
           prev.style.borderBottom = "none";
@@ -38,24 +38,26 @@ const Banner = () => {
   
     return (
       <>
+      <NavBar />
       <BannerImg 
-      src={ require('../../../assets/test1.jpg')} />
+      src={ require('../../assets/test1.jpg')} />
         <BtnContainer>
             <div></div>
-            <CategoryBox id="case1" onClick={GetClick1}>
+            <CategoryBox class="case1" id="case1" onClick={(e) => { setViewCalendar(true); GetClikc(e); } }>
             &nbsp;소개&nbsp;
             </CategoryBox>
-            <CategoryBox id="case2" onClick={GetClick2}>
+            <CategoryBox class="case2" id="case2" onClick={(e) => { setViewCalendar(false); GetClikc(e); } }>
             &nbsp;사용 내역&nbsp;
             </CategoryBox>
             <div></div>
         </BtnContainer>
+        { viewCalendar ? <CampaignDetail/> : <UsageHistory/>}
       </>
     );
   };
 
 
-export default Banner;
+export default Campaigns;
 
 const BannerImg = styled.img`
   display: flex;

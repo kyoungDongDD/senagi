@@ -1,9 +1,8 @@
 import React from 'react';
-import Banner from "../UI/organisms/Banner";
-import NavBar from '../UI/organisms/NavBar';
-import CampaignCard from '../UI/organisms/CampaignCard';
+import CampaignCard from './CampaignCard';
 import Grid from '@mui/material/Grid';
-import CampaignTable from '../UI/organisms/CampaignTable';
+import CampaignTable from './CampaignTable';
+
 
 import styled from "@emotion/styled";
 
@@ -11,13 +10,11 @@ import styled from "@emotion/styled";
 function CampaignDetail() {
   return (
     <div>
-      <NavBar />
-      <Banner />
       <br></br>
         <Grid container justifyContent={'space-evenly'}>
         <Grid item xs={1}></Grid>
           <Grid item xs={12} md={6}>
-            <CampaginImg src={ require('../../assets/test5.jpg')} />
+            <CampaginImg src={ require('../../../assets/test5.jpg')} />
             <p
             >후원금은 보호소의 영수증 제출을 
               통해 해당 캠페인을 위해 사용한 
