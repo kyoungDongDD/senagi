@@ -14,10 +14,7 @@ import MenuItem from '@mui/material/MenuItem';
 import InputBase from '@mui/material/InputBase';
 import SearchIcon from '@mui/icons-material/Search';
 
-
 import { Link } from 'react-router-dom';
-
-
 
 const pages = ['캠페인', '사업소개', '마이페이지'];
 
@@ -148,7 +145,14 @@ const NavBar = () => {
                 key={page}
                 onClick={handleCloseNavMenu}
                 // 폰트 색,사이즈 변경
-                sx={{ my: 2, color: 'black', display: 'block', fontSize: '18px', fontFamily: 'GM', paddingX: '40px' }}
+                sx={{
+                  my: 2,
+                  color: 'black',
+                  display: 'block',
+                  fontSize: '18px',
+                  fontFamily: 'GM',
+                  paddingX: '40px',
+                }}
               >
                 {page}
               </Button>
@@ -164,9 +168,7 @@ const NavBar = () => {
             <Tooltip title="Enter를 눌러 찾기">
               <Search>
                 <SearchIconWrapper>
-                  <SearchIcon 
-                    color="action"
-                  />
+                  <SearchIcon color="action" />
                 </SearchIconWrapper>
                 <StyledInputBase placeholder="검색하기" inputProps={{ 'aria-label': 'search' }} />
               </Search>

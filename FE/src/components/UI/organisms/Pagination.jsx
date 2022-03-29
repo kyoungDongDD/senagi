@@ -1,5 +1,5 @@
-import styled from "@emotion/styled";
-import { useEffect } from "react";
+import styled from '@emotion/styled';
+import { useEffect } from 'react';
 
 import ChevronLeftIcon from '@mui/icons-material/ChevronLeft';
 import ChevronRightIcon from '@mui/icons-material/ChevronRight';
@@ -16,7 +16,7 @@ function Pagination({ total, limit, page, setPage }) {
     <div>
       <Nav>
         <Button onClick={() => setPage(page - 1)} disabled={page === 1}>
-         <ChevronLeftIcon fontSize="small"/>
+          <ChevronLeftIcon fontSize="small" />
         </Button>
         {Array(numPages)
           .fill()
@@ -24,13 +24,13 @@ function Pagination({ total, limit, page, setPage }) {
             <Button
               key={i + 1}
               onClick={() => setPage(i + 1)}
-              aria-current={page === i + 1 ? "page" : null}
+              aria-current={page === i + 1 ? 'page' : null}
             >
               {i + 1}
             </Button>
           ))}
-        <Button onClick={() => setPage(page + 1) } disabled={page === numPages}>
-         <ChevronRightIcon fontSize="small"/>
+        <Button onClick={() => setPage(page + 1)} disabled={page === numPages}>
+          <ChevronRightIcon fontSize="small" />
         </Button>
       </Nav>
     </div>
@@ -58,7 +58,7 @@ const Button = styled.button`
   box-shadow: 1px 1px 1px 1px gray;
 
   &:hover {
-    background: #F4BA3499;
+    background: #f4ba3499;
     cursor: pointer;
     transform: translateY(-2px);
   }
@@ -70,7 +70,7 @@ const Button = styled.button`
   }
 
   &[aria-current] {
-    background: #F4BA3499;
+    background: #f4ba3499;
     font-weight: bold;
     cursor: revert;
     transform: revert;

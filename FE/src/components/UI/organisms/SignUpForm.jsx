@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import Text from "../atoms/Text"
+import Text from '../atoms/Text';
 import UserButton from '../molecules/UserButton';
 // import axios from 'axios';
 import {
@@ -13,7 +13,6 @@ import {
   Box,
 } from '@mui/material/';
 import styled from '@emotion/styled';
-
 
 const FormHelperTexts = styled(FormHelperText)`
   width: 100%;
@@ -66,7 +65,8 @@ function SignUpForm() {
     const { email, name, password, rePassword } = joinData;
 
     // 이메일 유효성 검사
-    const emailRegex = /([\w-.]+)@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.)|(([\w-]+\.)+))([a-zA-Z]{2,4}|[0-9]{1,3})(\]?)$/;
+    const emailRegex =
+      /([\w-.]+)@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.)|(([\w-]+\.)+))([a-zA-Z]{2,4}|[0-9]{1,3})(\]?)$/;
     if (!emailRegex.test(email)) setEmailError('올바른 이메일 형식이 아닙니다.');
     else setEmailError('');
 
@@ -100,18 +100,15 @@ function SignUpForm() {
   };
   return (
     <Box
-        sx={{
-          my: 8,
-          mx: 4,
-          display: 'flex',
-          flexDirection: 'column',
-          alignItems: 'center',
-        }}
-      >
-      <Text
-        className="header1"
-        text="회원가입"
-      />
+      sx={{
+        my: 8,
+        mx: 4,
+        display: 'flex',
+        flexDirection: 'column',
+        alignItems: 'center',
+      }}
+    >
+      <Text className="header1" text="회원가입" />
       <Box component="form" noValidate onSubmit={handleSubmit} sx={{ mt: 1 }}>
         <Grid container spacing={1}>
           <Grid item xs={8}>
@@ -131,14 +128,16 @@ function SignUpForm() {
               type="submit"
               variant="outlined"
               style={{
-                color: "#F4BA34",
-                borderColor: "#F4BA34",
-                backgroundColor: "white",
-                height: "100%",
+                color: '#F4BA34',
+                borderColor: '#F4BA34',
+                backgroundColor: 'white',
+                height: '100%',
               }}
               fullWidth
-              onClick={() => console.log("아이디중복체크API")}
-            >중복확인</Button>
+              onClick={() => console.log('아이디중복체크API')}
+            >
+              중복확인
+            </Button>
           </Grid>
         </Grid>
         <FormHelperTexts>{emailError}</FormHelperTexts>
@@ -178,14 +177,16 @@ function SignUpForm() {
               type="submit"
               variant="outlined"
               style={{
-                color: "#F4BA34",
-                borderColor: "#F4BA34",
-                backgroundColor: "white",
-                height: "100%",
+                color: '#F4BA34',
+                borderColor: '#F4BA34',
+                backgroundColor: 'white',
+                height: '100%',
               }}
               fullWidth
-              onClick={() => console.log("닉네임중복체크API")}
-            >중복확인</Button>
+              onClick={() => console.log('닉네임중복체크API')}
+            >
+              중복확인
+            </Button>
           </Grid>
         </Grid>
         <FormHelperTexts>{nameError}</FormHelperTexts>
@@ -193,13 +194,7 @@ function SignUpForm() {
           control={<Checkbox onChange={handleAgree} color="primary" />}
           label="세나기의 회원가입 약관에 동의합니다."
         />
-        <UserButton
-          type="submit"
-          fullWidth
-          variant="contained"
-          text="회원가입"
-          size="large"
-        />
+        <UserButton type="submit" fullWidth variant="contained" text="회원가입" size="large" />
         <FormHelperTexts>{registerError}</FormHelperTexts>
         <Button
           type="submit"
@@ -208,8 +203,9 @@ function SignUpForm() {
           disableRipple
           href="#"
           // 보호소 회원으로 가입하기 구글 폼
-          style={{ backgroundColor: 'transparent' , justifyContent: "flex-end"}} >
-          <span style={{color: 'black'}}>보호소 회원으로&nbsp;</span>가입하기
+          style={{ backgroundColor: 'transparent', justifyContent: 'flex-end' }}
+        >
+          <span style={{ color: 'black' }}>보호소 회원으로&nbsp;</span>가입하기
         </Button>
       </Box>
     </Box>

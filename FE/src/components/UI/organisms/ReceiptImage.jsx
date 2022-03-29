@@ -6,33 +6,31 @@ import KeyboardArrowLeftIcon from '@mui/icons-material/KeyboardArrowLeft';
 import KeyboardArrowRightIcon from '@mui/icons-material/KeyboardArrowRight';
 import ZoomImage from './ZoomImage';
 
+const ReceiptImage = () => {
+  const slickRef = useRef(null);
 
-const ReceiptImage = () => { 
+  const settings = {
+    dots: true,
 
-  const slickRef = useRef(null); 
+    dotsClass: 'slick-dots slick-thumb',
 
-  const settings = { 
-    dots: true, 
+    arrows: false,
+    infinite: true,
+    slidesToShow: 1,
+    slidesToScroll: 1,
 
-    dotsClass: "slick-dots slick-thumb", 
+    customPaging: function (i) {
+      const imgSrc = images[i].src;
+      return (
+        <PagingAnchor>
+          <Paging src={imgSrc} />
+        </PagingAnchor>
+      );
+    },
+  };
 
-    arrows: false, 
-    infinite: true, 
-    slidesToShow: 1, 
-    slidesToScroll: 1, 
-
-    customPaging: function(i) { 
-      const imgSrc = images[i].src; 
-      return ( 
-      <PagingAnchor>
-        <Paging src={imgSrc} />
-      </PagingAnchor>
-      ); 
-    }, 
-  }; 
-
-  const previous = useCallback(() => slickRef.current.slickPrev(), []); 
-  const next = useCallback(() => slickRef.current.slickNext(), []); 
+  const previous = useCallback(() => slickRef.current.slickPrev(), []);
+  const next = useCallback(() => slickRef.current.slickNext(), []);
   return (
     <Wrap>
       <Slick ref={slickRef} {...settings}>
@@ -40,82 +38,82 @@ const ReceiptImage = () => {
           return (
             <SlickItems key={`${v.title}_${i}`}>
               <img src={v.src} alt="이미지없음" />
-            </SlickItems> )
+            </SlickItems>
+          );
         })}
-    </Slick>
-    <> 
-      <PrevButton onClick={previous}> 
-        <PrevIcon /> 
-        <span className="hidden"></span> 
-      </PrevButton>
+      </Slick>
+      <>
+        <PrevButton onClick={previous}>
+          <PrevIcon />
+          <span className="hidden"></span>
+        </PrevButton>
 
-      <NextButton onClick={next}> 
-        <NextIcon /> 
-        <span className="hidden"></span> 
-      </NextButton> 
-    </> 
-    </Wrap> 
-  ); 
-}; 
+        <NextButton onClick={next}>
+          <NextIcon />
+          <span className="hidden"></span>
+        </NextButton>
+      </>
+    </Wrap>
+  );
+};
 
 export default ReceiptImage;
 
-const Wrap = styled.div` 
+const Wrap = styled.div`
   position: relative;
   padding-bottom: 70px;
   width: 800px;
   overflow: hidden;
- 
-  .slick-slide { 
+
+  .slick-slide {
     display: inline-block;
   }
 
-//추가한 커스텀 클래스
-// pagination 부분
-  .slick-dots.slick-thumb { 
-    position: relative; 
-    bottom: 0; 
-    left: 46%; 
-    padding: 0; 
-    margin: 0; 
-    list-style: none; 
-    transform: translate(-50%); 
-    
-    li { 
-      position: relative; 
+  //추가한 커스텀 클래스
+  // pagination 부분
+  .slick-dots.slick-thumb {
+    position: relative;
+    bottom: 0;
+    left: 46%;
+    padding: 0;
+    margin: 0;
+    list-style: none;
+    transform: translate(-50%);
+
+    li {
+      position: relative;
       display: inline-block;
       // 하단 이미지 간격조정
       margin-left: 25.5px;
-      
-      
-      &.slick-active { 
-          span { 
-              filter: none; 
-              } 
-          } 
-      }
-  } 
-`; 
 
-const SlickItems = styled.div` 
-  width: 100%; 
+      &.slick-active {
+        span {
+          filter: none;
+        }
+      }
+    }
+  }
+`;
+
+const SlickItems = styled.div`
+  width: 100%;
   height: 450px;
   text-align: center;
   img {
-      display: block;
-      margin: 0px auto;
-      max-width: 100%;
-      height: 100%;
-      vertical-align: top;
-      object-fit: contain;
-      border-radius: 20px;
-      }
+    display: block;
+    margin: 0px auto;
+    max-width: 100%;
+    height: 100%;
+    vertical-align: top;
+    object-fit: contain;
+    border-radius: 20px;
+  }
 `;
 
 const defaultButtonStyle = css`
   position: absolute;
   top: calc(50% - 50px);
-  padding: 0; 
+  padding: 0;
   width: 30px;
   height: 30px;
   line-height: 1;
@@ -127,69 +125,69 @@ const defaultButtonStyle = css`
 `;
 
 const PrevButton = styled.button`
-    ${defaultButtonStyle}
-    left: 0;
+  ${defaultButtonStyle}
+  left: 0;
 `;
 
-const NextButton = styled.button` 
-    ${defaultButtonStyle} 
-    right: 0; 
+const NextButton = styled.button`
+  ${defaultButtonStyle}
+  right: 0;
 `;
 
-const defaultIconStyle = css` 
-  font-size: 30px; 
+const defaultIconStyle = css`
+  font-size: 30px;
   color: #dedede;
 
-  &:focus, 
-  &:hover { 
-    color: #666; 
-  } 
-`; 
+  &:focus,
+  &:hover {
+    color: #666;
+  }
+`;
 
 const PrevIcon = styled(KeyboardArrowLeftIcon)`
- ${defaultIconStyle} 
-`; 
+  ${defaultIconStyle}
+`;
 
-const NextIcon = styled(KeyboardArrowRightIcon)` 
-${defaultIconStyle} 
-`; 
+const NextIcon = styled(KeyboardArrowRightIcon)`
+  ${defaultIconStyle}
+`;
 
-const PagingAnchor = styled.a` 
+const PagingAnchor = styled.a`
   display: block;
-  width: 50px; 
+  width: 50px;
   height: 50px;
 
-  img { 
-    width: 100%; 
+  img {
+    width: 100%;
     height: 100%;
-  } 
-`; 
-
-const Paging = styled.span` 
-  display: inline-block; 
-  width: 100%; 
-  height: 100%; 
-  vertical-align: middle;
-  background: url(${props => props.src});
-  background-size: 100% 100%; 
-  filter: grayscale(1); 
-`; 
-// 4. 샘플이미지 
-const images = [ 
-  { 
-  src: "https://www.artinsight.co.kr/data/tmp/1910/20191029212614_fawslbwd.jpg", 
-  title: "1" 
-  }, 
-  { 
-  src: "https://www.artinsight.co.kr/data/tmp/1910/20191029212649_esiekzxf.jpg", 
-  title: "2" 
-  }, 
-  { 
-  src: "https://www.artinsight.co.kr/data/tmp/1910/20191029212707_zcrkccgp.jpg", 
-  title: "3" 
-  }, 
-  { 
-  src: "https://www.artinsight.co.kr/data/tmp/1910/20191029212724_pacwfbiz.jpg", 
-  title: "4" 
   }
+`;
+
+const Paging = styled.span`
+  display: inline-block;
+  width: 100%;
+  height: 100%;
+  vertical-align: middle;
+  background: url(${(props) => props.src});
+  background-size: 100% 100%;
+  filter: grayscale(1);
+`;
+// 4. 샘플이미지
+const images = [
+  {
+    src: 'https://www.artinsight.co.kr/data/tmp/1910/20191029212614_fawslbwd.jpg',
+    title: '1',
+  },
+  {
+    src: 'https://www.artinsight.co.kr/data/tmp/1910/20191029212649_esiekzxf.jpg',
+    title: '2',
+  },
+  {
+    src: 'https://www.artinsight.co.kr/data/tmp/1910/20191029212707_zcrkccgp.jpg',
+    title: '3',
+  },
+  {
+    src: 'https://www.artinsight.co.kr/data/tmp/1910/20191029212724_pacwfbiz.jpg',
+    title: '4',
+  },
 ];

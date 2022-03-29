@@ -1,7 +1,6 @@
-
 import { useEffect, useState } from 'react';
 import '../../../styles/CampaignTable.css';
-import UserButton from "../molecules/UserButton";
+import UserButton from '../molecules/UserButton';
 import Dday from '../molecules/D-Day';
 import Card from '@mui/material/Card';
 import CardContent from '@mui/material/CardContent';
@@ -9,19 +8,16 @@ import Typography from '@mui/material/Typography';
 import ProgressBar from '../molecules/ProgressBar';
 import styled from '@emotion/styled';
 
-
-
 function CampaignTable() {
+  const [width, setwidth] = useState(0);
 
-const [width, setwidth] = useState(0);
+  const resizeWindow = () => {
+    setwidth(window.innerWidth);
+  };
 
-const resizeWindow = () => {
-  setwidth(window.innerWidth)
-}
-
-useEffect(() => {
-  console.log(width)
-},[width]);
+  useEffect(() => {
+    console.log(width);
+  }, [width]);
 
   return (
     <div>
@@ -37,10 +33,12 @@ useEffect(() => {
         </tr>
         <tr>
           <td>태그</td>
-          <td><button>태그버튼 만들기!</button></td>
+          <td>
+            <button>태그버튼 만들기!</button>
+          </td>
         </tr>
       </table>
-      <Card sx={{ maxWidth: 900, minWidth: 321 }} style={{ position: 'relative'}}>
+      <Card sx={{ maxWidth: 900, minWidth: 321 }} style={{ position: 'relative' }}>
         <CardContent>
           <Dday dday="15" />
           <Typography variant="h5" component="div">
@@ -48,18 +46,19 @@ useEffect(() => {
           </Typography>
           <ProgressBar id="size" percent="0.5" width={350} />
           <RightContainer>
-            <Typography sx={{ fontSize: 16 }} style={{ marginTop: '10px'}} color="text.secondary" gutterBottom>
+            <Typography
+              sx={{ fontSize: 16 }}
+              style={{ marginTop: '10px' }}
+              color="text.secondary"
+              gutterBottom
+            >
               50,000,000원
             </Typography>
           </RightContainer>
         </CardContent>
       </Card>
 
-      <UserButton
-        type="submit" 
-        fullWidth variant="contained" 
-        text="캠페인 기부하기" 
-        size="large" />
+      <UserButton type="submit" fullWidth variant="contained" text="캠페인 기부하기" size="large" />
     </div>
   );
 }
@@ -69,5 +68,5 @@ export default CampaignTable;
 const RightContainer = styled.div`
   width: 100%;
   display: block;
-  text-align: right; 
-`
+  text-align: right;
+`;

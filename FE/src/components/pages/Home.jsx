@@ -9,7 +9,6 @@ function Home() {
       <BannerSlide />
       <h2 className="body1">Home</h2>
       <MainSlide />
-
     </div>
   );
 }
