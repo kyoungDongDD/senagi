@@ -1,14 +1,15 @@
 package com.ssafy.b105.entity.blockchain;
 
 import java.math.BigInteger;
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.Lob;
 import lombok.AccessLevel;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
-import org.web3j.protocol.core.methods.response.TransactionReceipt;
 
 @Entity
 @Getter
@@ -18,45 +19,51 @@ import org.web3j.protocol.core.methods.response.TransactionReceipt;
 public class Transaction {
 
   @Id
-  private String transactionHash;
+  private String hash;
 
-  private BigInteger transactionIndex;
+  private String nonce;
   private String blockHash;
   private BigInteger blockNumber;
-  private BigInteger cumulativeGasUsed;
-  private BigInteger gasUsed;
-  private String contractAddress;
-  private String root;
-  // status is only present on Byzantium transactions onwards
-  // see EIP 658 https://github.com/ethereum/EIPs/pull/658
-  private String status;
-  private String from;
-  private String to;
-  private String logs;
-  private String logsBloom;
-  private String revertReason;
+  private BigInteger transactionIndex;
+  private String fromAccount;
+  private String toAccount;
+  private BigInteger value;
+  private BigInteger gasPrice;
+  private BigInteger gas;
+  @Lob
+  private String inputValue;
+  private String creates;
+  private String publicKey;
+  private String raw;
+  private String r;
+  private String s;
+  private long v; // see https://github.com/web3j/web3j/issues/44
   private String type;
-  private String effectiveGasPrice;
+  private String maxFeePerGas;
+  private String maxPriorityFeePerGas;
 
-  public static Transaction from(TransactionReceipt receipt) {
+  public static Transaction from(org.web3j.protocol.core.methods.response.Transaction transaction) {
     return Transaction.builder()
-        .transactionHash(receipt.getTransactionHash())
-        .transactionIndex(receipt.getTransactionIndex())
-        .blockHash(receipt.getBlockHash())
-        .blockNumber(receipt.getBlockNumber())
-        .cumulativeGasUsed(receipt.getCumulativeGasUsed())
-        .gasUsed(receipt.getGasUsed())
-        .contractAddress(receipt.getContractAddress())
-        .root(receipt.getRoot())
-        .status(receipt.getStatus())
-        .from(receipt.getFrom())
-        .to(receipt.getTo())
-        // List 별도 매핑?
-        .logs(receipt.getLogs().toString())
-        .logsBloom(receipt.getLogsBloom())
-        .revertReason(receipt.getRevertReason())
-        .type(receipt.getType())
-        .effectiveGasPrice(receipt.getEffectiveGasPrice())
+        .hash(transaction.getHash())
+        .transactionIndex(transaction.getTransactionIndex())
+        .blockHash(transaction.getBlockHash())
+        .blockNumber(transaction.getBlockNumber())
+        .nonce(transaction.getNonceRaw())
+        .fromAccount(transaction.getFrom())
+        .toAccount(transaction.getTo())
+        .value(transaction.getValue())
+        .gasPrice(transaction.getGasPrice())
+        .gas(transaction.getGas())
+        .inputValue(transaction.getInput())
+        .creates(transaction.getCreates())
+        .publicKey(transaction.getPublicKey())
+        .raw(transaction.getRaw())
+        .r(transaction.getR())
+        .v(transaction.getV())
+        .type(transaction.getType())
+        .maxFeePerGas(transaction.getMaxFeePerGas())
+        .maxPriorityFeePerGas(transaction.getMaxPriorityFeePerGas())
+
         .build();
   }
 }

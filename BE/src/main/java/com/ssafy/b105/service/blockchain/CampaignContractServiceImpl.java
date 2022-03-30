@@ -1,15 +1,19 @@
 package com.ssafy.b105.service.blockchain;
 
+import com.ssafy.b105.dto.blockchain.AmountDto;
+import com.ssafy.b105.dto.blockchain.ContractCloseResponseDto;
 import com.ssafy.b105.dto.blockchain.ContractRequestDto;
 import com.ssafy.b105.dto.blockchain.ContractResponseDto;
 import com.ssafy.b105.entity.blockchain.Wallet;
+import com.ssafy.b105.entity.blockchain.wrapper.campaign.Campaign;
+import com.ssafy.b105.entity.blockchain.wrapper.member.Member;
+import com.ssafy.b105.entity.blockchain.wrapper.token.Token;
 import com.ssafy.b105.utils.BalanceConverter;
 import com.ssafy.b105.utils.BlockchainConnector;
 import java.math.BigInteger;
+import java.util.concurrent.ExecutionException;
 import org.springframework.stereotype.Service;
-import org.web3j.campaign.Campaign;
-import org.web3j.member.Member;
-import org.web3j.token.Token;
+import org.web3j.protocol.core.methods.response.TransactionReceipt;
 
 @Service
 public class CampaignContractServiceImpl implements
@@ -40,28 +44,56 @@ public class CampaignContractServiceImpl implements
   }
 
   @Override
-  public void donate(Wallet from, String contractAccount, Long amount) {
+  public AmountDto donate(Wallet from, String contractAccount, Long amount) {
     if(amount <= 0) throw new IllegalArgumentException();
     Campaign campaign = connector.loadContract(contractAccount);
 
-    campaign.donate(from.getAccount(),
-        BalanceConverter.longToBigInteger(amount,decimals));
+    try {
+      TransactionReceipt receipt = campaign.donate(from.getAccount(),
+          BalanceConverter.longToBigInteger(amount, decimals)).sendAsync().get();
+      return new AmountDto(receipt.getTransactionHash(),
+          BalanceConverter.bigIntegerToLong(tokenMgr.balanceOf(contractAccount).sendAsync().get(),decimals));
 
+    } catch (InterruptedException e) {
+      e.printStackTrace();
+    } catch (ExecutionException e) {
+      e.printStackTrace();
+    }
+    return null;
   }
 
   @Override
-  public void withdrawal(String contractAccount, Wallet to, Long amount) {
+  public AmountDto withdrawal(String contractAccount, Wallet to, Long amount) {
     if(amount <= 0) throw new IllegalArgumentException();
     Campaign campaign = connector.loadContract(contractAccount);
 
-    campaign.withdrawal(to.getAccount(),
-        BalanceConverter.longToBigInteger(amount,decimals));
+    try {
+      TransactionReceipt receipt = campaign.withdrawal(to.getAccount(),
+          BalanceConverter.longToBigInteger(amount, decimals)).sendAsync().get();
+      return new AmountDto(receipt.getTransactionHash(),
+          BalanceConverter.bigIntegerToLong(tokenMgr.balanceOf(contractAccount).sendAsync().get(),decimals));
+    } catch (InterruptedException e) {
+      e.printStackTrace();
+    } catch (ExecutionException e) {
+      e.printStackTrace();
+    }
+    return null;
   }
 
   @Override
-  public void contractClose(String fromContractAccount, String toContractAccount) {
+  public ContractCloseResponseDto contractClose(String fromContractAccount, String toContractAccount) {
     Campaign from = connector.loadContract(fromContractAccount);
     Campaign to = connector.loadContract(toContractAccount);
-    from.close(to.getContractAddress());
+    try {
+      TransactionReceipt receipt = from.close(to.getContractAddress()).sendAsync().get();
+      return new ContractCloseResponseDto(receipt.getTransactionHash(),
+          BalanceConverter.bigIntegerToLong(tokenMgr.balanceOf(fromContractAccount).sendAsync().get(),decimals),
+          BalanceConverter.bigIntegerToLong(tokenMgr.balanceOf(toContractAccount).sendAsync().get(),decimals));
+    } catch (InterruptedException e) {
+      e.printStackTrace();
+    } catch (ExecutionException e) {
+      e.printStackTrace();
+    }
+    return null;
   }
 }

@@ -39,13 +39,12 @@
     <td><b>Infra</td>
     <td>
 <img src="https://img.shields.io/badge/AWS-232F3E?style=flat-square&logo=amazon aws&logoColor=white"/>
-<img src="https://img.shields.io/badge/Docker-20.10.12-4479A1?style=flat-square&logo=Docker&logoColor=white"/>
-<img src="https://img.shields.io/badge/Docker compose-1.29.2-4479A1?style=flat-square&logo=Docker&logoColor=white"/>
+<img src="https://img.shields.io/badge/Docker-20.10.14-4479A1?style=flat-square&logo=Docker&logoColor=white"/>
 <img src="https://img.shields.io/badge/NGINX-1.18.0(Ubuntu)-009639?style=flat-square&logo=NGINX&logoColor=white"/>
 </td>
     </tr>
-    <td><b>Block-chain</td>
-    <td></td>
+    <td><b>Block-chain </td>
+    <td>Go</td>
     </tr>
     <tr>
     <td><b>Tools</td>

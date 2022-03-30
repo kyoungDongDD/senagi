@@ -2,8 +2,8 @@
 
 pragma solidity >=0.7.0 <0.9.0;
 
-import "./standard/Ownable.sol";
-import "./utils/StringUtils.sol";
+import "./Ownable.sol";
+import "./StringUtils.sol";
 
 
 contract Member is Ownable, StringUtils {
