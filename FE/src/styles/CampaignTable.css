@@ -1,0 +1,19 @@
+.myTable { table-layout: auto; width: 100%; min-width: 320px; max-width: 100%; overflow: hidden; border: 0; border-collapse: collapse; background-color: #FAFAFA; margin: auto; margin-bottom: 20px; text-align: center; font-size: 0.9em }
+.wiDe { min-width: 640px; } 
+.nArrow { max-width: 480px } 
+.myTable tr { height: 40px; } 
+.myTable td, th { border: 1px white solid; padding: 8px; } 
+.myTable th { background-color: #ffa775; color: whitesmoke; } 
+.headerOrange th { background-color: #F5F5F5; } 
+.headerGreen th { background-color: #81e281; } 
+.headerBlue th { background-color: #7799ff; } 
+.myTable.headerH tr:nth-Child(odd) { background-color: #F0F0F0; } 
+.myTable.headerH td, .myTable.headerH th { border-width: 0 1px; } 
+.myTable.headerH tr:hover td { border-color: transparent; background-color: #E6E6E6; } 
+.myTable.headerH tr:hover td:first-Child { border-left-color: white; } 
+.myTable.headerH tr:hover td:last-Child { border-right-color: white; } 
+.myTable.headerV { width: 100%; } 
+.myTable.headerV td:nth-Child(odd) { background-color: #F0F0F0; } 
+.myTable.headerHybrid tr:first-Child th:first-Child { background-color: transparent; } /* 복합 형식 1번 셀 */ 
+.myTable.headerHybrid td:hover { background-color: #E6E6E6; } .myTable caption { margin: 4px 0; }
+p { margin-bottom: 1px;}
