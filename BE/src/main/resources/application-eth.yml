@@ -1,0 +1,18 @@
+# Ethereum accounts
+eth:
+  chainId : 15
+
+  key:
+    path: './keystore/'
+  gas:
+    limit: '3000000'
+    price: '0'
+
+  contract:
+    token: '0x827196b1fefbc899C7F00656c2cB16865f827eD8'
+    member: '0xf778768ad858c5f14f8222f7b02b63c670ae619f'
+
+  admin:
+    wallet: 'admin.wallet'
+    password: 'ssafyb105'
+    account: '0xadeedb149af852ed80162ebd607205544c88f7bf'
