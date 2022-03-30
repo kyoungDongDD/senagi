@@ -1,7 +1,8 @@
 package com.ssafy.b105.service.blockchain;
 
-import com.ssafy.b105.dto.blockchain.ChargeDto;
+import com.ssafy.b105.dto.blockchain.AmountDto;
 import com.ssafy.b105.entity.blockchain.Wallet;
+import com.ssafy.b105.entity.blockchain.wrapper.token.Token;
 import com.ssafy.b105.utils.BalanceConverter;
 import com.ssafy.b105.utils.BlockchainConnector;
 import java.math.BigInteger;
@@ -9,7 +10,6 @@ import java.util.concurrent.ExecutionException;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.web3j.protocol.core.methods.response.TransactionReceipt;
-import org.web3j.token.Token;
 
 @Service
 @Transactional
@@ -28,7 +28,7 @@ public class TokenContractServiceImpl implements
   }
 
   @Override
-  public ChargeDto charge(Wallet wallet, Long amount) {
+  public AmountDto charge(Wallet wallet, Long amount) {
     if(amount <= 0) throw new IllegalArgumentException("Amount 0보다 커야합니다.");
     try {
       BigInteger chargedAmount = BalanceConverter.longToBigInteger(amount, decimals);
@@ -36,7 +36,7 @@ public class TokenContractServiceImpl implements
           chargedAmount)
           .sendAsync().get();
       wallet.chargeBalance(chargedAmount);
-      return new ChargeDto(
+      return new AmountDto(
           receipt.getTransactionHash(),
           BalanceConverter.bigIntegerToLong(wallet.getBalance(),decimals));
     } catch (InterruptedException e) {

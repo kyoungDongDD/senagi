@@ -11,8 +11,6 @@ plugins {
     //querydsl 추가
     id "com.ewerk.gradle.plugins.querydsl" version "1.0.10"
     id 'java'
-    id 'org.web3j' version '4.8.8'
-    id 'org.web3j.solidity' version '0.3.3'
 }
 
 group = 'com.ssafy'
@@ -27,6 +25,10 @@ configurations {
 
 repositories {
     mavenCentral()
+}
+
+jar {
+    enabled = false
 }
 
 dependencies {
@@ -56,9 +58,10 @@ dependencies {
     implementation "com.querydsl:querydsl-jpa:${queryDslVersion}"
     implementation "com.querydsl:querydsl-apt:${queryDslVersion}"
 
-    implementation 'org.web3j:web3j-spring-boot-starter:1.6.0'
-
+    // https://mvnrepository.com/artifact/org.web3j/core
+    implementation 'org.web3j:core:4.8.7'
     implementation("com.squareup.okhttp3:okhttp:4.9.3")
+
 
 }
 
@@ -87,19 +90,3 @@ configurations {
     querydsl.extendsFrom compileClasspath
 }
 //querydsl 추가 끝
-
-solidity {
-    allowPaths = ['../BC/src','../BC/src/utils']
-}
-
-sourceSets {
-    main {
-        solidity {
-            srcDir {
-                '../BC/src'
-                '../BC/src/utils'
-            }
-        }
-    }
-}
-

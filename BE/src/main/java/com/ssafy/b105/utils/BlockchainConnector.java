@@ -3,6 +3,11 @@ package com.ssafy.b105.utils;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.ssafy.b105.dto.blockchain.ContractRequestDto;
 import com.ssafy.b105.dto.blockchain.NewWalletDto;
+import com.ssafy.b105.entity.blockchain.Transaction;
+import com.ssafy.b105.entity.blockchain.wrapper.campaign.Campaign;
+import com.ssafy.b105.entity.blockchain.wrapper.member.Member;
+import com.ssafy.b105.entity.blockchain.wrapper.token.Token;
+import com.ssafy.b105.repository.blockchain.TransactionRepository;
 import java.io.File;
 import java.io.IOException;
 import java.math.BigInteger;
@@ -15,11 +20,9 @@ import java.time.format.DateTimeFormatter;
 import java.util.UUID;
 import java.util.concurrent.ExecutionException;
 import javax.annotation.PostConstruct;
-import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 import org.springframework.util.ResourceUtils;
-import org.web3j.campaign.Campaign;
 import org.web3j.crypto.CipherException;
 import org.web3j.crypto.Credentials;
 import org.web3j.crypto.ECKeyPair;
@@ -27,18 +30,19 @@ import org.web3j.crypto.Keys;
 import org.web3j.crypto.Wallet;
 import org.web3j.crypto.WalletFile;
 import org.web3j.crypto.WalletUtils;
-import org.web3j.member.Member;
 import org.web3j.protocol.Web3j;
 import org.web3j.protocol.core.methods.response.EthBlockNumber;
-import org.web3j.token.Token;
+import org.web3j.protocol.http.HttpService;
+import org.web3j.tx.RawTransactionManager;
+import org.web3j.tx.TransactionManager;
 import org.web3j.tx.gas.ContractGasProvider;
 import org.web3j.tx.gas.StaticGasProvider;
 
 @Component
-@RequiredArgsConstructor
 public class BlockchainConnector {
 
   private final Web3j web3j;
+  private final TransactionRepository transactionRepository;
 
   @Value("${eth.key.path}")
   private String keyPath;
@@ -62,6 +66,9 @@ public class BlockchainConnector {
   @Value("${eth.contract.token}")
   private String tokenAddr;
 
+  @Value("${eth.chainId}")
+  private Long chainId;
+
   private Member memberMgr;
   private Token tokenMgr;
   private Credentials credentials;
@@ -69,6 +76,11 @@ public class BlockchainConnector {
 
   private BigInteger decimals;
 
+  public BlockchainConnector(TransactionRepository transactionRepository) {
+    this.transactionRepository = transactionRepository;
+    this.web3j = Web3j.build(new HttpService("http://j6b1051.p.ssafy.io:8545"));
+    subscribe();
+  }
 
   @PostConstruct
   public void init() {
@@ -78,9 +90,11 @@ public class BlockchainConnector {
 
     try {
       File wallet = ResourceUtils.getFile(keyPath + adminWallet);
-      credentials = WalletUtils.loadCredentials("pass0", wallet);
-      this.memberMgr = Member.load(memberAddr, web3j, credentials, gasProvider);
-      this.tokenMgr = Token.load(tokenAddr, web3j, credentials, gasProvider);
+      credentials = WalletUtils.loadCredentials(adminPass, wallet);
+      TransactionManager transactionManager = new RawTransactionManager(web3j, credentials,
+          chainId);
+      this.memberMgr = Member.load(memberAddr, web3j, transactionManager, gasProvider);
+      this.tokenMgr = Token.load(tokenAddr, web3j, transactionManager, gasProvider);
       this.decimals = getDecimals();
     } catch (IOException e) {
       e.printStackTrace();
@@ -119,15 +133,15 @@ public class BlockchainConnector {
   }
 
   public BigInteger getDecimals() {
+    BigInteger retval = new BigInteger("18");
     try {
-      return tokenMgr.decimals().sendAsync().get();
-      // TODO EXCEPTION 처리 해야함
+      retval = tokenMgr.decimals().sendAsync().get();
     } catch (InterruptedException e) {
       e.printStackTrace();
     } catch (ExecutionException e) {
       e.printStackTrace();
     }
-    return new BigInteger("18");
+    return retval;
   }
 
   public EthBlockNumber getBlockNumber()
@@ -168,6 +182,10 @@ public class BlockchainConnector {
 
   private String createPassword() {
     return UUID.randomUUID().toString().replaceAll("-","");
+  }
+
+  private void subscribe() {
+    web3j.transactionFlowable().subscribe(tx -> transactionRepository.save(Transaction.from(tx)));
   }
 
 }
