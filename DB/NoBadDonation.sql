@@ -1,3 +1,9 @@
+DROP DATABASE IF EXISTS nobaddonation;
+
+CREATE DATABASE nobaddonation;
+
+USE  nobaddonation;
+
 CREATE TABLE `user` (
   `user_id` bigint NOT NULL AUTO_INCREMENT,
   `credential` varchar(255) NOT NULL,
@@ -132,4 +138,4 @@ CREATE TABLE `transaction` (
   `v` bigint NOT NULL,
   `value` decimal(19,2) DEFAULT NULL,
   PRIMARY KEY (`hash`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
