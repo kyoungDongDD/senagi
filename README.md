@@ -20,8 +20,9 @@
 <table>
     <tr>
         <td><b>Back-end</td>
-        <td><img src="https://img.shields.io/badge/Java-11.0.13-007396?style=flat&logo=Java&logoColor=white"/>
+        <td><img src="https://img.shields.io/badge/Java-11.0.14-007396?style=flat&logo=Java&logoColor=white"/>
 <img src="https://img.shields.io/badge/Spring Boot-2.6.4-6DB33F?style=flat-square&logo=Spring Boot&logoColor=white"/>
+<img src="https://img.shields.io/badge/Spring Security-2.6.4-6DB33F?style=flat-square&logo=Spring Security&logoColor=white"/>
 <br>
 <img src="https://img.shields.io/badge/MySQL-8.0-4479A1?style=flat-square&logo=MySQL&logoColor=white"/>
 <img src="https://img.shields.io/badge/H2-1.4.199-4479A1?style=flat-square&logo=H2&logoColor=white"/>
@@ -29,6 +30,7 @@
 <br>
 <img src="https://img.shields.io/badge/Gradle-7.4-C71A36?style=flat-square&logo=Gradle&logoColor=white"/>
 <img src="https://img.shields.io/badge/JWT-000000?style=flat-square&logo=JSON Web Tokens&logoColor=white"/>
+<img src="https://img.shields.io/badge/Web3j-3C3C3D?style=flat-square&logo=Ethereum&logoColor=white"/>
 </td>
     </tr>
     <tr>
