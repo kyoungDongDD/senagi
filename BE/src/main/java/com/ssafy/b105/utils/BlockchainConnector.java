@@ -4,6 +4,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.ssafy.b105.dto.blockchain.ContractRequestDto;
 import com.ssafy.b105.dto.blockchain.NewWalletDto;
 import com.ssafy.b105.entity.blockchain.Transaction;
+import com.ssafy.b105.repository.blockchain.TransactionRepository;
 import com.ssafy.b105.entity.blockchain.wrapper.campaign.Campaign;
 import com.ssafy.b105.entity.blockchain.wrapper.member.Member;
 import com.ssafy.b105.entity.blockchain.wrapper.token.Token;

@@ -4,15 +4,18 @@ import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonFormat.Shape;
 import com.querydsl.core.annotations.QueryProjection;
 
-import com.ssafy.b105.entity.CampaignType;
+import com.ssafy.b105.entity.campaign.Campaign;
+import com.ssafy.b105.entity.campaign.CampaignType;
 
 import java.time.LocalDateTime;
 
 import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
 @Getter
+@Builder
 @AllArgsConstructor
 @NoArgsConstructor
 public class CampaignListDto {
