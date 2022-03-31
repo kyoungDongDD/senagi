@@ -1,5 +1,6 @@
 package com.ssafy.b105.service;
 
+import com.ssafy.b105.dto.UserDonateDto;
 import com.ssafy.b105.entity.user.Authority;
 import com.ssafy.b105.entity.user.User;
 import org.springframework.data.crossstore.ChangeSetPersister;
@@ -21,4 +22,5 @@ public interface UserService extends UserDetailsService {
   Authority getById(long id) throws ChangeSetPersister.NotFoundException;
 
   void setAuthority(User user, Authority authority);
+
 }

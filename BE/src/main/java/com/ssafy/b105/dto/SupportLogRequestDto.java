@@ -8,7 +8,6 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 public class SupportLogRequestDto {
-    private Long userId;
     private Long campaignId;
     private Long amount;
 }

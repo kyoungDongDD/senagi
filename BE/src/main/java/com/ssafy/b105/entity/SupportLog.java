@@ -29,7 +29,7 @@ public class SupportLog {
     private Long id;
 
     @Builder.Default
-    private LocalDateTime donationDate = LocalDateTime.now();
+    private LocalDateTime donateDate = LocalDateTime.now();
     private Long amount;
 
 

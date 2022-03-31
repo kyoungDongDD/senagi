@@ -17,8 +17,6 @@ public class ReceiptPostDto {
 
     private String receiptImageUrl;
 
-    private String item;
-
     private Long amount;
 
     private Long campaignId;
@@ -29,7 +27,6 @@ public class ReceiptPostDto {
         return ReceiptPostDto.builder()
             .id(receipt.getId())
             .receiptImageUrl(receipt.getReceiptImageUrl())
-            .item(receipt.getItem())
             .amount(receipt.getAmount())
             .campaignId(receipt.getCampaign().getId())
             .build();

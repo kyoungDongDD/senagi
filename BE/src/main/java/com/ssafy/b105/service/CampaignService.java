@@ -3,40 +3,28 @@ package com.ssafy.b105.service;
 import com.ssafy.b105.dto.CampaignListDto;
 import com.ssafy.b105.dto.CampaignRequestDto;
 import com.ssafy.b105.dto.CampaignResponseDto;
-import com.ssafy.b105.dto.ReceiptDto;
-import com.ssafy.b105.dto.ReceiptPostDto;
-import com.ssafy.b105.entity.Receipt;
 import com.ssafy.b105.entity.campaign.Campaign;
 import com.ssafy.b105.entity.campaign.CampaignHashtag;
 import com.ssafy.b105.entity.campaign.Hashtag;
 import com.ssafy.b105.auth.Jwt.domain.JwtAuthentication;
 import com.ssafy.b105.entity.user.User;
 import com.ssafy.b105.dto.ReceiptListDto;
-import com.ssafy.b105.dto.blockchain.ContractRequestDto;
-import com.ssafy.b105.dto.blockchain.ContractResponseDto;
 import com.ssafy.b105.repository.CampaignRepository;
 import com.ssafy.b105.repository.HashtagRepository;
 
 import com.ssafy.b105.repository.ReceiptRepository;
 import com.ssafy.b105.service.blockchain.CampaignContractService;
 import com.ssafy.b105.utils.MD5Generator;
-import com.ssafy.b105.utils.TimeConverter;
 import java.io.File;
-import java.nio.file.Path;
-import java.nio.file.Paths;
-import java.sql.Timestamp;
-import java.time.Instant;
-import java.time.LocalDateTime;
-import java.time.ZoneId;
 import java.util.ArrayList;
 import java.util.List;
 
 import com.ssafy.b105.repository.UserRepository;
 import lombok.Builder;
 import lombok.RequiredArgsConstructor;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Value;
 import org.springframework.data.crossstore.ChangeSetPersister;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -45,11 +33,13 @@ import org.springframework.transaction.annotation.Transactional;
 @RequiredArgsConstructor
 @Builder
 public class CampaignService {
+
     private final CampaignRepository campaignRepository;
     private final HashtagRepository hashtagRepository;
     private final UserRepository userRepository;
     private final ReceiptRepository receiptRepository;
     private final CampaignContractService campaignContractService;
+
     @Transactional
     public CampaignResponseDto createCampaignProject(JwtAuthentication jwtAuthentication,
         CampaignRequestDto campaignRequestDto) throws ChangeSetPersister.NotFoundException {
@@ -71,7 +61,8 @@ public class CampaignService {
         try {
             String thumbnailOriginFilename = campaignRequestDto.getThumbnailImage()
                 .getOriginalFilename();
-            String contentOriginFilename = campaignRequestDto.getContentImage().getOriginalFilename();
+            String contentOriginFilename = campaignRequestDto.getContentImage()
+                .getOriginalFilename();
 
             String thumbnailFilename = new MD5Generator(thumbnailOriginFilename).toString();
             String contentFilename = new MD5Generator(contentOriginFilename).toString();
@@ -160,20 +151,22 @@ public class CampaignService {
         return receiptListDto;
     }
 
-    public List<CampaignListDto> findAllByUserId(Long userId) {
+    public Page<CampaignListDto> findAllByUserId(Long userId, Pageable pageable) {
         List<CampaignListDto> campaignListDtos = new ArrayList<>();
         for (Campaign campaign : campaignRepository.findAllByUserId(userId)) {
 
             CampaignListDto dto = CampaignListDto.builder().id(campaign.getId())
                 .title(campaign.getTitle()).thumbnailImageUrl(campaign.getThumbnailImageUrl())
                 .isEnd(campaign.getIsEnd()).viewCount(campaign.getViewCount())
+                .endDate(campaign.getEndDate())
                 .targetDonation(campaign.getTargetDonation()).type(campaign.getType())
                 .registDate(campaign.getRegistDate())
                 .lastModifiedDate(campaign.getLastModifiedDate()).build();
 
             campaignListDtos.add(dto);
         }
-        return campaignListDtos;
+
+        return campaignRepository.myCampaign(campaignListDtos, pageable, userId);
     }
 
 }
