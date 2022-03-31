@@ -48,6 +48,7 @@
     <td><b>Block-chain </td>
     <td>
     <img src="https://img.shields.io/badge/Go-1.18-00ADD8?style=flat-square&logo=Go&logoColor=white"/>
+    <img src="https://img.shields.io/badge/Solidity-0.7.1-363636?style=flat-square&logo=Solidity&logoColor=white"/>
     </td>
     </tr>
     <tr>
