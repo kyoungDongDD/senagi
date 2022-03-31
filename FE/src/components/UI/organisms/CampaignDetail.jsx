@@ -9,9 +9,9 @@ function CampaignDetail() {
   return (
     <div>
       <br></br>
-      <Grid container justifyContent={'space-evenly'}>
-        <Grid item xs={1}></Grid>
-        <Grid item xs={12} md={6}>
+      <Grid container justifyContent={'center'} spacing={2}>
+        <Grid item xs={1} md={1} lg={1}></Grid>
+        <Grid item xs={10} md={7} lg={7}>
           <CampaginImg src={require('../../../assets/test5.jpg')} />
           <p>
             후원금은 보호소의 영수증 제출을 통해 해당 캠페인을 위해 사용한 금액만큼만 전달됩니다.
@@ -20,12 +20,13 @@ function CampaignDetail() {
           </p>
           <CampaignTable />
         </Grid>
-        <Grid item xs={6} md={2}>
-          <CardPosition>
-            <CampaignCard />
-          </CardPosition>
+        <Grid item xs={0} md={0} lg={1}></Grid>
+        <Grid item xs={0} md={3} lg={2}>
+          {/* <CardPosition> */}
+          <CampaignCard />
+          {/* </CardPosition> */}
         </Grid>
-        <Grid item xs={1}></Grid>
+        <Grid item xs={1} md={1} lg={1}></Grid>
       </Grid>
     </div>
   );
@@ -39,6 +40,10 @@ const CampaginImg = styled.img`
   border-radius: 3px;
   object-fit: fill;
 `;
-const CardPosition = styled.div`
-  position: fixed;
-`;
+// const CardPosition = styled.div`
+//   position: fixed;
+// `;
+
+// const StyledGrid = styled(Grid)`
+//   margin: 1rem;
+// `;
