@@ -106,7 +106,7 @@ public class UserServiceImpl implements UserService {
 
   @Override
   public void setAuthority(User user, Authority authority) {
-    authority.setMember(user);
+    authority.setUser(user);
     authorityRepository.save(authority);
   }
 
