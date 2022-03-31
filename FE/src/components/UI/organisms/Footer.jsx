@@ -24,7 +24,7 @@ const Footer = () => {
             cursor="pointer"
           />
         </div>
-        <p>COPYRIGHTⓒ 2022 SENAGI ALL RIGHTS RESERVED.</p>
+        <P>COPYRIGHTⓒ 2022 SENAGI ALL RIGHTS RESERVED.</P>
       </IconDiv>
     </div>
   );
@@ -41,4 +41,8 @@ const IconDiv = styled.div`
   width: 100%;
   height: 200px;
   margin-top: 100px;
+`;
+
+const P = styled.p`
+  font-size: 13px;
 `;

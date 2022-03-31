@@ -42,7 +42,7 @@ const Nav = styled.nav`
   justify-content: center;
   align-items: center;
   gap: 10px;
-  margin: 16px;
+  margin: 65px 16px 90px 16px;
 `;
 
 const Button = styled.button`
