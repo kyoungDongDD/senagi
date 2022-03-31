@@ -21,10 +21,10 @@ public class SupportLogService {
     @Autowired
     private SupportLogRepository supportLogRepository;
 
-    public SupportLogResponseDto donation(SupportLogRequestDto supportLogDto){
+    public SupportLogResponseDto donation(SupportLogRequestDto supportLogDto,Long userId){
         SupportLog supportLog = SupportLog.builder()
             .campaign(campaignRepository.findById(supportLogDto.getCampaignId()).get())
-            .user(userRepository.findById(supportLogDto.getUserId()).get())
+            .user(userRepository.findById(userId).get())
             .amount(supportLogDto.getAmount())
             .build();
 

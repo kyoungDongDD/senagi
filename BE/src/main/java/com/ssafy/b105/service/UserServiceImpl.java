@@ -1,13 +1,18 @@
 package com.ssafy.b105.service;
 
+import com.ssafy.b105.dto.UserDonateDto;
 import com.ssafy.b105.entity.user.Authority;
 import com.ssafy.b105.entity.user.User;
 import com.ssafy.b105.exception.DuplicateException;
 import com.ssafy.b105.exception.ExpressionValidateException;
 import com.ssafy.b105.repository.AuthorityRepository;
+import com.ssafy.b105.repository.CampaignRepository;
+import com.ssafy.b105.repository.SupportLogRepository;
 import com.ssafy.b105.repository.UserRepository;
 import com.ssafy.b105.service.blockchain.MemberContractService;
 import com.ssafy.b105.service.blockchain.WalletService;
+import java.time.LocalDateTime;
+import java.util.List;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.crossstore.ChangeSetPersister;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -25,6 +30,9 @@ import java.util.regex.Pattern;
 public class UserServiceImpl implements UserService {
 
   private final UserRepository userRepository;
+  private final CampaignRepository campaignRepository;
+  private final SupportLogRepository supportLogRepository;
+
   private final AuthorityRepository authorityRepository;
   private final PasswordEncoder passwordEncoder;
   private final WalletService walletService;
@@ -128,4 +136,5 @@ public class UserServiceImpl implements UserService {
       throw new DuplicateException("이미 사용중인 이름 입니다.");
     }
   }
+
 }

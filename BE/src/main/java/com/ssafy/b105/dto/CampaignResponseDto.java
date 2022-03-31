@@ -56,6 +56,9 @@ public class CampaignResponseDto {
     @JsonFormat(shape = Shape.STRING,pattern = "yyyy-MM-dd",timezone = "Asia/Seoul")
     private LocalDateTime lastModifiedDate;
 
+    @NotNull
+    private String shelterName;
+
     @Nullable
     private List<String> hashtags;
 
@@ -79,6 +82,7 @@ public class CampaignResponseDto {
             .endDate(campaign.getEndDate())
             .lastModifiedDate(campaign.getLastModifiedDate())
             .hashtags(campaign.getHashtag())
+            .shelterName(campaign.getUser().getName())
             .build();
     }
 }

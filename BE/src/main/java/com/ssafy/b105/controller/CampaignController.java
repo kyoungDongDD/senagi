@@ -69,10 +69,9 @@ public class CampaignController {
     }
 
     @GetMapping("/api/campaigns/owned")
-    public ResponseEntity<List<CampaignListDto>> FindMyCampaign(CampaignSearchCondition condition,
-        Pageable pageable,
+    public ResponseEntity<Page<CampaignListDto>> FindMyCampaign(Pageable pageable,
         @AuthenticationPrincipal JwtAuthentication jwtAuthentication) {
-        return ResponseEntity.ok(campaignService.findAllByUserId(jwtAuthentication.getId()));
+        return ResponseEntity.ok(campaignService.findAllByUserId(jwtAuthentication.getId(),pageable));
     }
 }
 

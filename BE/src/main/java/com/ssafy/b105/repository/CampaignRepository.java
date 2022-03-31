@@ -1,6 +1,5 @@
 package com.ssafy.b105.repository;
 
-import com.ssafy.b105.dto.CampaignListDto;
 import com.ssafy.b105.entity.campaign.Campaign;
 
 import java.util.List;
