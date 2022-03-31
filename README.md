@@ -43,6 +43,7 @@
 <img src="https://img.shields.io/badge/AWS-232F3E?style=flat-square&logo=amazon aws&logoColor=white"/>
 <img src="https://img.shields.io/badge/Docker-20.10.14-4479A1?style=flat-square&logo=Docker&logoColor=white"/>
 <img src="https://img.shields.io/badge/NGINX-1.18.0(Ubuntu)-009639?style=flat-square&logo=NGINX&logoColor=white"/>
+<img src="https://img.shields.io/badge/Jenkins-2.332.1-D24939?style=flat-square&logo=Jenkins&logoColor=white"/>
 </td>
     </tr>
     <td><b>Block-chain </td>
