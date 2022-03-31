@@ -46,7 +46,9 @@
 </td>
     </tr>
     <td><b>Block-chain </td>
-    <td>Go</td>
+    <td>
+    <img src="https://img.shields.io/badge/Go-1.18-00ADD8?style=flat-square&logo=Go&logoColor=white"/>
+    </td>
     </tr>
     <tr>
     <td><b>Tools</td>
