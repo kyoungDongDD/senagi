@@ -56,6 +56,9 @@ public class User{
   private String provider;
 
   private String providerId;
+
+  @Builder.Default
+  private String vendor = "NBD";
   //연관 관계 매핑
 
   @OneToMany(mappedBy = "user",cascade = CascadeType.ALL ,orphanRemoval = true)
@@ -67,6 +70,7 @@ public class User{
   //생성 매서드
   public static User of(String vendor, String principal, String nickname, String profileImageUrl) {
     return User.builder()
+      .vendor(vendor)
       .name(nickname)
       .principal(principal)
       .build();
@@ -109,5 +113,11 @@ public class User{
     return this.authorities.stream()
       .map(authority -> new SimpleGrantedAuthority(authority.getAuthority().name()))
       .collect(Collectors.toSet());
+  }
+
+
+  public User update(String email) {
+    this.name = email;
+    return this;
   }
 }
