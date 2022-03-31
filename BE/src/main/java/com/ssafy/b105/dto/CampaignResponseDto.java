@@ -2,11 +2,11 @@ package com.ssafy.b105.dto;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonFormat.Shape;
-import com.ssafy.b105.entity.Campaign;
-import com.ssafy.b105.entity.CampaignType;
+import com.ssafy.b105.entity.campaign.Campaign;
+import com.ssafy.b105.entity.campaign.CampaignType;
 import com.sun.istack.NotNull;
 import com.sun.istack.Nullable;
-import java.time.LocalDate;
+
 import java.time.LocalDateTime;
 import java.util.List;
 import lombok.AllArgsConstructor;

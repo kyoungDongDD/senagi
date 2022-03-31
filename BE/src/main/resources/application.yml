@@ -42,13 +42,20 @@ spring:
         default-page-size: 12
 
 jwt:
-  header: Authorization
-  #HS512 알고리즘을 사용할 것이기 때문에 512bit, 즉 64byte 이상의 secret key를 사용해야 한다.
-  #echo 'silvernine-tech-spring-boot-jwt-tutorial-secret-silvernine-tech-spring-boot-jwt-tutorial-secret'|base64
-  secret: c2lsdmVybmluZS10ZWNoLXNwcm
-  token-validity-in-seconds: 86400
-
+  token:
+    header: Authorization
+    issuer: NoBadDonation
+    secret: 41NTQUZZLTYtRGVhamVvbi0xLUIxMDUtaGVyZS1Jcy1Oby1CYWQtRG9uYXRpb24K # "SSAFY-6-Deajeon-1-B105-There-Is-No-Bad-Donation" Base64 Encoding 대문자 8, 소문자 4
+    expirySeconds: 86400
 
 logging.level:
   org.hibernate.SQL: debug
   org.hibernate.type: trace
+
+uploadPath:
+  path: "./imgs/"
+
+servlet:
+  multipart:
+    maxFileSize: 50MB
+    maxRequestSize: 50MB

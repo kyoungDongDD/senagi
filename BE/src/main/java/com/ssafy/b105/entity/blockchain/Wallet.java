@@ -1,7 +1,7 @@
 package com.ssafy.b105.entity.blockchain;
 
 import com.ssafy.b105.dto.blockchain.NewWalletDto;
-import com.ssafy.b105.entity.User;
+import com.ssafy.b105.entity.user.User;
 import java.math.BigInteger;
 import javax.persistence.Column;
 import javax.persistence.Entity;
