@@ -32,6 +32,7 @@ public class SupportLog {
     private LocalDateTime donateDate = LocalDateTime.now();
     private Long amount;
 
+    private String txHash;
 
     //연관 관계 맵핑
     @ManyToOne(fetch = FetchType.LAZY)

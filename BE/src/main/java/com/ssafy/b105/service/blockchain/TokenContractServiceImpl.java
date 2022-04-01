@@ -60,6 +60,30 @@ public class TokenContractServiceImpl implements
   }
 
   @Override
+  public BigInteger balanceOfBigInteger(Wallet wallet) {
+    try {
+      return tokenMgr.balanceOf(wallet.getAccount()).sendAsync().get();
+    } catch (InterruptedException e) {
+      e.printStackTrace();
+    } catch (ExecutionException e) {
+      e.printStackTrace();
+    }
+    return new BigInteger("0");
+  }
+
+  @Override
+  public Long balanceOf(String account) {
+    try {
+      return BalanceConverter.bigIntegerToLong(tokenMgr.balanceOf(account).sendAsync().get(),decimals);
+    } catch (InterruptedException e) {
+      e.printStackTrace();
+    } catch (ExecutionException e) {
+      e.printStackTrace();
+    }
+    return 0L;
+  }
+
+  @Override
   public String getTokenName() {
     try {
       return tokenMgr.name().sendAsync().get();

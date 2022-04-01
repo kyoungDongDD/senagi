@@ -8,6 +8,7 @@ import com.ssafy.b105.entity.SupportLog;
 import com.ssafy.b105.entity.BaseEntity;
 import com.ssafy.b105.entity.blockchain.Wallet;
 import com.ssafy.b105.entity.campaign.Campaign;
+import com.ssafy.b105.entity.common.MemberType;
 import lombok.*;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.GrantedAuthority;
@@ -88,8 +89,8 @@ public class User{
     JwtAuthentication principal = (JwtAuthentication) authentication.getPrincipal();
     Jwt.Claims claims = Jwt.Claims.of(
       principal.getId(),
-      principal.getName(),
       principal.getPrincipal(),
+      principal.getName(),
       getRoleAtAuthorities(authentication).toArray(String[]::new)
     );
     return jwt.newToken(claims);
@@ -117,7 +118,17 @@ public class User{
 
 
   public User update(String email) {
-    this.name = email;
+    this.principal = email;
     return this;
+  }
+
+  public MemberType getMemberType() {
+    if(authorities.contains(UserRole.SHELTER)) {
+      return MemberType.Shelter;
+    }
+    if(authorities.contains(UserRole.SUPPORTER)) {
+      return MemberType.Supporter;
+    }
+    return MemberType.None;
   }
 }
