@@ -17,6 +17,7 @@ const StyledButton = styled.button`
   }
   background: #fff;
   width: 100%;
+  height: 42.25px;
 `;
 
 const StyledImg = styled.img`
@@ -24,7 +25,7 @@ const StyledImg = styled.img`
   margin-left: 1rem;
 `;
 const StyledP = styled.p`
-  margin-left: 3rem;
+  margin: auto;
   font-size: 0.9375rem;
   font-family: 'Roboto';
   font-weight: 500;
