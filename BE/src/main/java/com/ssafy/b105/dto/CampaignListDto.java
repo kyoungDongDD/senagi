@@ -27,6 +27,7 @@ public class CampaignListDto {
     private Long viewCount;
     private Long targetDonation;
     private CampaignType type;
+    private String shelterName;
 
     @JsonFormat(shape = Shape.STRING,pattern = "yyyy-MM-dd",timezone = "Asia/Seoul")
     private LocalDateTime endDate;
@@ -42,7 +43,7 @@ public class CampaignListDto {
     @QueryProjection
     public CampaignListDto(Long id, String title, String thumbnailImageUrl, Boolean isEnd,
         Long viewCount, Long targetDonation, LocalDateTime endDate,
-        CampaignType type, LocalDateTime registDate, LocalDateTime lastModifiedDate) {
+        CampaignType type, LocalDateTime registDate, LocalDateTime lastModifiedDate,String shelterName) {
         this.id = id;
         this.title = title;
         this.thumbnailImageUrl = thumbnailImageUrl;
@@ -53,6 +54,7 @@ public class CampaignListDto {
         this.type = type;
         this.registDate = registDate;
         this.lastModifiedDate = lastModifiedDate;
+        this.shelterName = shelterName;
     }
 
 }

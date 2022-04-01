@@ -41,6 +41,11 @@ spring:
         #페이지 기본 사이즈
         default-page-size: 12
 
+  servlet:
+    multipart:
+      maxFileSize: 100MB
+      maxRequestSize: 100MB
+
 jwt:
   token:
     header: Authorization
@@ -55,7 +60,3 @@ logging.level:
 uploadPath:
   path: "./imgs/"
 
-servlet:
-  multipart:
-    maxFileSize: 50MB
-    maxRequestSize: 50MB

@@ -17,8 +17,6 @@ public class ReceiptDto {
 
     private String receiptImageUrl;
 
-    private String item;
-
     private Long amount;
 
     private Boolean txHash; //종료 여부 true: 종료됨 ,false : 진행중

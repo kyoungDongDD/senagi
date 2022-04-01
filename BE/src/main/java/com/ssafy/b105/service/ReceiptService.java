@@ -2,15 +2,9 @@ package com.ssafy.b105.service;
 
 import com.ssafy.b105.dto.ReceiptDto;
 import com.ssafy.b105.dto.ReceiptPostDto;
-import com.ssafy.b105.dto.SupportLogRequestDto;
-import com.ssafy.b105.dto.SupportLogResponseDto;
-import com.ssafy.b105.entity.SupportLog;
 import com.ssafy.b105.entity.campaign.Campaign;
 import com.ssafy.b105.entity.Receipt;
-import com.ssafy.b105.repository.CampaignRepository;
 import com.ssafy.b105.repository.ReceiptRepository;
-import com.ssafy.b105.repository.SupportLogRepository;
-import com.ssafy.b105.repository.UserRepository;
 import com.ssafy.b105.utils.MD5Generator;
 import java.io.File;
 import java.nio.file.Path;
@@ -36,7 +30,7 @@ public class ReceiptService {
     }
 
 
-    public ReceiptPostDto store(MultipartFile files, Campaign campaign, String item, Long amount) {
+    public ReceiptPostDto withdrawal(MultipartFile files, Campaign campaign, Long amount) {
         String originalFilename = files.getOriginalFilename();
         //파일 확장자
         String extension = originalFilename.substring(originalFilename.lastIndexOf("."));
@@ -62,7 +56,6 @@ public class ReceiptService {
             ReceiptDto receiptDto = ReceiptDto.builder()
                 .receiptImageUrl(filePath)
                 .amount(amount)
-                .item(item)
                 .campaign(campaign)
                 .build();
 
@@ -73,7 +66,6 @@ public class ReceiptService {
             return null;
         }
     }
-
 
 
 }

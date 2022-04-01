@@ -1,6 +1,7 @@
 package com.ssafy.b105.config;
 
-import com.ssafy.b105.auth.oauth.PrincipalOauth2UserService;
+import com.ssafy.b105.auth.oauth.OAuth2SuccessHandler;
+import com.ssafy.b105.auth.oauth.OAuth2UerService;
 import com.ssafy.b105.auth.Jwt.domain.Jwt;
 import com.ssafy.b105.auth.Jwt.JwtFilter;
 import com.ssafy.b105.auth.Jwt.domain.JwtTokenConfig;
@@ -29,6 +30,8 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
   private final Jwt jwt;
   private final JwtTokenConfig jwtTokenConfig;
+  private final OAuth2SuccessHandler oAuth2SuccessHandler;
+  private final OAuth2UerService oAuth2UerService;
 //  private final PrincipalOauth2UserService principalOauth2UserService;
 
 
@@ -86,10 +89,12 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
       .permitAll()
 
       .and()
-
       .formLogin().disable()
+
       .oauth2Login()
-      .userInfoEndpoint();
-//      .userService(principalOauth2UserService);
+      .userInfoEndpoint()
+      .userService(oAuth2UerService)
+      .and()
+      .successHandler(oAuth2SuccessHandler);
   }
 }

@@ -32,7 +32,7 @@ public class Authority {
   }
 
   // 연관관계 메서드
-  public void setMember(User user) {
+  public void setUser(User user) {
     this.user = user;
     this.user.getAuthorities().add(this);
   }
