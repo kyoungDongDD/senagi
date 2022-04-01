@@ -1,7 +1,8 @@
 import axios from 'axios';
 
 const api = axios.create({
-  baseURL: 'http://localhost:8080/api/',
+  // baseURL: 'http://localhost:8080/api/',
+  baseURL: 'https://84c8d203-4698-4ccf-a301-71d6e01c0494.mock.pstmn.io',
   // headers: {
   //   'Content-Type': 'application/json',
   // },

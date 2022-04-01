@@ -1,43 +1,57 @@
+import { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import GoogleLoginButton from '../atoms/GoogleLoginButton';
-import UserButton from '../molecules/UserButton';
 import Text from '../atoms/Text';
-import { Link } from 'react-router-dom';
-
-import { Typography, Box, TextField, FormControlLabel, Checkbox, Button } from '@mui/material';
-
-import styled from '@emotion/styled';
-
-const StyledText = styled(Text)`
-  display: inline-block;
-
-  color: black;
-`;
-
-const StyledLink = styled(Link)`
-  display: inline-block;
-
-  color: blue;
-
-  text-decoration: none;
-
-  &:focus,
-  &:hover,
-  &:visited,
-  &:link,
-  &:active {
-    text-decoration: none;
-  }
-`;
+import JoinButton from '../molecules/JoinButton';
+import UserButton from '../molecules/UserButton';
+import { Box, TextField } from '@mui/material';
+import AccountsAPI from '../../../api/accountsAPI';
+import { useDispatch } from 'react-redux';
+import { useSelector } from 'react-redux'
+import { login, logout } from '../../../store/user';
 
 function UserLoginForm() {
-  const handleSubmit = (event) => {
-    event.preventDefault();
-    const data = new FormData(event.currentTarget);
-    console.log({
-      email: data.get('email'),
-      password: data.get('password'),
-    });
+  const [joinData, setJoinData] = useState([]); // 로그인 정보 저장
+  const navigate = useNavigate();
+  const dispatch = useDispatch();
+  const user = useSelector((state) => state.user.value)
+
+  // 회원 정보 저장
+  const setJoin = (e, names) => {
+    setJoinData(Object.assign(joinData, { [names]: e.target.value }));
   };
+
+  const logIn = async(event) => {
+    event.preventDefault();
+    // console.log('logIn API', joinData);
+    const { userId, userPw } = joinData;
+    const postData = {
+      principal: userId,
+      credential: userPw,
+    };
+    
+    await AccountsAPI.supporterLogin(postData)
+    .then((response) => {
+      if (response.status === 200) {
+        alert('로그인에 성공했습니다.');
+        // console.log(response);
+        dispatch(login(response.data))
+        // 로그인 후 메인페이지로 navigate하는 function, 디버깅을 위해 주석 처리 해놓음
+        // navigate('/');
+      } else {
+        alert('로그인에 실패했습니다.');
+      }
+    })
+    .catch((error) => {
+      console.log(error);
+      alert('로그인에 실패했습니다.');
+    });    
+  };
+
+  // 임시로 로그아웃 function 연결해놓음 nav에 연결하면 삭제
+  const logOut = () => {
+    dispatch(logout())
+  }
 
   return (
     <Box
@@ -48,8 +62,12 @@ function UserLoginForm() {
         alignItems: 'center',
       }}
     >
+      {/* 로그인 확인 디버깅용 코드 */}
+      {/* <h1>로그인 확인 디버깅용</h1>
+      <p> ID : {user.principal} </p>
+      <p> PW token : {user.token} </p> */}
       <Text className="header1" text="로그인" />
-      <Box component="form" noValidate onSubmit={handleSubmit} sx={{ mt: 1 }}>
+      <Box component="form" noValidate onSubmit={logIn} sx={{ mt: 1 }}>
         <TextField
           margin="normal"
           required
@@ -59,6 +77,7 @@ function UserLoginForm() {
           name="email"
           autoComplete="email"
           autoFocus
+          onChange={(e) => setJoin(e, 'userId')}
         />
         <TextField
           margin="normal"
@@ -69,16 +88,14 @@ function UserLoginForm() {
           type="password"
           id="password"
           autoComplete="current-password"
+          onChange={(e) => setJoin(e, 'userPw')}
         />
-        <Link to="/home">
-          <UserButton type="submit" fullWidth variant="contained" text="로그인" size="large" />
-        </Link>
+        <UserButton type="submit" fullWidth variant="contained" text="로그인" size="large" func={logIn}/>
+        {/* 임시 */}
+        <UserButton type="submit" fullWidth variant="contained" text="로그아웃" size="large" func={logOut}/>
         <GoogleLoginButton />
         <br />
-        <StyledText className="linktext" text="아직도 세나기를 이용하고 있지 않으신가요? &nbsp;" />
-        <StyledLink to="/signup" className="linktext">
-          {'가입하기'}
-        </StyledLink>
+        <JoinButton />
       </Box>
     </Box>
   );

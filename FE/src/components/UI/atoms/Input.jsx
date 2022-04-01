@@ -1,9 +1,9 @@
-import { TextField } from "@mui/material";
+import { TextField } from '@mui/material';
 
 function Input(props) {
   return (
     <div>
-      <TextField 
+      <TextField
         id="outlined-basic"
         type={props.type}
         name={props.name}
@@ -12,7 +12,8 @@ function Input(props) {
         autoComplete={props.autoComplete}
         variant="outlined"
         color="primary"
-        placeholder={props.placeholder} />
+        placeholder={props.placeholder}
+      />
     </div>
   );
 }
