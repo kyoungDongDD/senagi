@@ -23,7 +23,7 @@ function UserLoginForm() {
 
   const logIn = async (event) => {
     event.preventDefault();
-    // 로그인한 상태에서 로그인 금지.. 인데 isLogin 초기상태 null이라 이 코드로 안됨.
+    // 로그인한 상태에서 로그인 금지.. 인데 지금 코드로는 isLogin 초기상태 null이라 이 코드로 안됨. ""로 변경하면 될 것 같기도? 아니면 로그인 페이지 접근 자체를 막는 것도 ㄱㅊ
     // console.log(isLogin);
     // if (isLogin === true) {
     //   alert('이미 로그인한 유저입니다.');
@@ -37,20 +37,16 @@ function UserLoginForm() {
     // refactor => function 전체 user.js로 수정 이동
     await AccountsAPI.supporterLogin(postData)
       .then((response) => {
-        if (response.status === 200) {
-          // 로그인 토큰 저장
-          // dispatch(login(response.data));
-          // 토큰 디코드
-          const token = response.data.jwtToken;
-          const userInfo = jwt(token);
-          // 토큰의 유저 정보 store에 저장
-          dispatch(authSuccess(userInfo));
-          // navbar에 이름 출력 후 삭제
-          alert('로그인에 성공했습니다.');
-          navigate('/home');
-        } else {
-          alert('로그인에 실패했습니다.');
-        }
+        // 로그인 토큰 저장
+        // dispatch(login(response.data));
+        // 토큰 디코드
+        const token = response.data.jwtToken;
+        const userInfo = jwt(token);
+        // 토큰의 유저 정보 store에 저장
+        dispatch(authSuccess(userInfo));
+        // navbar에 이름 출력 후 삭제
+        alert('로그인에 성공했습니다.');
+        navigate('/home');
       })
       .catch((error) => {
         console.log(error);

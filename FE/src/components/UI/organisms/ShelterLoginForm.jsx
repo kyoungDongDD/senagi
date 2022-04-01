@@ -29,18 +29,14 @@ function ShelterLoginForm() {
 
     await AccountsAPI.shelterLogin(postData)
       .then((response) => {
-        if (response.status === 200) {
-          // 토큰 디코드
-          const token = response.data.jwtToken;
-          const userInfo = jwt(token);
-          // 토큰의 유저 정보 store에 저장
-          dispatch(authSuccess(userInfo));
-          // navbar에 이름 출력 후 삭제
-          alert('로그인에 성공했습니다.');
-          navigate('/home');
-        } else {
-          alert('로그인에 실패했습니다.');
-        }
+        // 토큰 디코드
+        const token = response.data.jwtToken;
+        const userInfo = jwt(token);
+        // 토큰의 유저 정보 store에 저장
+        dispatch(authSuccess(userInfo));
+        // navbar에 이름 출력 후 삭제
+        alert('로그인에 성공했습니다.');
+        navigate('/home');
       })
       .catch((error) => {
         console.log(error);
