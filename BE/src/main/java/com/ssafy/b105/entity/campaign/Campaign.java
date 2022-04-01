@@ -1,6 +1,7 @@
 package com.ssafy.b105.entity.campaign;
 
 import com.ssafy.b105.dto.CampaignRequestDto;
+import com.ssafy.b105.dto.blockchain.ContractResponseDto;
 import com.ssafy.b105.entity.SupportLog;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
@@ -39,7 +40,7 @@ public class Campaign extends BaseEntity{
     @Builder.Default
     private Boolean isEnd = false; //종료 여부 true: 종료됨 ,false : 진행중
 
-    @Column(length = 300)
+    @Column(length = 40)
     private String account; //블록체인 계좌정보
 
     @Column(length = 66)
@@ -93,7 +94,7 @@ public class Campaign extends BaseEntity{
     }
 
 
-    public static Campaign from(CampaignRequestDto campaignRequestDto) {
+    public static Campaign of(CampaignRequestDto campaignRequestDto, ContractResponseDto contractResponseDto) {
         if (campaignRequestDto == null) {
             return null;
         }
@@ -107,6 +108,8 @@ public class Campaign extends BaseEntity{
             .endDate(campaignRequestDto.getEndDate())
             .type(campaignRequestDto.getType())
             .user(campaignRequestDto.getUser())
+            .account(contractResponseDto.getAccount())
+            .blockHash(contractResponseDto.getBlockHash())
             .build();
     }
 }

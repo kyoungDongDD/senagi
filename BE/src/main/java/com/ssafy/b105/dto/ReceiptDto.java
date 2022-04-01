@@ -19,7 +19,7 @@ public class ReceiptDto {
 
     private Long amount;
 
-    private Boolean txHash; //종료 여부 true: 종료됨 ,false : 진행중
+    private String txHash;
 
     private Campaign campaign;
 
