@@ -40,16 +40,6 @@ public class CampaignController {
             campaignService.createCampaignProject(jwtAuthentication, campaignRequestDto));
     }
 
-    @PostMapping("/api/campaign/shelter")
-    public ResponseEntity<CampaignResponseDto> CreateCampaignShelter(
-        @RequestBody CampaignRequestDto campaignRequestDto,
-        @AuthenticationPrincipal JwtAuthentication jwtAuthentication)
-        throws ChangeSetPersister.NotFoundException {
-        //todo: 유저가 보호소인지 체크
-        return ResponseEntity.ok(
-            campaignService.createCampaignShelter(jwtAuthentication, campaignRequestDto));
-    }
-
     //detail 조회
     @GetMapping("/api/campaign/detail/{id}")
     public ResponseEntity<CampaignResponseDto> DetailCampaign(
