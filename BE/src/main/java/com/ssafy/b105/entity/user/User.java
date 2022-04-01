@@ -63,6 +63,7 @@ public class User{
   //연관 관계 매핑
 
   @OneToMany(mappedBy = "user",cascade = CascadeType.ALL ,orphanRemoval = true)
+  @Builder.Default
   private List<Campaign> campaigns = new ArrayList<>();
 
   @OneToOne(mappedBy = "user")
