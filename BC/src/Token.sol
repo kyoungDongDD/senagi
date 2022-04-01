@@ -2,9 +2,9 @@
 
 pragma solidity >=0.7.0 <0.9.0;
 
-import "./standard/IERC20.sol";
-import "./standard/IERC20Metadata.sol";
-import "./standard/Ownable.sol";
+import "./IERC20.sol";
+import "./IERC20Metadata.sol";
+import "./Ownable.sol";
 import "./Member.sol";
 
 contract Token is IERC20, IERC20Metadata, Ownable {

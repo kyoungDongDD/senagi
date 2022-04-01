@@ -2,7 +2,7 @@
 
 pragma solidity >=0.7.0 <0.9.0;
 
-import "./standard/Ownable.sol";
+import "./Ownable.sol";
 import "./Member.sol";
 import "./Token.sol";
 
@@ -68,7 +68,7 @@ contract Campaign is Ownable{
     // to : 받을 계좌
     function close(address to) external onlyOwner  {
         require(!_donatePossible(),"Campaign error : This campaign not yet end");
-        require(_memberMgr.isShelterTerCampaign(to),"Campaign error : Dest account only shelter campaign account");
+        require(_memberMgr.isShelterCampaign(to),"Campaign error : Dest account only shelter campaign account");
         uint256 balance = _balanceOf();
         _tokenMgr.approve(address(this),balance);
         _tokenMgr.transferFrom(address(this),to,balance);

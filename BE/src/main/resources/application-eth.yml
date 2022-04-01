@@ -1,20 +1,18 @@
-# Ethereum client
-spring:
-  web3j:
-    client-addrss: 'http://127.0.0.1:8545'
-    admin-client: true
-
 # Ethereum accounts
 eth:
+  chainId : 15
+
   key:
-    path: 'classpath:keystore/'
+    path: './keystore/'
   gas:
-    limit: '8000000'
+    limit: '3000000'
     price: '0'
+
   contract:
-    token: '0x9155408Dd7EEf3c07bB35cAED4763dEF83E329e9'
-    member: '0x93d9d77106AA24bADd14D215EFBe08097Ba09De1'
+    token: '0x827196b1fefbc899C7F00656c2cB16865f827eD8'
+    member: '0xf778768ad858c5f14f8222f7b02b63c670ae619f'
+
   admin:
     wallet: 'admin.wallet'
-    password: 'pass0'
-    account: '0xfe30597e880ffc5d4b32b4a746be6facd4629ed2'
+    password: 'ssafyb105'
+    account: '0xadEedB149AF852Ed80162EBd607205544c88f7Bf'

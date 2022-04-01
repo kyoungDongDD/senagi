@@ -1,0 +1,17 @@
+FROM node:16.14.0-alpine as builder
+
+COPY . .
+
+RUN npm install
+RUN npm run build
+
+FROM nginx:1.18.0
+
+# default.conf 덮어쓰기
+COPY ./default.conf /etc/nginx/conf.d/default.conf
+COPY --from=builder /build /usr/share/nginx/html
+
+EXPOSE 3000
+
+# 서버 실행
+CMD ["nginx", "-g", "daemon off;"]

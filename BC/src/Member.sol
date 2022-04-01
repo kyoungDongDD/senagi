@@ -2,8 +2,8 @@
 
 pragma solidity >=0.7.0 <0.9.0;
 
-import "./standard/Ownable.sol";
-import "./utils/StringUtils.sol";
+import "./Ownable.sol";
+import "./StringUtils.sol";
 
 
 contract Member is Ownable, StringUtils {
@@ -31,9 +31,9 @@ contract Member is Ownable, StringUtils {
             revert();
     }
 
-    function newMember(address account, MemberTypes memberType) onlyOwner external returns(bool) {
+    function newMember(address account, string memory memberType) onlyOwner external returns(bool) {
         require(_typeOf(account) == MemberTypes.None,"Member error : This address already exists");
-        _memberTypes[account] = memberType;
+        _memberTypes[account] = _stringToMemberType(memberType);
         return true;
     }
 
@@ -82,7 +82,11 @@ contract Member is Ownable, StringUtils {
         return _typeOf(addr) == MemberTypes.Shelter;
     }
 
-    function isShelterTerCampaign(address addr) external view returns(bool) {
+    function isShelterCampaign(address addr) external view returns(bool) {
         return _typeOf(addr) == MemberTypes.ShelterCampaign;
+    }
+
+    function isPrjoectCampaign(address addr) external view returns(bool) {
+        return _typeOf(addr) == MemberTypes.ProjectCampaign;
     }
 }

@@ -90,7 +90,7 @@ function ShelterLoginForm() {
         />
         <UserButton type="submit" fullWidth variant="contained" text="로그인" size="large" func={logIn}/>
         {/* 임시 */}
-        <UserButton type="submit" fullWidth variant="contained" text="로그아웃" size="large" func={logOut}/>
+        {/* <UserButton type="submit" fullWidth variant="contained" text="로그아웃" size="large" func={logOut}/> */}
         <JoinButton />
       </Box>
     </Box>

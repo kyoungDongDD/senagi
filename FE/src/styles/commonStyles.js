@@ -22,9 +22,15 @@ const commonStyles = css`
     font-weight: normal;
     font-style: normal;
   }
-  body {
+
+  * {
     font-family: 'GM';
   }
+  
+  body {
+    margin: 0;
+  }
+  
   .header1 {
     font-style: normal;
     font-weight: 700;
@@ -75,6 +81,16 @@ const commonStyles = css`
     align-items: center;
     letter-spacing: -0.02em;
     font-family: 'GL';
+  }
+  .button {
+    font-style: normal;
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 18px;
+    display: flex;
+    align-items: center;
+    letter-spacing: -0.02em;
+    font-family: 'GM';
   }
 `;
 
