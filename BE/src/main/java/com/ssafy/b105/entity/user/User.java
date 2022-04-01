@@ -88,8 +88,8 @@ public class User{
     JwtAuthentication principal = (JwtAuthentication) authentication.getPrincipal();
     Jwt.Claims claims = Jwt.Claims.of(
       principal.getId(),
-      principal.getName(),
       principal.getPrincipal(),
+      principal.getName(),
       getRoleAtAuthorities(authentication).toArray(String[]::new)
     );
     return jwt.newToken(claims);
@@ -117,7 +117,7 @@ public class User{
 
 
   public User update(String email) {
-    this.name = email;
+    this.principal = email;
     return this;
   }
 }
