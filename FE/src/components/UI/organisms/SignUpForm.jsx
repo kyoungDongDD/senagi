@@ -35,10 +35,8 @@ function SignUpForm() {
   const navigate = useNavigate();
 
   // 나중에 loader 추가하기
-  // 회원가입 처리
+  // 회원가입
   const signUp = async () => {
-    console.log('signUp API', joinData);
-
     const { userId, userName, userPw } = joinData;
     const postData = {
       principal: userId,
@@ -75,7 +73,6 @@ function SignUpForm() {
   // 아이디 중복체크
   const idCheck = async (event) => {
     event.preventDefault();
-    console.log(joinData);
     // 이메일 regex 형식 검사
     if (!validateEmail(joinData.userId)) {
       setIdFl(false);
@@ -88,7 +85,6 @@ function SignUpForm() {
     // 이메일 중복 검사
     await AccountsAPI.checkEmail(joinData.userId)
       .then((response) => {
-        console.log(response);
         if (response.status === 200) {
           setIdFl(true);
           // toast 예쁜 걸로 바꾸기
