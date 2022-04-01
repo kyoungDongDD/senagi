@@ -1,10 +1,7 @@
 import { useEffect, useState } from 'react';
 import styled from '@emotion/styled';
-
 import CampaignDetail from '../UI/organisms/CampaignDetail';
 import UsageHistory from '../UI/organisms/UsageHistory';
-
-import UseLocalStorage from '../../hooks/UseLocalStoreage';
 
 function CampaignInfo() {
   const [viewCalendar, setViewCalendar] = useState(true);
