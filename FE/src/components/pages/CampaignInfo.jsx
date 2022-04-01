@@ -1,11 +1,12 @@
 import { useEffect, useState } from 'react';
 import styled from '@emotion/styled';
 
-import NavBar from '../UI/organisms/NavBar';
 import CampaignDetail from '../UI/organisms/CampaignDetail';
 import UsageHistory from '../UI/organisms/UsageHistory';
 
-function Campaigns() {
+import UseLocalStorage from '../../hooks/UseLocalStoreage';
+
+function CampaignInfo() {
   const [viewCalendar, setViewCalendar] = useState(true);
 
   const [currentClick, setCurrentClick] = useState(null);
@@ -35,39 +36,36 @@ function Campaigns() {
   );
 
   return (
-    <>
-      <NavBar />
+    <div>
       <BannerImg src={require('../../assets/test1.jpg')} />
       <BtnContainer>
         <div></div>
         <CategoryBox
-          className="case1"
           id="case1"
           onClick={(e) => {
-            setViewCalendar(true);
+            setViewCalendar(!false);
             GetClikc(e);
           }}
         >
           &nbsp;소개&nbsp;
         </CategoryBox>
-        <CategoryBox
-          className="case2"
+        <CategoryBox2
           id="case2"
           onClick={(e) => {
-            setViewCalendar(false);
+            setViewCalendar(!true);
             GetClikc(e);
           }}
         >
           &nbsp;사용 내역&nbsp;
-        </CategoryBox>
+        </CategoryBox2>
         <div></div>
       </BtnContainer>
       {viewCalendar ? <CampaignDetail /> : <UsageHistory />}
-    </>
+    </div>
   );
 }
 
-export default Campaigns;
+export default CampaignInfo;
 
 const BannerImg = styled.img`
   display: flex;
@@ -87,4 +85,13 @@ const BtnContainer = styled.div`
 
 const CategoryBox = styled.div`
   cursor: pointer;
+  color: black;
+  border-bottom: 2px solid;
+  border-bottom-color: #f4ba3499;
+`;
+
+const CategoryBox2 = styled.div`
+  cursor: pointer;
+  color: #bebcbc;
+  border-bottom: none;
 `;

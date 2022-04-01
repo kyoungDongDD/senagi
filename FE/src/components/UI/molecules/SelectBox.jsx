@@ -14,7 +14,7 @@ export default function SelectBox() {
   return (
     <div>
       <FormControl variant="standard" sx={{ m: 1, minWidth: 120 }}>
-        <InputLabel id="demo-simple-select-standard-label">정렬</InputLabel>
+        <InputLabel id="demo-simple-select-standard-label"></InputLabel>
         <Select
           labelId="demo-simple-select-standard-label"
           id="demo-simple-select-standard"
@@ -23,14 +23,13 @@ export default function SelectBox() {
           label="Age"
         >
           <MenuItem value="">
-            <em>None</em>
+            <em></em>
           </MenuItem>
-          <MenuItem value={10}>???</MenuItem>
-          <MenuItem value={20}>???</MenuItem>
+          <MenuItem value={10}>조회순</MenuItem>
+          <MenuItem value={20}>모금금액순</MenuItem>
           <MenuItem value={30}>???</MenuItem>
         </Select>
       </FormControl>
     </div>
   );
 }
-
