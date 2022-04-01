@@ -28,8 +28,6 @@ public class OAuth2SuccessHandler extends SimpleUrlAuthenticationSuccessHandler 
   public void onAuthenticationSuccess(HttpServletRequest request, HttpServletResponse response, Authentication authentication) throws IOException, ServletException {
 
     Map<String, Object> attributes = ((DefaultOAuth2User) authentication.getPrincipal()).getAttributes();
-    System.out.println("attributes = " + attributes);
-//    String registrationId = ((OAuth2AuthenticationToken) authentication).getAuthorizedClientRegistrationId();
     String email = (String) attributes.get("email");
     User user = userRepository.findByPrincipal(email).orElseThrow();
     String token = user.newApiToken(jwt,authentication);
