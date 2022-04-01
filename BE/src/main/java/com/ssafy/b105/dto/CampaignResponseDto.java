@@ -41,6 +41,9 @@ public class CampaignResponseDto {
     private Long targetDonation;
 
     @Nullable
+    private Long balance;
+
+    @Nullable
     @JsonFormat(shape = Shape.STRING,pattern = "yyyy-MM-dd",timezone = "Asia/Seoul")
     private LocalDateTime endDate;
 
@@ -62,7 +65,7 @@ public class CampaignResponseDto {
     @Nullable
     private List<String> hashtags;
 
-    public static CampaignResponseDto from(Campaign campaign) {
+    public static CampaignResponseDto of(Campaign campaign, Long balance) {
         if (campaign == null) {
             return null;
         }
@@ -83,6 +86,8 @@ public class CampaignResponseDto {
             .lastModifiedDate(campaign.getLastModifiedDate())
             .hashtags(campaign.getHashtag())
             .shelterName(campaign.getUser().getName())
+            .balance(balance)
             .build();
     }
+
 }

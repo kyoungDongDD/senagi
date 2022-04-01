@@ -42,6 +42,8 @@ public class Receipt extends BaseEntity{
     @JoinColumn(name = "campaign_id")
     private Campaign campaign;
 
+    private String txHash;
+
 
     public static Receipt from(ReceiptDto receiptDto) {
         if (receiptDto == null) {
@@ -51,7 +53,7 @@ public class Receipt extends BaseEntity{
         return Receipt.builder()
             .receiptImageUrl(receiptDto.getReceiptImageUrl())
             .amount(receiptDto.getAmount())
-//            .txHash(receiptDto.getTxHash())
+            .txHash(receiptDto.getTxHash())
             .campaign(receiptDto.getCampaign())
             .build();
     }
