@@ -25,8 +25,24 @@ const NavBar = () => {
     setAnchorElNav(event.currentTarget);
   };
 
-  const handleCloseNavMenu = () => {
+  const handleCloseNavMenu = (event) => {
     setAnchorElNav(null);
+    console.log(event.target.innerText);
+    const page = event.target.innerText;
+    switch (page) {
+      case '캠페인':
+        window.location.href = 'https://j6b105.p.ssafy.io/searchresult';
+        break;
+      case '사업소개':
+        window.location.href = 'https://j6b105.p.ssafy.io/';
+        break;
+      case '마이페이지':
+        window.location.href = 'https://j6b105.p.ssafy.io/mypage';
+        break;
+      default:
+        window.location.href = 'https://j6b105.p.ssafy.io/home';
+        break;
+    }
   };
 
   const Search = styled('div')(({ theme }) => ({
@@ -82,7 +98,7 @@ const NavBar = () => {
             component="div"
             sx={{ mr: 2, display: { xs: 'none', md: 'flex' } }}
           >
-            <Link to="/nav">
+            <Link to="/home">
               <img src={require('../../../assets/logo.png')} alt="logo" />
             </Link>
           </Typography>
