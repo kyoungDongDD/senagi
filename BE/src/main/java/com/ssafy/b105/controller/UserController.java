@@ -5,6 +5,7 @@ import com.ssafy.b105.dto.LoginResponseDto;
 import com.ssafy.b105.auth.Jwt.domain.AuthenticationResult;
 import com.ssafy.b105.auth.Jwt.domain.JwtAuthenticationToken;
 import com.ssafy.b105.dto.SignupDto;
+import com.ssafy.b105.entity.common.MemberType;
 import com.ssafy.b105.entity.user.Authority;
 import com.ssafy.b105.entity.user.User;
 import com.ssafy.b105.entity.user.UserRole;
@@ -59,8 +60,7 @@ public class UserController {
       .authorities(authorities)
       .build();
 
-      userService.saveOrUpdateUser(user);
-      userService.setAuthority(user, authority);
+    userService.saveOrUpdateUser(user, MemberType.Supporter);
     return new ResponseEntity<>(user, HttpStatus.CREATED);
   }
 
@@ -84,8 +84,7 @@ public class UserController {
       .authorities(authorities)
       .build();
 
-    userService.saveOrUpdateUser(user);
-    userService.setAuthority(user, authority);
+    userService.saveOrUpdateUser(user,MemberType.Shelter);
     return new ResponseEntity<>(user, HttpStatus.CREATED);
   }
   @PostMapping("/login/shelter")

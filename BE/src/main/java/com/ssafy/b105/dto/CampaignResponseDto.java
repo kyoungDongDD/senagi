@@ -47,7 +47,7 @@ public class CampaignResponseDto {
     @JsonFormat(shape = Shape.STRING,pattern = "yyyy-MM-dd",timezone = "Asia/Seoul")
     private LocalDateTime endDate;
 
-    //@NotNull
+    @NotNull
     private String account;
 
     @NotNull
