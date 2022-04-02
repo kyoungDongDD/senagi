@@ -27,7 +27,6 @@ const NavBar = () => {
 
   const handleCloseNavMenu = (event) => {
     setAnchorElNav(null);
-    console.log(event.target.innerText);
     const page = event.target.innerText;
     switch (page) {
       case '캠페인':

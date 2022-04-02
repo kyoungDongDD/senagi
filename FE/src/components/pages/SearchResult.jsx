@@ -6,6 +6,7 @@ import DonationInfoCard from '../UI/organisms/DonationInfoCard';
 import BannerSlide from '../UI/organisms/BannerSlide';
 import SelectBox from '../UI/molecules/SelectBox';
 import { Outlet } from 'react-router-dom';
+import { getCampaignAll } from '../../api/campaignAPI';
 
 function SearchResult() {
   const [posts, setPosts] = useState([]);
@@ -14,9 +15,10 @@ function SearchResult() {
   const offset = (page - 1) * limit;
 
   useEffect(() => {
-    fetch('https://jsonplaceholder.typicode.com/posts')
-      .then((res) => res.json())
-      .then((data) => setPosts(data));
+    getCampaignAll().then((response) => {
+      const campaignAll = response.content;
+      setPosts(campaignAll);
+    });
   }, []);
 
   return (
@@ -45,15 +47,21 @@ function SearchResult() {
           </label> */}
         </SelectOption>
         <Grid container justifyContent={'space-evenly'}>
-          {posts.slice(offset, offset + limit).map(({ id, title, body }) => (
-            <Grid item sm={7} md={5} lg={4}>
-              <div key={id}>
-                <DonationInfoCard>
-                  {id}. {title}
-                </DonationInfoCard>
-              </div>
-            </Grid>
-          ))}
+          {posts
+            .slice(offset, offset + limit)
+            .map(({ id, title, shelterName, targetDonation, thumbnailImageUrl }) => (
+              <Grid item sm={7} md={5} lg={4}>
+                <div key={id}>
+                  <DonationInfoCard
+                    id={id}
+                    title={title}
+                    shelterName={shelterName}
+                    thumbnailImageUrl={thumbnailImageUrl}
+                    targetDonation={targetDonation}
+                  ></DonationInfoCard>
+                </div>
+              </Grid>
+            ))}
         </Grid>
         <Pagination total={posts.length} limit={limit} page={page} setPage={setPage} />
       </Layout>

@@ -1,11 +1,22 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import CampaignCard from './CampaignCard';
 import Grid from '@mui/material/Grid';
 import CampaignTable from './CampaignTable';
+import { getCampaignById } from '../../../api/campaignAPI';
 
 import styled from '@emotion/styled';
 
 function CampaignDetail() {
+  const [datas, setDatas] = useState([]);
+
+  useEffect((id = 0) => {
+    getCampaignById(1).then((response) => {
+      const campaignDetail = response.content;
+      setDatas(campaignDetail);
+      console.log(campaignDetail);
+    });
+  }, []);
+
   return (
     <div>
       <br></br>

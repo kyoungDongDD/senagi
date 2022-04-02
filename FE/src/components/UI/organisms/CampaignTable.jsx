@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useState, useRef, useLayoutEffect } from 'react';
 import '../../../styles/CampaignTable.css';
 import UserButton from '../molecules/UserButton';
 import Dday from '../molecules/D-Day';
@@ -8,15 +8,17 @@ import Typography from '@mui/material/Typography';
 import ProgressBar from '../molecules/ProgressBar';
 import styled from '@emotion/styled';
 
-function CampaignTable() {
-  const [width, setwidth] = useState(0);
+function CampaignTable(props) {
+  const { id, isEnd, shelterName, targetDonation, endDate, account, type, registDate, hashtags } =
+    props;
 
-  const resizeWindow = () => {
-    setwidth(window.innerWidth);
-  };
+  const [width, setwidth] = useState(0);
+  const divWidth = useRef('');
 
   useEffect(() => {
-    console.log(width);
+    const nowWidth = divWidth.current.getBoundingClientRect();
+    setwidth(nowWidth.width);
+    console.log(nowWidth.width);
   }, [width]);
 
   return (
@@ -25,16 +27,18 @@ function CampaignTable() {
       <table className="myTable headerV">
         <tr>
           <td>사업기간</td>
-          <td>2022.03.05 ~ 2022.12.31</td>
+          <td>
+            {registDate} ~ {endDate}
+          </td>
         </tr>
         <tr>
           <td>보호소</td>
-          <td>마석유기견보호소</td>
+          <td>{shelterName}</td>
         </tr>
         <tr>
           <td>태그</td>
           <td>
-            <button>태그버튼 만들기!</button>
+            <button>for문으로 태그 돌리기</button>
           </td>
         </tr>
       </table>
@@ -42,9 +46,11 @@ function CampaignTable() {
         <CardContent>
           <Dday dday="15" />
           <Typography variant="h5" component="div">
-            100,100,000 원
+            {targetDonation}
           </Typography>
-          <ProgressBar id="size" percent="0.5" width={350} />
+          <div ref={divWidth}>
+            <ProgressBar id="size" percent="0.5" width={width} />
+          </div>
           <RightContainer>
             <Typography
               sx={{ fontSize: 16 }}
@@ -52,7 +58,7 @@ function CampaignTable() {
               color="text.secondary"
               gutterBottom
             >
-              50,000,000원
+              {account}
             </Typography>
           </RightContainer>
         </CardContent>
