@@ -29,6 +29,7 @@ import java.util.List;
 import com.ssafy.b105.repository.UserRepository;
 import lombok.Builder;
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.data.crossstore.ChangeSetPersister;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -39,6 +40,7 @@ import org.springframework.transaction.annotation.Transactional;
 @Transactional(readOnly = true)
 @RequiredArgsConstructor
 @Builder
+@Slf4j
 public class CampaignService {
 
     private final CampaignRepository campaignRepository;
@@ -135,6 +137,7 @@ public class CampaignService {
         campaign.addViewCount();
         Long balance = tokenContractService.balanceOf(campaign.getAccount());
         //id로 캠페인 찾기
+        log.info("저장전");
         return CampaignResponseDto.of(campaign,balance);
     }
 

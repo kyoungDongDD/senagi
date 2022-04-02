@@ -1,6 +1,7 @@
 package com.ssafy.b105.service;
 
 import com.ssafy.b105.entity.blockchain.Wallet;
+import com.ssafy.b105.entity.common.MemberType;
 import com.ssafy.b105.entity.user.Authority;
 import com.ssafy.b105.entity.user.User;
 import com.ssafy.b105.exception.DuplicateException;
@@ -74,11 +75,11 @@ public class UserServiceImpl implements UserService {
   }
 
   @Override
-  public User saveOrUpdateUser(User user) throws ChangeSetPersister.NotFoundException {
+  public User saveOrUpdateUser(User user, MemberType type) throws ChangeSetPersister.NotFoundException {
     isValied(user);
     Wallet wallet = walletService.createAccount(user)
         .orElseThrow(() -> new ChangeSetPersister.NotFoundException());
-    memberContractService.registMember(wallet.getAccount(), user.getMemberType());
+    memberContractService.registMember(wallet.getAccount(), type);
     user.encodePassword(this.passwordEncoder);
     return this.userRepository.save(user);
   }
@@ -97,11 +98,6 @@ public class UserServiceImpl implements UserService {
     return authority;
   }
 
-  @Override
-  public void setAuthority(User user, Authority authority) {
-    authority.setUser(user);
-    authorityRepository.save(authority);
-  }
 
   //유효성 검증
   private void isValied(User user) {
