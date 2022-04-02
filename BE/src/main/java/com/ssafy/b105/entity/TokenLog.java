@@ -28,7 +28,7 @@ public class TokenLog {
   private Long amount;
 
   private boolean isProcess;
-  private LocalDateTime processedDate;
+  private LocalDateTime processDate;
 
   private LocalDateTime registDate;
 
@@ -44,7 +44,7 @@ public class TokenLog {
 
   public void withdrawalProcess() {
     this.isProcess = true;
-    processedDate = LocalDateTime.now();
+    processDate = LocalDateTime.now();
   }
 
 }

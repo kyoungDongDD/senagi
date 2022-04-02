@@ -23,8 +23,9 @@ public class MemberContractServiceImpl implements
   @Override
   public boolean registMember(String account, MemberType type) {
     try {
-      TransactionReceipt receipt = memberMgr.newMember(account, type.name())
+      TransactionReceipt receipt = memberMgr.newMember(account, type.toString())
           .sendAsync().get();
+      return true;
     } catch (InterruptedException e) {
       e.printStackTrace();
     } catch (ExecutionException e) {

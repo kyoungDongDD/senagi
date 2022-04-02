@@ -40,7 +40,7 @@ public class Campaign extends BaseEntity{
     @Builder.Default
     private Boolean isEnd = false; //종료 여부 true: 종료됨 ,false : 진행중
 
-    @Column(length = 40)
+    @Column(length = 42)
     private String account; //블록체인 계좌정보
 
     @Column(length = 66)
