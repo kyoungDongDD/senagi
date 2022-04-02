@@ -10,7 +10,7 @@ spring:
     include: eth
 
   datasource:
-    url: jdbc:mysql://mysql:3306/nobaddonation?useSSL=false&serverTimezone=UTC&autoReconnect=true
+    url: jdbc:mysql://j6b105.p.ssafy.io:17177/nobaddonation?useSSL=false&serverTimezone=UTC&autoReconnect=true
     username: ssafy
     password: ssafyb105
     driver-class-name: com.mysql.cj.jdbc.Driver
