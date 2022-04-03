@@ -25,9 +25,10 @@ export default function SelectBox() {
           <MenuItem value="">
             <em></em>
           </MenuItem>
-          <MenuItem value={10}>조회순</MenuItem>
-          <MenuItem value={20}>모금금액순</MenuItem>
-          <MenuItem value={30}>???</MenuItem>
+          <MenuItem value={10}>최신순</MenuItem>
+          <MenuItem value={20}>조회순</MenuItem>
+          <MenuItem value={30}>보호소</MenuItem>
+          <MenuItem value={40}>프로젝트</MenuItem>
         </Select>
       </FormControl>
     </div>

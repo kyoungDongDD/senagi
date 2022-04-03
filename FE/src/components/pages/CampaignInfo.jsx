@@ -2,10 +2,12 @@ import { useEffect, useState } from 'react';
 import styled from '@emotion/styled';
 import CampaignDetail from '../UI/organisms/CampaignDetail';
 import UsageHistory from '../UI/organisms/UsageHistory';
+import { useLocation } from 'react-router-dom';
+import { getCampaignById } from '../../api/campaignAPI';
 
 function CampaignInfo() {
+  //소개, 사용내역 토글
   const [viewCalendar, setViewCalendar] = useState(true);
-
   const [currentClick, setCurrentClick] = useState(null);
   const [prevClick, setPrevClick] = useState(null);
 
@@ -13,6 +15,22 @@ function CampaignInfo() {
     setCurrentClick(e.target.id);
   };
 
+  // 상세조회 data
+  const [compaignData, setCompaignData] = useState([]);
+
+  const location = useLocation();
+  const { pageId } = location.state;
+
+  // DonationInfoCard에서 가져온 id 값을 매개변수로 getCampaignById 호출
+  useEffect(() => {
+    getCampaignById(pageId).then((response) => {
+      const compaignData = response;
+      setCompaignData(compaignData);
+      console.log(compaignData);
+    });
+  }, []);
+
+  // 사용내역, 소개 버튼 밑줄 토글
   useEffect(
     (e) => {
       if (currentClick !== null) {
@@ -31,6 +49,14 @@ function CampaignInfo() {
     },
     [currentClick],
   );
+
+  //day 계산
+  const date1 = new Date(compaignData.endDate);
+  const date2 = new Date(compaignData.lastModifiedDate);
+
+  const diffDate = date1.getTime() - date2.getTime();
+
+  const dateDays = Math.abs(diffDate / (1000 * 3600 * 24));
 
   return (
     <div>
@@ -57,7 +83,27 @@ function CampaignInfo() {
         </CategoryBox2>
         <div></div>
       </BtnContainer>
-      {viewCalendar ? <CampaignDetail /> : <UsageHistory />}
+      {viewCalendar ? (
+        <CampaignDetail
+          targetDonation={compaignData.targetDonation}
+          lastModifiedDate={compaignData.lastModifiedDate}
+          endDate={compaignData.endDate}
+          shelterName={compaignData.shelterName}
+          contentImageUrl={compaignData.contentImageUrl}
+          hashtags={compaignData.hashtags}
+          balance={compaignData.balance}
+          dday={dateDays}
+        />
+      ) : (
+        <UsageHistory
+          targetDonation={compaignData.targetDonation}
+          lastModifiedDate={compaignData.lastModifiedDate}
+          endDate={compaignData.endDate}
+          shelterName={compaignData.shelterName}
+          balance={compaignData.balance}
+          dday={dateDays}
+        />
+      )}
     </div>
   );
 }

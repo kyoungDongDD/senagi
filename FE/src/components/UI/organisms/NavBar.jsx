@@ -1,4 +1,4 @@
-import * as React from 'react';
+import { useState, useEffect } from 'react';
 import { styled, alpha } from '@mui/material/styles';
 import AppBar from '@mui/material/AppBar';
 import Box from '@mui/material/Box';
@@ -14,12 +14,15 @@ import MenuItem from '@mui/material/MenuItem';
 import InputBase from '@mui/material/InputBase';
 import SearchIcon from '@mui/icons-material/Search';
 
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 
 const pages = ['캠페인', '사업소개', '마이페이지'];
 
 const NavBar = () => {
-  const [anchorElNav, setAnchorElNav] = React.useState(null);
+  const [anchorElNav, setAnchorElNav] = useState(null);
+  const [keyword] = useState('');
+
+  const navigate = useNavigate();
 
   const handleOpenNavMenu = (event) => {
     setAnchorElNav(event.currentTarget);
@@ -27,24 +30,42 @@ const NavBar = () => {
 
   const handleCloseNavMenu = (event) => {
     setAnchorElNav(null);
-    console.log(event.target.innerText);
+    // 페이지 링크
     const page = event.target.innerText;
     switch (page) {
       case '캠페인':
-        window.location.href = 'https://j6b105.p.ssafy.io/searchresult';
+        navigate('/searchresult', {
+          state: {},
+        });
         break;
       case '사업소개':
-        window.location.href = 'https://j6b105.p.ssafy.io/';
+        navigate('/');
         break;
       case '마이페이지':
-        window.location.href = 'https://j6b105.p.ssafy.io/mypage';
+        navigate('/mypage');
         break;
       default:
-        window.location.href = 'https://j6b105.p.ssafy.io/home';
+        navigate('/home');
         break;
     }
   };
 
+  // 검색 기능
+
+  // 검색어 전달과 함께 페이지 이동
+  const onCheckEnter = (e) => {
+    const keyword = e.target.value;
+    if (e.key === 'Enter') {
+      navigate('/searchresult', {
+        state: {
+          keyword: keyword,
+        },
+      });
+      window.scrollTo(0, 300);
+    }
+  };
+
+  // navbar 디자인
   const Search = styled('div')(({ theme }) => ({
     position: 'relative',
     borderRadius: theme.shape.borderRadius,
@@ -186,7 +207,12 @@ const NavBar = () => {
                 <SearchIconWrapper>
                   <SearchIcon color="action" />
                 </SearchIconWrapper>
-                <StyledInputBase placeholder="검색하기" inputProps={{ 'aria-label': 'search' }} />
+                <StyledInputBase
+                  placeholder="검색하기"
+                  inputProps={{ 'aria-label': 'search' }}
+                  name="SearchKeyword"
+                  onKeyPress={onCheckEnter}
+                />
               </Search>
             </Tooltip>
           </Box>
