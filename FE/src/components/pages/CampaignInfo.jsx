@@ -2,6 +2,8 @@ import { useEffect, useState } from 'react';
 import styled from '@emotion/styled';
 import CampaignDetail from '../UI/organisms/CampaignDetail';
 import UsageHistory from '../UI/organisms/UsageHistory';
+import { useLocation } from 'react-router-dom';
+import { getCampaignById } from '../../api/campaignAPI';
 
 function CampaignInfo() {
   const [viewCalendar, setViewCalendar] = useState(true);
@@ -9,9 +11,20 @@ function CampaignInfo() {
   const [currentClick, setCurrentClick] = useState(null);
   const [prevClick, setPrevClick] = useState(null);
 
+  const location = useLocation();
+  const { id } = location.state;
+  console.log(id);
+
   const GetClikc = (e) => {
     setCurrentClick(e.target.id);
   };
+  // DonationInfoCard에서 가져온 id 값을 매개변수로 getCampaignById 호출
+  useEffect(() => {
+    getCampaignById(id).then((response) => {
+      const campaignInfo = response.content;
+      console.log(campaignInfo);
+    });
+  }, []);
 
   useEffect(
     (e) => {

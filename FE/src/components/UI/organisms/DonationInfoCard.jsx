@@ -8,8 +8,20 @@ import Typography from '@mui/material/Typography';
 import ProgressBar from './../molecules/ProgressBar';
 import Dday from '../molecules/D-Day';
 
-export default function ImgCard(props) {
+import { useNavigate } from 'react-router-dom';
+
+function ImgCard(props) {
   const { id, isEnd, shelterName, targetDonation, thumbnailImageUrl, title, type } = props;
+
+  const navigate = useNavigate();
+
+  const openDetail = (e) => {
+    navigate('/campaigninfo', {
+      state: {
+        id: id,
+      },
+    });
+  };
 
   return (
     //max min 똑같은 이유, ProgressBar에 영향을 안주기위해 고정값으로 주려고..
@@ -23,6 +35,7 @@ export default function ImgCard(props) {
         image={require('../../../assets/test1.jpg')}
         // image={require({ thumbnailImageUrl })}
         object-fit={'cover'}
+        onClick={openDetail}
       />
       <CardContent>
         <Typography gutterBottom variant="h5" component="div">
@@ -38,6 +51,8 @@ export default function ImgCard(props) {
     </Card>
   );
 }
+
+export default ImgCard;
 
 const Money = styled.div`
   margin-top: 15px;

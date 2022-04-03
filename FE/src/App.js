@@ -9,8 +9,11 @@ import SignUp from './components/pages/SignUp';
 import CampaignManagement from './components/pages/CampaignManagement';
 import SearchResult from './components/pages/SearchResult';
 import CampaignInfo from './components/pages/CampaignInfo';
+import NavBar from './components/UI/organisms/NavBar';
 
 import commonStyles from './styles/commonStyles';
+
+import Testpage from './components/pages/Testpage';
 
 export default function App() {
   return (
@@ -26,7 +29,8 @@ export default function App() {
           <Route path="/campaign" element={<CampaignManagement />} />
           <Route path="/mypage" element={<MyPage />} />
           <Route path="/searchresult" element={<SearchResult />} />
-          <Route path="/CampaignInfo" element={<CampaignInfo />} />
+          <Route path="/campaigninfo" element={<CampaignInfo />} />
+          <Route path="/Testpage" element={<Testpage />} />
 
           {/* 404 Not Found*/}
           <Route path="/*" element={<NoMatch />} />

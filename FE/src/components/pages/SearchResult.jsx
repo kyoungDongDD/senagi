@@ -5,18 +5,27 @@ import Pagination from '../UI/organisms/Pagination';
 import DonationInfoCard from '../UI/organisms/DonationInfoCard';
 import BannerSlide from '../UI/organisms/BannerSlide';
 import SelectBox from '../UI/molecules/SelectBox';
-import { Outlet } from 'react-router-dom';
+import { Outlet, useLocation } from 'react-router-dom';
 import { getCampaignAll } from '../../api/campaignAPI';
+import axios from 'axios';
 
 function SearchResult() {
+  URL = 'https://j6b105.p.ssafy.io/api/campaigns';
+  // 페이지네이션
   const [posts, setPosts] = useState([]);
   const [limit, setLimit] = useState(12);
   const [page, setPage] = useState(1);
   const offset = (page - 1) * limit;
 
+  //받아온 검색어 데이터
+  const location = useLocation();
+  const { keyword } = location.state;
+  console.log(keyword);
+
   useEffect(() => {
     getCampaignAll().then((response) => {
       const campaignAll = response.content;
+      console.log(campaignAll);
       setPosts(campaignAll);
     });
   }, []);
@@ -50,8 +59,8 @@ function SearchResult() {
           {posts
             .slice(offset, offset + limit)
             .map(({ id, title, shelterName, targetDonation, thumbnailImageUrl }) => (
-              <Grid item sm={7} md={5} lg={4}>
-                <div key={id}>
+              <Grid item sm={7} md={5} lg={4} key={id}>
+                <div>
                   <DonationInfoCard
                     id={id}
                     title={title}

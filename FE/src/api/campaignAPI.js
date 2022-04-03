@@ -10,6 +10,18 @@ export async function getCampaignAll() {
   }
 }
 
+export async function getCampaignWord(searchWord) {
+  try {
+    const response = await axios.get(
+      `https://j6b105.p.ssafy.io/api/campaigns?searchWord=${searchWord}`,
+    );
+    return response.data;
+  } catch (err) {
+    console.log('Falie to fetch user:', err);
+    return 'Unknown';
+  }
+}
+
 export async function getCampaignById(campaignId) {
   try {
     const response = await axios.get(`https://j6b105.p.ssafy.io/api/campaign/detail/${campaignId}`);
