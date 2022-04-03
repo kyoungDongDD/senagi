@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-const api = axios.create({
+export const api = axios.create({
   // baseURL: 'http://localhost:8080/api/',
   // baseURL: 'https://84c8d203-4698-4ccf-a301-71d6e01c0494.mock.pstmn.io',
   baseURL: 'https://j6b105.p.ssafy.io/api/',
