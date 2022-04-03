@@ -74,6 +74,7 @@ public class BlockchainConnector {
   private Token tokenMgr;
   private Credentials credentials;
   private ContractGasProvider gasProvider;
+  private TransactionManager transactionManager;
 
   private BigInteger decimals;
 
@@ -92,7 +93,7 @@ public class BlockchainConnector {
     try {
       File wallet = ResourceUtils.getFile(keyPath + adminWallet);
       credentials = WalletUtils.loadCredentials(adminPass, wallet);
-      TransactionManager transactionManager = new RawTransactionManager(web3j, credentials,
+      transactionManager = new RawTransactionManager(web3j, credentials,
           chainId);
       this.memberMgr = Member.load(memberAddr, web3j, transactionManager, gasProvider);
       this.tokenMgr = Token.load(tokenAddr, web3j, transactionManager, gasProvider);
@@ -110,7 +111,7 @@ public class BlockchainConnector {
 
     return Campaign.deploy(
         web3j,
-        credentials,
+        transactionManager,
         gasProvider,
         BalanceConverter.longToBigInteger(dto.getTargetAmount(),decimals),
         BalanceConverter.longToBigInteger(dto.getDeadLine(),decimals),
@@ -118,7 +119,7 @@ public class BlockchainConnector {
         tokenAddr).send();
   }
   public Campaign loadContract(String address) {
-    return Campaign.load(address,web3j,credentials,gasProvider);
+    return Campaign.load(address,web3j,transactionManager,gasProvider);
   }
 
   public Member getMemberMgr() {

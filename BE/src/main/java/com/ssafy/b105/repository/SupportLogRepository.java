@@ -6,4 +6,6 @@ import java.util.Optional;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 public interface SupportLogRepository extends JpaRepository<SupportLog, Long> {
+    Optional<User> findByUser(User user);
+
 }

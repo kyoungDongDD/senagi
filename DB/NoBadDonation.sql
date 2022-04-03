@@ -6,10 +6,11 @@ USE  nobaddonation;
 
 CREATE TABLE `user` (
   `user_id` bigint NOT NULL AUTO_INCREMENT,
-  `credential` varchar(255) NOT NULL,
+  `credential` varchar(255),
   `name` varchar(60) NOT NULL,
   `phone` varchar(255) DEFAULT NULL,
   `principal` varchar(60) NOT NULL,
+  `vendor` varchar(255),
   `provider` varchar(255) DEFAULT NULL,
   `provider_id` varchar(255) DEFAULT NULL,
   `regist_date`  timestamp,

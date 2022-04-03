@@ -58,7 +58,8 @@ public class CampaignRepositoryImpl implements CampaignSearchRepository {
                 campaign.endDate,
                 campaign.type,
                 campaign.registDate,
-                campaign.lastModifiedDate
+                campaign.lastModifiedDate,
+                campaign.user.name
             )).distinct()
             .from(campaign)
             .join(campaign.campaignHashtags, QCampaignHashtag.campaignHashtag)
@@ -88,7 +89,7 @@ public class CampaignRepositoryImpl implements CampaignSearchRepository {
     // 여기서부터 List 정렬, 검색 조건 함수
     // where절에 null 반환시 조건 생략
     private BooleanExpression typeEq(CampaignType type) {
-        return type == null ? null : campaign.type.eq(type);
+        return (type == null)||(type == CampaignType.ALL)? null : campaign.type.eq(type);
     }
 
     private BooleanExpression isEndEq(Boolean isEnd) {
@@ -145,6 +146,15 @@ public class CampaignRepositoryImpl implements CampaignSearchRepository {
             default:
                 return null;
         }
+    }
+
+    @Override
+    public Page<CampaignListDto> myCampaign(List<CampaignListDto> campaignListDtos, Pageable pageable,Long userId) {
+        JPAQuery<Long> countQuery = queryFactory
+            .select(campaign.count())
+            .from(campaign)
+            .where(campaign.id.eq(userId));
+        return PageableExecutionUtils.getPage(campaignListDtos, pageable, countQuery::fetchOne);
     }
 
 }

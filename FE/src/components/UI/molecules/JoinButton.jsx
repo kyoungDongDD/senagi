@@ -12,6 +12,7 @@ const StyledBox = styled(Box)`
 const StyledText = styled(Text)`
   display: inline-block;
   color: black;
+  margin: auto 0 auto auto;
 `;
 
 const StyledLink = styled(Link)`

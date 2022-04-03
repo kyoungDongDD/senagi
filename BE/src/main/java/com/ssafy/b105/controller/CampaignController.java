@@ -10,6 +10,7 @@ import com.ssafy.b105.repository.CampaignRepository;
 import com.ssafy.b105.service.CampaignService;
 import java.util.List;
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.data.crossstore.ChangeSetPersister;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -23,6 +24,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 @RequiredArgsConstructor
+@Slf4j
 public class CampaignController {
 
     private final CampaignService campaignService;
@@ -33,19 +35,9 @@ public class CampaignController {
         CampaignRequestDto campaignRequestDto,
         @AuthenticationPrincipal JwtAuthentication jwtAuthentication)
         throws ChangeSetPersister.NotFoundException {
-        //todo: 유저가 보호소인지 체크
+        log.debug("[CreateCampaignProject]{} jwtAuthentication Notfound");
         return ResponseEntity.ok(
             campaignService.createCampaignProject(jwtAuthentication, campaignRequestDto));
-    }
-
-    @PostMapping("/api/campaign/shelter")
-    public ResponseEntity<CampaignResponseDto> CreateCampaignShelter(
-        @RequestBody CampaignRequestDto campaignRequestDto,
-        @AuthenticationPrincipal JwtAuthentication jwtAuthentication)
-        throws ChangeSetPersister.NotFoundException {
-        //todo: 유저가 보호소인지 체크
-        return ResponseEntity.ok(
-            campaignService.createCampaignShelter(jwtAuthentication, campaignRequestDto));
     }
 
     //detail 조회
@@ -69,10 +61,9 @@ public class CampaignController {
     }
 
     @GetMapping("/api/campaigns/owned")
-    public ResponseEntity<List<CampaignListDto>> FindMyCampaign(CampaignSearchCondition condition,
-        Pageable pageable,
+    public ResponseEntity<Page<CampaignListDto>> FindMyCampaign(Pageable pageable,
         @AuthenticationPrincipal JwtAuthentication jwtAuthentication) {
-        return ResponseEntity.ok(campaignService.findAllByUserId(jwtAuthentication.getId()));
+        return ResponseEntity.ok(campaignService.findAllByUserId(jwtAuthentication.getId(),pageable));
     }
 }
 

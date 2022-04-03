@@ -8,6 +8,7 @@ import com.ssafy.b105.entity.SupportLog;
 import com.ssafy.b105.entity.BaseEntity;
 import com.ssafy.b105.entity.blockchain.Wallet;
 import com.ssafy.b105.entity.campaign.Campaign;
+import com.ssafy.b105.entity.common.MemberType;
 import lombok.*;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.GrantedAuthority;
@@ -56,9 +57,13 @@ public class User{
   private String provider;
 
   private String providerId;
+
+  @Builder.Default
+  private String vendor = "NBD";
   //연관 관계 매핑
 
   @OneToMany(mappedBy = "user",cascade = CascadeType.ALL ,orphanRemoval = true)
+  @Builder.Default
   private List<Campaign> campaigns = new ArrayList<>();
 
   @OneToOne(mappedBy = "user")
@@ -67,6 +72,7 @@ public class User{
   //생성 매서드
   public static User of(String vendor, String principal, String nickname, String profileImageUrl) {
     return User.builder()
+      .vendor(vendor)
       .name(nickname)
       .principal(principal)
       .build();
@@ -84,8 +90,8 @@ public class User{
     JwtAuthentication principal = (JwtAuthentication) authentication.getPrincipal();
     Jwt.Claims claims = Jwt.Claims.of(
       principal.getId(),
-      principal.getName(),
       principal.getPrincipal(),
+      principal.getName(),
       getRoleAtAuthorities(authentication).toArray(String[]::new)
     );
     return jwt.newToken(claims);
@@ -109,5 +115,21 @@ public class User{
     return this.authorities.stream()
       .map(authority -> new SimpleGrantedAuthority(authority.getAuthority().name()))
       .collect(Collectors.toSet());
+  }
+
+
+  public User update(String email) {
+    this.principal = email;
+    return this;
+  }
+
+  public MemberType getMemberType() {
+    if(authorities.contains(UserRole.SHELTER)) {
+      return MemberType.Shelter;
+    }
+    if(authorities.contains(UserRole.SUPPORTER)) {
+      return MemberType.Supporter;
+    }
+    return MemberType.None;
   }
 }

@@ -20,7 +20,7 @@ public class SupportLogResponseDto {
     private Long amount;
 
     @JsonFormat(shape = Shape.STRING,pattern = "yyyy-MM-dd",timezone = "Asia/Seoul")
-    private LocalDateTime donationDate;
+    private LocalDateTime donateDate;
 
     public static SupportLogResponseDto from(SupportLog supportLog) {
         if (supportLog == null) {
@@ -30,7 +30,7 @@ public class SupportLogResponseDto {
             .userId(supportLog.getUser().getId())
             .campaignId(supportLog.getCampaign().getId())
             .amount(supportLog.getAmount())
-            .donationDate(supportLog.getDonationDate())
+            .donateDate(supportLog.getDonateDate())
             .build();
     }
 }
