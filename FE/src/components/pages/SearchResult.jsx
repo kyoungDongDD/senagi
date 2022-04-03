@@ -10,7 +10,6 @@ import { getCampaignAll } from '../../api/campaignAPI';
 import axios from 'axios';
 
 function SearchResult() {
-  URL = 'https://j6b105.p.ssafy.io/api/campaigns';
   // 페이지네이션
   const [posts, setPosts] = useState([]);
   const [limit, setLimit] = useState(12);
@@ -20,7 +19,6 @@ function SearchResult() {
   //받아온 검색어 데이터
   const location = useLocation();
   const { keyword } = location.state;
-  console.log(keyword);
 
   useEffect(() => {
     getCampaignAll().then((response) => {
@@ -58,19 +56,31 @@ function SearchResult() {
         <Grid container justifyContent={'space-evenly'}>
           {posts
             .slice(offset, offset + limit)
-            .map(({ id, title, shelterName, targetDonation, thumbnailImageUrl }) => (
-              <Grid item sm={7} md={5} lg={4} key={id}>
-                <div>
-                  <DonationInfoCard
-                    id={id}
-                    title={title}
-                    shelterName={shelterName}
-                    thumbnailImageUrl={thumbnailImageUrl}
-                    targetDonation={targetDonation}
-                  ></DonationInfoCard>
-                </div>
-              </Grid>
-            ))}
+            .map(
+              ({
+                id,
+                title,
+                shelterName,
+                targetDonation,
+                thumbnailImageUrl,
+                endDate,
+                lastModifiedDate,
+              }) => (
+                <Grid item sm={7} md={5} lg={4} key={id}>
+                  <div>
+                    <DonationInfoCard
+                      id={id}
+                      title={title}
+                      shelterName={shelterName}
+                      thumbnailImageUrl={thumbnailImageUrl}
+                      targetDonation={targetDonation}
+                      endDate={endDate}
+                      lastModifiedDate={lastModifiedDate}
+                    ></DonationInfoCard>
+                  </div>
+                </Grid>
+              ),
+            )}
         </Grid>
         <Pagination total={posts.length} limit={limit} page={page} setPage={setPage} />
       </Layout>
