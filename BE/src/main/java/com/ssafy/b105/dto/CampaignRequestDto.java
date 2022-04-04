@@ -5,6 +5,7 @@ import com.ssafy.b105.entity.campaign.CampaignType;
 import com.ssafy.b105.entity.user.User;
 import com.sun.istack.NotNull;
 import com.sun.istack.Nullable;
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.List;
 import lombok.AllArgsConstructor;
@@ -36,9 +37,9 @@ public class CampaignRequestDto {
     private Long targetDonation;
 
     @Nullable
-    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd HH:mm:ss")
-    @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss")
-    private LocalDateTime endDate;
+    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd")
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
+    private LocalDate endDate;
 
     @NotNull
     private CampaignType type;
