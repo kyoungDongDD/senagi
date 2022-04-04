@@ -1,5 +1,7 @@
 package com.ssafy.b105.config;
 
+import com.ssafy.b105.auth.Jwt.JwtAcessDeniedHandler;
+import com.ssafy.b105.auth.JwtAuthenticationEntryPoint;
 import com.ssafy.b105.auth.oauth.OAuth2SuccessHandler;
 import com.ssafy.b105.auth.oauth.OAuth2UerService;
 import com.ssafy.b105.auth.Jwt.domain.Jwt;
@@ -32,7 +34,8 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
   private final JwtTokenConfig jwtTokenConfig;
   private final OAuth2SuccessHandler oAuth2SuccessHandler;
   private final OAuth2UerService oAuth2UerService;
-//  private final PrincipalOauth2UserService principalOauth2UserService;
+  private final JwtAcessDeniedHandler jwtAcessDeniedHandler;
+  private final JwtAuthenticationEntryPoint jwtAuthenticationEntryPoint;
 
 
   @Bean
@@ -72,6 +75,11 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     http
       .sessionManagement()
       .sessionCreationPolicy(SessionCreationPolicy.STATELESS);
+
+    http
+      .exceptionHandling()  //예외 핸들러 추가
+      .authenticationEntryPoint(jwtAuthenticationEntryPoint)
+      .accessDeniedHandler(jwtAcessDeniedHandler);
 
     http
       .addFilterBefore(jwtFilter(), UsernamePasswordAuthenticationFilter.class);
