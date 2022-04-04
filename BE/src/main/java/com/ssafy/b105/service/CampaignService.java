@@ -23,6 +23,8 @@ import com.ssafy.b105.service.blockchain.TokenContractService;
 import com.ssafy.b105.utils.MD5Generator;
 import com.ssafy.b105.utils.TimeConverter;
 import java.io.File;
+import java.time.LocalDateTime;
+import java.time.LocalTime;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -62,14 +64,14 @@ public class CampaignService {
         try {
             // Blockchain contract deploy
             ContractRequestDto contractRequestDto = new ContractRequestDto(
-                TimeConverter.localDateTimeToUnix(campaignRequestDto.getEndDate()),
+                TimeConverter.localDateTimeToUnix(
+                    LocalDateTime.of(campaignRequestDto.getEndDate(), LocalTime.of(23,59,59))),
                 campaignRequestDto.getTargetDonation());
 
             ContractResponseDto contractResponseDto = campaignContractService.deployContract(
                 contractRequestDto);
 
             // Blockchain new member
-            // TODO 개선 할 수 있으면 개선 (How)
             if(!memberContractService.registMember(
                 contractResponseDto.getAccount(),
                 typeMapper(campaignRequestDto.getType()))) {

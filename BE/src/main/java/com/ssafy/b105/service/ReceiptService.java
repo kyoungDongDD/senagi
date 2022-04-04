@@ -40,6 +40,9 @@ public class ReceiptService {
         //파일 확장자
         String extension = originalFilename.substring(originalFilename.lastIndexOf("."));
 
+        // TODO Exception 수정
+        if(!campaign.getIsEnd())
+            throw new IllegalArgumentException();
         try {
 
             AmountDto amountDto = campaignContractService.withdrawal(
