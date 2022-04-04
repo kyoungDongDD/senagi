@@ -1,3 +1,4 @@
+import { useState } from 'react';
 import Dday from '../molecules/D-Day';
 import Card from '@mui/material/Card';
 import CardContent from '@mui/material/CardContent';
@@ -8,6 +9,7 @@ import styled from '@emotion/styled';
 import Text from '../atoms/Text';
 import { Grid } from '@mui/material';
 import DonateModal from '../organisms/Modal/DonateModal';
+import WithdrawModal from './Modal/WithdrawModal';
 
 function CampaignCard(props) {
   const {
@@ -26,6 +28,10 @@ function CampaignCard(props) {
   } = props;
 
   const targetMoney = targetDonation ? targetDonation.toLocaleString() : targetDonation;
+  const [isOpen, setIsOpen] = useState();
+  const handleClose = (value) => {
+    setIsOpen(false);
+  };
 
   return (
     //max min 똑같은 이유, ProgressBar에 영향을 안주기위해 고정값으로 주려고..
@@ -56,14 +62,16 @@ function CampaignCard(props) {
             {lastModifiedDate} ~ {endDate}까지
           </Typography>
         </RightContainer>
-        {/* <UserButton
+        <UserButton
           type="submit"
           fullWidth
           variant="contained"
           text="캠페인 기부하기"
           size="large"
-        /> */}
+          func={() => setIsOpen(true)}
+        />
         <DonateModal />
+        <WithdrawModal isOpen={isOpen} onClose={handleClose} />
         <Typography sx={{ fontSize: 14 }}>모금단체</Typography>
         <Typography>{shelterName}</Typography>
       </CardContent>
