@@ -17,9 +17,9 @@ const fileApi = axios.create({
 });
 
 const ocrApi = axios.create({
-  // baseURL:
-  //   'https://sjzq3u7j26.apigw.ntruss.com/custom/v1/14843/0c3307a350bcc0e2b944ccdb8fc49c191fcd75425562e54c2570aa65f0b29b65/',
-  baseURL: 'https://sjzq3u7j26.apigw.ntruss.com/custom/v1/',
+  baseURL:
+    'https://sjzq3u7j26.apigw.ntruss.com/custom/v1/14843/0c3307a350bcc0e2b944ccdb8fc49c191fcd75425562e54c2570aa65f0b29b65/',
+  // baseURL: 'https://sjzq3u7j26.apigw.ntruss.com/custom/v1/',
   // baseURL:
   // 'https://cors.bridged.cc/http://clovaocr-api-kr.ncloud.com/external-private/v1/14843/0c3307a350bcc0e2b944ccdb8fc49c191fcd75425562e54c2570aa65f0b29b65/',
   // baseURL: '/custom/v1/14843/0c3307a350bcc0e2b944ccdb8fc49c191fcd75425562e54c2570aa65f0b29b65/',

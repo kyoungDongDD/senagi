@@ -83,8 +83,8 @@ const StyledDialog = styled(Dialog)`
 
 function WithdrawModal(props) {
   let { onClose, isOpen } = props;
-  const [fileBase64, setfileBase64] = useState(''); // 파일 Base 64
-  // const [imgFile, setImgFile] = useState(null); //파일
+  const [fileBase64, setFileBase64] = useState(''); // 파일 Base 64 data
+  const [fileFormat, setFileFormat] = useState(''); //파일 format data
   const [fileImage, setFileImage] = useState(''); // 이미지 미리보기
   const [file, setFile] = useState(''); // 이미지 저장
   const [amount, setAmount] = useState(''); // OCR에서 추출한 총액 (서버로 출금요청 보낼 amount)
@@ -96,14 +96,14 @@ function WithdrawModal(props) {
     const OCRdata = {
       images: [
         {
-          format: 'jpg',
-          name: 'demo',
+          format: fileFormat,
+          name: Date.now().toString(),
           data: fileBase64,
         },
       ],
       requestId: uuidv4(),
       version: 'V2',
-      timestamp: Date.now(),
+      timestamp: Date.now().toString(),
     };
 
     // OCR 분석 결과 출력
@@ -120,56 +120,27 @@ function WithdrawModal(props) {
   const handleChangeFile = async (event) => {
     let reader = new FileReader();
     setFileImage(URL.createObjectURL(event.target.files[0])); // 이미지 미리보기
-    setFile(event.target.files[0]); // 이미지 저장 (form-data로 보낼 것)
 
-    console.log(file);
-    // 읽기 완료 후 base64 encoding
+    // 2. 읽기 완료 후 base64 encoding
     reader.onload = () => {
-      console.log(reader);
       const base64 = reader.result;
+      // console.log(base64);
       if (base64) {
-        const temp = base64.toString();
-        console.log(temp);
-        setfileBase64(temp.substring(',')); // 불필요한 데이터 "," 기준 삭제
+        let dataType = reader.result.split(';base64,')[0];
+        // console.log(dataType.split('/')[1]);
+        setFileFormat(dataType.split('/')[1]); // 데이터 타입 저장
+        let base64result = base64.split(',')[1]; // 불필요한 데이터 "," 기준 삭제
+        setFileBase64(base64result);
         console.log(fileBase64);
       }
     };
 
+    if (event.target.files[0]) {
+      reader.readAsDataURL(event.target.files[0]); // 1. 파일 읽어서 저장
+      setFile(event.target.files[0]); // 이미지 저장 (form-data로 보낼 것)
+    }
+
     ocrRequest();
-  };
-
-  // 파일 저장
-  const saveFileImage = async (e) => {
-    setFileImage(URL.createObjectURL(e.target.files[0])); // 이미지 미리보기
-    setFile(e.target.files[0]); // 이미지 저장 (form-data로 보낼 것)
-    // console.log(file);
-
-    // 이미지 파일 Base64 Encode
-    handleChangeFile();
-    console.log(fileBase64);
-
-    const OCRdata = {
-      images: [
-        {
-          format: 'jpg',
-          name: 'demo',
-          data: fileBase64,
-        },
-      ],
-      requestId: uuidv4(),
-      version: 'V2',
-      timestamp: Date.now(),
-    };
-
-    console.log(OCRdata);
-    // OCR 분석
-    await PaymentAPI.OCR(OCRdata)
-      .then((response) => {
-        console.log(response);
-      })
-      .catch((error) => {
-        console.log(error);
-      });
   };
 
   // 파일 삭제
