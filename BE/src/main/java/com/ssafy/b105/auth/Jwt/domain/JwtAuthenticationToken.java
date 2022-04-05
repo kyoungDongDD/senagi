@@ -1,6 +1,7 @@
 package com.ssafy.b105.auth.Jwt.domain;
 
 import com.ssafy.b105.auth.Jwt.JwtFilter;
+import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang3.builder.ToStringBuilder;
 import org.apache.commons.lang3.builder.ToStringStyle;
 import org.springframework.security.authentication.AbstractAuthenticationToken;
@@ -8,6 +9,7 @@ import org.springframework.security.core.GrantedAuthority;
 
 import java.util.Collection;
 
+@Slf4j
 public class JwtAuthenticationToken extends AbstractAuthenticationToken {
   /**
    * 인증 주체이며 Object타입이다.
@@ -26,6 +28,8 @@ public class JwtAuthenticationToken extends AbstractAuthenticationToken {
     super(null);
     super.setAuthenticated(false);
 
+    if(!principal.toString().isEmpty())log.debug("아이디가 입력되었습니다.");  // 아이디랑 비밀번호 정보는 내면 안될것같음
+    if (!credentials.isEmpty())log.debug("비밀번호가 입력되었습니다.");
     this.principal = principal;
     this.credentials = credentials;
   }

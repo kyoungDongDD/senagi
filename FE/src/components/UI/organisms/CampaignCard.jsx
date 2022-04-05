@@ -3,7 +3,6 @@ import Dday from '../molecules/D-Day';
 import Card from '@mui/material/Card';
 import CardContent from '@mui/material/CardContent';
 import Typography from '@mui/material/Typography';
-import UserButton from '../molecules/UserButton';
 import ProgressBar from '../molecules/ProgressBar';
 import styled from '@emotion/styled';
 import Text from '../atoms/Text';
@@ -18,6 +17,7 @@ function CampaignCard(props) {
     shelterName,
     targetDonation,
     contentImageUrl,
+    thumbnailImageUrl,
     title,
     type,
     lastModifiedDate,
@@ -33,13 +33,19 @@ function CampaignCard(props) {
     setIsOpen(false);
   };
 
+  // 현재 모금액 / 목표 금액으로 퍼센트 구하기
+  const targeMoney = Number(targetDonation);
+  const nowMoney = Number(balance);
+
+  const barPer = nowMoney / targeMoney;
+
   return (
     //max min 똑같은 이유, ProgressBar에 영향을 안주기위해 고정값으로 주려고..
     <StyledCard>
       <CardContent>
         <Grid container>
           <Grid item xs={9}>
-            <StyledText className="body1" text={`${targetMoney}` + '원'} />
+            <StyledText className="body1" text={`${balance}` + '원'} />
           </Grid>
           <StyledGrid item xs={3}>
             <Dday dday={dday} />
@@ -48,7 +54,7 @@ function CampaignCard(props) {
         {/* <Typography variant="h5" component="div">
           100,100,000 원
         </Typography> */}
-        <ProgressBar percent="0.5" width="321" />
+        <ProgressBar percent={barPer} width="321" />
         <RightContainer>
           <Typography
             sx={{ fontSize: 16 }}
@@ -56,7 +62,7 @@ function CampaignCard(props) {
             color="text.secondary"
             gutterBottom
           >
-            {balance}원
+            {targetMoney}원
           </Typography>
           <Typography sx={{ fontSize: 14 }} color="text.secondary" gutterBottom>
             {lastModifiedDate} ~ {endDate}까지
@@ -70,8 +76,12 @@ function CampaignCard(props) {
           size="large"
           func={() => setIsOpen(true)}
         />
-        <DonateModal />
         <WithdrawModal isOpen={isOpen} onClose={handleClose} />
+        <DonateModal
+          shelterName={shelterName}
+          thumbnailImageUrl={thumbnailImageUrl}
+          title={title}
+        />
         <Typography sx={{ fontSize: 14 }}>모금단체</Typography>
         <Typography>{shelterName}</Typography>
       </CardContent>

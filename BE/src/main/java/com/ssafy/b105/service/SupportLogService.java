@@ -14,9 +14,7 @@ import com.ssafy.b105.repository.TokenLogRepository;
 import com.ssafy.b105.repository.UserRepository;
 import com.ssafy.b105.service.blockchain.CampaignContractService;
 import com.ssafy.b105.service.blockchain.TokenContractService;
-import java.math.BigInteger;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.crossstore.ChangeSetPersister.NotFoundException;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -47,6 +45,11 @@ public class SupportLogService {
         Campaign campaign = campaignRepository.findById(supportLogDto.getCampaignId())
             .orElseThrow(() -> new IllegalArgumentException());
 
+        // TODO Exception 수정
+        if(campaign.getIsEnd()) {
+            throw new IllegalArgumentException();
+        }
+
         Wallet wallet = user.getWallet();
 
         AmountDto chargeDto = tokenContractService.charge(wallet, supportLogDto.getAmount());
@@ -61,6 +64,8 @@ public class SupportLogService {
             user.getWallet(),
             campaign.getAccount(),
             supportLogDto.getAmount());
+        if(campaignContractService.isEnd(campaign.getAccount()))
+            campaign.setIsEnd(true);
 
         wallet.setBalance(tokenContractService.balanceOfBigInteger(wallet));
         SupportLog supportLog = SupportLog.builder()

@@ -13,6 +13,7 @@ function CampaignDetail(props) {
     shelterName,
     targetDonation,
     contentImageUrl,
+    thumbnailImageUrl,
     title,
     type,
     lastModifiedDate,
@@ -53,6 +54,8 @@ function CampaignDetail(props) {
           <CampaignCard
             targetDonation={targetDonation}
             shelterName={shelterName}
+            title={title}
+            thumbnailImageUrl={thumbnailImageUrl}
             lastModifiedDate={lastModifiedDate}
             endDate={endDate}
             hashtags={hashtags}
