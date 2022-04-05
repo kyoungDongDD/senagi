@@ -1,4 +1,4 @@
-import api from './index';
+import { api } from './index';
 
 class AccountsAPI {
   // 회원가입
