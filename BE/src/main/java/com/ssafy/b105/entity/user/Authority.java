@@ -16,7 +16,7 @@ public class Authority {
   @Column(name = "AUTHORITY_ID")
   private Long id;
 
-  @ManyToOne(fetch = FetchType.LAZY)
+  @ManyToOne(fetch = FetchType.LAZY,cascade = CascadeType.ALL)
   @JoinColumn(name = "User_ID")
   private User user;
 
