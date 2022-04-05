@@ -30,7 +30,8 @@ public class UserRepositoryImpl implements UserSuppottLogRepository {
                 QSupportLog.supportLog.campaign.user.name.as("shelterName"),
                 QSupportLog.supportLog.amount,
                 QSupportLog.supportLog.campaign.thumbnailImageUrl.as("thumnailImagUrl"),
-                QSupportLog.supportLog.donateDate.as("donateDate")
+                QSupportLog.supportLog.donateDate.as("donateDate"),
+                QSupportLog.supportLog.campaign.title.as("campaignTitle")
             ))
             .from(QSupportLog.supportLog)
             .where(QSupportLog.supportLog.user.id.eq(user.getId()))

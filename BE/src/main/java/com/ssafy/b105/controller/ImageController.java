@@ -21,7 +21,7 @@ import org.springframework.web.bind.annotation.RestController;
 public class ImageController {
     private final ImageService imageService;
 
-    @GetMapping("/imgs/{fileName}")
+    @GetMapping("/api/imgs/{fileName}")
     public ResponseEntity<?> serveFile(@PathVariable String fileName){
         try {
 

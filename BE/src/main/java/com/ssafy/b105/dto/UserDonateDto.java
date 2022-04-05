@@ -21,13 +21,15 @@ public class UserDonateDto {
     private String thumnailImagUrl;
     @JsonFormat(shape = Shape.STRING,pattern = "yyyy-MM-dd",timezone = "Asia/Seoul")
     private LocalDateTime donateDate;
+    private String campaignTitle;
 
     @QueryProjection
     public UserDonateDto(String shelterName, Long amount, String thumnailImagUrl,
-        LocalDateTime donateDate) {
+        LocalDateTime donateDate,String campaignTitle) {
         this.shelterName = shelterName;
         this.amount = amount;
         this.thumnailImagUrl = thumnailImagUrl;
         this.donateDate = donateDate;
+        this.campaignTitle = campaignTitle;
     }
 }
