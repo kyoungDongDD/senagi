@@ -91,9 +91,10 @@ function WithdrawModal(props) {
   const [amount, setAmount] = useState(''); // OCR에서 추출한 총액 (서버로 출금요청 보낼 amount)
   const [subResults, setSubResults] = useState([]); // 상세 항목 데이터
   const classes = useStyles();
-  const campaignId = useParams(); // API 요청 보낼 campaign id parameter
+  const { campaignId } = useParams(); // API 요청 보낼 campaign id parameter
+  console.log('campaignId', campaignId);
 
-    // 파일 전송하기
+  // 파일 전송하기
   const withdraw = async () => {
     const formdata = new FormData();
     formdata.append('file', file);
@@ -108,7 +109,7 @@ function WithdrawModal(props) {
         console.log(error);
       });
   };
-  
+
   // OCR
   const ocrRequest = async (event) => {
     // console.log(fileBase64);
@@ -131,8 +132,10 @@ function WithdrawModal(props) {
       .then((response) => {
         // console.log('response', response);
         const result = response.data.images[0].receipt.result;
+        const totalPrice = result.totalPrice.price.text.replaceAll('.', '');
         // console.log('result', result);
-        setAmount(result.totalPrice.price.text);
+        console.log('amount', Number(totalPrice));
+        setAmount(Number(totalPrice));
         setSubResults(result.subResults[0].items);
         console.log('subResults', subResults);
       })
@@ -206,7 +209,7 @@ function WithdrawModal(props) {
               >
                 {/* <input type="file" name="imgFile" id="imgFile" onChange={handleChangeFile} /> */}
                 <input name="imgUpload" type="file" accept="image/*" onChange={handleChangeFile} />
-                <AttachButton subResults={subResults} totalAmount={amount}/>
+                <AttachButton subResults={subResults} totalAmount={amount} />
                 <button
                   style={{
                     backgroundColor: 'gray',

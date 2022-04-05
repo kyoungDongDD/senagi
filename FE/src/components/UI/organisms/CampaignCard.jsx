@@ -9,6 +9,7 @@ import Text from '../atoms/Text';
 import { Grid } from '@mui/material';
 import DonateModal from '../organisms/Modal/DonateModal';
 import WithdrawModal from './Modal/WithdrawModal';
+import UserButton from '../molecules/UserButton';
 
 function CampaignCard(props) {
   const {
@@ -72,7 +73,7 @@ function CampaignCard(props) {
           type="submit"
           fullWidth
           variant="contained"
-          text="캠페인 기부하기"
+          text="출금하기"
           size="large"
           func={() => setIsOpen(true)}
         />

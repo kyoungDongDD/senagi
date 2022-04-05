@@ -14,11 +14,22 @@ if (sessionStorage.getItem('persist:root')) {
   var jwt = toke['value'].jwtToken;
 }
 
+console.log(jwt);
+
 const tokenApi = axios.create({
   baseURL: 'https://j6b105.p.ssafy.io/api/',
   headers: {
     'Content-Type': 'application/json',
     Authorization: 'Bearer ' + jwt,
+  },
+});
+
+const withdrawApi = axios.create({
+  baseURL: 'https://j6b105.p.ssafy.io/api/',
+  headers: {
+    'Content-Type': 'multipart/form-data',
+    Authorization: 'Bearer ' + jwt,
+    token: jwt,
   },
 });
 
@@ -77,4 +88,4 @@ api.interceptors.response.use(
   },
 );
 
-export { api, tokenApi, fileApi, ocrApi };
+export { api, tokenApi, fileApi, ocrApi, withdrawApi };
