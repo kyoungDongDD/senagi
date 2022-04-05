@@ -42,10 +42,10 @@ public class UserServiceImpl implements UserService {
   public boolean duplicatePrincipalCheck(String principal) {
     //아이디 중복 검증
     if (userRepository.findOneByPrincipal(principal).isPresent()) {
-      log.error("이미 사용중인 아이디 입니다.");
+      log.error("이미 가입되어 있는 아이디 입니다.");
       throw new DuplicateException("이미 가입되어 있는 아이디 입니다.");
     }
-    return true;
+    return false;
   }
 
   @Override
@@ -55,7 +55,7 @@ public class UserServiceImpl implements UserService {
       log.error("이미 사용중인 이름입니다.");
       throw new DuplicateException("이미 사용중인 이름 입니다.");
     }
-    return true;
+    return false;
   }
 
 
