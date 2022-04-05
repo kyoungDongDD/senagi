@@ -1,6 +1,8 @@
+import { useState, useEffect } from 'react';
 import Carousel from 'nuka-carousel';
 import styled from '@emotion/styled';
 import { Box } from '@mui/material';
+import campaignAPI from '../../../api/campaignAPI';
 import Text from '../atoms/Text';
 import MoreBtn from '../molecules/MoreButton';
 import Card from './DonationInfoCard';
@@ -9,7 +11,14 @@ function Shelter() {
   const Container = styled.div`
     background: linear-gradient(#fff 70%, #fffcf3 30%);
   `;
-
+  const [posts, setPosts] = useState([]);
+  useEffect(() => {
+    campaignAPI.getCampaignByType('SHELTER').then((response) => {
+      const campaignAll = response.content;
+      console.log(campaignAll);
+      setPosts(campaignAll);
+    });
+  }, []);
   return (
     <>
       <Container>
@@ -58,9 +67,27 @@ function Shelter() {
               renderCenterRightControls={null}
               renderBottomCenterControls={null}
             >
-              <Card />
-              <Card />
-              <Card />
+              {posts.map(
+                ({
+                  id,
+                  title,
+                  shelterName,
+                  targetDonation,
+                  thumbnailImageUrl,
+                  endDate,
+                  lastModifiedDate,
+                }) => (
+                  <Card
+                    id={id}
+                    title={title}
+                    shelterName={shelterName}
+                    thumbnailImageUrl={thumbnailImageUrl}
+                    targetDonation={targetDonation}
+                    endDate={endDate}
+                    lastModifiedDate={lastModifiedDate}
+                  />
+                ),
+              )}
             </Carousel>
           </Box>
         </Box>
