@@ -68,7 +68,7 @@ public class ReceiptService {
             files.transferTo(new File(filePath));
 
             ReceiptDto receiptDto = ReceiptDto.builder()
-                .receiptImageUrl(filePath)
+                .receiptImageUrl(filename)
                 .amount(amount)
                 .txHash(amountDto.getTransactionHash())
                 .campaign(campaign)
