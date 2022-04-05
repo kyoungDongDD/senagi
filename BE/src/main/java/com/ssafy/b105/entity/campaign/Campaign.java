@@ -4,6 +4,7 @@ import com.ssafy.b105.dto.CampaignRequestDto;
 import com.ssafy.b105.dto.blockchain.ContractResponseDto;
 import com.ssafy.b105.entity.SupportLog;
 import java.time.LocalDateTime;
+import java.time.LocalTime;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -105,11 +106,15 @@ public class Campaign extends BaseEntity{
             .targetDonation(campaignRequestDto.getTargetDonation())
             .contentImageUrl(campaignRequestDto.getContentImageUrl())
             .targetDonation(campaignRequestDto.getTargetDonation())
-            .endDate(campaignRequestDto.getEndDate())
+            .endDate(LocalDateTime.of(campaignRequestDto.getEndDate(), LocalTime.of(23,59,59)))
             .type(campaignRequestDto.getType())
             .user(campaignRequestDto.getUser())
             .account(contractResponseDto.getAccount())
             .blockHash(contractResponseDto.getBlockHash())
             .build();
     }
+
+  public void setIsEnd(boolean b) {
+        this.isEnd = b;
+  }
 }

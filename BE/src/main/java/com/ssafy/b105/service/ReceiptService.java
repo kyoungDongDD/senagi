@@ -40,6 +40,9 @@ public class ReceiptService {
         //파일 확장자
         String extension = originalFilename.substring(originalFilename.lastIndexOf("."));
 
+        // TODO Exception 수정
+        if(!campaign.getIsEnd())
+            throw new IllegalArgumentException();
         try {
 
             AmountDto amountDto = campaignContractService.withdrawal(
@@ -65,7 +68,7 @@ public class ReceiptService {
             files.transferTo(new File(filePath));
 
             ReceiptDto receiptDto = ReceiptDto.builder()
-                .receiptImageUrl(filePath)
+                .receiptImageUrl(filename)
                 .amount(amount)
                 .txHash(amountDto.getTransactionHash())
                 .campaign(campaign)

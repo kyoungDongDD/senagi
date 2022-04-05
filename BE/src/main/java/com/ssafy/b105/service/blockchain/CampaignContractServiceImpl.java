@@ -81,6 +81,19 @@ public class CampaignContractServiceImpl implements
   }
 
   @Override
+  public boolean isEnd(String contractAccount) {
+    Campaign campaign = connector.loadContract(contractAccount);
+    try {
+      return campaign.isEnded().sendAsync().get();
+    } catch (InterruptedException e) {
+      e.printStackTrace();
+    } catch (ExecutionException e) {
+      e.printStackTrace();
+    }
+    return false;
+  }
+
+  @Override
   public ContractCloseResponseDto contractClose(String fromContractAccount, String toContractAccount) {
     Campaign from = connector.loadContract(fromContractAccount);
     Campaign to = connector.loadContract(toContractAccount);
