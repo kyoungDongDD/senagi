@@ -12,6 +12,7 @@ import Text from '../../atoms/Text';
 import BillTable from '../../molecules/BillTable';
 import { makeStyles } from '@mui/styles';
 import styled from '@emotion/styled';
+import { OCR } from '../../../../api/paymentAPI';
 import PaymentAPI from '../../../../api/paymentAPI';
 import { useParams } from 'react-router-dom';
 import { Preview } from '@mui/icons-material';
@@ -93,6 +94,8 @@ function WithdrawModal(props) {
 
   // OCR
   const ocrRequest = async (event) => {
+    console.log(fileBase64);
+    console.log(fileFormat);
     const OCRdata = {
       images: [
         {
@@ -107,6 +110,7 @@ function WithdrawModal(props) {
     };
 
     // OCR 분석 결과 출력
+    // await PaymentAPI.OCR(OCRdata)
     await PaymentAPI.OCR(OCRdata)
       .then((response) => {
         console.log(response);
@@ -114,6 +118,8 @@ function WithdrawModal(props) {
       .catch((error) => {
         console.log(error);
       });
+
+    // 총액 + 이미지 저장
   };
 
   // 이미지 -> base64 인코딩
@@ -131,7 +137,8 @@ function WithdrawModal(props) {
         setFileFormat(dataType.split('/')[1]); // 데이터 타입 저장
         let base64result = base64.split(',')[1]; // 불필요한 데이터 "," 기준 삭제
         setFileBase64(base64result);
-        console.log(fileBase64);
+        // console.log(fileBase64);
+        // console.log(fileFormat);
       }
     };
 
@@ -194,7 +201,7 @@ function WithdrawModal(props) {
               >
                 {/* <input type="file" name="imgFile" id="imgFile" onChange={handleChangeFile} /> */}
                 <input name="imgUpload" type="file" accept="image/*" onChange={handleChangeFile} />
-
+                <AttachButton />
                 <button
                   style={{
                     backgroundColor: 'gray',
