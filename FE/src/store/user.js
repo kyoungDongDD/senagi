@@ -6,10 +6,10 @@ export const userSlice = createSlice({
   name: 'user',
   initialState: { value: initialStateValue },
   reducers: {
-    // // 로그인 토큰 정보 저장
-    // login: (state, action) => {
-    //   state.value = action.payload;
-    // },
+    // 로그인 토큰 정보 저장
+    login: (state, action) => {
+      state.value = action.payload;
+    },
     // 로그아웃
     logout: (state) => {
       state.value = initialStateValue;

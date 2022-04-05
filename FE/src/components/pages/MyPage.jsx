@@ -1,25 +1,51 @@
-import React from 'react';
-import { useSelector, useDispatch } from 'react-redux';
-import { decrement, increment } from './counterSlice';
+import { useState, useEffect } from 'react';
+import paymentAPI from '../../api/paymentAPI';
+import styled from '@emotion/styled';
 
 function MyPage() {
-  const count = useSelector((state) => state.counter.value);
-  const dispatch = useDispatch();
+  const [myDonation, setMyDonation] = useState('');
+
+  useEffect(() => {
+    paymentAPI.mydonation().then((response) => {
+      const myDonation = response.data;
+      console.log(myDonation);
+      setMyDonation(myDonation);
+    });
+  }, []);
+
+  console.log(...myDonation);
+
+  const dontionList = () => {
+    const result = [];
+    for (let i = 0; i < myDonation.length; i++) {
+      result.push(
+        <div key={i}>
+          <span>{myDonation[i].shelterName}</span>
+          <span>{myDonation[i].amount}</span>
+        </div>,
+      );
+    }
+    return result;
+  };
 
   return (
     <div>
-      <div>
-        <p>store 연결 페이지</p>
-        <button aria-label="Increment value" onClick={() => dispatch(increment())}>
-          Increment
-        </button>
-        <span>{count}</span>
-        <button aria-label="Decrement value" onClick={() => dispatch(decrement())}>
-          Decrement
-        </button>
-      </div>
+      <DivContainer>
+        <Tile>후원 이력</Tile>
+        {dontionList()}
+      </DivContainer>
     </div>
   );
 }
 
 export default MyPage;
+
+const DivContainer = styled.div`
+  margin: 50px;
+`;
+
+const Tile = styled.p`
+  margin: 50px;
+  font-family: 'GB';
+  font-size: 34px;
+`;

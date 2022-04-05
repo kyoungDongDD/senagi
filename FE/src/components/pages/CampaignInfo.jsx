@@ -3,7 +3,7 @@ import styled from '@emotion/styled';
 import CampaignDetail from '../UI/organisms/CampaignDetail';
 import UsageHistory from '../UI/organisms/UsageHistory';
 import { useLocation } from 'react-router-dom';
-import { getCampaignById } from '../../api/campaignAPI';
+import campaignAPI from '../../api/campaignAPI';
 
 function CampaignInfo() {
   //소개, 사용내역 토글
@@ -23,7 +23,7 @@ function CampaignInfo() {
 
   // DonationInfoCard에서 가져온 id 값을 매개변수로 getCampaignById 호출
   useEffect(() => {
-    getCampaignById(pageId).then((response) => {
+    campaignAPI.getCampaignById(pageId).then((response) => {
       const compaignData = response;
       setCompaignData(compaignData);
       console.log(compaignData);
@@ -89,7 +89,9 @@ function CampaignInfo() {
           lastModifiedDate={compaignData.lastModifiedDate}
           endDate={compaignData.endDate}
           shelterName={compaignData.shelterName}
+          title={compaignData.title}
           contentImageUrl={compaignData.contentImageUrl}
+          thumbnailImageUrl={compaignData.thumbnailImageUrl}
           hashtags={compaignData.hashtags}
           balance={compaignData.balance}
           dday={dateDays}

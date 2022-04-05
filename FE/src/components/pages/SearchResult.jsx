@@ -6,7 +6,7 @@ import DonationInfoCard from '../UI/organisms/DonationInfoCard';
 import BannerSlide from '../UI/organisms/BannerSlide';
 import SelectBox from '../UI/molecules/SelectBox';
 import { Outlet, useLocation } from 'react-router-dom';
-import { getCampaignAll } from '../../api/campaignAPI';
+import campaignAPI from '../../api/campaignAPI';
 import axios from 'axios';
 
 function SearchResult() {
@@ -21,7 +21,7 @@ function SearchResult() {
   const { keyword } = location.state;
 
   useEffect(() => {
-    getCampaignAll().then((response) => {
+    campaignAPI.getCampaignAll().then((response) => {
       const campaignAll = response.content;
       console.log(campaignAll);
       setPosts(campaignAll);
@@ -76,6 +76,7 @@ function SearchResult() {
                       targetDonation={targetDonation}
                       endDate={endDate}
                       lastModifiedDate={lastModifiedDate}
+                      // balance={balance}
                     ></DonationInfoCard>
                   </div>
                 </Grid>

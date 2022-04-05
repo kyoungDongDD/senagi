@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 // import axios from 'axios';
 // export async function getCampaignAll() {
 //   try {
@@ -36,6 +37,10 @@
 // });
 
 import api from './index';
+=======
+import { api } from './index';
+
+>>>>>>> aeed6b457860ca2f955031b7baf142eb3d36f439
 class CampaignAPI {
   //캠페인 리스트 전체 조회
   async getCampaignAll() {
