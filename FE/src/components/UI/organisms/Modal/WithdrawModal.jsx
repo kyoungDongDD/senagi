@@ -89,13 +89,30 @@ function WithdrawModal(props) {
   const [fileImage, setFileImage] = useState(''); // 이미지 미리보기
   const [file, setFile] = useState(''); // 이미지 저장
   const [amount, setAmount] = useState(''); // OCR에서 추출한 총액 (서버로 출금요청 보낼 amount)
+  const [subResults, setSubResults] = useState([]); // 상세 항목 데이터
   const classes = useStyles();
   const campaignId = useParams(); // API 요청 보낼 campaign id parameter
 
+    // 파일 전송하기
+  const withdraw = async () => {
+    const formdata = new FormData();
+    formdata.append('file', file);
+    formdata.append('amount', amount);
+    // console.log(file);
+    // 서버로 파일 전송
+    await PaymentAPI.withdraw(campaignId, formdata)
+      .then((response) => {
+        console.log(response);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  };
+  
   // OCR
   const ocrRequest = async (event) => {
-    console.log(fileBase64);
-    console.log(fileFormat);
+    // console.log(fileBase64);
+    // console.log(fileFormat);
     const OCRdata = {
       images: [
         {
@@ -110,10 +127,14 @@ function WithdrawModal(props) {
     };
 
     // OCR 분석 결과 출력
-    // await PaymentAPI.OCR(OCRdata)
     await PaymentAPI.OCR(OCRdata)
       .then((response) => {
-        console.log(response);
+        // console.log('response', response);
+        const result = response.data.images[0].receipt.result;
+        // console.log('result', result);
+        setAmount(result.totalPrice.price.text);
+        setSubResults(result.subResults[0].items);
+        console.log('subResults', subResults);
       })
       .catch((error) => {
         console.log(error);
@@ -156,22 +177,6 @@ function WithdrawModal(props) {
     setFileImage('');
   };
 
-  // 파일 전송하기
-  const withdraw = async () => {
-    // const formdata = new FormData();
-    // formdata.append('file', file);
-    // formdata.append('amount', amount);
-    // console.log(file);
-    // // 서버로 파일 전송
-    // await PaymentAPI.withdraw(campaignId, formdata)
-    //   .then((response) => {
-    //     console.log(response);
-    //   })
-    //   .catch((error) => {
-    //     console.log(error);
-    //   });
-  };
-
   const handleClose = () => {
     onClose(false);
   };
@@ -201,7 +206,7 @@ function WithdrawModal(props) {
               >
                 {/* <input type="file" name="imgFile" id="imgFile" onChange={handleChangeFile} /> */}
                 <input name="imgUpload" type="file" accept="image/*" onChange={handleChangeFile} />
-                <AttachButton />
+                <AttachButton subResults={subResults} totalAmount={amount}/>
                 <button
                   style={{
                     backgroundColor: 'gray',

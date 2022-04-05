@@ -1,17 +1,31 @@
+import { useEffect, useState } from 'react';
 import { Table, TableBody, TableCell, TableContainer, TableHead, TableRow, Paper } from '@mui/material';
 
 function createData(name, amount) {
-  return { name, amount};
+  return { name, amount };
 }
 
-// api
-const rows = [
-  createData('oo병원', 1300000),
-  createData('xx병원', 500000),
-  createData('aa병원', 800000),
-];
+function BillTable(props) {
+  const { subResults, totalAmount } = props
+  const [rows, setRows] = useState([]);
 
-function BillTable() {
+  useEffect(()=> {
+    console.log(totalAmount);
+    console.log('BillTable-subResults', subResults);
+    // if (subResults.items && rows) {
+    if (subResults && rows) {
+      const length = subResults.items.length;
+      for (let i = 0; i < length; i++) {
+        let subResult = subResults.items[i]
+        let name = subResult.name.text;
+        let price = subResult.price.price.text;
+        let a = createData(name, price);
+        setRows(rows => [...rows, a])
+      }
+    }
+    console.log('rows', rows);
+  }, [subResults])
+
   return (
     <TableContainer component={Paper}>
       <Table aria-label="simple table">
@@ -33,7 +47,12 @@ function BillTable() {
               <TableCell align="center">{row.amount}</TableCell>
             </TableRow>
           ))}
+          <TableRow>
+            <TableCell colSpan={2}>합계:</TableCell>
+            <TableCell align="right">{totalAmount}원</TableCell>
+          </TableRow>
         </TableBody>
+        
       </Table>
     </TableContainer>
   );
