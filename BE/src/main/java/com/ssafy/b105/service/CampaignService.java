@@ -1,5 +1,6 @@
 package com.ssafy.b105.service;
 
+import com.nimbusds.jose.util.IOUtils;
 import com.ssafy.b105.dto.CampaignListDto;
 import com.ssafy.b105.dto.CampaignRequestDto;
 import com.ssafy.b105.dto.CampaignResponseDto;
@@ -27,6 +28,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import com.ssafy.b105.repository.UserRepository;
+import javax.swing.filechooser.FileSystemView;
 import lombok.Builder;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -39,7 +41,6 @@ import org.springframework.transaction.annotation.Transactional;
 @Service
 @Transactional(readOnly = true)
 @RequiredArgsConstructor
-@Builder
 @Slf4j
 public class CampaignService {
 
@@ -112,8 +113,8 @@ public class CampaignService {
             campaignRequestDto.getThumbnailImage().transferTo(new File(thumbnailFilePath));
             campaignRequestDto.getContentImage().transferTo(new File(contentFilePath));
 
-            campaignRequestDto.setContentImageUrl(contentFilePath);
-            campaignRequestDto.setThumbnailImageUrl(thumbnailFilePath);
+            campaignRequestDto.setContentImageUrl(contentFilename);
+            campaignRequestDto.setThumbnailImageUrl(thumbnailFilename);
 
             Campaign campaign = Campaign.of(campaignRequestDto,contractResponseDto);
 
@@ -124,6 +125,7 @@ public class CampaignService {
                     .hashtag(hashtag).build();
                 campaign.getCampaignHashtags().add(campaignHashtag);
             });
+
             return CampaignResponseDto.of(campaignRepository.save(campaign),0L);
         } catch (Exception e) {
             e.printStackTrace();
@@ -137,7 +139,7 @@ public class CampaignService {
         campaign.addViewCount();
         Long balance = tokenContractService.balanceOf(campaign.getAccount());
         //id로 캠페인 찾기
-        log.info("저장전");
+        log.info("detailCampaign balance 값 : {}",balance);
         return CampaignResponseDto.of(campaign,balance);
     }
 
