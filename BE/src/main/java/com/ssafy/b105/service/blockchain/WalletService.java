@@ -11,6 +11,6 @@ public interface WalletService {
 
   String findAccountByUser(User user);
 
-  Long findBalanceByUser(User user) throws ExecutionException, InterruptedException;
+  Long findBalanceByUser(User user) throws Exception;
 
 }
