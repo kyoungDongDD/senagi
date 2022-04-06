@@ -50,6 +50,8 @@ function ImgCard(props) {
 
   const barPer = nowMoney / targeMoney;
 
+  const percent = Math.floor(barPer * 100);
+
   return (
     //max min 똑같은 이유, ProgressBar에 영향을 안주기위해 고정값으로 주려고..
     <Card sx={{ maxWidth: 345, minWidth: 345 }} style={{ position: 'relative', margin: '15px' }}>
@@ -74,7 +76,7 @@ function ImgCard(props) {
         </Typography>
         <ProgressBar percent={barPer} width="313" />
         <Money className="body1">{targetMoney} 원</Money>
-        <Progress className="body1">50%</Progress>
+        <Progress className="body1">{percent}%</Progress>
       </CardContent>
     </Card>
   );

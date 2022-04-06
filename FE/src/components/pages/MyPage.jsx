@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 import MyPageList from '../UI/organisms/MyPageList';
 import paymentAPI from '../../api/paymentAPI';
+// import useHistory from 'react-router-dom';
 
 function MyPage() {
   const [myDonation, setMyDonation] = useState('');
@@ -13,10 +14,13 @@ function MyPage() {
     });
   }, []);
 
+  // const history = useHistory();
+  // history.push(0);
+
   return (
-    <div>
+    <>
       <MyPageList myDonation={myDonation} />
-    </div>
+    </>
   );
 }
 

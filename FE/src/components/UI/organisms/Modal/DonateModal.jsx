@@ -98,9 +98,9 @@ function ChildModal(props) {
               func={donationToShelter}
             />
           </Buttonblock>
+          {loading && <Spinner />}
         </Box>
       </Modal>
-      {loading && <Spinner />}
     </div>
   );
 }
@@ -161,18 +161,15 @@ function DonateModal(props) {
               <P2 id="parent-modal-description">{title}</P2>
             </DivColumn>
           </DivContainer>
-          <form name="dotionForm" action="" method="POST">
-            <Label1 className="input_label">Full name</Label1>
-            <Input1
-              type="text"
-              name="dotionForm"
-              value={values}
-              placeholder="금액을 입력하세요 "
-              onChange={handleChange}
-              autoFocus
-              autoComplete="off"
-            />
-          </form>
+          <Input1
+            type="text"
+            name="dotionForm"
+            value={values}
+            placeholder="금액을 입력하세요 "
+            onChange={handleChange}
+            autoFocus
+            autoComplete="off"
+          />
           <Buttonblock>
             <UserCancelButton
               func={handleClose}

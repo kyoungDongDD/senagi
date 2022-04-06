@@ -26,6 +26,7 @@ function CampaignCard(props) {
   } = props;
 
   const targetMoney = targetDonation ? targetDonation.toLocaleString() : targetDonation;
+  const targetBalance = balance ? balance.toLocaleString() : balance;
 
   // 현재 모금액 / 목표 금액으로 퍼센트 구하기
   const targeMoney = Number(targetDonation);
@@ -39,7 +40,7 @@ function CampaignCard(props) {
       <CardContent>
         <Grid container>
           <Grid item xs={9}>
-            <StyledText className="body1" text={`${balance}` + '원'} />
+            <StyledText className="body1" text={`${targetBalance}` + '원'} />
           </Grid>
           <StyledGrid item xs={3}>
             <Dday dday={dday} />

@@ -9,8 +9,7 @@ import SignUp from './components/pages/SignUp';
 import CampaignManagement from './components/pages/CampaignManagement';
 import SearchResult from './components/pages/SearchResult';
 import CampaignInfo from './components/pages/CampaignInfo';
-import NavBar from './components/UI/organisms/NavBar';
-
+import OwnCampaigns from './components/pages/OwnCampaigns';
 import commonStyles from './styles/commonStyles';
 
 export default function App() {
@@ -26,6 +25,7 @@ export default function App() {
           <Route path="/home" element={<Home />} />
           <Route path="/campaign" element={<CampaignManagement />} />
           <Route path="/mypage" element={<MyPage />} />
+          <Route path="/owncampaigns" element={<OwnCampaigns />} />
           <Route path="/searchresult" element={<SearchResult />} />
           <Route path="/campaigninfo/:campaignId" element={<CampaignInfo />} />
 

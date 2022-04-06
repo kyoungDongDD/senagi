@@ -35,7 +35,7 @@
 //   baseURL: 'https://j6b105.p.ssafy.io/api',
 // });
 
-import { api } from './index';
+import { api, tokenApi } from './index';
 class CampaignAPI {
   //캠페인 리스트 전체 조회
   async getCampaignAll() {
@@ -61,8 +61,8 @@ class CampaignAPI {
   }
 
   // 생성한 캠페인리스트
-  async getOwnedCampaign(page) {
-    return api.get(`campaigns/owned/${page}`);
+  async getOwnedCampaign() {
+    return tokenApi.get(`campaigns/owned/`);
   }
 
   // 캠페인 태그 조회
