@@ -7,7 +7,7 @@ import UserButton from '../molecules/UserButton';
 import { Box, TextField } from '@mui/material';
 import AccountsAPI from '../../../api/accountsAPI';
 import { useDispatch } from 'react-redux';
-import { authSuccess, login } from '../../../store/user';
+import { login, authSuccess } from '../../../store/user';
 import jwt from 'jwt-decode';
 
 function UserLoginForm() {
@@ -19,6 +19,11 @@ function UserLoginForm() {
   // 회원 정보 저장
   const setJoin = (e, names) => {
     setJoinData(Object.assign(joinData, { [names]: e.target.value }));
+  };
+
+  // 구글 로그인
+  const googleLogin = () => {
+    window.open('https://j6b105.p.ssafy.io:8080/oauth2/authorization/google', '_blank');
   };
 
   const logIn = async (event) => {
@@ -44,13 +49,12 @@ function UserLoginForm() {
         const userInfo = jwt(token);
         // 토큰의 유저 정보 store에 저장
         dispatch(authSuccess(userInfo));
-        // navbar에 이름 출력 후 삭제
         alert('로그인에 성공했습니다.');
         navigate('/home');
       })
       .catch((error) => {
         console.log(error);
-        alert('로그인에 실패했습니다.');
+        // alert('로그인에 실패했습니다.');
       });
   };
 
@@ -64,6 +68,7 @@ function UserLoginForm() {
       }}
     >
       <Text className="header1" text="로그인" />
+      {/* <Box component="form" noValidate sx={{ mt: 1 }}> */}
       <Box component="form" noValidate onSubmit={logIn} sx={{ mt: 1 }}>
         <TextField
           margin="normal"
@@ -95,7 +100,7 @@ function UserLoginForm() {
           size="large"
           func={logIn}
         />
-        <GoogleLoginButton />
+        <GoogleLoginButton func={googleLogin} />
         <br />
         <JoinButton />
       </Box>
