@@ -22,6 +22,8 @@ export const userSlice = createSlice({
     // },
     // 로그인 성공시 decode한 토큰의 유저 정보 세션에 저장
     authSuccess: (state, action) => {
+      console.log('state', state);
+      console.log('action', action);
       state.value.isLogin = true;
       state.value.userInfo = action.payload;
     },

@@ -21,11 +21,6 @@ function UserLoginForm() {
     setJoinData(Object.assign(joinData, { [names]: e.target.value }));
   };
 
-  // 구글 로그인
-  const googleLogin = () => {
-    window.open('https://j6b105.p.ssafy.io:8080/oauth2/authorization/google', '_blank');
-  };
-
   const logIn = async (event) => {
     event.preventDefault();
     // 로그인한 상태에서 로그인 금지.. 인데 지금 코드로는 isLogin 초기상태 null이라 이 코드로 안됨. ""로 변경하면 될 것 같기도? 아니면 로그인 페이지 접근 자체를 막는 것도 ㄱㅊ
@@ -100,7 +95,7 @@ function UserLoginForm() {
           size="large"
           func={logIn}
         />
-        <GoogleLoginButton func={googleLogin} />
+        <GoogleLoginButton />
         <br />
         <JoinButton />
       </Box>
