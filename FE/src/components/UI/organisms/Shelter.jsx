@@ -14,7 +14,7 @@ function Shelter() {
   const [posts, setPosts] = useState([]);
   useEffect(() => {
     campaignAPI.getCampaignByType('SHELTER').then((response) => {
-      const campaignAll = response.content;
+      const campaignAll = response.data.content;
       console.log(campaignAll);
       setPosts(campaignAll);
     });
@@ -77,15 +77,17 @@ function Shelter() {
                   endDate,
                   lastModifiedDate,
                 }) => (
-                  <Card
-                    id={id}
-                    title={title}
-                    shelterName={shelterName}
-                    thumbnailImageUrl={thumbnailImageUrl}
-                    targetDonation={targetDonation}
-                    endDate={endDate}
-                    lastModifiedDate={lastModifiedDate}
-                  />
+                  <div key={id}>
+                    <Card
+                      id={id}
+                      title={title}
+                      shelterName={shelterName}
+                      thumbnailImageUrl={thumbnailImageUrl}
+                      targetDonation={targetDonation}
+                      endDate={endDate}
+                      lastModifiedDate={lastModifiedDate}
+                    />
+                  </div>
                 ),
               )}
             </Carousel>
