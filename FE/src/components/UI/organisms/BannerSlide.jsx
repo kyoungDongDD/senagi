@@ -24,15 +24,6 @@ function BannerSlide() {
         <StyledSlider {...settings}>
           <div padding-top={'30px'}>
             <img
-              src={require('../../../assets/test4.jpg')}
-              alt="logo"
-              width={'100%'}
-              height={'278px'}
-              object-fit={'fit'}
-            />
-          </div>
-          <div padding={'30px'}>
-            <img
               src={require('../../../assets/test1.jpg')}
               alt="logo"
               width={'100%'}
@@ -40,7 +31,7 @@ function BannerSlide() {
               object-fit={'fit'}
             />
           </div>
-          <div>
+          <div padding={'30px'}>
             <img
               src={require('../../../assets/test2.jpg')}
               alt="logo"
@@ -52,6 +43,15 @@ function BannerSlide() {
           <div>
             <img
               src={require('../../../assets/test3.jpg')}
+              alt="logo"
+              width={'100%'}
+              height={'278px'}
+              object-fit={'fit'}
+            />
+          </div>
+          <div>
+            <img
+              src={require('../../../assets/test4.jpg')}
               alt="logo"
               width={'100%'}
               height={'278px'}

@@ -24,7 +24,8 @@ function CampaignInfo() {
   // DonationInfoCard에서 가져온 id 값을 매개변수로 getCampaignById 호출
   useEffect(() => {
     campaignAPI.getCampaignById(pageId).then((response) => {
-      const compaignData = response;
+      console.log(response);
+      const compaignData = response.data;
       setCompaignData(compaignData);
       console.log(compaignData);
     });

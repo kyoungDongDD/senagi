@@ -18,9 +18,9 @@ export const userSlice = createSlice({
     // checkLogin: (state) => {
     //   return state.value.isLogin;
     // },
-    // checkUserInfo: (state) => {
-    //   return state.value.userInfo;
-    // },
+    checkUserInfo: (state) => {
+      return state.value.userInfo;
+    },
     // 로그인 성공시 decode한 토큰의 유저 정보 세션에 저장
     authSuccess: (state, action) => {
       // console.log('state', state);

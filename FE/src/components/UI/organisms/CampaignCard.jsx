@@ -1,15 +1,14 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import Dday from '../molecules/D-Day';
-import Card from '@mui/material/Card';
-import CardContent from '@mui/material/CardContent';
-import Typography from '@mui/material/Typography';
+import { Card, CardContent, Typography, Grid } from '@mui/material';
 import ProgressBar from '../molecules/ProgressBar';
 import styled from '@emotion/styled';
 import Text from '../atoms/Text';
-import { Grid } from '@mui/material';
 import DonateModal from '../organisms/Modal/DonateModal';
 import WithdrawModal from './Modal/WithdrawModal';
 import UserButton from '../molecules/UserButton';
+import storage from 'redux-persist/lib/storage';
+import { useSelector } from 'react-redux';
 
 function CampaignCard(props) {
   const {
@@ -41,6 +40,12 @@ function CampaignCard(props) {
 
   const barPer = nowMoney / targeMoney;
 
+  //유저정보 불러오기
+  const user = useSelector((state) => state.user.value.userInfo);
+  const roles = user.roles[0];
+  const nickName = user.nickname;
+  console.log(nickName);
+
   return (
     //max min 똑같은 이유, ProgressBar에 영향을 안주기위해 고정값으로 주려고..
     <StyledCard>
@@ -70,20 +75,25 @@ function CampaignCard(props) {
             {lastModifiedDate} ~ {endDate}까지
           </Typography>
         </RightContainer>
-        <UserButton
-          type="submit"
-          fullWidth
-          variant="contained"
-          text="출금하기"
-          size="large"
-          func={() => setIsOpen(true)}
-        />
+        {roles === 'SUPPORTER' ? (
+          <DonateModal
+            shelterName={shelterName}
+            thumbnailImageUrl={thumbnailImageUrl}
+            title={title}
+          />
+        ) : nickName === `${shelterName}` ? (
+          <UserButton
+            type="submit"
+            fullWidth
+            variant="contained"
+            text="출금하기"
+            size="large"
+            func={() => setIsOpen(true)}
+          />
+        ) : (
+          <></>
+        )}
         <WithdrawModal isOpen={isOpen} onClose={handleClose} />
-        <DonateModal
-          shelterName={shelterName}
-          thumbnailImageUrl={thumbnailImageUrl}
-          title={title}
-        />
         <Typography sx={{ fontSize: 14 }}>모금단체</Typography>
         <Typography>{shelterName}</Typography>
       </CardContent>
