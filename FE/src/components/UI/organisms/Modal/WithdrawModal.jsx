@@ -1,13 +1,5 @@
 import { useEffect, useState } from 'react';
-import {
-  Dialog,
-  DialogActions,
-  DialogContent,
-  DialogTitle,
-  Button,
-  Grid,
-  Input,
-} from '@mui/material';
+import { Dialog, DialogActions, DialogContent, DialogTitle, Button, Grid } from '@mui/material';
 import Text from '../../atoms/Text';
 import BillTable from '../../molecules/BillTable';
 import { makeStyles } from '@mui/styles';
@@ -100,17 +92,19 @@ function WithdrawModal(props) {
     // 서버로 파일 전송
     await PaymentAPI.withdraw(campaignId, formdata)
       .then((response) => {
-        console.log(response);
+        // console.log(response);
+        alert('출금에 성공했습니다!');
       })
       .catch((error) => {
         console.log(error);
+        alert('출금 도중 문제가 발생했습니다.');
       });
   };
 
   // OCR
   const ocrRequest = async (event) => {
-    console.log('ocrRequest', fileBase64);
-    console.log('ocrRequest', fileFormat);
+    // console.log('ocrRequest', fileBase64);
+    // console.log('ocrRequest', fileFormat);
     const OCRdata = {
       images: [
         {
@@ -127,14 +121,14 @@ function WithdrawModal(props) {
     // OCR 분석 결과 출력
     await PaymentAPI.OCR(OCRdata)
       .then((response) => {
-        console.log('response', response);
+        // console.log('response', response);
         const result = response.data.images[0].receipt.result;
         const totalPrice = result.totalPrice.price.text.replaceAll('.', ''); // OCR에서 ,을 .으로 인식하는 문제 해결
         // console.log('result', result);
-        console.log('amount', Number(totalPrice));
+        // console.log('amount', Number(totalPrice));
         setAmount(Number(totalPrice));
         setSubResults(result.subResults[0].items);
-        console.log('subResults', subResults);
+        // console.log('subResults', subResults);
       })
       .catch((error) => {
         console.log(error);
@@ -151,7 +145,7 @@ function WithdrawModal(props) {
 
     // 2. 읽기 완료 후 base64 encoding
     reader.onloadend = () => {
-      console.log(reader);
+      // console.log(reader);
       const base64 = reader.result;
       if (base64) {
         let dataType = reader.result.split(';base64,')[0];
@@ -183,6 +177,7 @@ function WithdrawModal(props) {
       onClose={handleClose}
       aria-labelledby="alert-dialog-title"
       aria-describedby="alert-dialog-description"
+      sx={{ minWidth: 9 / 10, minHeight: 9 / 10 }}
     >
       <DialogTitle id="alert-dialog-title" className={classes.withdrawlText}>
         <Text className="header1" text="출금 신청하기" />
@@ -200,42 +195,23 @@ function WithdrawModal(props) {
                   justifyContent: 'center',
                 }}
               >
-                {/* <input type="file" name="imgFile" id="imgFile" onChange={handleChangeFile} /> */}
-                <input name="imgUpload" type="file" accept="image/*" onChange={handleChangeFile} />
-                <AttachButton />
-                <button
-                  style={{
-                    backgroundColor: 'gray',
-                    color: 'white',
-                    width: '55px',
-                    height: '40px',
-                    cursor: 'pointer',
-                  }}
-                  onClick={() => deleteFileImage()}
-                >
-                  삭제
-                </button>
+                <label>
+                  <input
+                    name="imgUpload"
+                    type="file"
+                    accept="image/*"
+                    onChange={handleChangeFile}
+                    style={{ display: 'none' }}
+                  />
+                  <AttachButton className={classes.root} fullWidth component="span">
+                    영수증 첨부
+                  </AttachButton>
+                </label>
               </div>
             </div>
-            {/* <div className="img__box"></div> */}
-            {/* <div style={{ backgroundColor: '#efefef', width: '100%', height: '100%' }}></div> */}
-            {/* 파일선택 _____ + hover 지우는 방법? */}
-            {/* <label htmlFor="contained-button-file"> */}
-            {/* <Input */}
-            {/* accept="image/*" */}
-            {/* id="contained-button-file" */}
-            {/* multiple */}
-            {/* type="file" */}
-            {/* onChange={onInputImage} */}
-            {/* /> */}
-            {/* <AttachButton className={classes.root} fullWidth component="span"> */}
-            {/* 영수증 첨부 */}
-            {/* </AttachButton> */}
-            {/* </label> */}
           </Grid>
           <Grid item xs={6} md={8}>
             <BillTable subResults={subResults} totalAmount={amount} />
-            {/* <BillTable /> */}
           </Grid>
         </Grid>
       </DialogContent>
