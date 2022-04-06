@@ -29,11 +29,13 @@ function ShelterLoginForm() {
 
     await AccountsAPI.shelterLogin(postData)
       .then((response) => {
+        console.log('ShelterLogin check if token is obj', response.data);
         // 로그인 토큰 저장
         dispatch(login(response.data));
         // 토큰 디코드
         const token = response.data.jwtToken;
         const userInfo = jwt(token);
+        console.log('SHELTER', typeof userInfo);
         // 토큰의 유저 정보 store에 저장
         dispatch(authSuccess(userInfo));
         // navbar에 이름 출력 후 삭제
