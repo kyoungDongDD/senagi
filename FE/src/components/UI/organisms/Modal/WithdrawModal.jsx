@@ -123,8 +123,9 @@ function WithdrawModal(props) {
       .then((response) => {
         // console.log('response', response);
         const result = response.data.images[0].receipt.result;
-        const totalPrice = result.totalPrice.price.text.replaceAll('.', ''); // OCR에서 ,을 .으로 인식하는 문제 해결
+        const totalPrice = result.totalPrice.price.text.replaceAll('.', '').replaceAll(',', ''); // OCR에서 ,을 .으로 인식하는 문제 해결
         // console.log('result', result);
+        // console.log('amount', totalPrice);
         // console.log('amount', Number(totalPrice));
         setAmount(Number(totalPrice));
         setSubResults(result.subResults[0].items);
