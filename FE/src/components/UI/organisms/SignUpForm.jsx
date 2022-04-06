@@ -142,7 +142,7 @@ function SignUpForm() {
 
     // 이름 유효성 검사
     if (!validateName(joinData.userName) || joinData.userName.length < 1)
-      setNameError('올바른 닉네임을 입력해주세요.');
+      setNameError('올바른 닉네임을 입력해주세요. 한글, 영문자만 가능합니다');
     else setNameError('');
 
     // 회원가입 동의 체크
@@ -233,7 +233,7 @@ function SignUpForm() {
               fullWidth
               id="name"
               name="name"
-              label="닉네임"
+              label="닉네임 (한글, 영문 대소문자)"
               error={nameError !== '' || false}
               onChange={(e) => setJoin(e, 'userName')}
             />

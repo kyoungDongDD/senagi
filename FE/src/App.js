@@ -12,6 +12,7 @@ import CampaignInfo from './components/pages/CampaignInfo';
 import NavBar from './components/UI/organisms/NavBar';
 
 import commonStyles from './styles/commonStyles';
+import GoogleLoginRedirect from './components/UI/organisms/GoogleLoginRedirect';
 
 export default function App() {
   return (
@@ -21,6 +22,7 @@ export default function App() {
         <Route path="/" element={<Welcome />} />
         <Route path="/login" element={<Login />} />
         <Route path="/signup" element={<SignUp />} />
+        <Route path="/sociallogin" element={<GoogleLoginRedirect />} />
 
         <Route element={<Layout />}>
           <Route path="/home" element={<Home />} />
