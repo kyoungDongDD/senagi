@@ -14,44 +14,23 @@ function createData(name, amount) {
 }
 
 function BillTable({ subResults, totalAmount = 0 }) {
-  // const { subResults, totalAmount } = props
   const [rows, setRows] = useState([]);
 
-  //
   useEffect(() => {
-    console.log(rows);
-    if (rows) {
-      console.log(rows);
-      // const length = subResults.items.length;
-      // for (let i = 0; i < length; i++) {
-      //   let subResult = subResults.items[i]
-      //   let name = subResult.name.text;
-      //   let price = subResult.price.price.text;
-      //   let a = createData(name, price);
-      //   setRows(rows => [...rows, a])
-      // }
-    }
-    console.log('rows', rows);
-  }, [rows]);
-  //
-  useEffect(() => {
-    console.log(totalAmount);
-    console.log('BillTable-subResults', subResults);
-    // if (subResults.items && rows) {
-    // if (subResults && rows) {
+    // console.log(totalAmount);
+    // console.log('BillTable-subResults', subResults);
     if (subResults) {
-      console.log('subResults', subResults);
-      // const row = [createData()]
-      const length = subResults.items.length;
+      // console.log('subResults', subResults);
+      const length = subResults.length;
       for (let i = 0; i < length; i++) {
-        let subResult = subResults.items[i];
+        let subResult = subResults[i];
         let name = subResult.name.text;
         let price = subResult.price.price.text;
         let a = createData(name, price);
         setRows((rows) => [...rows, a]);
       }
     }
-    console.log('rows', rows);
+    // console.log('rows', rows);
   }, [subResults]);
 
   return (
@@ -73,7 +52,7 @@ function BillTable({ subResults, totalAmount = 0 }) {
             </TableRow>
           ))}
           <TableRow>
-            <TableCell colSpan={2}>합계:</TableCell>
+            <TableCell>합계:</TableCell>
             <TableCell align="right">{totalAmount}원</TableCell>
           </TableRow>
         </TableBody>
