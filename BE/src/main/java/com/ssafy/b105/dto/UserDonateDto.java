@@ -23,13 +23,17 @@ public class UserDonateDto {
     private LocalDateTime donateDate;
     private String campaignTitle;
 
+    //id추가
+    private Long campaignId;
+
     @QueryProjection
     public UserDonateDto(String shelterName, Long amount, String thumnailImagUrl,
-        LocalDateTime donateDate,String campaignTitle) {
+        LocalDateTime donateDate,String campaignTitle,Long campaignId) {
         this.shelterName = shelterName;
         this.amount = amount;
         this.thumnailImagUrl = thumnailImagUrl;
         this.donateDate = donateDate;
         this.campaignTitle = campaignTitle;
+        this.campaignId = campaignId;
     }
 }
