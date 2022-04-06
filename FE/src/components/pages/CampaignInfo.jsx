@@ -60,7 +60,7 @@ function CampaignInfo() {
 
   return (
     <div>
-      <BannerImg src={require('../../assets/test1.jpg')} />
+      <BannerImg src={`https://j6b105.p.ssafy.io/api/imgs/${compaignData.thumbnailImageUrl}`} />
       <BtnContainer>
         <div></div>
         <CategoryBox

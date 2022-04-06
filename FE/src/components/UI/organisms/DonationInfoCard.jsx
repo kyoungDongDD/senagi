@@ -59,7 +59,7 @@ function ImgCard(props) {
         component="img"
         alt="green iguana"
         height="200"
-        image={require('../../../assets/test1.jpg')}
+        image={`https://j6b105.p.ssafy.io/api/imgs/${thumbnailImageUrl}`}
         // image={require({ thumbnailImageUrl })}
         object-fit={'cover'}
         onClick={openDetail}

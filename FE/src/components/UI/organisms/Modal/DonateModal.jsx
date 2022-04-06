@@ -3,6 +3,7 @@ import Box from '@mui/material/Box';
 import Modal from '@mui/material/Modal';
 import UserButton from '../../molecules/UserButton';
 import UserCancelButton from '../../molecules/UserCancelButton';
+import Spinner from '../Spinner';
 import styled from '@emotion/styled';
 import PaymentAPI from '../../../../api/paymentAPI';
 import { useParams } from 'react-router-dom';
@@ -25,6 +26,9 @@ function ChildModal(props) {
   const { value } = props;
   const { campaignId } = useParams();
 
+  //spinner
+  const [loading, setLoading] = useState(false);
+
   const [open, setOpen] = useState(false);
   const handleOpen = () => {
     setOpen(true);
@@ -43,13 +47,18 @@ function ChildModal(props) {
       amount: Number(value),
     };
     console.log(donationData);
+    setLoading(true);
     await PaymentAPI.donation(donationData)
       .then((response) => {
         console.log(response);
+        setLoading(false);
+        // window.location.reload(true);
       })
       .catch((error) => {
         console.log(error);
         alert('기부에 실패했습니다.');
+        setLoading(false);
+        // window.location.reload(true);
       });
   };
 
@@ -91,6 +100,7 @@ function ChildModal(props) {
           </Buttonblock>
         </Box>
       </Modal>
+      {loading && <Spinner />}
     </div>
   );
 }
@@ -138,13 +148,12 @@ function DonateModal(props) {
           <DivContainer>
             <ImgDiv>
               <img
-                src="https://www.artinsight.co.kr/data/tmp/1910/20191029212614_fawslbwd.jpg"
+                src={`https://j6b105.p.ssafy.io/api/imgs/${thumbnailImageUrl}`}
                 alt="이미지없음"
                 objectfit="cover"
                 width="111px"
                 height="97px"
                 style={{ borderRadius: '5px' }}
-                // {thumbnailImageUrl}
               />
             </ImgDiv>
             <DivColumn>
