@@ -53,6 +53,7 @@ jwt:
     expirySeconds: 86400
 
 logging.level:
+  root: debug
   org.hibernate.SQL: debug
   org.hibernate.type: trace
 
