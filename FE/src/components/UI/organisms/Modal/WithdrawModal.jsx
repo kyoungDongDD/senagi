@@ -132,7 +132,7 @@ function WithdrawModal(props) {
         // console.log('subResults', subResults);
       })
       .catch((error) => {
-        console.log(error);
+        // console.log(error);
       });
   };
 
