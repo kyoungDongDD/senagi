@@ -2,23 +2,26 @@ import { useState } from 'react';
 import { css } from '@emotion/react';
 import ClimbingBoxLoader from 'react-spinners/ClimbingBoxLoader';
 import styled from '@emotion/styled';
+import SpinnerCSS from './Spinner.css';
 
-// Can be a string as well. Need to ensure each key-value pair ends with ;
-const override = css`
-  display: block;
-  position: absolute;
-  margin: 0 auto;
-  z-index: 100;
-`;
+// const overlayBox = css`
+//   position: absolute;
+//   top: 50%;
+//   left: 50%;
+//   transform: translate(-50%, -50%);
+//   color: white;
+//   background: #666666;
+//   opacity: 0.8;
+//   z-index: 1000;
+// `;
 
-function Spinner() {
-  let [loading, setLoading] = useState(true);
-  let [color, setColor] = useState('#ffffff');
-
+function Spinner(props) {
   return (
-    <div className="sweet-loading">
+    <div className={props.loading ? 'parentDisable' : ''} width="100%">
+      {/* // <div css={props.loading ? 'parentDisable' : ''} width="100%"> */}
+      {/* // <div className={spinner} width="100%"> */}
       <BackDiv>
-        <ClimbingBoxLoader color={'#f4ba34'} css={override} size={30} />
+        <ClimbingBoxLoader color={'#f4ba34'} size={30} />
       </BackDiv>
     </div>
   );
@@ -27,12 +30,11 @@ function Spinner() {
 export default Spinner;
 
 const BackDiv = styled.div`
-  html {
-    width: 100%;
-    height: 100%;
-    position: absolute;
-    top: 0;
-    left: 0;
-    background: rgba(0, 0, 0, 0.5);
-  }
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: white;
+  background: #666666;
+  z-index: 1000;
 `;
