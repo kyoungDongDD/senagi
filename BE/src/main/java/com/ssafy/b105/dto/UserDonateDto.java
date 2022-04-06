@@ -18,20 +18,20 @@ import lombok.Setter;
 public class UserDonateDto {
     private String shelterName;
     private Long amount;
-    private String thumnailImagUrl;
+    private String thumbnailImagUrl;
     @JsonFormat(shape = Shape.STRING,pattern = "yyyy-MM-dd",timezone = "Asia/Seoul")
     private LocalDateTime donateDate;
     private String campaignTitle;
 
-    //id 추가
+    //id추가
     private Long campaignId;
 
     @QueryProjection
-    public UserDonateDto(String shelterName, Long amount, String thumnailImagUrl,
+    public UserDonateDto(String shelterName, Long amount, String thumbnailImagUrl,
         LocalDateTime donateDate,String campaignTitle,Long campaignId) {
         this.shelterName = shelterName;
         this.amount = amount;
-        this.thumnailImagUrl = thumnailImagUrl;
+        this.thumbnailImagUrl = thumbnailImagUrl;
         this.donateDate = donateDate;
         this.campaignTitle = campaignTitle;
         this.campaignId = campaignId;
