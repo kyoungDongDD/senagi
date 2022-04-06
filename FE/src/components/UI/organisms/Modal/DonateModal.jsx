@@ -116,29 +116,28 @@ function DonateModal(props) {
   };
   const handleClose = () => {
     setOpen(false);
+    setValues(0);
   };
   const [values, setValues] = useState('');
 
   const handleChange = (e) => {
     // value의 값이 숫자가 아닐경우 빈문자열로 replace 해버림.
-    const onlyNumber = e.currentTarget.value.toLocaleString();
-    if (onlyNumber === '' || /^[0-9\b]+$/.test(onlyNumber)) {
-      setValues(onlyNumber);
-    }
+    let onlyNumber = e.currentTarget.value;
+    onlyNumber = Number(onlyNumber.replaceAll(',', '').replace(/[^0-9]/g, ''));
+    const formatValue = onlyNumber.toLocaleString('ko-KR');
+    setValues(formatValue);
   };
 
   return (
     <>
-      <LineDiv>
-        <UserButton
-          fullWidth
-          func={handleOpen}
-          type="submit"
-          variant="contained"
-          text="기부하기"
-          size="large"
-        />
-      </LineDiv>
+      <UserButton
+        fullWidth
+        func={handleOpen}
+        type="submit"
+        variant="contained"
+        text="기부하기"
+        size="large"
+      />
       <Modal
         open={open}
         onClose={handleClose}
@@ -230,17 +229,6 @@ const Input1 = styled.input`
   outline: none;
   background: transparent;
   text-align: right;
-`;
-
-const Label1 = styled.label`
-  position: absolute;
-  top: 0;
-  left: 0;
-  padding: 10px 0;
-  font-size: 16px;
-  color: #fff;
-  pointer-events: none;
-  transition: 0.5s;
 `;
 
 const LineDiv = styled.div`

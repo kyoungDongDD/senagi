@@ -17,6 +17,9 @@ class PaymentAPI {
   withdraw(campaignId, receipt) {
     return withdrawApi.post(`/payment/receipt/${campaignId}`, receipt);
   }
+  getWithdraw(campaignId) {
+    return tokenApi.get(`/payment/withdrawal/${campaignId}`);
+  }
 }
 
 export default new PaymentAPI();

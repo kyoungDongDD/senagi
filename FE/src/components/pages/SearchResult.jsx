@@ -23,11 +23,14 @@ function SearchResult() {
 
   useEffect(() => {
     campaignAPI.getCampaignAll().then((response) => {
-      const campaignAll = response.content;
+      const campaignAll = response.data.content;
+
       console.log(campaignAll);
       setPosts(campaignAll);
     });
   }, []);
+
+  console.log(posts);
 
   return (
     <div>
