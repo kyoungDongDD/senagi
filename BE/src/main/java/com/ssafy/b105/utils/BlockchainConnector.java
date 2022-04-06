@@ -74,6 +74,7 @@ public class BlockchainConnector {
   private Token tokenMgr;
   private Credentials credentials;
   private ContractGasProvider gasProvider;
+  private TransactionManager transactionManager;
 
   private BigInteger decimals;
 
@@ -92,7 +93,7 @@ public class BlockchainConnector {
     try {
       File wallet = ResourceUtils.getFile(keyPath + adminWallet);
       credentials = WalletUtils.loadCredentials(adminPass, wallet);
-      TransactionManager transactionManager = new RawTransactionManager(web3j, credentials,
+      transactionManager = new RawTransactionManager(web3j, credentials,
           chainId);
       this.memberMgr = Member.load(memberAddr, web3j, transactionManager, gasProvider);
       this.tokenMgr = Token.load(tokenAddr, web3j, transactionManager, gasProvider);
@@ -110,15 +111,16 @@ public class BlockchainConnector {
 
     return Campaign.deploy(
         web3j,
-        credentials,
+        transactionManager,
         gasProvider,
-        BalanceConverter.longToBigInteger(dto.getTargetAmount(),decimals),
-        BalanceConverter.longToBigInteger(dto.getDeadLine(),decimals),
+        BalanceConverter.longToBigInteger(dto.getTargetAmount(), decimals),
+        BalanceConverter.longToBigInteger(dto.getDeadLine(), decimals),
         memberAddr,
         tokenAddr).send();
   }
+
   public Campaign loadContract(String address) {
-    return Campaign.load(address,web3j,credentials,gasProvider);
+    return Campaign.load(address, web3j, transactionManager, gasProvider);
   }
 
   public Member getMemberMgr() {
@@ -136,18 +138,15 @@ public class BlockchainConnector {
   public BigInteger getDecimals() {
     BigInteger retval = new BigInteger("18");
     try {
-      retval = tokenMgr.decimals().sendAsync().get();
-    } catch (InterruptedException e) {
-      e.printStackTrace();
-    } catch (ExecutionException e) {
+      retval = tokenMgr.decimals().send();
+    } catch (Exception e) {
       e.printStackTrace();
     }
     return retval;
   }
 
-  public EthBlockNumber getBlockNumber()
-      throws ExecutionException, InterruptedException {
-    return web3j.ethBlockNumber().sendAsync().get();
+  public EthBlockNumber getBlockNumber() throws IOException {
+    return web3j.ethBlockNumber().send();
   }
 
   public NewWalletDto createAccount()
@@ -161,7 +160,7 @@ public class BlockchainConnector {
 
     String fileName = saveWalletFile(walletFile);
 
-    return new NewWalletDto(walletFile.getAddress(),fileName,password);
+    return new NewWalletDto(walletFile.getAddress(), fileName, password);
   }
 
   private String getWalletFileName(WalletFile walletFile) {
@@ -176,13 +175,13 @@ public class BlockchainConnector {
     String fileName = getWalletFileName(walletFile);
     File file = new File(ResourceUtils.getFile(keyPath), fileName);
     ObjectMapper objectMapper = new ObjectMapper();
-    objectMapper.writeValue(file,walletFile);
+    objectMapper.writeValue(file, walletFile);
 
     return fileName;
   }
 
   private String createPassword() {
-    return UUID.randomUUID().toString().replaceAll("-","");
+    return UUID.randomUUID().toString().replaceAll("-", "");
   }
 
   private void subscribe() {

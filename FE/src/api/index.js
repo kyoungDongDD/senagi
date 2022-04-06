@@ -1,11 +1,50 @@
 import axios from 'axios';
 
-export const api = axios.create({
-  // baseURL: 'http://localhost:8080/api/',
-  // baseURL: 'https://84c8d203-4698-4ccf-a301-71d6e01c0494.mock.pstmn.io',
+const api = axios.create({
   baseURL: 'https://j6b105.p.ssafy.io/api/',
   headers: {
     'Content-Type': 'application/json',
+  },
+});
+
+//토큰값 구하기
+if (sessionStorage.getItem('persist:root')) {
+  const tok = JSON.parse(sessionStorage.getItem('persist:root'));
+  const toke = JSON.parse(tok['user']);
+  var jwt = toke['value'].jwtToken;
+}
+
+console.log(jwt);
+
+const tokenApi = axios.create({
+  baseURL: 'https://j6b105.p.ssafy.io/api/',
+  headers: {
+    'Content-Type': 'application/json',
+    Authorization: 'Bearer ' + jwt,
+  },
+});
+
+const withdrawApi = axios.create({
+  baseURL: 'https://j6b105.p.ssafy.io/api/',
+  headers: {
+    'Content-Type': 'multipart/form-data',
+    Authorization: 'Bearer ' + jwt,
+    token: jwt,
+  },
+});
+
+const fileApi = axios.create({
+  baseURL: 'https://j6b105.p.ssafy.io/api/',
+  headers: {
+    'Content-Type': 'multipart/form-data',
+  },
+});
+
+const ocrApi = axios.create({
+  baseURL: '/custom/v1/14843/0c3307a350bcc0e2b944ccdb8fc49c191fcd75425562e54c2570aa65f0b29b65/',
+  headers: {
+    'Content-Type': 'application/json',
+    'X-OCR-SECRET': 'amZPVUZxdG1RempqR056UG9TTnBUZVhGV2ZSS2dUQWI=',
   },
 });
 
@@ -49,4 +88,4 @@ api.interceptors.response.use(
   },
 );
 
-export default api;
+export { api, tokenApi, fileApi, ocrApi, withdrawApi };

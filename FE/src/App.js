@@ -9,6 +9,7 @@ import SignUp from './components/pages/SignUp';
 import CampaignManagement from './components/pages/CampaignManagement';
 import SearchResult from './components/pages/SearchResult';
 import CampaignInfo from './components/pages/CampaignInfo';
+import NavBar from './components/UI/organisms/NavBar';
 
 import commonStyles from './styles/commonStyles';
 import GoogleLoginRedirect from './components/UI/organisms/GoogleLoginRedirect';
@@ -28,7 +29,7 @@ export default function App() {
           <Route path="/campaign" element={<CampaignManagement />} />
           <Route path="/mypage" element={<MyPage />} />
           <Route path="/searchresult" element={<SearchResult />} />
-          <Route path="/CampaignInfo" element={<CampaignInfo />} />
+          <Route path="/campaigninfo/:campaignId" element={<CampaignInfo />} />
 
           {/* 404 Not Found*/}
           <Route path="/*" element={<NoMatch />} />

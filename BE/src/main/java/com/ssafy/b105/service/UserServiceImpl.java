@@ -1,6 +1,7 @@
 package com.ssafy.b105.service;
 
 import com.ssafy.b105.entity.blockchain.Wallet;
+import com.ssafy.b105.entity.common.MemberType;
 import com.ssafy.b105.entity.user.Authority;
 import com.ssafy.b105.entity.user.User;
 import com.ssafy.b105.exception.DuplicateException;
@@ -14,6 +15,7 @@ import com.ssafy.b105.service.blockchain.WalletService;
 import java.util.Optional;
 import java.util.regex.Pattern;
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.data.crossstore.ChangeSetPersister;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
@@ -24,6 +26,7 @@ import org.springframework.transaction.annotation.Transactional;
 @Service
 @Transactional
 @RequiredArgsConstructor
+@Slf4j
 public class UserServiceImpl implements UserService {
 
   private final UserRepository userRepository;
@@ -38,20 +41,21 @@ public class UserServiceImpl implements UserService {
   @Override
   public boolean duplicatePrincipalCheck(String principal) {
     //아이디 중복 검증
-    if (userRepository.findOneByPrincipal(principal).orElse(null) != null) {
+    if (userRepository.findOneByPrincipal(principal).isPresent()) {
+      log.error("이미 가입되어 있는 아이디 입니다.");
       throw new DuplicateException("이미 가입되어 있는 아이디 입니다.");
     }
-    return true;
+    return false;
   }
 
   @Override
   public boolean duplicateNameCheck(String name) {
     //닉네임 중복 검증
-
-    if (userRepository.findOneByName(name).orElse(null) != null) {
+    if (userRepository.findOneByName(name).isPresent()) {
+      log.error("이미 사용중인 이름입니다.");
       throw new DuplicateException("이미 사용중인 이름 입니다.");
     }
-    return true;
+    return false;
   }
 
 
@@ -74,19 +78,19 @@ public class UserServiceImpl implements UserService {
   }
 
   @Override
-  public User saveOrUpdateUser(User user) throws ChangeSetPersister.NotFoundException {
+  public User saveOrUpdateUser(User user, MemberType type) throws ChangeSetPersister.NotFoundException {
     isValied(user);
     Wallet wallet = walletService.createAccount(user)
         .orElseThrow(() -> new ChangeSetPersister.NotFoundException());
-    memberContractService.registMember(wallet.getAccount(), user.getMemberType());
+    memberContractService.registMember(wallet.getAccount(), type);
     user.encodePassword(this.passwordEncoder);
     return this.userRepository.save(user);
   }
 
   @Override
   @Transactional
-  public User login(String prinripal, String credential) {
-    User user = userRepository.findByPrincipal(prinripal).orElseThrow();
+  public User login(String prinripal, String credential) throws ChangeSetPersister.NotFoundException {
+    User user = userRepository.findByPrincipal(prinripal).orElseThrow(() -> new ChangeSetPersister.NotFoundException());
     return user;
   }
 
@@ -97,11 +101,6 @@ public class UserServiceImpl implements UserService {
     return authority;
   }
 
-  @Override
-  public void setAuthority(User user, Authority authority) {
-    authority.setUser(user);
-    authorityRepository.save(authority);
-  }
 
   //유효성 검증
   private void isValied(User user) {
@@ -127,11 +126,11 @@ public class UserServiceImpl implements UserService {
       throw new ExpressionValidateException("닉네임 형식이 올바르지 않습니다.");
     }
     //아이디 중복 검증
-    if (userRepository.findOneByPrincipal(user.getPrincipal()).orElse(null) != null) {
+    if (duplicatePrincipalCheck(user.getPrincipal())) {
       throw new DuplicateException("이미 가입되어 있는 아이디 입니다.");
     }
     //닉네임 중복 검증
-    if (userRepository.findOneByName(user.getName()).orElse(null) != null) {
+    if (duplicateNameCheck(user.getName())) {
       throw new DuplicateException("이미 사용중인 이름 입니다.");
     }
   }

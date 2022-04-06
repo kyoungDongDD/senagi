@@ -1,5 +1,6 @@
 package com.ssafy.b105.controller;
 
+import com.querydsl.core.Tuple;
 import com.ssafy.b105.dto.CampaignListDto;
 import com.ssafy.b105.dto.CampaignRequestDto;
 import com.ssafy.b105.dto.CampaignResponseDto;
@@ -19,7 +20,6 @@ import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController

@@ -35,7 +35,13 @@
     </tr>
     <tr>
     <td><b>Front-end</b></td>
-    <td>nodejs</td>
+    <td>
+<img src="https://img.shields.io/badge/Npm-8.3.1-CB3837?style=flat-square&logo=Npm&logoColor=white"/>
+<img src="https://img.shields.io/badge/Node-16.14.0-339933?style=flat-square&logo=Node.js&logoColor=white"/>
+<img src="https://img.shields.io/badge/React-17.0.2-61DAFB?style=flat-square&logo=React&logoColor=white"/>
+<img src="https://img.shields.io/badge/Redux-7.2.6-764ABC?style=flat-square&logo=Redux&logoColor=white"/>
+<img src="https://img.shields.io/badge/MUI-007FFF?style=flat-square&logo=MUI&logoColor=white"/>
+    </td>
     </tr>
     <tr>
     <td><b>Infra</b></td>
