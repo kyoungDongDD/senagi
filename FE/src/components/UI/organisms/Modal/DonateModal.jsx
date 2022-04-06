@@ -7,6 +7,7 @@ import Spinner from '../Spinner';
 import styled from '@emotion/styled';
 import PaymentAPI from '../../../../api/paymentAPI';
 import { useParams } from 'react-router-dom';
+import SpinnerCSS from '../../organisms/Spinner.css';
 
 const style = {
   position: 'absolute',
@@ -64,6 +65,7 @@ function ChildModal(props) {
 
   return (
     <div>
+      <div className={loading ? 'parentDisable' : ''} width="100%"></div>
       <UserButton
         func={handleOpen}
         type="submit"
@@ -98,7 +100,7 @@ function ChildModal(props) {
               func={donationToShelter}
             />
           </Buttonblock>
-          {loading && <Spinner />}
+          {loading && <Spinner loading={loading} />}
         </Box>
       </Modal>
     </div>
