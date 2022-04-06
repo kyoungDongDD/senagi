@@ -5,15 +5,27 @@ import CampaignCard from './CampaignCard';
 import styled from '@emotion/styled';
 import { Grid } from '@mui/material';
 
-function UsageHistory() {
+function UsageHistory(props) {
+  const { targetDonation, lastModifiedDate, endDate, shelterName, balance, dday } = props;
+
   return (
     <div>
       <LeyoutContainer>
-        <Grid container justifyContent={'space-evenly'}>
-          <ReceiptImage />
-          <Grid item xs={6} lg={2}>
+        <Grid container justifyContent={'space-evenly'} marginTop={'30px'}>
+          <Grid>
+            <ReceiptImage />
+            <p>사용금액 456,789원</p>
+          </Grid>
+          <Grid>
             <CardPosition>
-              <CampaignCard />
+              <CampaignCard
+                targetDonation={targetDonation}
+                lastModifiedDate={lastModifiedDate}
+                endDate={endDate}
+                shelterName={shelterName}
+                balance={balance}
+                dday={dday}
+              />
             </CardPosition>
           </Grid>
         </Grid>

@@ -45,36 +45,36 @@ public class CampaignContractServiceImpl implements
 
   @Override
   public AmountDto donate(Wallet from, String contractAccount, Long amount) {
-    if(amount <= 0) throw new IllegalArgumentException();
+    if (amount <= 0) {
+      throw new IllegalArgumentException();
+    }
     Campaign campaign = connector.loadContract(contractAccount);
-
     try {
       TransactionReceipt receipt = campaign.donate(from.getAccount(),
-          BalanceConverter.longToBigInteger(amount, decimals)).sendAsync().get();
+          BalanceConverter.longToBigInteger(amount, decimals)).send();
       return new AmountDto(receipt.getTransactionHash(),
-          BalanceConverter.bigIntegerToLong(tokenMgr.balanceOf(contractAccount).sendAsync().get(),decimals));
-
-    } catch (InterruptedException e) {
-      e.printStackTrace();
-    } catch (ExecutionException e) {
+          BalanceConverter.bigIntegerToLong(tokenMgr.balanceOf(contractAccount).send(), decimals));
+    } catch (Exception e) {
       e.printStackTrace();
     }
+
     return null;
   }
 
   @Override
   public AmountDto withdrawal(String contractAccount, Wallet to, Long amount) {
-    if(amount <= 0) throw new IllegalArgumentException();
+    if (amount <= 0) {
+      throw new IllegalArgumentException();
+    }
     Campaign campaign = connector.loadContract(contractAccount);
 
     try {
       TransactionReceipt receipt = campaign.withdrawal(to.getAccount(),
-          BalanceConverter.longToBigInteger(amount, decimals)).sendAsync().get();
+          BalanceConverter.longToBigInteger(amount, decimals)).send();
       return new AmountDto(receipt.getTransactionHash(),
-          BalanceConverter.bigIntegerToLong(tokenMgr.balanceOf(contractAccount).sendAsync().get(),decimals));
-    } catch (InterruptedException e) {
-      e.printStackTrace();
-    } catch (ExecutionException e) {
+          BalanceConverter.bigIntegerToLong(tokenMgr.balanceOf(contractAccount).send(),
+              decimals));
+    } catch (Exception e) {
       e.printStackTrace();
     }
     return null;
@@ -84,27 +84,26 @@ public class CampaignContractServiceImpl implements
   public boolean isEnd(String contractAccount) {
     Campaign campaign = connector.loadContract(contractAccount);
     try {
-      return campaign.isEnded().sendAsync().get();
-    } catch (InterruptedException e) {
-      e.printStackTrace();
-    } catch (ExecutionException e) {
+      return campaign.isEnded().send();
+    } catch (Exception e) {
       e.printStackTrace();
     }
     return false;
   }
 
   @Override
-  public ContractCloseResponseDto contractClose(String fromContractAccount, String toContractAccount) {
+  public ContractCloseResponseDto contractClose(String fromContractAccount,
+      String toContractAccount) {
     Campaign from = connector.loadContract(fromContractAccount);
     Campaign to = connector.loadContract(toContractAccount);
     try {
-      TransactionReceipt receipt = from.close(to.getContractAddress()).sendAsync().get();
+      TransactionReceipt receipt = from.close(to.getContractAddress()).send();
       return new ContractCloseResponseDto(receipt.getTransactionHash(),
-          BalanceConverter.bigIntegerToLong(tokenMgr.balanceOf(fromContractAccount).sendAsync().get(),decimals),
-          BalanceConverter.bigIntegerToLong(tokenMgr.balanceOf(toContractAccount).sendAsync().get(),decimals));
-    } catch (InterruptedException e) {
-      e.printStackTrace();
-    } catch (ExecutionException e) {
+          BalanceConverter.bigIntegerToLong(
+              tokenMgr.balanceOf(fromContractAccount).send(), decimals),
+          BalanceConverter.bigIntegerToLong(tokenMgr.balanceOf(toContractAccount).send(),
+              decimals));
+    } catch (Exception e) {
       e.printStackTrace();
     }
     return null;

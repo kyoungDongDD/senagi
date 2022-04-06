@@ -23,7 +23,7 @@ public class UserDonateDto {
     private LocalDateTime donateDate;
     private String campaignTitle;
 
-    //id추가
+    //id 추가
     private Long campaignId;
 
     @QueryProjection

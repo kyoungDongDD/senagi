@@ -87,6 +87,7 @@ public class UserController {
       .authorities(authorities)
       .build();
 
+    authority.setUser(user);
     userService.saveOrUpdateUser(user,MemberType.Shelter);
     return new ResponseEntity<>(user, HttpStatus.CREATED);
   }

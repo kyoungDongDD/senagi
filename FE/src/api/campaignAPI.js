@@ -35,7 +35,7 @@
 //   baseURL: 'https://j6b105.p.ssafy.io/api',
 // });
 
-import api from './index';
+import { api } from './index';
 class CampaignAPI {
   //캠페인 리스트 전체 조회
   async getCampaignAll() {

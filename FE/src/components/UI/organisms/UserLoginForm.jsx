@@ -7,7 +7,7 @@ import UserButton from '../molecules/UserButton';
 import { Box, TextField } from '@mui/material';
 import AccountsAPI from '../../../api/accountsAPI';
 import { useDispatch } from 'react-redux';
-import { authSuccess } from '../../../store/user';
+import { authSuccess, login } from '../../../store/user';
 import jwt from 'jwt-decode';
 
 function UserLoginForm() {
@@ -38,7 +38,7 @@ function UserLoginForm() {
     await AccountsAPI.supporterLogin(postData)
       .then((response) => {
         // 로그인 토큰 저장
-        // dispatch(login(response.data));
+        dispatch(login(response.data));
         // 토큰 디코드
         const token = response.data.jwtToken;
         const userInfo = jwt(token);
