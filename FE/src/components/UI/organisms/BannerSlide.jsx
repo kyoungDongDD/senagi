@@ -49,15 +49,6 @@ function BannerSlide() {
               object-fit={'fit'}
             />
           </div>
-          <div>
-            <img
-              src={require('../../../assets/test4.jpg')}
-              alt="logo"
-              width={'100%'}
-              height={'278px'}
-              object-fit={'fit'}
-            />
-          </div>
         </StyledSlider>
       </Container>
     </div>
