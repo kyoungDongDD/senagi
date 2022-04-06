@@ -31,7 +31,7 @@ function GoogleLoginRedirect() {
       console.log('인증코드 못 받아옴');
     }
   };
-  // 로딩 스피터 구현
+  // 로딩 스피너 구현
   return <div></div>;
 }
 

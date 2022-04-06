@@ -22,7 +22,7 @@ export default function App() {
         <Route path="/" element={<Welcome />} />
         <Route path="/login" element={<Login />} />
         <Route path="/signup" element={<SignUp />} />
-        <Route path="/googlelogin" element={<GoogleLoginRedirect />} />
+        <Route path="/sociallogin" element={<GoogleLoginRedirect />} />
 
         <Route element={<Layout />}>
           <Route path="/home" element={<Home />} />
