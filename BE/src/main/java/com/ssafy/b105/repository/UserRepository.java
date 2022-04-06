@@ -10,8 +10,6 @@ public interface UserRepository extends JpaRepository<User, Long> , UserSupportL
   //사용중인 닉네임인지 확인
   Optional<User> findOneByName(String username);
 
-  Optional<User> findByProviderAndProviderId(String provider, String providerId);
-
   Optional<User> findByName(String username);
 
   Optional<User> findByPrincipal(String username);

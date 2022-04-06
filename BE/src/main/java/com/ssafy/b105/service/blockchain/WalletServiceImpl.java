@@ -39,7 +39,6 @@ public class WalletServiceImpl implements WalletService {
     try {
       NewWalletDto newWalletDto = connector.createAccount();
       Wallet wallet = Wallet.of(user, newWalletDto);
-      walletRepository.save(wallet);
       return Optional.ofNullable(wallet);
     } catch (Exception e) {
       e.printStackTrace();
