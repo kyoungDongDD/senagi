@@ -1,3 +1,4 @@
+import { useState } from 'react';
 import Dday from '../molecules/D-Day';
 import Card from '@mui/material/Card';
 import CardContent from '@mui/material/CardContent';
@@ -7,6 +8,8 @@ import styled from '@emotion/styled';
 import Text from '../atoms/Text';
 import { Grid } from '@mui/material';
 import DonateModal from '../organisms/Modal/DonateModal';
+import WithdrawModal from './Modal/WithdrawModal';
+import UserButton from '../molecules/UserButton';
 
 function CampaignCard(props) {
   const {
@@ -26,6 +29,10 @@ function CampaignCard(props) {
   } = props;
 
   const targetMoney = targetDonation ? targetDonation.toLocaleString() : targetDonation;
+  const [isOpen, setIsOpen] = useState();
+  const handleClose = (value) => {
+    setIsOpen(false);
+  };
 
   // 현재 모금액 / 목표 금액으로 퍼센트 구하기
   const targeMoney = Number(targetDonation);
@@ -62,13 +69,15 @@ function CampaignCard(props) {
             {lastModifiedDate} ~ {endDate}까지
           </Typography>
         </RightContainer>
-        {/* <UserButton
+        <UserButton
           type="submit"
           fullWidth
           variant="contained"
-          text="캠페인 기부하기"
+          text="출금하기"
           size="large"
-        /> */}
+          func={() => setIsOpen(true)}
+        />
+        <WithdrawModal isOpen={isOpen} onClose={handleClose} />
         <DonateModal
           shelterName={shelterName}
           thumbnailImageUrl={thumbnailImageUrl}

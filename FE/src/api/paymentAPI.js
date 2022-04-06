@@ -1,4 +1,4 @@
-import { fileApi, ocrApi, tokenApi } from './index';
+import { ocrApi, tokenApi, withdrawApi } from './index';
 
 class PaymentAPI {
   //캠페인 후원
@@ -15,7 +15,7 @@ class PaymentAPI {
   }
   // 출금요청
   withdraw(campaignId, receipt) {
-    return fileApi.post(`/payment/receipt/${campaignId}`, receipt);
+    return withdrawApi.post(`/payment/receipt/${campaignId}`, receipt);
   }
 }
 
