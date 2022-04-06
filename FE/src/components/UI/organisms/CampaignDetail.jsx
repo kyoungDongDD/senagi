@@ -2,7 +2,6 @@ import React, { useEffect, useState } from 'react';
 import CampaignCard from './CampaignCard';
 import Grid from '@mui/material/Grid';
 import CampaignTable from './CampaignTable';
-import { getCampaignById } from '../../../api/campaignAPI';
 
 import styled from '@emotion/styled';
 
@@ -31,7 +30,7 @@ function CampaignDetail(props) {
       <Grid container justifyContent={'center'} spacing={2}>
         <Grid item xs={1} md={1} lg={1}></Grid>
         <Grid item xs={10} md={7} lg={7}>
-          <CampaginImg src={require('../../../assets/test5.jpg')} />
+          <CampaginImg src={`https://j6b105.p.ssafy.io/api/imgs/${contentImageUrl}`} />
           {/* contentImageUrl */}
           <p>
             후원금은 보호소의 영수증 제출을 통해 해당 캠페인을 위해 사용한 금액만큼만 전달됩니다.

@@ -29,6 +29,7 @@ function CampaignCard(props) {
   } = props;
 
   const targetMoney = targetDonation ? targetDonation.toLocaleString() : targetDonation;
+  const targetBalance = balance ? balance.toLocaleString() : balance;
   const [isOpen, setIsOpen] = useState();
   const handleClose = (value) => {
     setIsOpen(false);
@@ -46,7 +47,7 @@ function CampaignCard(props) {
       <CardContent>
         <Grid container>
           <Grid item xs={9}>
-            <StyledText className="body1" text={`${balance}` + '원'} />
+            <StyledText className="body1" text={`${targetBalance}` + '원'} />
           </Grid>
           <StyledGrid item xs={3}>
             <Dday dday={dday} />

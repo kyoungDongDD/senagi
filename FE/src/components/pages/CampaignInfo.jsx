@@ -58,9 +58,36 @@ function CampaignInfo() {
 
   const dateDays = Math.abs(diffDate / (1000 * 3600 * 24));
 
+  //배너 이미지
+  const shltername = compaignData.shelterName;
+
+  function selectBanner(shltername) {
+    let imageName = '';
+    switch (shltername) {
+      case '한국유기동물복지협회':
+        imageName = 'test5.jpg';
+        break;
+      case '디팡보호소':
+        imageName = 'test6.jpg';
+        break;
+      case '대전시온쉼터':
+        imageName = 'test3.jpg';
+        break;
+      case '비글구조네트워크':
+        imageName = 'test1.jpg';
+        break;
+      default:
+        imageName = 'test4.jpg';
+        break;
+    }
+    return imageName;
+  }
+  const banner = selectBanner(shltername);
+  console.log(banner);
+
   return (
     <div>
-      <BannerImg src={require('../../assets/test1.jpg')} />
+      <BannerImg src={require(`../../assets/${banner}`)} />
       <BtnContainer>
         <div></div>
         <CategoryBox
