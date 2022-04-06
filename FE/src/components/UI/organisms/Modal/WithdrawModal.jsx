@@ -141,6 +141,7 @@ function WithdrawModal(props) {
       });
   };
 
+  // fileFormat과 fileBase 에 값이 갱신된 후 ocrRequest 요청
   useEffect(ocrRequest, [fileFormat && fileBase64]);
 
   // 이미지 -> base64 인코딩
@@ -201,7 +202,7 @@ function WithdrawModal(props) {
               >
                 {/* <input type="file" name="imgFile" id="imgFile" onChange={handleChangeFile} /> */}
                 <input name="imgUpload" type="file" accept="image/*" onChange={handleChangeFile} />
-                <AttachButton subResults={subResults} totalAmount={amount} />
+                <AttachButton />
                 <button
                   style={{
                     backgroundColor: 'gray',
@@ -233,8 +234,8 @@ function WithdrawModal(props) {
             {/* </label> */}
           </Grid>
           <Grid item xs={6} md={8}>
-            {/* <BillTable subResults={subResults} /> */}
-            <BillTable />
+            <BillTable subResults={subResults} totalAmount={amount} />
+            {/* <BillTable /> */}
           </Grid>
         </Grid>
       </DialogContent>

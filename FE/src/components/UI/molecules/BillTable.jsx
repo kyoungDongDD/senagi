@@ -41,10 +41,9 @@ function BillTable({ subResults, totalAmount = 0 }) {
     // if (subResults && rows) {
     if (subResults) {
       console.log('subResults', subResults);
-      // const row = [createData()]
-      const length = subResults.items.length;
+      const length = subResults.length;
       for (let i = 0; i < length; i++) {
-        let subResult = subResults.items[i];
+        let subResult = subResults[i];
         let name = subResult.name.text;
         let price = subResult.price.price.text;
         let a = createData(name, price);
@@ -73,7 +72,7 @@ function BillTable({ subResults, totalAmount = 0 }) {
             </TableRow>
           ))}
           <TableRow>
-            <TableCell colSpan={2}>합계:</TableCell>
+            <TableCell>합계:</TableCell>
             <TableCell align="right">{totalAmount}원</TableCell>
           </TableRow>
         </TableBody>
