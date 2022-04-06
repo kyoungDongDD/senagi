@@ -14,8 +14,6 @@ if (sessionStorage.getItem('persist:root')) {
   var jwt = toke['value'].jwtToken;
 }
 
-console.log(jwt);
-
 const tokenApi = axios.create({
   baseURL: 'https://j6b105.p.ssafy.io/api/',
   headers: {
