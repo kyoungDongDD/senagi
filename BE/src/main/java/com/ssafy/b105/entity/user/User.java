@@ -132,4 +132,7 @@ public class User{
     }
     return MemberType.None;
   }
+  public void setWallet(Wallet wallet){
+    this.wallet = wallet;
+  }
 }
