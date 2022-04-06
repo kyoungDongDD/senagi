@@ -15,7 +15,7 @@ function Project() {
   const [posts, setPosts] = useState([]);
   useEffect(() => {
     campaignAPI.getCampaignByType('PROJECT').then((response) => {
-      const campaignAll = response.content;
+      const campaignAll = response.data.content;
       console.log(campaignAll);
       setPosts(campaignAll);
     });
@@ -51,7 +51,6 @@ function Project() {
               {posts.map(
                 ({
                   id,
-
                   title,
                   shelterName,
                   targetDonation,
@@ -59,15 +58,17 @@ function Project() {
                   endDate,
                   lastModifiedDate,
                 }) => (
-                  <Card
-                    id={id}
-                    title={title}
-                    shelterName={shelterName}
-                    thumbnailImageUrl={thumbnailImageUrl}
-                    targetDonation={targetDonation}
-                    endDate={endDate}
-                    lastModifiedDate={lastModifiedDate}
-                  />
+                  <div key={id}>
+                    <Card
+                      id={id}
+                      title={title}
+                      shelterName={shelterName}
+                      thumbnailImageUrl={thumbnailImageUrl}
+                      targetDonation={targetDonation}
+                      endDate={endDate}
+                      lastModifiedDate={lastModifiedDate}
+                    />
+                  </div>
                 ),
               )}
             </Carousel>
