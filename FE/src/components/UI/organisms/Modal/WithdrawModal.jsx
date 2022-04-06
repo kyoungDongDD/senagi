@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from 'react';
+import { useEffect, useState } from 'react';
 import {
   Dialog,
   DialogActions,
@@ -12,10 +12,8 @@ import Text from '../../atoms/Text';
 import BillTable from '../../molecules/BillTable';
 import { makeStyles } from '@mui/styles';
 import styled from '@emotion/styled';
-import { OCR } from '../../../../api/paymentAPI';
 import PaymentAPI from '../../../../api/paymentAPI';
 import { useParams } from 'react-router-dom';
-import { Preview } from '@mui/icons-material';
 import { v4 as uuidv4 } from 'uuid';
 
 const useStyles = makeStyles((theme) => {
@@ -92,7 +90,6 @@ function WithdrawModal(props) {
   const [subResults, setSubResults] = useState([]); // 상세 항목 데이터
   const classes = useStyles();
   const { campaignId } = useParams(); // API 요청 보낼 campaign id parameter
-  console.log('campaignId', campaignId);
 
   // 파일 전송하기
   const withdraw = async () => {
@@ -112,8 +109,8 @@ function WithdrawModal(props) {
 
   // OCR
   const ocrRequest = async (event) => {
-    // console.log(fileBase64);
-    // console.log(fileFormat);
+    console.log('ocrRequest', fileBase64);
+    console.log('ocrRequest', fileFormat);
     const OCRdata = {
       images: [
         {
@@ -130,9 +127,9 @@ function WithdrawModal(props) {
     // OCR 분석 결과 출력
     await PaymentAPI.OCR(OCRdata)
       .then((response) => {
-        // console.log('response', response);
+        console.log('response', response);
         const result = response.data.images[0].receipt.result;
-        const totalPrice = result.totalPrice.price.text.replaceAll('.', '');
+        const totalPrice = result.totalPrice.price.text.replaceAll('.', ''); // OCR에서 ,을 .으로 인식하는 문제 해결
         // console.log('result', result);
         console.log('amount', Number(totalPrice));
         setAmount(Number(totalPrice));
@@ -142,9 +139,9 @@ function WithdrawModal(props) {
       .catch((error) => {
         console.log(error);
       });
-
-    // 총액 + 이미지 저장
   };
+
+  useEffect(ocrRequest, [fileFormat && fileBase64]);
 
   // 이미지 -> base64 인코딩
   const handleChangeFile = async (event) => {
@@ -152,17 +149,14 @@ function WithdrawModal(props) {
     setFileImage(URL.createObjectURL(event.target.files[0])); // 이미지 미리보기
 
     // 2. 읽기 완료 후 base64 encoding
-    reader.onload = () => {
+    reader.onloadend = () => {
+      console.log(reader);
       const base64 = reader.result;
-      // console.log(base64);
       if (base64) {
         let dataType = reader.result.split(';base64,')[0];
-        // console.log(dataType.split('/')[1]);
         setFileFormat(dataType.split('/')[1]); // 데이터 타입 저장
         let base64result = base64.split(',')[1]; // 불필요한 데이터 "," 기준 삭제
         setFileBase64(base64result);
-        // console.log(fileBase64);
-        // console.log(fileFormat);
       }
     };
 
@@ -170,8 +164,6 @@ function WithdrawModal(props) {
       reader.readAsDataURL(event.target.files[0]); // 1. 파일 읽어서 저장
       setFile(event.target.files[0]); // 이미지 저장 (form-data로 보낼 것)
     }
-
-    ocrRequest();
   };
 
   // 파일 삭제
@@ -241,6 +233,7 @@ function WithdrawModal(props) {
             {/* </label> */}
           </Grid>
           <Grid item xs={6} md={8}>
+            {/* <BillTable subResults={subResults} /> */}
             <BillTable />
           </Grid>
         </Grid>

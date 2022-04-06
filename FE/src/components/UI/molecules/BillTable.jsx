@@ -1,30 +1,58 @@
 import { useEffect, useState } from 'react';
-import { Table, TableBody, TableCell, TableContainer, TableHead, TableRow, Paper } from '@mui/material';
+import {
+  Table,
+  TableBody,
+  TableCell,
+  TableContainer,
+  TableHead,
+  TableRow,
+  Paper,
+} from '@mui/material';
 
 function createData(name, amount) {
   return { name, amount };
 }
 
-function BillTable(props) {
-  const { subResults, totalAmount } = props
+function BillTable({ subResults, totalAmount = 0 }) {
+  // const { subResults, totalAmount } = props
   const [rows, setRows] = useState([]);
 
-  useEffect(()=> {
+  //
+  useEffect(() => {
+    console.log(rows);
+    if (rows) {
+      console.log(rows);
+      // const length = subResults.items.length;
+      // for (let i = 0; i < length; i++) {
+      //   let subResult = subResults.items[i]
+      //   let name = subResult.name.text;
+      //   let price = subResult.price.price.text;
+      //   let a = createData(name, price);
+      //   setRows(rows => [...rows, a])
+      // }
+    }
+    console.log('rows', rows);
+  }, [rows]);
+  //
+  useEffect(() => {
     console.log(totalAmount);
     console.log('BillTable-subResults', subResults);
     // if (subResults.items && rows) {
-    if (subResults && rows) {
+    // if (subResults && rows) {
+    if (subResults) {
+      console.log('subResults', subResults);
+      // const row = [createData()]
       const length = subResults.items.length;
       for (let i = 0; i < length; i++) {
-        let subResult = subResults.items[i]
+        let subResult = subResults.items[i];
         let name = subResult.name.text;
         let price = subResult.price.price.text;
         let a = createData(name, price);
-        setRows(rows => [...rows, a])
+        setRows((rows) => [...rows, a]);
       }
     }
     console.log('rows', rows);
-  }, [subResults])
+  }, [subResults]);
 
   return (
     <TableContainer component={Paper}>
@@ -37,10 +65,7 @@ function BillTable(props) {
         </TableHead>
         <TableBody>
           {rows.map((row) => (
-            <TableRow
-              key={row.name}
-              sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
-            >
+            <TableRow key={row.name} sx={{ '&:last-child td, &:last-child th': { border: 0 } }}>
               <TableCell component="th" scope="row">
                 {row.name}
               </TableCell>
@@ -52,7 +77,6 @@ function BillTable(props) {
             <TableCell align="right">{totalAmount}원</TableCell>
           </TableRow>
         </TableBody>
-        
       </Table>
     </TableContainer>
   );
