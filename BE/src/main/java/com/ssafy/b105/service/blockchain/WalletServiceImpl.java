@@ -54,9 +54,9 @@ public class WalletServiceImpl implements WalletService {
   }
 
   @Override
-  public Long findBalanceByUser(User user) throws ExecutionException, InterruptedException {
+  public Long findBalanceByUser(User user) throws Exception {
     Wallet wallet = findByUser(user);
-    BigInteger balance = tokenMgr.balanceOf(wallet.getAccount()).sendAsync().get();
+    BigInteger balance = tokenMgr.balanceOf(wallet.getAccount()).send();
     return BalanceConverter.bigIntegerToLong(balance, decimals);
   }
 

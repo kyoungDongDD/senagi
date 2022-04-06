@@ -54,7 +54,7 @@ public class ReceiptService {
             String filename = new MD5Generator(origFilename).toString();
             filename += extension;
             /* 실행되는 위치의 'receiptImage' 폴더에 파일이 저장됩니다. */
-            String savePath = System.getProperty("user.dir") + "\\" + rootLocation.toString();
+            String savePath = System.getProperty("user.dir") + "/" + rootLocation.toString();
             /* 파일이 저장되는 폴더가 없으면 폴더를 생성합니다. */
             if (!new File(savePath).exists()) {
                 try {
@@ -64,7 +64,7 @@ public class ReceiptService {
                 }
             }
             //파일 경로
-            String filePath = savePath + "\\" + filename;
+            String filePath = savePath + "/" + filename;
             files.transferTo(new File(filePath));
 
             ReceiptDto receiptDto = ReceiptDto.builder()

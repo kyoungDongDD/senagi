@@ -79,7 +79,6 @@ public class CampaignService {
                 throw new RuntimeException();
             }
 
-
             String thumbnailOriginFilename = campaignRequestDto.getThumbnailImage()
                 .getOriginalFilename();
             String contentOriginFilename = campaignRequestDto.getContentImage()
@@ -99,7 +98,7 @@ public class CampaignService {
 
             /* 실행되는 위치의 'receiptImage' 폴더에 파일이 저장됩니다. */
             // 프로젝트 root directory
-            String savePath = System.getProperty("user.dir") + "\\imgs";
+            String savePath = System.getProperty("user.dir") + "/imgs";
             /* 파일이 저장되는 폴더가 없으면 폴더를 생성합니다. */
             if (!new File(savePath).exists()) {
                 try {
@@ -109,8 +108,8 @@ public class CampaignService {
                 }
             }
             //파일 경로
-            String thumbnailFilePath = savePath + "\\" + thumbnailFilename;
-            String contentFilePath = savePath + "\\" + contentFilename;
+            String thumbnailFilePath = savePath + "/" + thumbnailFilename;
+            String contentFilePath = savePath + "/" + contentFilename;
 
             campaignRequestDto.getThumbnailImage().transferTo(new File(thumbnailFilePath));
             campaignRequestDto.getContentImage().transferTo(new File(contentFilePath));
