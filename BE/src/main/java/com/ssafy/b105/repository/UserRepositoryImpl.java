@@ -29,10 +29,11 @@ public class UserRepositoryImpl implements UserSupportLogRepository {
             .select( new QUserDonateDto(
                 QSupportLog.supportLog.campaign.user.name.as("shelterName"),
                 QSupportLog.supportLog.amount,
-                QSupportLog.supportLog.campaign.thumbnailImageUrl.as("thumnailImagUrl"),
+                QSupportLog.supportLog.campaign.thumbnailImageUrl.as("thumbnailImagUrl"),
                 QSupportLog.supportLog.donateDate.as("donateDate"),
                 QSupportLog.supportLog.campaign.title.as("campaignTitle"),
-              QSupportLog.supportLog.campaign.id.as("campaignId")
+                QSupportLog.supportLog.campaign.id.as("campaignId")
+
             ))
             .from(QSupportLog.supportLog)
             .where(QSupportLog.supportLog.user.id.eq(user.getId()))
