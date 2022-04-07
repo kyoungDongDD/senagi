@@ -53,26 +53,28 @@ function CampaignManagement() {
   return (
     <div>
       <BannerSlide />
+
       <ListBox>
         <TabContext value={value}>
-          <Box>
-            <Box sx={{ float: 'left' }}>
-              <TabList onChange={handleChange}>
-                <Tab label="진행" value="false" />
-                <Tab label="종료" value="true" />
-              </TabList>
-            </Box>
-            <Box sx={{ maxWidth: 140, float: 'right' }}>
-              <FormControl fullWidth>
-                <Select sx={{ height: 35 }} value={range} onChange={rangeChange}>
-                  <MenuItem value={'registDate'} selected>
-                    최신순
-                  </MenuItem>
-                  <MenuItem value={'viewCount'}>조회순</MenuItem>
-                  <MenuItem value={'endDate'}>마감 임박순</MenuItem>
-                </Select>
-              </FormControl>
-            </Box>
+          <TabList
+            sx={{ mt: 10, ml: 5, mb: 3 }}
+            textColor="inherit"
+            indicatorColor="secondary"
+            onChange={handleChange}
+          >
+            <Tab label="진행" value="false" />
+            <Tab label="종료" value="true" />
+          </TabList>
+          <Box sx={{ maxWidth: 140, ml: 5 }}>
+            <FormControl fullWidth>
+              <Select sx={{ height: 35 }} value={range} onChange={rangeChange}>
+                <MenuItem value={'registDate'} selected>
+                  최신순
+                </MenuItem>
+                <MenuItem value={'viewCount'}>조회순</MenuItem>
+                <MenuItem value={'endDate'}>마감 임박순</MenuItem>
+              </Select>
+            </FormControl>
           </Box>
           <TabPanel value="false">
             <Grid container justifyContent={'flex-start'}>
