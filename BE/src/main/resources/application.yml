@@ -1,7 +1,7 @@
 server:
   ssl:
-    key-store: classpath:j6b105.p.ssafy.io.p12
-    key-store-password: ssafyb105
+    key-store: classpath:senagi.site.p12
+    key-store-password: ssafy
     key-store-type: PKCS12
     key-alias: ssafy
 
@@ -10,7 +10,7 @@ spring:
     include: eth
 
   datasource:
-    url: jdbc:mysql://j6b105.p.ssafy.io:17177/nobaddonation?useSSL=false&serverTimezone=UTC&autoReconnect=true
+    url: jdbc:mysql://senagi.site:17177/nobaddonation?useSSL=false&serverTimezone=UTC&autoReconnect=true
     username: ssafy
     password: ssafyb105
     driver-class-name: com.mysql.cj.jdbc.Driver
