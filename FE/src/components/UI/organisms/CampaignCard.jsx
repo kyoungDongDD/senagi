@@ -47,7 +47,6 @@ function CampaignCard(props) {
   console.log(nickName);
 
   return (
-    //max min 똑같은 이유, ProgressBar에 영향을 안주기위해 고정값으로 주려고..
     <StyledCard>
       <CardContent>
         <Grid container>
@@ -128,6 +127,10 @@ const StyledGrid = styled(Grid)`
 const StyledCard = styled(Card)`
   position: sticky;
   top: 50px;
+  width: 280px;
+  @media screen and (max-width: 900px) {
+    display: None;
+  }
 `;
 
 export default CampaignCard;

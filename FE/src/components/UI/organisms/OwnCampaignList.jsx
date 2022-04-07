@@ -16,13 +16,13 @@ function OwnCampaignList(props) {
 
   const navigate = useNavigate();
 
-  // const pagelink = (id) => {
-  //   navigate(`/campaigninfo/${id}`, {
-  //     state: {
-  //       pageId: id,
-  //     },
-  //   });
-  // };
+  const pagelink = (id) => {
+    navigate(`/campaigninfo/${id}`, {
+      state: {
+        pageId: id,
+      },
+    });
+  };
 
   return (
     <div>
@@ -41,11 +41,14 @@ function OwnCampaignList(props) {
                   sx={{ width: 151 }}
                   image={`https://senagi.site/api/imgs/${data.thumbnailImageUrl}`}
                   alt="이미지가 없습니다.!!!!!!!"
-                  // onClick={() => pagelink(data.campaignId)}
+                  onClick={() => pagelink(data.id)}
                 />
                 <CardContent sx={{ flex: '1 0 auto' }}>
                   <Division>
                     <div>
+                      <Typography component="div" variant="h5">
+                        {data.isEnd ? <div>진행중</div> : <End>종료</End>}
+                      </Typography>
                       <Typography component="div" variant="h5">
                         {data.shelterName}
                       </Typography>
@@ -56,9 +59,7 @@ function OwnCampaignList(props) {
                         {data.lastModifiedDate} ~ {data.endDate}
                       </Typography>
                     </div>
-                    <Money>
-                      {data.balance} {data.targetDonation.toLocaleString()} 세나
-                    </Money>
+                    <Money> {data.targetDonation.toLocaleString()} 세나</Money>
                   </Division>
                 </CardContent>
                 <Box sx={{ display: 'flex', alignItems: 'center', pl: 1, pb: 1 }}></Box>
@@ -93,4 +94,9 @@ const Money = styled.p`
 const Division = styled.div`
   display: flex;
   justify-content: space-between;
+`;
+
+const End = styled.div`
+  font-family: 'GM';
+  color: grey;
 `;
