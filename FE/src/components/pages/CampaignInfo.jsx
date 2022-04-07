@@ -154,7 +154,7 @@ const BtnContainer = styled.div`
   justify-content: space-evenly;
   text-align: center;
   align-items: center;
-  border: 1px solid;
+  border: 1px solid #d7d7d7;
 `;
 
 const CategoryBox = styled.div`
