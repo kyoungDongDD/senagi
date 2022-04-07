@@ -6,8 +6,9 @@ import Footer from '../UI/organisms/Footer';
 
 function Home() {
   const Container = styled.div`
-    background: linear-gradient(#fffcf3 60%, #fff 20%);
+    padding: 0 200px;
   `;
+
   return (
     <>
       <BannerSlide />
