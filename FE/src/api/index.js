@@ -1,7 +1,7 @@
 import axios from 'axios';
 
 const api = axios.create({
-  baseURL: 'https://j6b105.p.ssafy.io/api/',
+  baseURL: 'https://senagi.site/api/',
   headers: {
     'Content-Type': 'application/json',
   },
@@ -15,7 +15,7 @@ if (sessionStorage.getItem('persist:root')) {
 }
 
 const tokenApi = axios.create({
-  baseURL: 'https://j6b105.p.ssafy.io/api/',
+  baseURL: 'https://senagi.site/api/',
   headers: {
     'Content-Type': 'application/json',
     Authorization: 'Bearer ' + jwt,
@@ -23,7 +23,7 @@ const tokenApi = axios.create({
 });
 
 const withdrawApi = axios.create({
-  baseURL: 'https://j6b105.p.ssafy.io/api/',
+  baseURL: 'https://senagi.site/api/',
   headers: {
     'Content-Type': 'multipart/form-data',
     Authorization: 'Bearer ' + jwt,
@@ -32,7 +32,7 @@ const withdrawApi = axios.create({
 });
 
 const fileApi = axios.create({
-  baseURL: 'https://j6b105.p.ssafy.io/api/',
+  baseURL: 'https://senagi.site/api/',
   headers: {
     'Content-Type': 'multipart/form-data',
   },
