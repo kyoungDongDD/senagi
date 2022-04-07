@@ -13,9 +13,6 @@ const tabStyles = makeStyles({
     fontSize: '15px',
     color: 'grey',
   },
-  customStyleOnActiveTab: {
-    color: '#F4BA34',
-  },
   activeTab: {
     fontSize: '16px',
     fontWeight: '600',
@@ -97,6 +94,11 @@ function Login() {
                   일반 회원
                 </span>
               }
+              sx={{
+                '& .MuiTabs-flexContainer': {
+                  backgroundColor: '#f4ba34',
+                },
+              }}
               id="0"
               aria-controls="0"
             />
@@ -106,6 +108,11 @@ function Login() {
                   보호소 회원
                 </span>
               }
+              sx={{
+                '& .MuiTabs-flexContainer': {
+                  backgroundColor: '#f4ba34',
+                },
+              }}
               id="1"
               aria-controls="1"
             />

@@ -15,28 +15,26 @@ const StyledText = styled(Text)`
   margin: auto 0 auto auto;
 `;
 
-const StyledLink = styled(Link)`
+const StyledA = styled.a`
   display: inline-block;
   color: blue;
   text-decoration: none;
-  &:focus,
-  &:hover,
-  &:visited,
-  &:link,
-  &:active {
-    text-decoration: none;
-  }
+  margin: auto 0 auto auto;
+  cursor: pointer;
 `;
 
-function JoinButton() {
+function ShelterJoinButton() {
   return (
     <StyledBox>
       <StyledText className="linktext" text="아직도 세나기를 이용하고 있지 않으신가요? &nbsp;" />
-      <StyledLink to="/signup" className="linktext">
-        {'가입하기'}
-      </StyledLink>
+      <StyledA
+        className="linktext"
+        onClick={() => window.open('https://forms.gle/yEsAD4UyDmoP1z7z8', '_blank')}
+      >
+        가입하기
+      </StyledA>
     </StyledBox>
   );
 }
 
-export default JoinButton;
+export default ShelterJoinButton;
