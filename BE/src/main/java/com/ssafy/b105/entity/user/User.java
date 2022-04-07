@@ -62,6 +62,7 @@ public class User{
   @Builder.Default
   private List<Campaign> campaigns = new ArrayList<>();
 
+  @JsonIgnore
   @OneToOne(mappedBy = "user", cascade = CascadeType.ALL)
   private Wallet wallet;
 
