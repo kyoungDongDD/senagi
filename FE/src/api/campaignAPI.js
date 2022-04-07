@@ -20,6 +20,10 @@ class CampaignAPI {
     return api.get(`campaign/detail/${campaignId}`);
   }
 
+  // 캠페인 검색(정렬 포함)
+  searchByKeyword(searchWord, sortType, desc) {
+    return api.get(`campaigns?searchWord=${searchWord}&sortType=${sortType}&desc=${desc}`);
+  }
   // 생성한 캠페인리스트
   getOwnedCampaign() {
     return tokenApi.get(`campaigns/owned/`);
