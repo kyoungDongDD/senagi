@@ -1,8 +1,9 @@
 import GoogleLogo from '../../../assets/g-logo.png';
 import styled from '@emotion/styled';
 
-const StyledButton = styled.button`
+const StyledButton = styled.a`
   border: none;
+  text-decoration: none;
   border-radius: 2px;
   box-shadow: 0 1px 1px 0 rgba(0, 0, 0, 0.24), 0 0 1px 0 rgba(0, 0, 0, 0.12);
   display: flex;
@@ -36,7 +37,7 @@ const StyledP = styled.p`
 
 function GoogleLoginButton() {
   return (
-    <StyledButton>
+    <StyledButton href="https://j6b105.p.ssafy.io:8080/oauth2/authorization/google" target="_blank">
       <StyledImg src={GoogleLogo} alt="GoogleLogo" />
       <StyledP>Google 계정으로 로그인</StyledP>
     </StyledButton>

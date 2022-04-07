@@ -24,7 +24,8 @@ function CampaignInfo() {
   // DonationInfoCard에서 가져온 id 값을 매개변수로 getCampaignById 호출
   useEffect(() => {
     campaignAPI.getCampaignById(pageId).then((response) => {
-      const compaignData = response;
+      console.log(response);
+      const compaignData = response.data;
       setCompaignData(compaignData);
       console.log(compaignData);
     });
@@ -58,9 +59,36 @@ function CampaignInfo() {
 
   const dateDays = Math.abs(diffDate / (1000 * 3600 * 24));
 
+  //배너 이미지
+  const shltername = compaignData.shelterName;
+
+  function selectBanner(shltername) {
+    let imageName = '';
+    switch (shltername) {
+      case '한국유기동물복지협회':
+        imageName = 'test5.jpg';
+        break;
+      case '디팡보호소':
+        imageName = 'test6.jpg';
+        break;
+      case '대전시온쉼터':
+        imageName = 'test3.jpg';
+        break;
+      case '비글구조네트워크':
+        imageName = 'test1.jpg';
+        break;
+      default:
+        imageName = 'test4.jpg';
+        break;
+    }
+    return imageName;
+  }
+  const banner = selectBanner(shltername);
+  console.log(banner);
+
   return (
     <div>
-      <BannerImg src={require('../../assets/test1.jpg')} />
+      <BannerImg src={require(`../../assets/${banner}`)} />
       <BtnContainer>
         <div></div>
         <CategoryBox
@@ -103,6 +131,7 @@ function CampaignInfo() {
           endDate={compaignData.endDate}
           shelterName={compaignData.shelterName}
           balance={compaignData.balance}
+          pageId={pageId}
           dday={dateDays}
         />
       )}

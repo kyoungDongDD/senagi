@@ -6,7 +6,18 @@ import KeyboardArrowLeftIcon from '@mui/icons-material/KeyboardArrowLeft';
 import KeyboardArrowRightIcon from '@mui/icons-material/KeyboardArrowRight';
 import ZoomImage from './ZoomImage';
 
-const ReceiptImage = () => {
+const ReceiptImage = (props) => {
+  //영수증 이미지 props 받은 후 가공
+  const { receipImages } = props;
+  const receipImage = new Set(receipImages);
+  const receipList = Array.from(receipImage);
+  let receipArr = [];
+  for (let i = 0; i < receipList.length; i++) {
+    receipArr.push({
+      src: `https://j6b105.p.ssafy.io/api/imgs/${receipList[i]}`,
+    });
+  }
+
   const slickRef = useRef(null);
 
   const settings = {
@@ -20,7 +31,7 @@ const ReceiptImage = () => {
     slidesToScroll: 1,
 
     customPaging: function (i) {
-      const imgSrc = images[i].src;
+      const imgSrc = receipArr[i].src;
       return (
         <PagingAnchor>
           <Paging src={imgSrc} />
@@ -34,9 +45,9 @@ const ReceiptImage = () => {
   return (
     <Wrap>
       <Slick ref={slickRef} {...settings}>
-        {images.map((v, i) => {
+        {receipArr.map((v, index) => {
           return (
-            <SlickItems key={`${v.title}_${i}`}>
+            <SlickItems key={index}>
               <img src={v.src} alt="이미지없음" />
             </SlickItems>
           );
@@ -172,22 +183,3 @@ const Paging = styled.span`
   background-size: 100% 100%;
   filter: grayscale(1);
 `;
-// 4. 샘플이미지
-const images = [
-  {
-    src: 'https://www.artinsight.co.kr/data/tmp/1910/20191029212614_fawslbwd.jpg',
-    title: '1',
-  },
-  {
-    src: 'https://www.artinsight.co.kr/data/tmp/1910/20191029212649_esiekzxf.jpg',
-    title: '2',
-  },
-  {
-    src: 'https://www.artinsight.co.kr/data/tmp/1910/20191029212707_zcrkccgp.jpg',
-    title: '3',
-  },
-  {
-    src: 'https://www.artinsight.co.kr/data/tmp/1910/20191029212724_pacwfbiz.jpg',
-    title: '4',
-  },
-];

@@ -3,9 +3,11 @@ import Box from '@mui/material/Box';
 import Modal from '@mui/material/Modal';
 import UserButton from '../../molecules/UserButton';
 import UserCancelButton from '../../molecules/UserCancelButton';
+import Spinner from '../Spinner';
 import styled from '@emotion/styled';
 import PaymentAPI from '../../../../api/paymentAPI';
 import { useParams } from 'react-router-dom';
+import SpinnerCSS from '../../organisms/Spinner.css';
 
 const style = {
   position: 'absolute',
@@ -24,12 +26,15 @@ const style = {
 function ChildModal(props) {
   const { value } = props;
   const { campaignId } = useParams();
+  // 문자열에서 , 빼기
+  const values = Number(value.split(',').join(''));
+  //spinner
+  const [loading, setLoading] = useState(false);
 
   const [open, setOpen] = useState(false);
   const handleOpen = () => {
     setOpen(true);
     console.log(campaignId);
-    console.log(value);
   };
   const handleClose = () => {
     setOpen(false);
@@ -40,21 +45,28 @@ function ChildModal(props) {
     event.preventDefault();
     const donationData = {
       campaignId: Number(campaignId),
-      amount: Number(value),
+      amount: Number(values),
     };
     console.log(donationData);
+    setLoading(true);
     await PaymentAPI.donation(donationData)
       .then((response) => {
         console.log(response);
+        setLoading(false);
+        window.location.reload(true);
       })
       .catch((error) => {
         console.log(error);
         alert('기부에 실패했습니다.');
+        setLoading(false);
+        window.location.reload(true);
       });
   };
+  // Number(value).toLocaleString()
 
   return (
     <div>
+      <div className={loading ? 'parentDisable' : ''} width="100%"></div>
       <UserButton
         func={handleOpen}
         type="submit"
@@ -71,7 +83,7 @@ function ChildModal(props) {
       >
         <Box sx={{ ...style, width: 300 }}>
           <p id="child-modal-description" align="center">
-            최종 결제 금액은 {Number(value).toLocaleString()}원 입니다. <br /> 결제하시겠습니까?
+            최종 결제 금액은 {value}원 입니다. <br /> 결제하시겠습니까?
           </p>
           <Buttonblock>
             <UserCancelButton
@@ -89,6 +101,7 @@ function ChildModal(props) {
               func={donationToShelter}
             />
           </Buttonblock>
+          {loading && <Spinner loading={loading} />}
         </Box>
       </Modal>
     </div>
@@ -104,29 +117,28 @@ function DonateModal(props) {
   };
   const handleClose = () => {
     setOpen(false);
+    setValues(0);
   };
   const [values, setValues] = useState('');
 
   const handleChange = (e) => {
-    // value의 값이 숫자가 아닐경우 빈문자열로 replace 해버림.
-    const onlyNumber = e.currentTarget.value.toLocaleString();
-    if (onlyNumber === '' || /^[0-9\b]+$/.test(onlyNumber)) {
-      setValues(onlyNumber);
-    }
+    //value의 값이 숫자가 아닐경우 빈문자열로 replace 해버림.
+    let onlyNumber = e.currentTarget.value;
+    onlyNumber = Number(onlyNumber.replaceAll(',', '').replace(/[^0-9]/g, ''));
+    const formatValue = onlyNumber.toLocaleString('ko-KR');
+    setValues(formatValue);
   };
 
   return (
     <>
-      <LineDiv>
-        <UserButton
-          fullWidth
-          func={handleOpen}
-          type="submit"
-          variant="contained"
-          text="기부하기"
-          size="large"
-        />
-      </LineDiv>
+      <UserButton
+        fullWidth
+        func={handleOpen}
+        type="submit"
+        variant="contained"
+        text="기부하기"
+        size="large"
+      />
       <Modal
         open={open}
         onClose={handleClose}
@@ -138,13 +150,12 @@ function DonateModal(props) {
           <DivContainer>
             <ImgDiv>
               <img
-                src="https://www.artinsight.co.kr/data/tmp/1910/20191029212614_fawslbwd.jpg"
+                src={`https://j6b105.p.ssafy.io/api/imgs/${thumbnailImageUrl}`}
                 alt="이미지없음"
                 objectfit="cover"
                 width="111px"
                 height="97px"
                 style={{ borderRadius: '5px' }}
-                // {thumbnailImageUrl}
               />
             </ImgDiv>
             <DivColumn>
@@ -152,18 +163,15 @@ function DonateModal(props) {
               <P2 id="parent-modal-description">{title}</P2>
             </DivColumn>
           </DivContainer>
-          <form name="dotionForm" action="" method="POST">
-            <Label1 className="input_label">Full name</Label1>
-            <Input1
-              type="text"
-              name="dotionForm"
-              value={values}
-              placeholder="금액을 입력하세요 "
-              onChange={handleChange}
-              autoFocus
-              autoComplete="off"
-            />
-          </form>
+          <Input1
+            type="text"
+            name="dotionForm"
+            value={values}
+            placeholder="금액을 입력하세요 "
+            onChange={handleChange}
+            autoFocus
+            autoComplete="off"
+          />
           <Buttonblock>
             <UserCancelButton
               func={handleClose}
@@ -222,17 +230,6 @@ const Input1 = styled.input`
   outline: none;
   background: transparent;
   text-align: right;
-`;
-
-const Label1 = styled.label`
-  position: absolute;
-  top: 0;
-  left: 0;
-  padding: 10px 0;
-  font-size: 16px;
-  color: #fff;
-  pointer-events: none;
-  transition: 0.5s;
 `;
 
 const LineDiv = styled.div`

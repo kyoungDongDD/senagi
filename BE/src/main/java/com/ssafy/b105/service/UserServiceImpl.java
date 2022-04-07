@@ -83,6 +83,7 @@ public class UserServiceImpl implements UserService {
     Wallet wallet = walletService.createAccount(user)
         .orElseThrow(() -> new ChangeSetPersister.NotFoundException());
     memberContractService.registMember(wallet.getAccount(), type);
+    user.setWallet(wallet);
     user.encodePassword(this.passwordEncoder);
     return this.userRepository.save(user);
   }

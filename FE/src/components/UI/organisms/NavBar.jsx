@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { useSelector } from 'react-redux';
 import { css } from '@emotion/react';
 import Text from '../atoms/Text';
 import { styled, alpha } from '@mui/material/styles';
@@ -50,10 +51,14 @@ const NavBar = () => {
   const handleOpenNavMenu = (event) => {
     setAnchorElNav(event.currentTarget);
   };
+  // 유저 정보 확인
+  const user = useSelector((state) => state.user.value.userInfo);
+  const roles = user.roles[0];
 
+  // 버튼 클릭시 페이지 링크
   const handleCloseNavMenu = (event) => {
     setAnchorElNav(null);
-    // 페이지 링크
+
     const page = event.target.innerText;
     switch (page) {
       case '캠페인':
@@ -65,8 +70,13 @@ const NavBar = () => {
         navigate('/');
         break;
       case '마이페이지':
-        navigate('/mypage');
-        break;
+        if (roles === 'SUPPORTER') {
+          navigate('/mypage');
+          break;
+        } else {
+          navigate('/owncampaigns');
+          break;
+        }
       default:
         navigate('/home');
         break;

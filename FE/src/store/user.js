@@ -1,5 +1,6 @@
 import { createSlice } from '@reduxjs/toolkit';
 
+// const initialStateValue = { isLogin: false, userInfo: null };
 const initialStateValue = { isLogin: false, userInfo: null };
 
 export const userSlice = createSlice({
@@ -14,13 +15,27 @@ export const userSlice = createSlice({
     logout: (state) => {
       state.value = initialStateValue;
     },
+    // checkLogin: (state) => {
+    //   return state.value.isLogin;
+    // },
+    checkUserInfo: (state) => {
+      return state.value.userInfo;
+    },
     // 로그인 성공시 decode한 토큰의 유저 정보 세션에 저장
     authSuccess: (state, action) => {
+      state.value.isLogin = true;
+      state.value.userInfo = action.payload;
+    },
+    socialAuthSuccess: (state, action) => {
+      const obj = JSON.parse(state.value); // string -> object 타입 변환
+      const handler = {}; // handler : Prxy에서 trap들을 가지고 있는 Placeholder 객체 (??) 이해 못함
+      state.value = new Proxy(obj, handler); // Proxy 타입으로 타입 변환
+
       state.value.isLogin = true;
       state.value.userInfo = action.payload;
     },
   },
 });
 
-export const { login, logout, authSuccess } = userSlice.actions;
+export const { login, logout, authSuccess, socialAuthSuccess } = userSlice.actions;
 export default userSlice.reducer;
