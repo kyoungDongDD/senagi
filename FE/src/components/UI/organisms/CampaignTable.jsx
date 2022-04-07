@@ -56,7 +56,7 @@ function CampaignTable(props) {
             <td>
               {hashtags &&
                 hashtags.map((item, index) => {
-                  return <button key={index}>{item}</button>;
+                  return <TagButton key={index}>#{item}</TagButton>;
                 })}
               {/* 버튼 스타일 변경해야함 */}
             </td>
@@ -67,7 +67,7 @@ function CampaignTable(props) {
         <CardContent>
           <Dday dday={dday} />
           <Typography variant="h5" component="div">
-            {targeMoney.toLocaleString()}원
+            {nowMoney.toLocaleString()}원
           </Typography>
           <div ref={divWidth}>
             <ProgressBar id="size" percent={barPer} width={width} />
@@ -75,11 +75,11 @@ function CampaignTable(props) {
           <RightContainer>
             <Typography
               sx={{ fontSize: 16 }}
-              style={{ marginTop: '10px' }}
+              style={{ marginTop: '10px', marginRight: '10px' }}
               color="text.secondary"
               gutterBottom
             >
-              {nowMoney.toLocaleString()}원
+              {targeMoney.toLocaleString()}원
             </Typography>
           </RightContainer>
         </CardContent>
@@ -96,4 +96,29 @@ const RightContainer = styled.div`
   width: 100%;
   display: block;
   text-align: right;
+`;
+
+const TagButton = styled.button`
+  margin: 0px 4px 0px 4px;
+  padding: 0.5rem 1rem;
+  font-family: 'GL', sans-serif;
+  font-size: 0.8rem;
+  font-weight: 300;
+  text-align: center;
+  text-decoration: none;
+  color: grey;
+  display: inline-block;
+  width: auto;
+  border: none;
+  border-radius: 4px;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+  cursor: pointer;
+  transition: 0.5s;
+  &:hover {
+    background: var(--button-hover-bg-color);
+    outline: 0;
+  }
+  &:disabled {
+    opacity: 0.5;
+  }
 `;

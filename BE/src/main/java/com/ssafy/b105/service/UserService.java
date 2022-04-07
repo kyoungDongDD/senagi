@@ -19,7 +19,7 @@ public interface UserService extends UserDetailsService {
   User saveOrUpdateUser(User user, MemberType type) throws ChangeSetPersister.NotFoundException;
 
   @Transactional
-  User login(String prinripal, String credential);
+  User login(String prinripal, String credential) throws ChangeSetPersister.NotFoundException;
 
   Authority getById(long id) throws ChangeSetPersister.NotFoundException;
 

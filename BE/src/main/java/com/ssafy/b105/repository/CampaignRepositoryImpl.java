@@ -3,14 +3,15 @@ package com.ssafy.b105.repository;
 
 
 import com.querydsl.core.types.OrderSpecifier;
+import com.querydsl.core.types.Projections;
 import com.querydsl.core.types.dsl.BooleanExpression;
 import com.querydsl.jpa.impl.JPAQuery;
 import com.querydsl.jpa.impl.JPAQueryFactory;
 import com.ssafy.b105.dto.CampaignListDto;
 import com.ssafy.b105.dto.CampaignSearchCondition;
-import com.ssafy.b105.dto.QCampaignListDto;
 import com.ssafy.b105.entity.campaign.*;
 import com.ssafy.b105.entity.QReceipt;
+import com.ssafy.b105.service.blockchain.TokenContractService;
 import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
@@ -27,10 +28,12 @@ public class CampaignRepositoryImpl implements CampaignSearchRepository {
 
     private final JPAQueryFactory queryFactory;
     private final HashtagRepository hashtagRepository;
+    private final TokenContractService tokenContractService;
 
-    public CampaignRepositoryImpl(EntityManager em, HashtagRepository hashtagRepository) {
+    public CampaignRepositoryImpl(EntityManager em, HashtagRepository hashtagRepository,TokenContractService tokenContractService) {
         this.queryFactory = new JPAQueryFactory(em);
         this.hashtagRepository = hashtagRepository;
+        this.tokenContractService = tokenContractService;
     }
 
     @Override
@@ -48,7 +51,7 @@ public class CampaignRepositoryImpl implements CampaignSearchRepository {
     public Page<CampaignListDto> searchList(CampaignSearchCondition condition, Pageable pageable) {
 
         List<CampaignListDto> content = queryFactory
-            .select(new QCampaignListDto(
+            .select(Projections.fields(CampaignListDto.class,
                 campaign.id,
                 campaign.title,
                 campaign.thumbnailImageUrl,
@@ -59,11 +62,12 @@ public class CampaignRepositoryImpl implements CampaignSearchRepository {
                 campaign.type,
                 campaign.registDate,
                 campaign.lastModifiedDate,
-                campaign.user.name
+                campaign.user.name,
+                campaign.account
             )).distinct()
             .from(campaign)
-            .join(campaign.campaignHashtags, QCampaignHashtag.campaignHashtag)
-            .join(QCampaignHashtag.campaignHashtag.hashtag,QHashtag.hashtag)
+            .leftJoin(campaign.campaignHashtags, QCampaignHashtag.campaignHashtag)
+            .leftJoin(QCampaignHashtag.campaignHashtag.hashtag,QHashtag.hashtag)
             .where(
                 typeEq(condition.getType()),
                 isEndEq(condition.getIsEnd()),
@@ -73,6 +77,11 @@ public class CampaignRepositoryImpl implements CampaignSearchRepository {
             .offset(pageable.getOffset())
             .limit(pageable.getPageSize())
             .fetch();
+
+        for(CampaignListDto campaignListDto : content){
+            Long balance = tokenContractService.balanceOf(campaignListDto.getAccount());
+            campaignListDto.setBalance(balance);
+        }
 
         JPAQuery<Long> countQuery = queryFactory
             .select(campaign.count())

@@ -11,6 +11,7 @@ import com.ssafy.b105.entity.user.User;
 import com.ssafy.b105.entity.user.UserRole;
 import com.ssafy.b105.service.UserService;
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.data.crossstore.ChangeSetPersister;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -26,6 +27,7 @@ import java.util.Set;
 @RestController
 @RequestMapping("/api/auth")
 @RequiredArgsConstructor
+@Slf4j
 public class UserController {
 
   private final AuthenticationManagerBuilder authenticationManagerBuilder;
@@ -60,6 +62,7 @@ public class UserController {
       .authorities(authorities)
       .build();
 
+    authority.setUser(user);
     userService.saveOrUpdateUser(user, MemberType.Supporter);
     return new ResponseEntity<>(user, HttpStatus.CREATED);
   }
@@ -84,28 +87,34 @@ public class UserController {
       .authorities(authorities)
       .build();
 
+    authority.setUser(user);
     userService.saveOrUpdateUser(user,MemberType.Shelter);
     return new ResponseEntity<>(user, HttpStatus.CREATED);
   }
   @PostMapping("/login/shelter")
   public ResponseEntity<?> loginShelter(@RequestBody LoginRequestDto loginDto){
-
+    log.info("보호소 로그인 요청을 받았습니다.");
     JwtAuthenticationToken authenticationToken = new JwtAuthenticationToken(loginDto.getPrincipal(), loginDto.getCredential());
 
     Authentication authentication = authenticationManagerBuilder.getObject().authenticate(authenticationToken);
+    log.debug("보호소 권한 , authentication : " ,authentication.getAuthorities());
+
     SecurityContextHolder.getContext().setAuthentication(authentication);
+    log.info("보호소 Authentication set 완료");
 
   return ResponseEntity.ok(new LoginResponseDto((AuthenticationResult) authentication.getDetails()));
   }
 
   @PostMapping("/login/supporter")
   public ResponseEntity<?> loginSupporter(@RequestBody LoginRequestDto loginDto){
-
+    log.info("서포터 로그인 요청을 받았습니다.");
     JwtAuthenticationToken authenticationToken = new JwtAuthenticationToken(loginDto.getPrincipal(), loginDto.getCredential());
 
     Authentication authentication = authenticationManagerBuilder.getObject().authenticate(authenticationToken);
-    SecurityContextHolder.getContext().setAuthentication(authentication);
+    log.debug("후원자 권한 , authentication : " ,authentication.getAuthorities());
 
+    SecurityContextHolder.getContext().setAuthentication(authentication);
+    log.info("후원자 Authentication set 완료");
     return ResponseEntity.ok(new LoginResponseDto((AuthenticationResult) authentication.getDetails()));
   }
 

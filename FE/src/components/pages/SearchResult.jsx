@@ -6,8 +6,7 @@ import DonationInfoCard from '../UI/organisms/DonationInfoCard';
 import BannerSlide from '../UI/organisms/BannerSlide';
 import SelectBox from '../UI/molecules/SelectBox';
 import { Outlet, useLocation } from 'react-router-dom';
-import { getCampaignAll } from '../../api/campaignAPI';
-import axios from 'axios';
+import campaignAPI from '../../api/campaignAPI';
 
 function SearchResult() {
   // 페이지네이션
@@ -20,13 +19,18 @@ function SearchResult() {
   const location = useLocation();
   const { keyword } = location.state;
 
+  console.log(keyword);
+
   useEffect(() => {
-    getCampaignAll().then((response) => {
-      const campaignAll = response.content;
+    campaignAPI.getCampaignAll().then((response) => {
+      const campaignAll = response.data.content;
+
       console.log(campaignAll);
       setPosts(campaignAll);
     });
   }, []);
+
+  console.log(posts);
 
   return (
     <div>
@@ -65,6 +69,7 @@ function SearchResult() {
                 thumbnailImageUrl,
                 endDate,
                 lastModifiedDate,
+                balance,
               }) => (
                 <Grid item sm={7} md={5} lg={4} key={id}>
                   <div>
@@ -76,6 +81,7 @@ function SearchResult() {
                       targetDonation={targetDonation}
                       endDate={endDate}
                       lastModifiedDate={lastModifiedDate}
+                      balance={balance}
                     ></DonationInfoCard>
                   </div>
                 </Grid>

@@ -1,11 +1,33 @@
 import axios from 'axios';
 
 const api = axios.create({
-  // baseURL: 'http://localhost:8080/api/',
-  // baseURL: 'https://84c8d203-4698-4ccf-a301-71d6e01c0494.mock.pstmn.io',
   baseURL: 'https://j6b105.p.ssafy.io/api/',
   headers: {
     'Content-Type': 'application/json',
+  },
+});
+
+//토큰값 구하기
+if (sessionStorage.getItem('persist:root')) {
+  const tok = JSON.parse(sessionStorage.getItem('persist:root'));
+  const toke = JSON.parse(tok['user']);
+  var jwt = toke['value'].jwtToken;
+}
+
+const tokenApi = axios.create({
+  baseURL: 'https://j6b105.p.ssafy.io/api/',
+  headers: {
+    'Content-Type': 'application/json',
+    Authorization: 'Bearer ' + jwt,
+  },
+});
+
+const withdrawApi = axios.create({
+  baseURL: 'https://j6b105.p.ssafy.io/api/',
+  headers: {
+    'Content-Type': 'multipart/form-data',
+    Authorization: 'Bearer ' + jwt,
+    token: jwt,
   },
 });
 
@@ -17,12 +39,7 @@ const fileApi = axios.create({
 });
 
 const ocrApi = axios.create({
-  // baseURL:
-  //   'https://sjzq3u7j26.apigw.ntruss.com/custom/v1/14843/0c3307a350bcc0e2b944ccdb8fc49c191fcd75425562e54c2570aa65f0b29b65/',
-  baseURL: 'https://sjzq3u7j26.apigw.ntruss.com/custom/v1/',
-  // baseURL:
-  // 'https://cors.bridged.cc/http://clovaocr-api-kr.ncloud.com/external-private/v1/14843/0c3307a350bcc0e2b944ccdb8fc49c191fcd75425562e54c2570aa65f0b29b65/',
-  // baseURL: '/custom/v1/14843/0c3307a350bcc0e2b944ccdb8fc49c191fcd75425562e54c2570aa65f0b29b65/',
+  baseURL: '/custom/v1/14843/0c3307a350bcc0e2b944ccdb8fc49c191fcd75425562e54c2570aa65f0b29b65/',
   headers: {
     'Content-Type': 'application/json',
     'X-OCR-SECRET': 'amZPVUZxdG1RempqR056UG9TTnBUZVhGV2ZSS2dUQWI=',
@@ -69,4 +86,4 @@ api.interceptors.response.use(
   },
 );
 
-export { api, fileApi, ocrApi };
+export { api, tokenApi, fileApi, ocrApi, withdrawApi };

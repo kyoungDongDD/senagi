@@ -1,5 +1,6 @@
 package com.ssafy.b105.service;
 
+import com.nimbusds.jose.util.IOUtils;
 import com.ssafy.b105.dto.CampaignListDto;
 import com.ssafy.b105.dto.CampaignRequestDto;
 import com.ssafy.b105.dto.CampaignResponseDto;
@@ -23,10 +24,13 @@ import com.ssafy.b105.service.blockchain.TokenContractService;
 import com.ssafy.b105.utils.MD5Generator;
 import com.ssafy.b105.utils.TimeConverter;
 import java.io.File;
+import java.time.LocalDateTime;
+import java.time.LocalTime;
 import java.util.ArrayList;
 import java.util.List;
 
 import com.ssafy.b105.repository.UserRepository;
+import javax.swing.filechooser.FileSystemView;
 import lombok.Builder;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -39,7 +43,6 @@ import org.springframework.transaction.annotation.Transactional;
 @Service
 @Transactional(readOnly = true)
 @RequiredArgsConstructor
-@Builder
 @Slf4j
 public class CampaignService {
 
@@ -62,20 +65,19 @@ public class CampaignService {
         try {
             // Blockchain contract deploy
             ContractRequestDto contractRequestDto = new ContractRequestDto(
-                TimeConverter.localDateTimeToUnix(campaignRequestDto.getEndDate()),
+                TimeConverter.localDateTimeToUnix(
+                    LocalDateTime.of(campaignRequestDto.getEndDate(), LocalTime.of(23,59,59))),
                 campaignRequestDto.getTargetDonation());
 
             ContractResponseDto contractResponseDto = campaignContractService.deployContract(
                 contractRequestDto);
 
             // Blockchain new member
-            // TODO 개선 할 수 있으면 개선 (How)
             if(!memberContractService.registMember(
                 contractResponseDto.getAccount(),
                 typeMapper(campaignRequestDto.getType()))) {
                 throw new RuntimeException();
             }
-
 
             String thumbnailOriginFilename = campaignRequestDto.getThumbnailImage()
                 .getOriginalFilename();
@@ -96,7 +98,7 @@ public class CampaignService {
 
             /* 실행되는 위치의 'receiptImage' 폴더에 파일이 저장됩니다. */
             // 프로젝트 root directory
-            String savePath = System.getProperty("user.dir") + "\\imgs";
+            String savePath = System.getProperty("user.dir") + "/imgs";
             /* 파일이 저장되는 폴더가 없으면 폴더를 생성합니다. */
             if (!new File(savePath).exists()) {
                 try {
@@ -106,14 +108,14 @@ public class CampaignService {
                 }
             }
             //파일 경로
-            String thumbnailFilePath = savePath + "\\" + thumbnailFilename;
-            String contentFilePath = savePath + "\\" + contentFilename;
+            String thumbnailFilePath = savePath + "/" + thumbnailFilename;
+            String contentFilePath = savePath + "/" + contentFilename;
 
             campaignRequestDto.getThumbnailImage().transferTo(new File(thumbnailFilePath));
             campaignRequestDto.getContentImage().transferTo(new File(contentFilePath));
 
-            campaignRequestDto.setContentImageUrl(contentFilePath);
-            campaignRequestDto.setThumbnailImageUrl(thumbnailFilePath);
+            campaignRequestDto.setContentImageUrl(contentFilename);
+            campaignRequestDto.setThumbnailImageUrl(thumbnailFilename);
 
             Campaign campaign = Campaign.of(campaignRequestDto,contractResponseDto);
 
@@ -124,6 +126,7 @@ public class CampaignService {
                     .hashtag(hashtag).build();
                 campaign.getCampaignHashtags().add(campaignHashtag);
             });
+
             return CampaignResponseDto.of(campaignRepository.save(campaign),0L);
         } catch (Exception e) {
             e.printStackTrace();
@@ -137,7 +140,7 @@ public class CampaignService {
         campaign.addViewCount();
         Long balance = tokenContractService.balanceOf(campaign.getAccount());
         //id로 캠페인 찾기
-        log.info("저장전");
+        log.info("detailCampaign balance 값 : {}",balance);
         return CampaignResponseDto.of(campaign,balance);
     }
 

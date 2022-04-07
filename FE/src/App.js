@@ -9,9 +9,9 @@ import SignUp from './components/pages/SignUp';
 import CampaignManagement from './components/pages/CampaignManagement';
 import SearchResult from './components/pages/SearchResult';
 import CampaignInfo from './components/pages/CampaignInfo';
-import NavBar from './components/UI/organisms/NavBar';
-
+import OwnCampaigns from './components/pages/OwnCampaigns';
 import commonStyles from './styles/commonStyles';
+import GoogleLoginRedirect from './components/UI/organisms/GoogleLoginRedirect';
 
 export default function App() {
   return (
@@ -21,11 +21,13 @@ export default function App() {
         <Route path="/" element={<Welcome />} />
         <Route path="/login" element={<Login />} />
         <Route path="/signup" element={<SignUp />} />
+        <Route path="/sociallogin" element={<GoogleLoginRedirect />} />
 
         <Route element={<Layout />}>
           <Route path="/home" element={<Home />} />
           <Route path="/campaign" element={<CampaignManagement />} />
           <Route path="/mypage" element={<MyPage />} />
+          <Route path="/owncampaigns" element={<OwnCampaigns />} />
           <Route path="/searchresult" element={<SearchResult />} />
           <Route path="/campaigninfo/:campaignId" element={<CampaignInfo />} />
 

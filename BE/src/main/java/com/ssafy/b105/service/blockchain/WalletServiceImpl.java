@@ -39,7 +39,6 @@ public class WalletServiceImpl implements WalletService {
     try {
       NewWalletDto newWalletDto = connector.createAccount();
       Wallet wallet = Wallet.of(user, newWalletDto);
-      walletRepository.save(wallet);
       return Optional.ofNullable(wallet);
     } catch (Exception e) {
       e.printStackTrace();
@@ -54,9 +53,9 @@ public class WalletServiceImpl implements WalletService {
   }
 
   @Override
-  public Long findBalanceByUser(User user) throws ExecutionException, InterruptedException {
+  public Long findBalanceByUser(User user) throws Exception {
     Wallet wallet = findByUser(user);
-    BigInteger balance = tokenMgr.balanceOf(wallet.getAccount()).sendAsync().get();
+    BigInteger balance = tokenMgr.balanceOf(wallet.getAccount()).send();
     return BalanceConverter.bigIntegerToLong(balance, decimals);
   }
 

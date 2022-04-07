@@ -54,10 +54,6 @@ public class User{
 
   private String phone;
 
-  private String provider;
-
-  private String providerId;
-
   @Builder.Default
   private String vendor = "NBD";
   //연관 관계 매핑
@@ -66,7 +62,7 @@ public class User{
   @Builder.Default
   private List<Campaign> campaigns = new ArrayList<>();
 
-  @OneToOne(mappedBy = "user")
+  @OneToOne(mappedBy = "user", cascade = CascadeType.ALL)
   private Wallet wallet;
 
   //생성 매서드
@@ -131,5 +127,8 @@ public class User{
       return MemberType.Supporter;
     }
     return MemberType.None;
+  }
+  public void setWallet(Wallet wallet){
+    this.wallet = wallet;
   }
 }

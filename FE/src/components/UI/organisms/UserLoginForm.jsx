@@ -7,7 +7,7 @@ import UserButton from '../molecules/UserButton';
 import { Box, TextField } from '@mui/material';
 import AccountsAPI from '../../../api/accountsAPI';
 import { useDispatch } from 'react-redux';
-import { authSuccess } from '../../../store/user';
+import { login, authSuccess } from '../../../store/user';
 import jwt from 'jwt-decode';
 
 function UserLoginForm() {
@@ -38,19 +38,18 @@ function UserLoginForm() {
     await AccountsAPI.supporterLogin(postData)
       .then((response) => {
         // 로그인 토큰 저장
-        // dispatch(login(response.data));
+        dispatch(login(response.data));
         // 토큰 디코드
         const token = response.data.jwtToken;
         const userInfo = jwt(token);
         // 토큰의 유저 정보 store에 저장
         dispatch(authSuccess(userInfo));
-        // navbar에 이름 출력 후 삭제
         alert('로그인에 성공했습니다.');
         navigate('/home');
       })
       .catch((error) => {
         console.log(error);
-        alert('로그인에 실패했습니다.');
+        // alert('로그인에 실패했습니다.');
       });
   };
 
@@ -64,6 +63,7 @@ function UserLoginForm() {
       }}
     >
       <Text className="header1" text="로그인" />
+      {/* <Box component="form" noValidate sx={{ mt: 1 }}> */}
       <Box component="form" noValidate onSubmit={logIn} sx={{ mt: 1 }}>
         <TextField
           margin="normal"
