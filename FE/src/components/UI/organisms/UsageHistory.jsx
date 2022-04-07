@@ -30,7 +30,7 @@ function UsageHistory(props) {
           <Grid>
             <ReceiptImage receipImages={receipImages} />
             {amount ? (
-              <Usage>사용금액 : {amount}원</Usage>
+              <Usage>사용금액 : &nbsp; {amount}원</Usage>
             ) : (
               <NoUsage>사용 내역이 없습니다.</NoUsage>
             )}
@@ -71,6 +71,7 @@ const Usage = styled.p`
   text-align: center;
   font-family: 'GM';
   font-size: 32px;
+  margin-top: 0px;
 `;
 
 const NoUsage = styled.p`

@@ -4,6 +4,7 @@ import Text from '../atoms/Text';
 import Toast from '../atoms/SweetAlert';
 import UserButton from '../molecules/UserButton';
 import AccountsAPI from '../../../api/accountsAPI';
+import SignUpSpinner from './SignUpSpinner';
 import { validateEmail, validateName, validatePwd } from '../../../utils/validation';
 import {
   Button,
@@ -34,7 +35,8 @@ function SignUpForm() {
   const [checkedFl, setCheckedFl] = useState(false);
   const [registerError, setRegisterError] = useState('');
   const navigate = useNavigate();
-
+  // spinner
+  const [loading, setLoading] = useState(false);
   // 나중에 loader 추가하기
   // 회원가입
   const signUp = async () => {
@@ -44,15 +46,18 @@ function SignUpForm() {
       credential: userPw,
       name: userName,
     };
+    setLoading(true);
     await AccountsAPI.signUp(postData)
       .then((response) => {
         if (response.status === 201) {
+          setLoading(false);
           Toast.fire({
             icon: 'success',
             title: '가입에 성공했습니다!',
           });
           navigate('/login');
         } else {
+          setLoading(false);
           Toast.fire({
             icon: 'error',
             title: '이미 사용중인 아이디입니다.',
@@ -61,6 +66,7 @@ function SignUpForm() {
       })
       .catch((error) => {
         console.log(error);
+        setLoading(false);
         setRegisterError('회원가입에 실패하였습니다. 다시 확인해 주세요.');
         Toast.fire({
           icon: 'error',
@@ -309,6 +315,7 @@ function SignUpForm() {
           <span style={{ color: 'black' }}>보호소 회원으로&nbsp;</span>가입하기
         </Button>
       </Box>
+      {loading && <SignUpSpinner loading={loading} />}
     </Box>
   );
 }
