@@ -1,29 +1,52 @@
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import { useSelector } from 'react-redux';
+import { css } from '@emotion/react';
+import Text from '../atoms/Text';
 import { styled, alpha } from '@mui/material/styles';
-import AppBar from '@mui/material/AppBar';
-import Box from '@mui/material/Box';
-import Toolbar from '@mui/material/Toolbar';
-import IconButton from '@mui/material/IconButton';
-import Typography from '@mui/material/Typography';
-import Menu from '@mui/material/Menu';
+import {
+  AppBar,
+  Box,
+  Toolbar,
+  IconButton,
+  Typography,
+  Menu,
+  Container,
+  Button,
+  Tooltip,
+  MenuItem,
+  InputBase,
+} from '@mui/material';
 import MenuIcon from '@mui/icons-material/Menu';
-import Container from '@mui/material/Container';
-import Button from '@mui/material/Button';
-import Tooltip from '@mui/material/Tooltip';
-import MenuItem from '@mui/material/MenuItem';
-import InputBase from '@mui/material/InputBase';
 import SearchIcon from '@mui/icons-material/Search';
-
+import AccountCircleIcon from '@mui/icons-material/AccountCircle';
 import { Link, useNavigate } from 'react-router-dom';
+import { useDispatch, useSelector } from 'react-redux';
+import { logout } from '../../../store/user';
 
 const pages = ['캠페인', '사업소개', '마이페이지'];
 
+const StyledBox = styled(Box)`
+  color: black;
+`;
+
+const StyledText = styled(Text)`
+  margin: auto;
+  cursor: pointer;
+  margin: 0 5px 0 5px;
+`;
+
+const greyLine = css`
+  border-left: 1px solid grey;
+  height: 25px;
+`;
+
 const NavBar = () => {
   const [anchorElNav, setAnchorElNav] = useState(null);
-  const [keyword] = useState('');
-
   const navigate = useNavigate();
+  const dispatch = useDispatch();
+
+  const userInfo = useSelector((state) => state.user.value.userInfo);
+  console.log('userInfo', userInfo);
 
   const handleOpenNavMenu = (event) => {
     setAnchorElNav(event.currentTarget);
@@ -118,6 +141,12 @@ const NavBar = () => {
     },
   }));
 
+  const handleLogout = () => {
+    dispatch(logout());
+    alert('로그아웃 되었습니다.');
+    navigate('/');
+  };
+
   return (
     // navbar배경색 변경 #F4BA3499
     <AppBar position="static" style={{ background: 'inherit' }}>
@@ -204,13 +233,30 @@ const NavBar = () => {
                 {page}
               </Button>
             ))}
-            {/* 닉네임아이콘/닉네임/로그아웃 */}
-            {/* <AccountCircleIcon 
-              color='action'
-              padding='1000px'
-            />
-            <p>나는김경동</p> */}
           </Box>
+          <StyledBox
+            sx={{
+              display: 'flex',
+              justifyContent: 'center',
+              alignItems: 'center',
+            }}
+          >
+            {/* 닉네임아이콘/닉네임/로그아웃 */}
+            <AccountCircleIcon
+              color="action"
+              padding="1000px"
+              sx={{ width: '35px', height: '35px' }}
+            />
+            <span
+              className={css`
+                border-left: 1px solid grey;
+                height: 25px;
+              `}
+            ></span>
+            <StyledText text={userInfo.nickname} className="body2" />
+            <span className={greyLine}></span>
+            <StyledText text="로그아웃" className="body2" func={handleLogout} />
+          </StyledBox>
           <Box sx={{ flexGrow: 0 }}>
             <Tooltip title="Enter를 눌러 찾기">
               <Search>
