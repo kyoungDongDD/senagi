@@ -1,5 +1,6 @@
 import { useState } from 'react';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
+import { Link, useNavigate } from 'react-router-dom';
 import { css } from '@emotion/react';
 import Text from '../atoms/Text';
 import { styled, alpha } from '@mui/material/styles';
@@ -19,8 +20,6 @@ import {
 import MenuIcon from '@mui/icons-material/Menu';
 import SearchIcon from '@mui/icons-material/Search';
 import AccountCircleIcon from '@mui/icons-material/AccountCircle';
-import { Link, useNavigate } from 'react-router-dom';
-import { useDispatch, useSelector } from 'react-redux';
 import { logout } from '../../../store/user';
 
 const pages = ['캠페인', '사업소개', '마이페이지'];
