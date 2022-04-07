@@ -1,6 +1,6 @@
 package com.ssafy.b105.repository;
 
-import com.ssafy.b105.entity.Hashtag;
+import com.ssafy.b105.entity.campaign.Hashtag;
 import java.util.Optional;
 import org.springframework.data.jpa.repository.JpaRepository;
 

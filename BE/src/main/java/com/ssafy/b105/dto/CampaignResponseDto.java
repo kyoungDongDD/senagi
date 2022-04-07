@@ -2,11 +2,11 @@ package com.ssafy.b105.dto;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonFormat.Shape;
-import com.ssafy.b105.entity.Campaign;
-import com.ssafy.b105.entity.CampaignType;
+import com.ssafy.b105.entity.campaign.Campaign;
+import com.ssafy.b105.entity.campaign.CampaignType;
 import com.sun.istack.NotNull;
 import com.sun.istack.Nullable;
-import java.time.LocalDate;
+
 import java.time.LocalDateTime;
 import java.util.List;
 import lombok.AllArgsConstructor;
@@ -41,10 +41,13 @@ public class CampaignResponseDto {
     private Long targetDonation;
 
     @Nullable
+    private Long balance;
+
+    @Nullable
     @JsonFormat(shape = Shape.STRING,pattern = "yyyy-MM-dd",timezone = "Asia/Seoul")
     private LocalDateTime endDate;
 
-    //@NotNull
+    @NotNull
     private String account;
 
     @NotNull
@@ -56,10 +59,13 @@ public class CampaignResponseDto {
     @JsonFormat(shape = Shape.STRING,pattern = "yyyy-MM-dd",timezone = "Asia/Seoul")
     private LocalDateTime lastModifiedDate;
 
+    @NotNull
+    private String shelterName;
+
     @Nullable
     private List<String> hashtags;
 
-    public static CampaignResponseDto from(Campaign campaign) {
+    public static CampaignResponseDto of(Campaign campaign, Long balance) {
         if (campaign == null) {
             return null;
         }
@@ -79,6 +85,9 @@ public class CampaignResponseDto {
             .endDate(campaign.getEndDate())
             .lastModifiedDate(campaign.getLastModifiedDate())
             .hashtags(campaign.getHashtag())
+            .shelterName(campaign.getUser().getName())
+            .balance(balance)
             .build();
     }
+
 }

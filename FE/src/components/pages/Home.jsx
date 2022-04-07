@@ -2,6 +2,7 @@ import Shelter from '../UI/organisms/Shelter';
 import Project from '../UI/organisms/Project';
 import BannerSlide from '../UI/organisms/BannerSlide';
 import styled from '@emotion/styled';
+import Footer from '../UI/organisms/Footer';
 
 function Home() {
   const Container = styled.div`
@@ -9,11 +10,12 @@ function Home() {
   `;
   return (
     <>
-    <BannerSlide />
-    <Container>
-      <Shelter />
-      <Project />
-    </Container>
+      <BannerSlide />
+      <Container>
+        <Shelter />
+        <Project />
+      </Container>
+      <Footer />
     </>
   );
 }

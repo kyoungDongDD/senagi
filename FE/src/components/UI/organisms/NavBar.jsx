@@ -1,4 +1,4 @@
-import * as React from 'react';
+import { useState, useEffect } from 'react';
 import { styled, alpha } from '@mui/material/styles';
 import AppBar from '@mui/material/AppBar';
 import Box from '@mui/material/Box';
@@ -14,21 +14,58 @@ import MenuItem from '@mui/material/MenuItem';
 import InputBase from '@mui/material/InputBase';
 import SearchIcon from '@mui/icons-material/Search';
 
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 
 const pages = ['캠페인', '사업소개', '마이페이지'];
 
 const NavBar = () => {
-  const [anchorElNav, setAnchorElNav] = React.useState(null);
+  const [anchorElNav, setAnchorElNav] = useState(null);
+  const [keyword] = useState('');
+
+  const navigate = useNavigate();
 
   const handleOpenNavMenu = (event) => {
     setAnchorElNav(event.currentTarget);
   };
 
-  const handleCloseNavMenu = () => {
+  const handleCloseNavMenu = (event) => {
     setAnchorElNav(null);
+    // 페이지 링크
+    const page = event.target.innerText;
+    switch (page) {
+      case '캠페인':
+        navigate('/searchresult', {
+          state: {},
+        });
+        break;
+      case '사업소개':
+        navigate('/');
+        break;
+      case '마이페이지':
+        navigate('/mypage');
+        break;
+      default:
+        navigate('/home');
+        break;
+    }
   };
 
+  // 검색 기능
+
+  // 검색어 전달과 함께 페이지 이동
+  const onCheckEnter = (e) => {
+    const keyword = e.target.value;
+    if (e.key === 'Enter') {
+      navigate('/searchresult', {
+        state: {
+          keyword: keyword,
+        },
+      });
+      window.scrollTo(0, 300);
+    }
+  };
+
+  // navbar 디자인
   const Search = styled('div')(({ theme }) => ({
     position: 'relative',
     borderRadius: theme.shape.borderRadius,
@@ -82,7 +119,7 @@ const NavBar = () => {
             component="div"
             sx={{ mr: 2, display: { xs: 'none', md: 'flex' } }}
           >
-            <Link to="/nav">
+            <Link to="/home">
               <img src={require('../../../assets/logo.png')} alt="logo" />
             </Link>
           </Typography>
@@ -170,7 +207,12 @@ const NavBar = () => {
                 <SearchIconWrapper>
                   <SearchIcon color="action" />
                 </SearchIconWrapper>
-                <StyledInputBase placeholder="검색하기" inputProps={{ 'aria-label': 'search' }} />
+                <StyledInputBase
+                  placeholder="검색하기"
+                  inputProps={{ 'aria-label': 'search' }}
+                  name="SearchKeyword"
+                  onKeyPress={onCheckEnter}
+                />
               </Search>
             </Tooltip>
           </Box>

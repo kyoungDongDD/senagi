@@ -1,7 +1,8 @@
 package com.ssafy.b105.service.blockchain;
 
-import com.ssafy.b105.dto.blockchain.ChargeDto;
+import com.ssafy.b105.dto.blockchain.AmountDto;
 import com.ssafy.b105.entity.blockchain.Wallet;
+import com.ssafy.b105.entity.blockchain.wrapper.token.Token;
 import com.ssafy.b105.utils.BalanceConverter;
 import com.ssafy.b105.utils.BlockchainConnector;
 import java.math.BigInteger;
@@ -9,7 +10,6 @@ import java.util.concurrent.ExecutionException;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.web3j.protocol.core.methods.response.TransactionReceipt;
-import org.web3j.token.Token;
 
 @Service
 @Transactional
@@ -28,7 +28,7 @@ public class TokenContractServiceImpl implements
   }
 
   @Override
-  public ChargeDto charge(Wallet wallet, Long amount) {
+  public AmountDto charge(Wallet wallet, Long amount) {
     if(amount <= 0) throw new IllegalArgumentException("Amount 0보다 커야합니다.");
     try {
       BigInteger chargedAmount = BalanceConverter.longToBigInteger(amount, decimals);
@@ -36,7 +36,7 @@ public class TokenContractServiceImpl implements
           chargedAmount)
           .sendAsync().get();
       wallet.chargeBalance(chargedAmount);
-      return new ChargeDto(
+      return new AmountDto(
           receipt.getTransactionHash(),
           BalanceConverter.bigIntegerToLong(wallet.getBalance(),decimals));
     } catch (InterruptedException e) {
@@ -51,6 +51,30 @@ public class TokenContractServiceImpl implements
   public Long balanceOf(Wallet wallet) {
     try {
       return BalanceConverter.bigIntegerToLong(tokenMgr.balanceOf(wallet.getAccount()).sendAsync().get(),decimals);
+    } catch (InterruptedException e) {
+      e.printStackTrace();
+    } catch (ExecutionException e) {
+      e.printStackTrace();
+    }
+    return 0L;
+  }
+
+  @Override
+  public BigInteger balanceOfBigInteger(Wallet wallet) {
+    try {
+      return tokenMgr.balanceOf(wallet.getAccount()).sendAsync().get();
+    } catch (InterruptedException e) {
+      e.printStackTrace();
+    } catch (ExecutionException e) {
+      e.printStackTrace();
+    }
+    return new BigInteger("0");
+  }
+
+  @Override
+  public Long balanceOf(String account) {
+    try {
+      return BalanceConverter.bigIntegerToLong(tokenMgr.balanceOf(account).sendAsync().get(),decimals);
     } catch (InterruptedException e) {
       e.printStackTrace();
     } catch (ExecutionException e) {

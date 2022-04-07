@@ -19,9 +19,10 @@
 <div align=left>
 <table>
     <tr>
-        <td><b>Back-end</td>
-        <td><img src="https://img.shields.io/badge/Java-11.0.13-007396?style=flat&logo=Java&logoColor=white"/>
+        <td><b>Back-end</b></td>
+        <td><img src="https://img.shields.io/badge/Java-11.0.14-007396?style=flat&logo=Java&logoColor=white"/>
 <img src="https://img.shields.io/badge/Spring Boot-2.6.4-6DB33F?style=flat-square&logo=Spring Boot&logoColor=white"/>
+<img src="https://img.shields.io/badge/Spring Security-2.6.4-6DB33F?style=flat-square&logo=Spring Security&logoColor=white"/>
 <br>
 <img src="https://img.shields.io/badge/MySQL-8.0-4479A1?style=flat-square&logo=MySQL&logoColor=white"/>
 <img src="https://img.shields.io/badge/H2-1.4.199-4479A1?style=flat-square&logo=H2&logoColor=white"/>
@@ -29,26 +30,36 @@
 <br>
 <img src="https://img.shields.io/badge/Gradle-7.4-C71A36?style=flat-square&logo=Gradle&logoColor=white"/>
 <img src="https://img.shields.io/badge/JWT-000000?style=flat-square&logo=JSON Web Tokens&logoColor=white"/>
+<img src="https://img.shields.io/badge/Web3j-3C3C3D?style=flat-square&logo=Ethereum&logoColor=white"/>
 </td>
     </tr>
     <tr>
-    <td><b>Front-end</td>
-    <td></td>
+    <td><b>Front-end</b></td>
+    <td>
+<img src="https://img.shields.io/badge/Npm-8.3.1-CB3837?style=flat-square&logo=Npm&logoColor=white"/>
+<img src="https://img.shields.io/badge/Node-16.14.0-339933?style=flat-square&logo=Node.js&logoColor=white"/>
+<img src="https://img.shields.io/badge/React-17.0.2-61DAFB?style=flat-square&logo=React&logoColor=white"/>
+<img src="https://img.shields.io/badge/Redux-7.2.6-764ABC?style=flat-square&logo=Redux&logoColor=white"/>
+<img src="https://img.shields.io/badge/MUI-007FFF?style=flat-square&logo=MUI&logoColor=white"/>
+    </td>
     </tr>
     <tr>
-    <td><b>Infra</td>
+    <td><b>Infra</b></td>
     <td>
 <img src="https://img.shields.io/badge/AWS-232F3E?style=flat-square&logo=amazon aws&logoColor=white"/>
-<img src="https://img.shields.io/badge/Docker-20.10.12-4479A1?style=flat-square&logo=Docker&logoColor=white"/>
-<img src="https://img.shields.io/badge/Docker compose-1.29.2-4479A1?style=flat-square&logo=Docker&logoColor=white"/>
+<img src="https://img.shields.io/badge/Docker-20.10.14-4479A1?style=flat-square&logo=Docker&logoColor=white"/>
 <img src="https://img.shields.io/badge/NGINX-1.18.0(Ubuntu)-009639?style=flat-square&logo=NGINX&logoColor=white"/>
+<img src="https://img.shields.io/badge/Jenkins-2.332.1-D24939?style=flat-square&logo=Jenkins&logoColor=white"/>
 </td>
     </tr>
-    <td><b>Block-chain</td>
-    <td></td>
+    <td><b>Block-chain </b></td>
+    <td>
+    <img src="https://img.shields.io/badge/Go-1.18-00ADD8?style=flat-square&logo=Go&logoColor=white"/>
+    <img src="https://img.shields.io/badge/Solidity-0.7.1-363636?style=flat-square&logo=Solidity&logoColor=white"/>
+    </td>
     </tr>
     <tr>
-    <td><b>Tools</td>
+    <td><b>Tools</b></td>
     <td>
     <img src="https://img.shields.io/badge/Notion-333333?style=flat-square&logo=Notion&logoColor=white"/>
     <img src="https://img.shields.io/badge/GitLab-FCA121?style=flat-square&logo=GitLab&logoColor=white"/>
@@ -56,7 +67,7 @@
     </td>
     </tr>
 </table>
-<div>
+</div>
 
 ---
 ## :pushpin: 프로젝트 소개

@@ -2,7 +2,7 @@
 
 pragma solidity >=0.7.0 <0.9.0;
 
-import "./standard/Ownable.sol";
+import "./Ownable.sol";
 import "./Member.sol";
 import "./Token.sol";
 

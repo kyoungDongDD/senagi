@@ -1,10 +1,10 @@
 package com.ssafy.b105.service.blockchain;
 
+import com.ssafy.b105.entity.blockchain.wrapper.member.Member;
 import com.ssafy.b105.entity.common.MemberType;
 import com.ssafy.b105.utils.BlockchainConnector;
 import java.util.concurrent.ExecutionException;
 import org.springframework.stereotype.Service;
-import org.web3j.member.Member;
 import org.web3j.protocol.core.methods.response.TransactionReceipt;
 
 @Service
@@ -23,9 +23,9 @@ public class MemberContractServiceImpl implements
   @Override
   public boolean registMember(String account, MemberType type) {
     try {
-      TransactionReceipt receipt = memberMgr.newMember(account, type.name())
+      TransactionReceipt receipt = memberMgr.newMember(account, type.toString())
           .sendAsync().get();
-      System.out.println(receipt);
+      return true;
     } catch (InterruptedException e) {
       e.printStackTrace();
     } catch (ExecutionException e) {
