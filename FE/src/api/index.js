@@ -39,9 +39,9 @@ const fileApi = axios.create({
 });
 
 const ocrApi = axios.create({
-  // baseURL: '/custom/v1/14843/0c3307a350bcc0e2b944ccdb8fc49c191fcd75425562e54c2570aa65f0b29b65/',
-  baseURL:
-    'https://sjzq3u7j26.apigw.ntruss.com/custom/v1/14843/0c3307a350bcc0e2b944ccdb8fc49c191fcd75425562e54c2570aa65f0b29b65/',
+  baseURL: '/custom/v1/14843/0c3307a350bcc0e2b944ccdb8fc49c191fcd75425562e54c2570aa65f0b29b65/',
+  // baseURL:
+  // 'https://sjzq3u7j26.apigw.ntruss.com/custom/v1/14843/0c3307a350bcc0e2b944ccdb8fc49c191fcd75425562e54c2570aa65f0b29b65/',
   headers: {
     'Content-Type': 'application/json',
     'X-OCR-SECRET': 'amZPVUZxdG1RempqR056UG9TTnBUZVhGV2ZSS2dUQWI=',
