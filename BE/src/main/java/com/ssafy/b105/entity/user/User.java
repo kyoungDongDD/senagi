@@ -97,8 +97,8 @@ public class User{
   public String newApiToken(Jwt jwt, Authentication authentication) {
     Jwt.Claims claims = Jwt.Claims.of(
       id,
-      name,
       principal,
+      name,
       getRoleAtAuthorities(authentication).toArray(String[]::new)
     );
     return jwt.newToken(claims);
