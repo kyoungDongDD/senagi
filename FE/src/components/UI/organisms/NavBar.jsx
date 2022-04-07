@@ -66,7 +66,7 @@ const NavBar = () => {
         });
         break;
       case '사업소개':
-        navigate('/');
+        navigate('/introduce');
         break;
       case '마이페이지':
         if (roles === 'SUPPORTER') {

@@ -132,6 +132,10 @@ const commonStyles = css`
     letter-spacing: -0.02em;
     font-family: 'GM';
   }
+  .slider {
+    width: 1200px;
+    margin: 0 auto;
+  }
 `;
 
 export default commonStyles;
