@@ -3,16 +3,16 @@ import Carousel from 'nuka-carousel';
 import styled from '@emotion/styled';
 import { Box } from '@mui/material';
 import ChevronRightIcon from '@mui/icons-material/ChevronRight';
+import ChevronLeftIcon from '@mui/icons-material/ChevronLeft';
 import campaignAPI from '../../../api/campaignAPI';
 import Text from '../atoms/Text';
 import Card from './DonationInfoCard';
 
 function Project() {
   const StyleButton = styled.button`
-    /* width: 30px; */
-    /* padding: 5px; */
+    width: 65px;
+    height: 40px;
     border: none;
-    /* border-radius: 50%; */
     background-color: white;
     opacity: 0.5;
     cursor: pointer;
@@ -33,8 +33,6 @@ function Project() {
           display: 'flex',
           flexDirection: { xs: 'column', md: 'row' },
           justifyContent: 'center',
-
-          p: 10,
         }}
       >
         <Box
@@ -53,17 +51,21 @@ function Project() {
           <Box>
             <Carousel
               framePadding="40px"
-              autoplay={true}
+              autoplay={false}
               wrapAround={true}
               slideListMargin={2}
               slidesToScroll={1}
-              slidesToShow={2}
+              slidesToShow={3}
               renderCenterRightControls={({ nextSlide }) => (
                 <StyleButton onClick={nextSlide}>
                   <ChevronRightIcon sx={{ fontSize: 40 }} />
                 </StyleButton>
               )}
-              renderCenterLeftControls={null}
+              renderCenterLeftControls={({ previousSlide }) => (
+                <StyleButton onClick={previousSlide}>
+                  <ChevronLeftIcon sx={{ fontSize: 40 }} />
+                </StyleButton>
+              )}
               renderBottomCenterControls={null}
             >
               {posts.map(

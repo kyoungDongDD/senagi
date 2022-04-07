@@ -95,15 +95,16 @@ const commonStyles = css`
   .campaignHeader {
     font-style: normal;
     font-weight: 700;
-    font-size: 55px;
+    font-size: 40px;
     line-height: 40px;
     letter-spacing: 0.01em;
     font-family: 'GM';
   }
   .campaignDes {
     font-style: normal;
-    font-weight: 500;
-    font-size: 23px;
+    font-weight: 600;
+    color: gray;
+    font-size: 20px;
     line-height: 21px;
     letter-spacing: -0.02em;
     font-family: 'GL';
