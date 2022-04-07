@@ -49,7 +49,7 @@ public class OAuth2UerService implements OAuth2UserService<OAuth2UserRequest, OA
     saveOrUpdate(registrationId,attributes);
 
     return new DefaultOAuth2User(
-      Collections.singleton(new SimpleGrantedAuthority("ROLE_SUPPORTER")),
+      Collections.singleton(new SimpleGrantedAuthority("SUPPORTER")),
       attributes.getAttributes(),
       attributes.getNameAttributeKey());
   }
