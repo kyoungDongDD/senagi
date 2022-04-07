@@ -33,6 +33,6 @@ public class OAuth2SuccessHandler extends SimpleUrlAuthenticationSuccessHandler 
     String token = user.newApiToken(jwt,authentication);
 
     getRedirectStrategy().sendRedirect(request,response,
-      "https://j6b105.p.ssafy.io/sociallogin"+"?jwtToken="+token); // 리다이렉트 페이지 추가
+      "https://senagi.site/sociallogin"+"?jwtToken="+token); // 리다이렉트 페이지 추가
   }
 }
