@@ -26,7 +26,8 @@ const style = {
 function ChildModal(props) {
   const { value } = props;
   const { campaignId } = useParams();
-
+  // 문자열에서 , 빼기
+  const values = Number(value.split(',').join(''));
   //spinner
   const [loading, setLoading] = useState(false);
 
@@ -34,7 +35,6 @@ function ChildModal(props) {
   const handleOpen = () => {
     setOpen(true);
     console.log(campaignId);
-    console.log(value);
   };
   const handleClose = () => {
     setOpen(false);
@@ -45,7 +45,7 @@ function ChildModal(props) {
     event.preventDefault();
     const donationData = {
       campaignId: Number(campaignId),
-      amount: Number(value),
+      amount: Number(values),
     };
     console.log(donationData);
     setLoading(true);
@@ -53,15 +53,16 @@ function ChildModal(props) {
       .then((response) => {
         console.log(response);
         setLoading(false);
-        // window.location.reload(true);
+        window.location.reload(true);
       })
       .catch((error) => {
         console.log(error);
         alert('기부에 실패했습니다.');
         setLoading(false);
-        // window.location.reload(true);
+        window.location.reload(true);
       });
   };
+  // Number(value).toLocaleString()
 
   return (
     <div>
@@ -82,7 +83,7 @@ function ChildModal(props) {
       >
         <Box sx={{ ...style, width: 300 }}>
           <p id="child-modal-description" align="center">
-            최종 결제 금액은 {Number(value).toLocaleString()}원 입니다. <br /> 결제하시겠습니까?
+            최종 결제 금액은 {value}원 입니다. <br /> 결제하시겠습니까?
           </p>
           <Buttonblock>
             <UserCancelButton
@@ -121,7 +122,7 @@ function DonateModal(props) {
   const [values, setValues] = useState('');
 
   const handleChange = (e) => {
-    // value의 값이 숫자가 아닐경우 빈문자열로 replace 해버림.
+    //value의 값이 숫자가 아닐경우 빈문자열로 replace 해버림.
     let onlyNumber = e.currentTarget.value;
     onlyNumber = Number(onlyNumber.replaceAll(',', '').replace(/[^0-9]/g, ''));
     const formatValue = onlyNumber.toLocaleString('ko-KR');
