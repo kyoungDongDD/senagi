@@ -1,4 +1,4 @@
-import { ocrApi, tokenApi, withdrawApi } from './index';
+import { api, tokenApi, withdrawApi } from './index';
 
 class PaymentAPI {
   //캠페인 후원
@@ -11,7 +11,7 @@ class PaymentAPI {
   }
   // OCR API 이용, 영수증 데이터 받아오기
   OCR(receipt) {
-    return ocrApi.post(`/document/receipt`, JSON.stringify(receipt));
+    return api.post(`/ocr`, JSON.stringify(receipt));
   }
   // 출금요청
   withdraw(campaignId, receipt) {
