@@ -1,8 +1,7 @@
-import React from 'react';
 import styled from '@emotion/styled';
 
 const Dday = ({ dday }) => {
-  return <DayCount className="body3">D-{dday}</DayCount>;
+  return <DayCount className="day">D-{dday}</DayCount>;
 };
 
 export default Dday;
@@ -24,10 +23,6 @@ export default Dday;
 const DayCount = styled.div`
   display: flex;
   width: 100%;
-  background-color: #f4ba34;
-  justify-content: center;
-  align-items: center;
-  border-radius: 3px;
-  text-align: center;
-  color: white;
+  justify-content: left;
+  color: black;
 `;

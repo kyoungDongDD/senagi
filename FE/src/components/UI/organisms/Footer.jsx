@@ -37,7 +37,7 @@ const IconDiv = styled.div`
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  background-color: #f5fffa;
+  background-color: #141414;
   width: 100%;
   height: 200px;
   margin-top: 100px;
@@ -45,4 +45,5 @@ const IconDiv = styled.div`
 
 const P = styled.p`
   font-size: 13px;
+  color: #767676;
 `;
