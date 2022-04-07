@@ -3,6 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import Text from '../atoms/Text';
 import Toast from '../atoms/SweetAlert';
 import UserButton from '../molecules/UserButton';
+import SignUpJoinButton from '../molecules/SignUpJoinButton';
 import AccountsAPI from '../../../api/accountsAPI';
 import { validateEmail, validateName, validatePwd } from '../../../utils/validation';
 import {
@@ -298,7 +299,8 @@ function SignUpForm() {
           func={handleSubmit}
         />
         <FormHelperTexts>{registerError}</FormHelperTexts>
-        <Button
+        <SignUpJoinButton />
+        {/* <Button
           type="submit"
           fullWidth
           variant="text"
@@ -306,8 +308,8 @@ function SignUpForm() {
           onClick={() => window.open('https://forms.gle/yEsAD4UyDmoP1z7z8', '_blank')}
           style={{ backgroundColor: 'transparent', justifyContent: 'flex-end' }}
         >
-          <span style={{ color: 'black' }}>보호소 회원으로&nbsp;</span>가입하기
-        </Button>
+          <span className="linktext">보호소 회원으로&nbsp;</span>가입하기
+        </Button> */}
       </Box>
     </Box>
   );
