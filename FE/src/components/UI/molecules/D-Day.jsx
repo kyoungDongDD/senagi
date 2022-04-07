@@ -24,5 +24,6 @@ const DayCount = styled.div`
   display: flex;
   width: 100%;
   justify-content: left;
-  color: black;
+  font-size: 17px;
+  color: orange;
 `;
