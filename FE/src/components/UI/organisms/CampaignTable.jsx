@@ -7,6 +7,7 @@ import CardContent from '@mui/material/CardContent';
 import Typography from '@mui/material/Typography';
 import ProgressBar from '../molecules/ProgressBar';
 import styled from '@emotion/styled';
+import DonateModal from './Modal/DonateModal';
 
 function CampaignTable(props) {
   const {
@@ -20,6 +21,8 @@ function CampaignTable(props) {
     hashtags,
     balance,
     dday,
+    title,
+    thumbnailImageUrl,
   } = props;
 
   const [width, setwidth] = useState(0);
@@ -63,7 +66,7 @@ function CampaignTable(props) {
           </tr>
         </tbody>
       </table>
-      <Card sx={{ maxWidth: 900, minWidth: 321 }} style={{ position: 'relative' }}>
+      <Card sx={{ minWidth: 321 }} style={{ position: 'relative' }}>
         <CardContent>
           <Dday dday={dday} />
           <Typography variant="h5" component="div">
@@ -84,8 +87,7 @@ function CampaignTable(props) {
           </RightContainer>
         </CardContent>
       </Card>
-
-      <UserButton type="submit" fullWidth variant="contained" text="캠페인 기부하기" size="large" />
+      <DonateModal shelterName={shelterName} thumbnailImageUrl={thumbnailImageUrl} title={title} />
     </>
   );
 }
@@ -122,3 +124,7 @@ const TagButton = styled.button`
     opacity: 0.5;
   }
 `;
+
+// const Max = styled.div`
+//   max-width: 900px;
+// `;

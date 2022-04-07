@@ -43,6 +43,8 @@ function CampaignDetail(props) {
             lastModifiedDate={lastModifiedDate}
             endDate={endDate}
             hashtags={hashtags}
+            title={title}
+            thumbnailImageUrl={thumbnailImageUrl}
             dday={dday}
             balance={balance}
           />
