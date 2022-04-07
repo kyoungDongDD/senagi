@@ -1,8 +1,6 @@
-import * as React from 'react';
+import { useState } from 'react';
 import { styled, Box } from '@mui/system';
 import ModalUnstyled from '@mui/base/ModalUnstyled';
-
-
 
 const style = {
   width: 400,
@@ -14,7 +12,7 @@ const style = {
 };
 
 export default function ZoomModal() {
-  const [open, setOpen] = React.useState(false);
+  const [open, setOpen] = useState(false);
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
 

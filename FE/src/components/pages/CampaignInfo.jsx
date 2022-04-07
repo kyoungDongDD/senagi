@@ -131,6 +131,7 @@ function CampaignInfo() {
           endDate={compaignData.endDate}
           shelterName={compaignData.shelterName}
           balance={compaignData.balance}
+          pageId={pageId}
           dday={dateDays}
         />
       )}
