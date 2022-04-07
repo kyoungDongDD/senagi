@@ -158,7 +158,7 @@ function DonateModal(props) {
           <DivContainer>
             <ImgDiv>
               <img
-                src={`https://j6b105.p.ssafy.io/api/imgs/${thumbnailImageUrl}`}
+                src={`https://senagi.site/api/imgs/${thumbnailImageUrl}`}
                 alt="이미지없음"
                 objectfit="cover"
                 width="111px"

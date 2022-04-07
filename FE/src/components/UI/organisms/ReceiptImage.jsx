@@ -14,7 +14,7 @@ const ReceiptImage = (props) => {
   let receipArr = [];
   for (let i = 0; i < receipList.length; i++) {
     receipArr.push({
-      src: `https://j6b105.p.ssafy.io/api/imgs/${receipList[i]}`,
+      src: `https://senagi.site/api/imgs/${receipList[i]}`,
     });
   }
 
