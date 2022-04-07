@@ -252,9 +252,16 @@ const NavBar = () => {
                 height: 25px;
               `}
             ></span>
-            <StyledText text={userInfo.nickname} className="body2" />
-            <span className={greyLine}></span>
-            <StyledText text="로그아웃" className="body2" func={handleLogout} />
+            <StyledText
+              text={userInfo.nickname}
+              sx={{ color: 'black', display: 'block', fontSize: '18px', fontFamily: 'GM' }}
+            />
+            <span className={greyLine}>|</span>
+            <StyledText
+              text="로그아웃"
+              sx={{ color: 'black', display: 'block', fontSize: '18px', fontFamily: 'GM' }}
+              func={handleLogout}
+            />
           </StyledBox>
           <Box sx={{ flexGrow: 0 }}>
             <Tooltip title="Enter를 눌러 찾기">
