@@ -1,6 +1,6 @@
 import { useState } from 'react';
-import Box from '@mui/material/Box';
-import Modal from '@mui/material/Modal';
+import { Box, Modal } from '@mui/material/';
+import Toast from '../../atoms/SweetAlert';
 import UserButton from '../../molecules/UserButton';
 import UserCancelButton from '../../molecules/UserCancelButton';
 import Spinner from '../Spinner';
@@ -54,12 +54,20 @@ function ChildModal(props) {
         console.log(response);
         setLoading(false);
         window.location.reload(true);
+        Toast.fire({
+          icon: 'success',
+          title: '기부에 성공했습니다!',
+        });
       })
       .catch((error) => {
         console.log(error);
-        alert('기부에 실패했습니다.');
         setLoading(false);
         window.location.reload(true);
+        // error 인데 실질적으로 기부는 되는 상황 Toast만 변경해서 성공한 것 처럼 할 수는 있음
+        Toast.fire({
+          icon: 'error',
+          title: '기부 도중 에러가 발생하여 기부에 실패했습니다 :(',
+        });
       });
   };
   // Number(value).toLocaleString()

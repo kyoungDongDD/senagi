@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import GoogleLoginButton from '../atoms/GoogleLoginButton';
 import Text from '../atoms/Text';
+import Toast from '../atoms/SweetAlert';
 import JoinButton from '../molecules/JoinButton';
 import UserButton from '../molecules/UserButton';
 import { Box, TextField } from '@mui/material';
@@ -15,7 +16,6 @@ function UserLoginForm() {
   const navigate = useNavigate();
   const dispatch = useDispatch();
   // const { isLogin } = useSelector((state) => state.value.user.isLogin);
-
   // 회원 정보 저장
   const setJoin = (e, names) => {
     setJoinData(Object.assign(joinData, { [names]: e.target.value }));
@@ -34,7 +34,6 @@ function UserLoginForm() {
       principal: userId,
       credential: userPw,
     };
-    // refactor => function 전체 user.js로 수정 이동
     await AccountsAPI.supporterLogin(postData)
       .then((response) => {
         // 로그인 토큰 저장
@@ -44,12 +43,18 @@ function UserLoginForm() {
         const userInfo = jwt(token);
         // 토큰의 유저 정보 store에 저장
         dispatch(authSuccess(userInfo));
-        alert('로그인에 성공했습니다.');
+        Toast.fire({
+          icon: 'success',
+          title: '로그인 되었습니다!',
+        });
         navigate('/home');
       })
       .catch((error) => {
         console.log(error);
-        // alert('로그인에 실패했습니다.');
+        Toast.fire({
+          icon: 'error',
+          title: '로그인 실패 :(',
+        });
       });
   };
 

@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
 import { Dialog, DialogActions, DialogContent, DialogTitle, Button, Grid } from '@mui/material';
 import Text from '../../atoms/Text';
+import Toast from '../../atoms/SweetAlert';
 import BillTable from '../../molecules/BillTable';
 import { makeStyles } from '@mui/styles';
 import styled from '@emotion/styled';
@@ -88,23 +89,27 @@ function WithdrawModal(props) {
     const formdata = new FormData();
     formdata.append('file', file);
     formdata.append('amount', amount);
-    // console.log(file);
-    // 서버로 파일 전송
+    // 서버로 영수증 파일과 총액만 전송
     await PaymentAPI.withdraw(campaignId, formdata)
       .then((response) => {
         // console.log(response);
-        alert('출금에 성공했습니다!');
+        handleClose();
+        Toast.fire({
+          icon: 'success',
+          title: '출금에 성공했습니다!',
+        });
       })
       .catch((error) => {
         console.log(error);
-        alert('출금 도중 문제가 발생했습니다.');
+        Toast.fire({
+          icon: 'error',
+          title: '출금 도중 에러가 발생하여 출금에 실패했습니다 :(',
+        });
       });
   };
 
   // OCR
   const ocrRequest = async (event) => {
-    // console.log('ocrRequest', fileBase64);
-    // console.log('ocrRequest', fileFormat);
     const OCRdata = {
       images: [
         {
@@ -121,15 +126,10 @@ function WithdrawModal(props) {
     // OCR 분석 결과 출력
     await PaymentAPI.OCR(OCRdata)
       .then((response) => {
-        // console.log('response', response);
         const result = response.data.images[0].receipt.result;
         const totalPrice = result.totalPrice.price.text.replaceAll('.', '').replaceAll(',', ''); // OCR에서 ,을 .으로 인식하는 문제 해결
-        // console.log('result', result);
-        // console.log('amount', totalPrice);
-        // console.log('amount', Number(totalPrice));
         setAmount(Number(totalPrice));
         setSubResults(result.subResults[0].items);
-        // console.log('subResults', subResults);
       })
       .catch((error) => {
         // console.log(error);
@@ -146,7 +146,6 @@ function WithdrawModal(props) {
 
     // 2. 읽기 완료 후 base64 encoding
     reader.onloadend = () => {
-      // console.log(reader);
       const base64 = reader.result;
       if (base64) {
         let dataType = reader.result.split(';base64,')[0];
@@ -160,12 +159,6 @@ function WithdrawModal(props) {
       reader.readAsDataURL(event.target.files[0]); // 1. 파일 읽어서 저장
       setFile(event.target.files[0]); // 이미지 저장 (form-data로 보낼 것)
     }
-  };
-
-  // 파일 삭제
-  const deleteFileImage = () => {
-    URL.revokeObjectURL(fileImage);
-    setFileImage('');
   };
 
   const handleClose = () => {

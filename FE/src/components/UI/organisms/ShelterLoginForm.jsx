@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import Text from '../atoms/Text';
+import Toast from '../atoms/SweetAlert';
 import JoinButton from '../molecules/JoinButton';
 import UserButton from '../molecules/UserButton';
 import { Box, TextField } from '@mui/material';
@@ -29,22 +30,25 @@ function ShelterLoginForm() {
 
     await AccountsAPI.shelterLogin(postData)
       .then((response) => {
-        // console.log('ShelterLogin check if token is obj', response.data);
         // 로그인 토큰 저장
         dispatch(login(response.data));
         // 토큰 디코드
         const token = response.data.jwtToken;
         const userInfo = jwt(token);
-        // console.log('SHELTER', typeof userInfo);
         // 토큰의 유저 정보 store에 저장
         dispatch(authSuccess(userInfo));
-        // navbar에 이름 출력 후 삭제
-        alert('로그인에 성공했습니다.');
+        Toast.fire({
+          icon: 'success',
+          title: '로그인 되었습니다!',
+        });
         navigate('/home');
       })
       .catch((error) => {
         console.log(error);
-        alert('로그인에 실패했습니다.');
+        Toast.fire({
+          icon: 'error',
+          title: '로그인 실패 :(',
+        });
       });
   };
 

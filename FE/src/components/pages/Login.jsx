@@ -1,15 +1,12 @@
-import * as React from 'react';
+import { useState } from 'react';
 import { CssBaseline, Grid, Box, Paper, Tabs, Tab, Typography } from '@mui/material/';
 import img2 from '../../assets/login_side.png';
 import ShelterLoginForm from '../UI/organisms/ShelterLoginForm';
 import UserLoginForm from '../UI/organisms/UserLoginForm';
-import { ThemeProvider } from '@mui/material/styles';
-import { createTheme } from '@mui/material/styles';
+import { createTheme, ThemeProvider } from '@mui/material/styles';
 import { makeStyles } from '@mui/styles';
 import PropTypes from 'prop-types';
 import styled from '@emotion/styled';
-
-// #F4BA34
 
 const tabStyles = makeStyles({
   customStyleOnTab: {
@@ -59,16 +56,12 @@ TabPanel.propTypes = {
 };
 
 function Login() {
-  const [value, setValue] = React.useState(0);
-
+  const [value, setValue] = useState(0);
   const handleChange = (event, newValue) => {
     setValue(newValue);
   };
-
   const theme = createTheme();
-
   const tabClasses = tabStyles();
-
   return (
     <ThemeProvider theme={theme}>
       <Grid container component="main" sx={{ height: '100vh' }}>

@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import Text from '../atoms/Text';
+import Toast from '../atoms/SweetAlert';
 import UserButton from '../molecules/UserButton';
 import AccountsAPI from '../../../api/accountsAPI';
 import { validateEmail, validateName, validatePwd } from '../../../utils/validation';
@@ -46,15 +47,25 @@ function SignUpForm() {
     await AccountsAPI.signUp(postData)
       .then((response) => {
         if (response.status === 201) {
-          alert('가입 성공');
+          Toast.fire({
+            icon: 'success',
+            title: '가입에 성공했습니다!',
+          });
           navigate('/login');
         } else {
-          alert('이미 사용중인 아이디입니다.');
+          Toast.fire({
+            icon: 'error',
+            title: '이미 사용중인 아이디입니다.',
+          });
         }
       })
       .catch((error) => {
         console.log(error);
-        setRegisterError('회원가입에 실패하였습니다. 다시한번 확인해 주세요.');
+        setRegisterError('회원가입에 실패하였습니다. 다시 확인해 주세요.');
+        Toast.fire({
+          icon: 'error',
+          title: '회원가입에 실패하였습니다. 다시 확인해 주세요.',
+        });
       });
   };
 
@@ -77,6 +88,7 @@ function SignUpForm() {
     if (!validateEmail(joinData.userId)) {
       setIdFl(false);
       setIdError('올바른 이메일 형식이 아닙니다.');
+      return;
     } else {
       setIdFl(true);
       setIdError('');
@@ -87,11 +99,16 @@ function SignUpForm() {
       .then((response) => {
         if (response.status === 200) {
           setIdFl(true);
-          // toast 예쁜 걸로 바꾸기
-          alert('사용할 수 있는 아이디입니다.');
+          Toast.fire({
+            icon: 'success',
+            title: '사용할 수 있는 아이디입니다.',
+          });
         } else {
           setIdFl(false);
-          alert('이미 사용중인 아이디입니다.');
+          Toast.fire({
+            icon: 'error',
+            title: '이미 사용중인 아이디입니다.',
+          });
         }
       })
       .catch((error) => {
@@ -105,21 +122,24 @@ function SignUpForm() {
     // 닉네임 regex 형식 검사
     if (!validateName(joinData.userName)) {
       setNameError('올바른 닉네임 형식이 아닙니다.');
+      return;
     } else setNameError('');
 
     // 닉네임 중복 검사
     await AccountsAPI.checkName(joinData.userName)
       .then((response) => {
-        if (response.status === 200) {
-          setNameFl(true);
-          alert('사용할 수 있는 닉네임입니다.');
-        } else {
-          setNameFl(false);
-          alert('이미 사용중인 닉네임입니다.');
-        }
+        setNameFl(true);
+        Toast.fire({
+          icon: 'success',
+          title: '사용할 수 있는 닉네임입니다.',
+        });
       })
       .catch((error) => {
         console.log(error);
+        Toast.fire({
+          icon: 'error',
+          title: '이미 사용중인 닉네임입니다.',
+        });
       });
   };
 
@@ -146,7 +166,11 @@ function SignUpForm() {
     else setNameError('');
 
     // 회원가입 동의 체크
-    if (!checkedFl) alert('회원가입 약관에 동의해주세요.');
+    if (!checkedFl)
+      Toast.fire({
+        icon: 'info',
+        title: '회원가입 약관에 동의해주세요.',
+      });
 
     // 모든 조건을 만족하면 회원가입 function 실행
     if (
@@ -205,6 +229,7 @@ function SignUpForm() {
         </Grid>
         <FormHelperTexts>{idError}</FormHelperTexts>
         <TextField
+          sx={{ mt: 1 }}
           required
           fullWidth
           type="password"
@@ -216,6 +241,7 @@ function SignUpForm() {
         />
         <FormHelperTexts>{passwordState}</FormHelperTexts>
         <TextField
+          sx={{ mt: 1 }}
           required
           fullWidth
           type="password"
@@ -229,6 +255,7 @@ function SignUpForm() {
         <Grid container spacing={1}>
           <Grid item xs={8}>
             <TextField
+              sx={{ mt: 1 }}
               required
               fullWidth
               id="name"
@@ -240,6 +267,7 @@ function SignUpForm() {
           </Grid>
           <Grid item xs={4}>
             <Button
+              sx={{ mt: 1 }}
               type="submit"
               variant="outlined"
               style={{
@@ -261,6 +289,7 @@ function SignUpForm() {
           label="세나기의 회원가입 약관에 동의합니다."
         />
         <UserButton
+          sx={{ mt: 1 }}
           type="submit"
           fullWidth
           variant="contained"
