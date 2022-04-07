@@ -8,9 +8,6 @@ import Text from '../atoms/Text';
 import Card from './DonationInfoCard';
 
 function Project() {
-  const Container = styled.div`
-    /* background: linear-gradient(#fffcf3 50%, #fff 50%); */
-  `;
   const StyleButton = styled.button`
     /* width: 30px; */
     /* padding: 5px; */
@@ -31,73 +28,73 @@ function Project() {
   }, []);
   return (
     <>
-      <Container>
+      <Box
+        sx={{
+          display: 'flex',
+          flexDirection: { xs: 'column', md: 'row' },
+          justifyContent: 'center',
+
+          p: 10,
+        }}
+      >
         <Box
           sx={{
             display: 'flex',
-            flexDirection: { xs: 'column', md: 'row' },
-            justifyContent: 'center',
-
-            p: 10,
+            flexDirection: 'column',
+            alignItems: { xs: 'center', md: 'flex-start' },
           }}
         >
-          <Box
-            sx={{
-              display: 'flex',
-              flexDirection: 'column',
-              alignItems: { xs: 'center', md: 'flex-start' },
-            }}
-          >
-            <Box>
-              <Text className="campaignHeader" text="프로젝트 후원" />
-            </Box>
-            <Box>
-              <Text className="campaignDes" text="관심있는 프로젝트에 후원하세요." />
-            </Box>
-            <Box>
-              <Carousel
-                framePadding="40px"
-                autoplay={true}
-                wrapAround={true}
-                slideListMargin={2}
-                slidesToScroll={1}
-                slidesToShow={2}
-                renderCenterRightControls={({ nextSlide }) => (
-                  <StyleButton onClick={nextSlide}>
-                    <ChevronRightIcon sx={{ fontSize: 40 }} />
-                  </StyleButton>
-                )}
-                renderCenterLeftControls={null}
-                renderBottomCenterControls={null}
-              >
-                {posts.map(
-                  ({
-                    id,
-                    title,
-                    shelterName,
-                    targetDonation,
-                    thumbnailImageUrl,
-                    endDate,
-                    lastModifiedDate,
-                  }) => (
-                    <div key={id}>
-                      <Card
-                        id={id}
-                        title={title}
-                        shelterName={shelterName}
-                        thumbnailImageUrl={thumbnailImageUrl}
-                        targetDonation={targetDonation}
-                        endDate={endDate}
-                        lastModifiedDate={lastModifiedDate}
-                      />
-                    </div>
-                  ),
-                )}
-              </Carousel>
-            </Box>
+          <Box>
+            <Text className="campaignHeader" text="프로젝트 후원" />
+          </Box>
+          <Box>
+            <Text className="campaignDes" text="관심있는 프로젝트에 후원하세요." />
+          </Box>
+          <Box>
+            <Carousel
+              framePadding="40px"
+              autoplay={true}
+              wrapAround={true}
+              slideListMargin={2}
+              slidesToScroll={1}
+              slidesToShow={2}
+              renderCenterRightControls={({ nextSlide }) => (
+                <StyleButton onClick={nextSlide}>
+                  <ChevronRightIcon sx={{ fontSize: 40 }} />
+                </StyleButton>
+              )}
+              renderCenterLeftControls={null}
+              renderBottomCenterControls={null}
+            >
+              {posts.map(
+                ({
+                  id,
+                  title,
+                  shelterName,
+                  targetDonation,
+                  thumbnailImageUrl,
+                  endDate,
+                  lastModifiedDate,
+                  balance,
+                }) => (
+                  <div key={id}>
+                    <Card
+                      id={id}
+                      title={title}
+                      shelterName={shelterName}
+                      thumbnailImageUrl={thumbnailImageUrl}
+                      targetDonation={targetDonation}
+                      endDate={endDate}
+                      lastModifiedDate={lastModifiedDate}
+                      balance={balance}
+                    />
+                  </div>
+                ),
+              )}
+            </Carousel>
           </Box>
         </Box>
-      </Container>
+      </Box>
     </>
   );
 }

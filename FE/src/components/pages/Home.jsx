@@ -6,7 +6,8 @@ import Footer from '../UI/organisms/Footer';
 
 function Home() {
   const Container = styled.div`
-    padding: 0 200px;
+    max-width: 1200px;
+    margin: 0 auto;
   `;
 
   return (

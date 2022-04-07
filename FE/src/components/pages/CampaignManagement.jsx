@@ -53,7 +53,6 @@ function CampaignManagement() {
   return (
     <div>
       <BannerSlide />
-
       <ListBox>
         <TabContext value={value}>
           <TabList
@@ -89,6 +88,7 @@ function CampaignManagement() {
                     thumbnailImageUrl,
                     endDate,
                     lastModifiedDate,
+                    balance,
                   }) => (
                     <Grid item sm={7} md={5} lg={4} key={id}>
                       <DonationInfoCard
@@ -99,6 +99,7 @@ function CampaignManagement() {
                         targetDonation={targetDonation}
                         endDate={endDate}
                         lastModifiedDate={lastModifiedDate}
+                        balance={balance}
                       ></DonationInfoCard>
                     </Grid>
                   ),
@@ -118,6 +119,7 @@ function CampaignManagement() {
                     thumbnailImageUrl,
                     endDate,
                     lastModifiedDate,
+                    balance,
                   }) => (
                     <Grid item sm={7} md={5} lg={4} key={id}>
                       <DonationInfoCard
@@ -128,6 +130,7 @@ function CampaignManagement() {
                         targetDonation={targetDonation}
                         endDate={endDate}
                         lastModifiedDate={lastModifiedDate}
+                        balance={balance}
                       ></DonationInfoCard>
                     </Grid>
                   ),
