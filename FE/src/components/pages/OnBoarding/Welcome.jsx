@@ -1,7 +1,7 @@
 import 'aos/dist/aos.css';
 import { useEffect } from 'react';
+import { Link } from 'react-router-dom';
 import { css } from '@emotion/react';
-import { Link } from '@mui/material';
 import AOS from 'aos';
 import logo from '../../../assets/logo.png';
 import one from './images/one.svg';
@@ -352,7 +352,9 @@ function Welcome() {
     <>
       <header css={headerStyles}>
         <div>
-          <img src={logo} alt="Logo" />
+          <Link to="/">
+            <img src={logo} alt="Logo" />
+          </Link>
         </div>
         <div css={headerRightDiv}>
           <a css={headerLinks} href="#about">
@@ -362,7 +364,7 @@ function Welcome() {
             Contact
           </a>
           <button css={button} type="button">
-            <Link href="/login" underline="none" color="white">
+            <Link to="/login" style={{ textDecoration: 'none', color: 'white' }}>
               Login
             </Link>
           </button>
