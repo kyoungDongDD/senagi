@@ -26,11 +26,11 @@ const commonStyles = css`
   * {
     font-family: 'GM';
   }
-  
+
   body {
     margin: 0;
   }
-  
+
   .header1 {
     font-style: normal;
     font-weight: 700;
@@ -89,6 +89,46 @@ const commonStyles = css`
     line-height: 18px;
     display: flex;
     align-items: center;
+    letter-spacing: -0.02em;
+    font-family: 'GM';
+  }
+  .campaignHeader {
+    font-style: normal;
+    font-weight: 700;
+    font-size: 55px;
+    line-height: 40px;
+    letter-spacing: 0.01em;
+    font-family: 'GM';
+  }
+  .campaignDes {
+    font-style: normal;
+    font-weight: 500;
+    font-size: 23px;
+    line-height: 21px;
+    letter-spacing: -0.02em;
+    font-family: 'GL';
+  }
+  .campaignTitle {
+    font-style: normal;
+    font-weight: 400;
+    font-size: 20px;
+    line-height: 25px;
+    letter-spacing: -0.02em;
+    font-family: 'GM';
+  }
+  .day {
+    font-style: normal;
+    font-weight: 600;
+    font-size: 13px;
+    line-height: 23px;
+    letter-spacing: -0.02em;
+    font-family: 'GM';
+  }
+  .cardBottom {
+    font-style: normal;
+    font-weight: 500;
+    font-size: 15px;
+    line-height: 23px;
     letter-spacing: -0.02em;
     font-family: 'GM';
   }
