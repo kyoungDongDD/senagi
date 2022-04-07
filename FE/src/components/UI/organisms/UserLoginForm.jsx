@@ -3,7 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import GoogleLoginButton from '../atoms/GoogleLoginButton';
 import Text from '../atoms/Text';
 import Toast from '../atoms/SweetAlert';
-import JoinButton from '../molecules/JoinButton';
+import UserJoinButton from '../molecules/UserJoinButton';
 import UserButton from '../molecules/UserButton';
 import { Box, TextField } from '@mui/material';
 import AccountsAPI from '../../../api/accountsAPI';
@@ -102,7 +102,7 @@ function UserLoginForm() {
         />
         <GoogleLoginButton />
         <br />
-        <JoinButton />
+        <UserJoinButton />
       </Box>
     </Box>
   );

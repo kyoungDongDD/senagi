@@ -61,8 +61,8 @@ public class OAuth2UerService implements OAuth2UserService<OAuth2UserRequest, OA
       .orElseGet(() -> {
         User entity = User.of(
           registrationId,
-          attributes.getEmail(),
           attributes.getName(),
+          attributes.getEmail(),
           attributes.getPicture());
         Authority authority = Authority.from(UserRole.SUPPORTER);
         authority.setUser(entity);

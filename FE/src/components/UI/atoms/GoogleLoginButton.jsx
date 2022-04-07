@@ -37,7 +37,7 @@ const StyledP = styled.p`
 
 function GoogleLoginButton() {
   return (
-    <StyledButton href="https://senagi.site/oauth2/authorization/google" target="_blank">
+    <StyledButton href="https://senagi.site:8080/oauth2/authorization/google" target="_blank">
       <StyledImg src={GoogleLogo} alt="GoogleLogo" />
       <StyledP>Google 계정으로 로그인</StyledP>
     </StyledButton>

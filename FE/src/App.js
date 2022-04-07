@@ -7,6 +7,7 @@ import MyPage from './components/pages/MyPage';
 import Login from './components/pages/Login';
 import SignUp from './components/pages/SignUp';
 import CampaignManagement from './components/pages/CampaignManagement';
+import Introduce from './components/pages/Introduce';
 import SearchResult from './components/pages/SearchResult';
 import CampaignInfo from './components/pages/CampaignInfo';
 import OwnCampaigns from './components/pages/OwnCampaigns';
@@ -26,6 +27,7 @@ export default function App() {
         <Route element={<Layout />}>
           <Route path="/home" element={<Home />} />
           <Route path="/campaign" element={<CampaignManagement />} />
+          <Route path="/introduce" element={<Introduce />} />
           <Route path="/mypage" element={<MyPage />} />
           <Route path="/owncampaigns" element={<OwnCampaigns />} />
           <Route path="/searchresult" element={<SearchResult />} />

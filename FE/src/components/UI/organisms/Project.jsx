@@ -3,19 +3,16 @@ import Carousel from 'nuka-carousel';
 import styled from '@emotion/styled';
 import { Box } from '@mui/material';
 import ChevronRightIcon from '@mui/icons-material/ChevronRight';
+import ChevronLeftIcon from '@mui/icons-material/ChevronLeft';
 import campaignAPI from '../../../api/campaignAPI';
 import Text from '../atoms/Text';
 import Card from './DonationInfoCard';
 
 function Project() {
-  const Container = styled.div`
-    /* background: linear-gradient(#fffcf3 50%, #fff 50%); */
-  `;
   const StyleButton = styled.button`
-    /* width: 30px; */
-    /* padding: 5px; */
+    width: 65px;
+    height: 40px;
     border: none;
-    /* border-radius: 50%; */
     background-color: white;
     opacity: 0.5;
     cursor: pointer;
@@ -31,73 +28,75 @@ function Project() {
   }, []);
   return (
     <>
-      <Container>
+      <Box
+        sx={{
+          display: 'flex',
+          flexDirection: { xs: 'column', md: 'row' },
+          justifyContent: 'center',
+        }}
+      >
         <Box
           sx={{
             display: 'flex',
-            flexDirection: { xs: 'column', md: 'row' },
-            justifyContent: 'center',
-
-            p: 10,
+            flexDirection: 'column',
+            alignItems: { xs: 'center', md: 'flex-start' },
           }}
         >
-          <Box
-            sx={{
-              display: 'flex',
-              flexDirection: 'column',
-              alignItems: { xs: 'center', md: 'flex-start' },
-            }}
-          >
-            <Box>
-              <Text className="campaignHeader" text="프로젝트 후원" />
-            </Box>
-            <Box>
-              <Text className="campaignDes" text="관심있는 프로젝트에 후원하세요." />
-            </Box>
-            <Box>
-              <Carousel
-                framePadding="40px"
-                autoplay={true}
-                wrapAround={true}
-                slideListMargin={2}
-                slidesToScroll={1}
-                slidesToShow={2}
-                renderCenterRightControls={({ nextSlide }) => (
-                  <StyleButton onClick={nextSlide}>
-                    <ChevronRightIcon sx={{ fontSize: 40 }} />
-                  </StyleButton>
-                )}
-                renderCenterLeftControls={null}
-                renderBottomCenterControls={null}
-              >
-                {posts.map(
-                  ({
-                    id,
-                    title,
-                    shelterName,
-                    targetDonation,
-                    thumbnailImageUrl,
-                    endDate,
-                    lastModifiedDate,
-                  }) => (
-                    <div key={id}>
-                      <Card
-                        id={id}
-                        title={title}
-                        shelterName={shelterName}
-                        thumbnailImageUrl={thumbnailImageUrl}
-                        targetDonation={targetDonation}
-                        endDate={endDate}
-                        lastModifiedDate={lastModifiedDate}
-                      />
-                    </div>
-                  ),
-                )}
-              </Carousel>
-            </Box>
+          <Box>
+            <Text className="campaignHeader" text="프로젝트 후원" />
+          </Box>
+          <Box>
+            <Text className="campaignDes" text="관심있는 프로젝트에 후원하세요." />
+          </Box>
+          <Box>
+            <Carousel
+              framePadding="40px"
+              autoplay={false}
+              wrapAround={true}
+              slideListMargin={2}
+              slidesToScroll={1}
+              slidesToShow={3}
+              renderCenterRightControls={({ nextSlide }) => (
+                <StyleButton onClick={nextSlide}>
+                  <ChevronRightIcon sx={{ fontSize: 40 }} />
+                </StyleButton>
+              )}
+              renderCenterLeftControls={({ previousSlide }) => (
+                <StyleButton onClick={previousSlide}>
+                  <ChevronLeftIcon sx={{ fontSize: 40 }} />
+                </StyleButton>
+              )}
+              renderBottomCenterControls={null}
+            >
+              {posts.map(
+                ({
+                  id,
+                  title,
+                  shelterName,
+                  targetDonation,
+                  thumbnailImageUrl,
+                  endDate,
+                  lastModifiedDate,
+                  balance,
+                }) => (
+                  <div key={id}>
+                    <Card
+                      id={id}
+                      title={title}
+                      shelterName={shelterName}
+                      thumbnailImageUrl={thumbnailImageUrl}
+                      targetDonation={targetDonation}
+                      endDate={endDate}
+                      lastModifiedDate={lastModifiedDate}
+                      balance={balance}
+                    />
+                  </div>
+                ),
+              )}
+            </Carousel>
           </Box>
         </Box>
-      </Container>
+      </Box>
     </>
   );
 }

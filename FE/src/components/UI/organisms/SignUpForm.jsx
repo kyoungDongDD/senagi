@@ -3,7 +3,9 @@ import { useNavigate } from 'react-router-dom';
 import Text from '../atoms/Text';
 import Toast from '../atoms/SweetAlert';
 import UserButton from '../molecules/UserButton';
+import SignUpJoinButton from '../molecules/SignUpJoinButton';
 import AccountsAPI from '../../../api/accountsAPI';
+import SignUpSpinner from './SignUpSpinner';
 import { validateEmail, validateName, validatePwd } from '../../../utils/validation';
 import {
   Button,
@@ -34,7 +36,8 @@ function SignUpForm() {
   const [checkedFl, setCheckedFl] = useState(false);
   const [registerError, setRegisterError] = useState('');
   const navigate = useNavigate();
-
+  // spinner
+  const [loading, setLoading] = useState(false);
   // 나중에 loader 추가하기
   // 회원가입
   const signUp = async () => {
@@ -44,15 +47,18 @@ function SignUpForm() {
       credential: userPw,
       name: userName,
     };
+    setLoading(true);
     await AccountsAPI.signUp(postData)
       .then((response) => {
         if (response.status === 201) {
+          setLoading(false);
           Toast.fire({
             icon: 'success',
             title: '가입에 성공했습니다!',
           });
           navigate('/login');
         } else {
+          setLoading(false);
           Toast.fire({
             icon: 'error',
             title: '이미 사용중인 아이디입니다.',
@@ -61,6 +67,7 @@ function SignUpForm() {
       })
       .catch((error) => {
         console.log(error);
+        setLoading(false);
         setRegisterError('회원가입에 실패하였습니다. 다시 확인해 주세요.');
         Toast.fire({
           icon: 'error',
@@ -298,7 +305,8 @@ function SignUpForm() {
           func={handleSubmit}
         />
         <FormHelperTexts>{registerError}</FormHelperTexts>
-        <Button
+        <SignUpJoinButton />
+        {/* <Button
           type="submit"
           fullWidth
           variant="text"
@@ -306,9 +314,10 @@ function SignUpForm() {
           onClick={() => window.open('https://forms.gle/yEsAD4UyDmoP1z7z8', '_blank')}
           style={{ backgroundColor: 'transparent', justifyContent: 'flex-end' }}
         >
-          <span style={{ color: 'black' }}>보호소 회원으로&nbsp;</span>가입하기
-        </Button>
+          <span className="linktext">보호소 회원으로&nbsp;</span>가입하기
+        </Button> */}
       </Box>
+      {loading && <SignUpSpinner loading={loading} />}
     </Box>
   );
 }
