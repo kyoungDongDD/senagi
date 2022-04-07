@@ -54,7 +54,7 @@ function MyPage() {
                 <CardMedia
                   component="img"
                   sx={{ width: 151 }}
-                  image={`https://j6b105.p.ssafy.io/api/imgs/${data.thumbnailImagUrl}`}
+                  image={`https://senagi.site/api/imgs/${data.thumbnailImagUrl}`}
                   alt="이미지가 없습니다.!!!!!!!"
                   onClick={() => pagelink(data.campaignId)}
                 />

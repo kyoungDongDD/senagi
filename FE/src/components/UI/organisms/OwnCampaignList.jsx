@@ -39,7 +39,7 @@ function OwnCampaignList(props) {
                 <CardMedia
                   component="img"
                   sx={{ width: 151 }}
-                  image={`https://j6b105.p.ssafy.io/api/imgs/${data.thumbnailImageUrl}`}
+                  image={`https://senagi.site/api/imgs/${data.thumbnailImageUrl}`}
                   alt="이미지가 없습니다.!!!!!!!"
                   // onClick={() => pagelink(data.campaignId)}
                 />

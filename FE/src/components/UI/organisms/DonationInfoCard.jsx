@@ -73,7 +73,7 @@ function ImgCard(props) {
             id={id}
             component="img"
             alt="green iguana"
-            image={`https://j6b105.p.ssafy.io/api/imgs/${thumbnailImageUrl}`}
+            image={`https://senagi.site/api/imgs/${thumbnailImageUrl}`}
             // image={require({ thumbnailImageUrl })}
             object-fit={'cover'}
             onClick={openDetail}
