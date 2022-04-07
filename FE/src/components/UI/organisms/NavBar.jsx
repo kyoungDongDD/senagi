@@ -61,7 +61,7 @@ const NavBar = () => {
     const page = event.target.innerText;
     switch (page) {
       case '캠페인':
-        navigate('/searchresult', {
+        navigate('/campaign', {
           state: {},
         });
         break;

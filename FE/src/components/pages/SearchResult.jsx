@@ -1,11 +1,10 @@
 import { useState, useEffect } from 'react';
-import Grid from '@mui/material/Grid';
+import { Grid, Box, MenuItem, FormControl, Select } from '@mui/material';
 import styled from '@emotion/styled';
 import Pagination from '../UI/organisms/Pagination';
 import DonationInfoCard from '../UI/organisms/DonationInfoCard';
 import BannerSlide from '../UI/organisms/BannerSlide';
-import SelectBox from '../UI/molecules/SelectBox';
-import { Outlet, useLocation } from 'react-router-dom';
+import { useLocation } from 'react-router-dom';
 import campaignAPI from '../../api/campaignAPI';
 
 function SearchResult() {
@@ -19,16 +18,26 @@ function SearchResult() {
   const location = useLocation();
   const { keyword } = location.state;
 
-  console.log(keyword);
+  const [range, setRange] = useState('registDate');
 
   useEffect(() => {
-    campaignAPI.getCampaignAll().then((response) => {
-      const campaignAll = response.data.content;
-
-      console.log(campaignAll);
-      setPosts(campaignAll);
+    campaignAPI.searchByKeyword(keyword, range, 'true').then((response) => {
+      const campaign = response.data.content;
+      console.log(campaign);
+      setPosts(campaign);
     });
-  }, []);
+  }, [keyword, range]);
+
+  // 최신순, 조회순, 마감 임박순 정렬
+  const rangeChange = (event, des) => {
+    des = 'true';
+    setRange(event.target.value);
+    if (event.target.value === 'endDate') des = 'false';
+    campaignAPI.searchByKeyword(keyword, event.target.value, des).then((response) => {
+      const campaign = response.data.content;
+      setPosts(campaign);
+    });
+  };
 
   console.log(posts);
 
@@ -36,28 +45,21 @@ function SearchResult() {
     <div>
       <BannerSlide />
       <Layout>
-        <Outlet />
         <div>
-          <H1>검색결과</H1>
+          <H1>"{keyword}"에 대한 검색결과</H1>
         </div>
-
-        <SelectOption>
-          <SelectBox />
-          {/* <label>
-            페이지 당 표시할 게시물 수:&nbsp;
-            <select
-              type="number"
-              value={limit}
-              onChange={({ target: { value } }) => setLimit(Number(value))}
-            >
-              <option value="12">12</option>
-              <option value="20">20</option>
-              <option value="50">50</option>
-              <option value="100">100</option>
-            </select>
-          </label> */}
-        </SelectOption>
-        <Grid container justifyContent={'space-evenly'}>
+        <Box sx={{ maxWidth: 140, ml: 2 }}>
+          <FormControl fullWidth>
+            <Select sx={{ height: 35 }} value={range} onChange={rangeChange}>
+              <MenuItem value={'registDate'} selected>
+                최신순
+              </MenuItem>
+              <MenuItem value={'viewCount'}>조회순</MenuItem>
+              <MenuItem value={'endDate'}>마감 임박순</MenuItem>
+            </Select>
+          </FormControl>
+        </Box>
+        <Grid container justifyContent={'flex-start'}>
           {posts
             .slice(offset, offset + limit)
             .map(
