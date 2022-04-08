@@ -10,8 +10,20 @@ public interface TokenContractService {
 
   Long balanceOf(Wallet wallet);
 
+<<<<<<< HEAD
+=======
+  Long balanceOf(String account);
+
+  BigInteger balanceOfBigInteger(Wallet wallet);
+
+
+>>>>>>> dev
   String getTokenName();
   String getTokenSymbol();
   BigInteger getTokenDecimals();
 
 }
+<<<<<<< HEAD
+=======
+
+>>>>>>> dev

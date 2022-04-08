@@ -1,6 +1,9 @@
 import styled from '@emotion/styled';
 import { useEffect } from 'react';
+<<<<<<< HEAD
 
+=======
+>>>>>>> dev
 import ChevronLeftIcon from '@mui/icons-material/ChevronLeft';
 import ChevronRightIcon from '@mui/icons-material/ChevronRight';
 
@@ -42,35 +45,57 @@ const Nav = styled.nav`
   justify-content: center;
   align-items: center;
   gap: 10px;
+<<<<<<< HEAD
   margin: 16px;
+=======
+  margin: 65px 16px 90px 16px;
+>>>>>>> dev
 `;
 
 const Button = styled.button`
   height: 40px;
   width: 40px;
+<<<<<<< HEAD
   border: none;
   border-radius: 3px;
+=======
+  border: 0;
+>>>>>>> dev
   padding: 10px;
   margin: 0;
   background: white;
   color: black;
   font-size: 1rem;
+<<<<<<< HEAD
   box-shadow: 1px 1px 1px 1px gray;
 
   &:hover {
     background: #f4ba3499;
+=======
+  cursor: pointer;
+
+  &:hover {
+    color: #9e9e9e;
+>>>>>>> dev
     cursor: pointer;
     transform: translateY(-2px);
   }
 
   &[disabled] {
+<<<<<<< HEAD
     background: white;
+=======
+>>>>>>> dev
     cursor: revert;
     transform: revert;
   }
 
   &[aria-current] {
+<<<<<<< HEAD
     background: #f4ba3499;
+=======
+    color: #000;
+>>>>>>> dev
     font-weight: bold;
     cursor: revert;
     transform: revert;

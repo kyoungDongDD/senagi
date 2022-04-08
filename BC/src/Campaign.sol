@@ -53,7 +53,15 @@ contract Campaign is Ownable{
             amount = possibleAmount;
         _tokenMgr.approve(from,amount);
         _tokenMgr.transferFrom(from,address(this),amount);
+<<<<<<< HEAD
         return true;
+=======
+        if(_balanceOf() == _targetAmount) {
+            _isEnded = true;
+            return true;
+        }
+        return false;        
+>>>>>>> dev
     }
 
     // to : 받을 계좌, amount : 금액, msg.sender : owner

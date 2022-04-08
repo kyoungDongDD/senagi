@@ -8,13 +8,23 @@
     "@emotion/styled": "^11.8.1",
     "@material-ui/styles": "^4.11.4",
     "@mui/icons-material": "^5.5.1",
+<<<<<<< HEAD
+=======
+    "@mui/lab": "^5.0.0-alpha.75",
+>>>>>>> dev
     "@mui/material": "^5.5.1",
     "@mui/styles": "^5.5.1",
     "@reduxjs/toolkit": "^1.8.0",
     "@testing-library/jest-dom": "^5.16.2",
     "@testing-library/react": "^12.1.4",
     "@testing-library/user-event": "^13.5.0",
+<<<<<<< HEAD
     "axios": "^0.26.1",
+=======
+    "aos": "^2.3.4",
+    "axios": "^0.26.1",
+    "jwt-decode": "^3.1.2",
+>>>>>>> dev
     "nuka-carousel": "^5.0.7",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
@@ -22,7 +32,16 @@
     "react-router-dom": "^6.2.2",
     "react-scripts": "5.0.0",
     "react-slick": "^0.28.1",
+<<<<<<< HEAD
     "slick-carousel": "^1.8.1",
+=======
+    "react-spinners": "^0.11.0",
+    "redux-persist": "^6.0.0",
+    "redux-thunk": "^2.4.1",
+    "slick-carousel": "^1.8.1",
+    "sweetalert2-react-content": "^4.2.0",
+    "uuid": "^8.3.2",
+>>>>>>> dev
     "web-vitals": "^2.1.4"
   },
   "scripts": {
