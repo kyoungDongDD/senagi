@@ -47,7 +47,7 @@ function OwnCampaignList(props) {
                   <Division>
                     <div>
                       <Typography component="div" variant="h5">
-                        {data.isEnd ? <div>진행중</div> : <End>종료</End>}
+                        {data.isEnd ? <End>종료</End> : <div>진행중</div>}
                       </Typography>
                       <Typography component="div" variant="h5">
                         {data.shelterName}
