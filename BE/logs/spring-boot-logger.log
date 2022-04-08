@@ -1,0 +1,1430 @@
+2022-04-08 00:05:22,545 DEBUG org.hibernate.engine.jdbc.spi.SqlStatementLogger [pool-2-thread-2] 
+    /* load com.ssafy.b105.entity.blockchain.Transaction */ select
+        transactio0_.hash as hash1_7_0_,
+        transactio0_.block_hash as block_ha2_7_0_,
+        transactio0_.block_number as block_nu3_7_0_,
+        transactio0_.creates as creates4_7_0_,
+        transactio0_.from_account as from_acc5_7_0_,
+        transactio0_.gas as gas6_7_0_,
+        transactio0_.gas_price as gas_pric7_7_0_,
+        transactio0_.input_value as input_va8_7_0_,
+        transactio0_.max_fee_per_gas as max_fee_9_7_0_,
+        transactio0_.max_priority_fee_per_gas as max_pri10_7_0_,
+        transactio0_.nonce as nonce11_7_0_,
+        transactio0_.public_key as public_12_7_0_,
+        transactio0_.r as r13_7_0_,
+        transactio0_.raw as raw14_7_0_,
+        transactio0_.s as s15_7_0_,
+        transactio0_.to_account as to_acco16_7_0_,
+        transactio0_.transaction_index as transac17_7_0_,
+        transactio0_.type as type18_7_0_,
+        transactio0_.v as v19_7_0_,
+        transactio0_.value as value20_7_0_ 
+    from
+        transaction transactio0_ 
+    where
+        transactio0_.hash=?
+2022-04-08 00:05:22,554 TRACE org.hibernate.type.descriptor.sql.BasicBinder [pool-2-thread-2] binding parameter [1] as [VARCHAR] - [0xa9ecbf354fc9a1991172baf46d47221e2bbbe9ec714af12d4b9778113d9aed75]
+2022-04-08 00:05:22,557 DEBUG org.hibernate.engine.jdbc.spi.SqlStatementLogger [pool-2-thread-2] 
+    /* insert com.ssafy.b105.entity.blockchain.Transaction
+        */ insert 
+        into
+            transaction
+            (block_hash, block_number, creates, from_account, gas, gas_price, input_value, max_fee_per_gas, max_priority_fee_per_gas, nonce, public_key, r, raw, s, to_account, transaction_index, type, v, value, hash) 
+        values
+            (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+2022-04-08 00:05:22,558 TRACE org.hibernate.type.descriptor.sql.BasicBinder [pool-2-thread-2] binding parameter [1] as [VARCHAR] - [0xa0acc43f63936c94ef63ccd75da630470270ada8397ecbbf86bdbce651eb0f1f]
+2022-04-08 00:05:22,558 TRACE org.hibernate.type.descriptor.sql.BasicBinder [pool-2-thread-2] binding parameter [2] as [NUMERIC] - [71720]
+2022-04-08 00:05:22,558 TRACE org.hibernate.type.descriptor.sql.BasicBinder [pool-2-thread-2] binding parameter [3] as [VARCHAR] - [null]
+2022-04-08 00:05:22,558 TRACE org.hibernate.type.descriptor.sql.BasicBinder [pool-2-thread-2] binding parameter [4] as [VARCHAR] - [0xadeedb149af852ed80162ebd607205544c88f7bf]
+2022-04-08 00:05:22,559 TRACE org.hibernate.type.descriptor.sql.BasicBinder [pool-2-thread-2] binding parameter [5] as [NUMERIC] - [3000000]
+2022-04-08 00:05:22,559 TRACE org.hibernate.type.descriptor.sql.BasicBinder [pool-2-thread-2] binding parameter [6] as [NUMERIC] - [0]
+2022-04-08 00:05:22,559 TRACE org.hibernate.type.descriptor.sql.BasicBinder [pool-2-thread-2] binding parameter [7] as [CLOB] - [0xdbcaef8b000000000000000000000000c1992e011ab5c4c497873d3352157269d62949f00000000000000000000000000000000000000000000000056bc75e2d63100000]
+2022-04-08 00:05:22,559 TRACE org.hibernate.type.descriptor.sql.BasicBinder [pool-2-thread-2] binding parameter [8] as [VARCHAR] - [null]
+2022-04-08 00:05:22,559 TRACE org.hibernate.type.descriptor.sql.BasicBinder [pool-2-thread-2] binding parameter [9] as [VARCHAR] - [null]
+2022-04-08 00:05:22,559 TRACE org.hibernate.type.descriptor.sql.BasicBinder [pool-2-thread-2] binding parameter [10] as [VARCHAR] - [0x1f6]
+2022-04-08 00:05:22,559 TRACE org.hibernate.type.descriptor.sql.BasicBinder [pool-2-thread-2] binding parameter [11] as [VARCHAR] - [null]
+2022-04-08 00:05:22,559 TRACE org.hibernate.type.descriptor.sql.BasicBinder [pool-2-thread-2] binding parameter [12] as [VARCHAR] - [0xcba7313fd62db9ecd77588ed492b4b54b98b5afde2a5db62479a17ec73a2656]
+2022-04-08 00:05:22,560 TRACE org.hibernate.type.descriptor.sql.BasicBinder [pool-2-thread-2] binding parameter [13] as [VARCHAR] - [null]
+2022-04-08 00:05:22,560 TRACE org.hibernate.type.descriptor.sql.BasicBinder [pool-2-thread-2] binding parameter [14] as [VARCHAR] - [null]
+2022-04-08 00:05:22,560 TRACE org.hibernate.type.descriptor.sql.BasicBinder [pool-2-thread-2] binding parameter [15] as [VARCHAR] - [0x827196b1fefbc899c7f00656c2cb16865f827ed8]
+2022-04-08 00:05:22,560 TRACE org.hibernate.type.descriptor.sql.BasicBinder [pool-2-thread-2] binding parameter [16] as [NUMERIC] - [0]
+2022-04-08 00:05:22,560 TRACE org.hibernate.type.descriptor.sql.BasicBinder [pool-2-thread-2] binding parameter [17] as [VARCHAR] - [0x0]
+2022-04-08 00:05:22,560 TRACE org.hibernate.type.descriptor.sql.BasicBinder [pool-2-thread-2] binding parameter [18] as [BIGINT] - [65]
+2022-04-08 00:05:22,560 TRACE org.hibernate.type.descriptor.sql.BasicBinder [pool-2-thread-2] binding parameter [19] as [NUMERIC] - [0]
+2022-04-08 00:05:22,560 TRACE org.hibernate.type.descriptor.sql.BasicBinder [pool-2-thread-2] binding parameter [20] as [VARCHAR] - [0xa9ecbf354fc9a1991172baf46d47221e2bbbe9ec714af12d4b9778113d9aed75]
+2022-04-08 00:05:37,571 DEBUG org.hibernate.engine.jdbc.spi.SqlStatementLogger [pool-2-thread-2] 
+    /* load com.ssafy.b105.entity.blockchain.Transaction */ select
+        transactio0_.hash as hash1_7_0_,
+        transactio0_.block_hash as block_ha2_7_0_,
+        transactio0_.block_number as block_nu3_7_0_,
+        transactio0_.creates as creates4_7_0_,
+        transactio0_.from_account as from_acc5_7_0_,
+        transactio0_.gas as gas6_7_0_,
+        transactio0_.gas_price as gas_pric7_7_0_,
+        transactio0_.input_value as input_va8_7_0_,
+        transactio0_.max_fee_per_gas as max_fee_9_7_0_,
+        transactio0_.max_priority_fee_per_gas as max_pri10_7_0_,
+        transactio0_.nonce as nonce11_7_0_,
+        transactio0_.public_key as public_12_7_0_,
+        transactio0_.r as r13_7_0_,
+        transactio0_.raw as raw14_7_0_,
+        transactio0_.s as s15_7_0_,
+        transactio0_.to_account as to_acco16_7_0_,
+        transactio0_.transaction_index as transac17_7_0_,
+        transactio0_.type as type18_7_0_,
+        transactio0_.v as v19_7_0_,
+        transactio0_.value as value20_7_0_ 
+    from
+        transaction transactio0_ 
+    where
+        transactio0_.hash=?
+2022-04-08 00:05:37,571 TRACE org.hibernate.type.descriptor.sql.BasicBinder [pool-2-thread-2] binding parameter [1] as [VARCHAR] - [0x1406e6630d5e7c5b65b476aaac5234661beac9ed19f5c5b5936e62f89189f171]
+2022-04-08 00:05:37,581 DEBUG org.hibernate.engine.jdbc.spi.SqlStatementLogger [pool-2-thread-2] 
+    /* insert com.ssafy.b105.entity.blockchain.Transaction
+        */ insert 
+        into
+            transaction
+            (block_hash, block_number, creates, from_account, gas, gas_price, input_value, max_fee_per_gas, max_priority_fee_per_gas, nonce, public_key, r, raw, s, to_account, transaction_index, type, v, value, hash) 
+        values
+            (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+2022-04-08 00:05:37,581 TRACE org.hibernate.type.descriptor.sql.BasicBinder [pool-2-thread-2] binding parameter [1] as [VARCHAR] - [0x5512a7aa0ca9eb3ffd55ec3fba2a56c1aad1b9f109e3f31c2735888481cf50b6]
+2022-04-08 00:05:37,581 TRACE org.hibernate.type.descriptor.sql.BasicBinder [pool-2-thread-2] binding parameter [2] as [NUMERIC] - [71723]
+2022-04-08 00:05:37,581 TRACE org.hibernate.type.descriptor.sql.BasicBinder [pool-2-thread-2] binding parameter [3] as [VARCHAR] - [null]
+2022-04-08 00:05:37,582 TRACE org.hibernate.type.descriptor.sql.BasicBinder [pool-2-thread-2] binding parameter [4] as [VARCHAR] - [0xadeedb149af852ed80162ebd607205544c88f7bf]
+2022-04-08 00:05:37,582 TRACE org.hibernate.type.descriptor.sql.BasicBinder [pool-2-thread-2] binding parameter [5] as [NUMERIC] - [3000000]
+2022-04-08 00:05:37,582 TRACE org.hibernate.type.descriptor.sql.BasicBinder [pool-2-thread-2] binding parameter [6] as [NUMERIC] - [0]
+2022-04-08 00:05:37,582 TRACE org.hibernate.type.descriptor.sql.BasicBinder [pool-2-thread-2] binding parameter [7] as [CLOB] - [0xe69d849d000000000000000000000000c1992e011ab5c4c497873d3352157269d62949f00000000000000000000000000000000000000000000000056bc75e2d63100000]
+2022-04-08 00:05:37,582 TRACE org.hibernate.type.descriptor.sql.BasicBinder [pool-2-thread-2] binding parameter [8] as [VARCHAR] - [null]
+2022-04-08 00:05:37,582 TRACE org.hibernate.type.descriptor.sql.BasicBinder [pool-2-thread-2] binding parameter [9] as [VARCHAR] - [null]
+2022-04-08 00:05:37,582 TRACE org.hibernate.type.descriptor.sql.BasicBinder [pool-2-thread-2] binding parameter [10] as [VARCHAR] - [0x1f7]
+2022-04-08 00:05:37,582 TRACE org.hibernate.type.descriptor.sql.BasicBinder [pool-2-thread-2] binding parameter [11] as [VARCHAR] - [null]
+2022-04-08 00:05:37,582 TRACE org.hibernate.type.descriptor.sql.BasicBinder [pool-2-thread-2] binding parameter [12] as [VARCHAR] - [0xd82c065334e0a04488549930c42bd469279e3f939e95ed80ea7a0b1b0db05eff]
+2022-04-08 00:05:37,582 TRACE org.hibernate.type.descriptor.sql.BasicBinder [pool-2-thread-2] binding parameter [13] as [VARCHAR] - [null]
+2022-04-08 00:05:37,582 TRACE org.hibernate.type.descriptor.sql.BasicBinder [pool-2-thread-2] binding parameter [14] as [VARCHAR] - [null]
+2022-04-08 00:05:37,582 TRACE org.hibernate.type.descriptor.sql.BasicBinder [pool-2-thread-2] binding parameter [15] as [VARCHAR] - [0x3861fc8a13271b7e9a47dcdc46b3dc4c27d3ce9a]
+2022-04-08 00:05:37,583 TRACE org.hibernate.type.descriptor.sql.BasicBinder [pool-2-thread-2] binding parameter [16] as [NUMERIC] - [0]
+2022-04-08 00:05:37,583 TRACE org.hibernate.type.descriptor.sql.BasicBinder [pool-2-thread-2] binding parameter [17] as [VARCHAR] - [0x0]
+2022-04-08 00:05:37,583 TRACE org.hibernate.type.descriptor.sql.BasicBinder [pool-2-thread-2] binding parameter [18] as [BIGINT] - [66]
+2022-04-08 00:05:37,583 TRACE org.hibernate.type.descriptor.sql.BasicBinder [pool-2-thread-2] binding parameter [19] as [NUMERIC] - [0]
+2022-04-08 00:05:37,583 TRACE org.hibernate.type.descriptor.sql.BasicBinder [pool-2-thread-2] binding parameter [20] as [VARCHAR] - [0x1406e6630d5e7c5b65b476aaac5234661beac9ed19f5c5b5936e62f89189f171]
+2022-04-08 00:13:22,556 DEBUG org.hibernate.engine.jdbc.spi.SqlStatementLogger [pool-2-thread-2] 
+    /* load com.ssafy.b105.entity.blockchain.Transaction */ select
+        transactio0_.hash as hash1_7_0_,
+        transactio0_.block_hash as block_ha2_7_0_,
+        transactio0_.block_number as block_nu3_7_0_,
+        transactio0_.creates as creates4_7_0_,
+        transactio0_.from_account as from_acc5_7_0_,
+        transactio0_.gas as gas6_7_0_,
+        transactio0_.gas_price as gas_pric7_7_0_,
+        transactio0_.input_value as input_va8_7_0_,
+        transactio0_.max_fee_per_gas as max_fee_9_7_0_,
+        transactio0_.max_priority_fee_per_gas as max_pri10_7_0_,
+        transactio0_.nonce as nonce11_7_0_,
+        transactio0_.public_key as public_12_7_0_,
+        transactio0_.r as r13_7_0_,
+        transactio0_.raw as raw14_7_0_,
+        transactio0_.s as s15_7_0_,
+        transactio0_.to_account as to_acco16_7_0_,
+        transactio0_.transaction_index as transac17_7_0_,
+        transactio0_.type as type18_7_0_,
+        transactio0_.v as v19_7_0_,
+        transactio0_.value as value20_7_0_ 
+    from
+        transaction transactio0_ 
+    where
+        transactio0_.hash=?
+2022-04-08 00:13:22,557 TRACE org.hibernate.type.descriptor.sql.BasicBinder [pool-2-thread-2] binding parameter [1] as [VARCHAR] - [0x664193d378183205aa6a0402800b5603ccd1080b61d9bcc16d05615120d13b64]
+2022-04-08 00:13:22,560 DEBUG org.hibernate.engine.jdbc.spi.SqlStatementLogger [pool-2-thread-2] 
+    /* insert com.ssafy.b105.entity.blockchain.Transaction
+        */ insert 
+        into
+            transaction
+            (block_hash, block_number, creates, from_account, gas, gas_price, input_value, max_fee_per_gas, max_priority_fee_per_gas, nonce, public_key, r, raw, s, to_account, transaction_index, type, v, value, hash) 
+        values
+            (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+2022-04-08 00:13:22,560 TRACE org.hibernate.type.descriptor.sql.BasicBinder [pool-2-thread-2] binding parameter [1] as [VARCHAR] - [0x3416b12a1cab55d9723d624addb6ad9e454b6da915a8d589293883168e25117a]
+2022-04-08 00:13:22,560 TRACE org.hibernate.type.descriptor.sql.BasicBinder [pool-2-thread-2] binding parameter [2] as [NUMERIC] - [71762]
+2022-04-08 00:13:22,560 TRACE org.hibernate.type.descriptor.sql.BasicBinder [pool-2-thread-2] binding parameter [3] as [VARCHAR] - [null]
+2022-04-08 00:13:22,560 TRACE org.hibernate.type.descriptor.sql.BasicBinder [pool-2-thread-2] binding parameter [4] as [VARCHAR] - [0xadeedb149af852ed80162ebd607205544c88f7bf]
+2022-04-08 00:13:22,561 TRACE org.hibernate.type.descriptor.sql.BasicBinder [pool-2-thread-2] binding parameter [5] as [NUMERIC] - [3000000]
+2022-04-08 00:13:22,561 TRACE org.hibernate.type.descriptor.sql.BasicBinder [pool-2-thread-2] binding parameter [6] as [NUMERIC] - [0]
+2022-04-08 00:13:22,561 TRACE org.hibernate.type.descriptor.sql.BasicBinder [pool-2-thread-2] binding parameter [7] as [CLOB] - [0x0e66139f00000000000000000000000073ca77fcd07ea7b3172e72e41a9a681bcca18cc900000000000000000000000000000000000000000000000000000000000000400000000000000000000000000000000000000000000000000000000000000009537570706f727465720000000000000000000000000000000000000000000000]
+2022-04-08 00:13:22,561 TRACE org.hibernate.type.descriptor.sql.BasicBinder [pool-2-thread-2] binding parameter [8] as [VARCHAR] - [null]
+2022-04-08 00:13:22,561 TRACE org.hibernate.type.descriptor.sql.BasicBinder [pool-2-thread-2] binding parameter [9] as [VARCHAR] - [null]
+2022-04-08 00:13:22,561 TRACE org.hibernate.type.descriptor.sql.BasicBinder [pool-2-thread-2] binding parameter [10] as [VARCHAR] - [0x1f8]
+2022-04-08 00:13:22,561 TRACE org.hibernate.type.descriptor.sql.BasicBinder [pool-2-thread-2] binding parameter [11] as [VARCHAR] - [null]
+2022-04-08 00:13:22,561 TRACE org.hibernate.type.descriptor.sql.BasicBinder [pool-2-thread-2] binding parameter [12] as [VARCHAR] - [0xbaa8103289c91591f3adf1610960b1c253baf057b5109f1353ebb0da53bf60b1]
+2022-04-08 00:13:22,561 TRACE org.hibernate.type.descriptor.sql.BasicBinder [pool-2-thread-2] binding parameter [13] as [VARCHAR] - [null]
+2022-04-08 00:13:22,561 TRACE org.hibernate.type.descriptor.sql.BasicBinder [pool-2-thread-2] binding parameter [14] as [VARCHAR] - [null]
+2022-04-08 00:13:22,561 TRACE org.hibernate.type.descriptor.sql.BasicBinder [pool-2-thread-2] binding parameter [15] as [VARCHAR] - [0xf778768ad858c5f14f8222f7b02b63c670ae619f]
+2022-04-08 00:13:22,562 TRACE org.hibernate.type.descriptor.sql.BasicBinder [pool-2-thread-2] binding parameter [16] as [NUMERIC] - [0]
+2022-04-08 00:13:22,562 TRACE org.hibernate.type.descriptor.sql.BasicBinder [pool-2-thread-2] binding parameter [17] as [VARCHAR] - [0x0]
+2022-04-08 00:13:22,562 TRACE org.hibernate.type.descriptor.sql.BasicBinder [pool-2-thread-2] binding parameter [18] as [BIGINT] - [65]
+2022-04-08 00:13:22,562 TRACE org.hibernate.type.descriptor.sql.BasicBinder [pool-2-thread-2] binding parameter [19] as [NUMERIC] - [0]
+2022-04-08 00:13:22,562 TRACE org.hibernate.type.descriptor.sql.BasicBinder [pool-2-thread-2] binding parameter [20] as [VARCHAR] - [0x664193d378183205aa6a0402800b5603ccd1080b61d9bcc16d05615120d13b64]
+2022-04-08 00:14:52,549 DEBUG org.hibernate.engine.jdbc.spi.SqlStatementLogger [pool-2-thread-2] 
+    /* load com.ssafy.b105.entity.blockchain.Transaction */ select
+        transactio0_.hash as hash1_7_0_,
+        transactio0_.block_hash as block_ha2_7_0_,
+        transactio0_.block_number as block_nu3_7_0_,
+        transactio0_.creates as creates4_7_0_,
+        transactio0_.from_account as from_acc5_7_0_,
+        transactio0_.gas as gas6_7_0_,
+        transactio0_.gas_price as gas_pric7_7_0_,
+        transactio0_.input_value as input_va8_7_0_,
+        transactio0_.max_fee_per_gas as max_fee_9_7_0_,
+        transactio0_.max_priority_fee_per_gas as max_pri10_7_0_,
+        transactio0_.nonce as nonce11_7_0_,
+        transactio0_.public_key as public_12_7_0_,
+        transactio0_.r as r13_7_0_,
+        transactio0_.raw as raw14_7_0_,
+        transactio0_.s as s15_7_0_,
+        transactio0_.to_account as to_acco16_7_0_,
+        transactio0_.transaction_index as transac17_7_0_,
+        transactio0_.type as type18_7_0_,
+        transactio0_.v as v19_7_0_,
+        transactio0_.value as value20_7_0_ 
+    from
+        transaction transactio0_ 
+    where
+        transactio0_.hash=?
+2022-04-08 00:14:52,550 TRACE org.hibernate.type.descriptor.sql.BasicBinder [pool-2-thread-2] binding parameter [1] as [VARCHAR] - [0xfc37eb5e0bcc5f25c3d6661a4c572cae850b574a5743c339a9dd09b3caa4ad49]
+2022-04-08 00:14:52,551 DEBUG org.hibernate.engine.jdbc.spi.SqlStatementLogger [pool-2-thread-2] 
+    /* insert com.ssafy.b105.entity.blockchain.Transaction
+        */ insert 
+        into
+            transaction
+            (block_hash, block_number, creates, from_account, gas, gas_price, input_value, max_fee_per_gas, max_priority_fee_per_gas, nonce, public_key, r, raw, s, to_account, transaction_index, type, v, value, hash) 
+        values
+            (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+2022-04-08 00:14:52,552 TRACE org.hibernate.type.descriptor.sql.BasicBinder [pool-2-thread-2] binding parameter [1] as [VARCHAR] - [0x29c8acfb7a512be1828d124943c15b94e6745f3e8f3be224605cc31468c02edd]
+2022-04-08 00:14:52,552 TRACE org.hibernate.type.descriptor.sql.BasicBinder [pool-2-thread-2] binding parameter [2] as [NUMERIC] - [71769]
+2022-04-08 00:14:52,552 TRACE org.hibernate.type.descriptor.sql.BasicBinder [pool-2-thread-2] binding parameter [3] as [VARCHAR] - [null]
+2022-04-08 00:14:52,552 TRACE org.hibernate.type.descriptor.sql.BasicBinder [pool-2-thread-2] binding parameter [4] as [VARCHAR] - [0xadeedb149af852ed80162ebd607205544c88f7bf]
+2022-04-08 00:14:52,552 TRACE org.hibernate.type.descriptor.sql.BasicBinder [pool-2-thread-2] binding parameter [5] as [NUMERIC] - [3000000]
+2022-04-08 00:14:52,552 TRACE org.hibernate.type.descriptor.sql.BasicBinder [pool-2-thread-2] binding parameter [6] as [NUMERIC] - [0]
+2022-04-08 00:14:52,552 TRACE org.hibernate.type.descriptor.sql.BasicBinder [pool-2-thread-2] binding parameter [7] as [CLOB] - [0x5a6b26ba000000000000000000000000e827d581ab9780cd6559e2d7099160252f67b6e100000000000000000000000000000000000000000000135acdce3e0baf200000]
+2022-04-08 00:14:52,552 TRACE org.hibernate.type.descriptor.sql.BasicBinder [pool-2-thread-2] binding parameter [8] as [VARCHAR] - [null]
+2022-04-08 00:14:52,553 TRACE org.hibernate.type.descriptor.sql.BasicBinder [pool-2-thread-2] binding parameter [9] as [VARCHAR] - [null]
+2022-04-08 00:14:52,553 TRACE org.hibernate.type.descriptor.sql.BasicBinder [pool-2-thread-2] binding parameter [10] as [VARCHAR] - [0x1f9]
+2022-04-08 00:14:52,553 TRACE org.hibernate.type.descriptor.sql.BasicBinder [pool-2-thread-2] binding parameter [11] as [VARCHAR] - [null]
+2022-04-08 00:14:52,553 TRACE org.hibernate.type.descriptor.sql.BasicBinder [pool-2-thread-2] binding parameter [12] as [VARCHAR] - [0xcd26b8b0244c3e23c2a4e3928e53d6411e898dda9269a8287463dda143774faa]
+2022-04-08 00:14:52,553 TRACE org.hibernate.type.descriptor.sql.BasicBinder [pool-2-thread-2] binding parameter [13] as [VARCHAR] - [null]
+2022-04-08 00:14:52,553 TRACE org.hibernate.type.descriptor.sql.BasicBinder [pool-2-thread-2] binding parameter [14] as [VARCHAR] - [null]
+2022-04-08 00:14:52,553 TRACE org.hibernate.type.descriptor.sql.BasicBinder [pool-2-thread-2] binding parameter [15] as [VARCHAR] - [0x86e9413ffe868f1688d3992588ca2d337b307121]
+2022-04-08 00:14:52,553 TRACE org.hibernate.type.descriptor.sql.BasicBinder [pool-2-thread-2] binding parameter [16] as [NUMERIC] - [0]
+2022-04-08 00:14:52,553 TRACE org.hibernate.type.descriptor.sql.BasicBinder [pool-2-thread-2] binding parameter [17] as [VARCHAR] - [0x0]
+2022-04-08 00:14:52,553 TRACE org.hibernate.type.descriptor.sql.BasicBinder [pool-2-thread-2] binding parameter [18] as [BIGINT] - [65]
+2022-04-08 00:14:52,553 TRACE org.hibernate.type.descriptor.sql.BasicBinder [pool-2-thread-2] binding parameter [19] as [NUMERIC] - [0]
+2022-04-08 00:14:52,553 TRACE org.hibernate.type.descriptor.sql.BasicBinder [pool-2-thread-2] binding parameter [20] as [VARCHAR] - [0xfc37eb5e0bcc5f25c3d6661a4c572cae850b574a5743c339a9dd09b3caa4ad49]
+2022-04-08 00:26:07,554 DEBUG org.hibernate.engine.jdbc.spi.SqlStatementLogger [pool-2-thread-2] 
+    /* load com.ssafy.b105.entity.blockchain.Transaction */ select
+        transactio0_.hash as hash1_7_0_,
+        transactio0_.block_hash as block_ha2_7_0_,
+        transactio0_.block_number as block_nu3_7_0_,
+        transactio0_.creates as creates4_7_0_,
+        transactio0_.from_account as from_acc5_7_0_,
+        transactio0_.gas as gas6_7_0_,
+        transactio0_.gas_price as gas_pric7_7_0_,
+        transactio0_.input_value as input_va8_7_0_,
+        transactio0_.max_fee_per_gas as max_fee_9_7_0_,
+        transactio0_.max_priority_fee_per_gas as max_pri10_7_0_,
+        transactio0_.nonce as nonce11_7_0_,
+        transactio0_.public_key as public_12_7_0_,
+        transactio0_.r as r13_7_0_,
+        transactio0_.raw as raw14_7_0_,
+        transactio0_.s as s15_7_0_,
+        transactio0_.to_account as to_acco16_7_0_,
+        transactio0_.transaction_index as transac17_7_0_,
+        transactio0_.type as type18_7_0_,
+        transactio0_.v as v19_7_0_,
+        transactio0_.value as value20_7_0_ 
+    from
+        transaction transactio0_ 
+    where
+        transactio0_.hash=?
+2022-04-08 00:26:07,555 TRACE org.hibernate.type.descriptor.sql.BasicBinder [pool-2-thread-2] binding parameter [1] as [VARCHAR] - [0x8868bfcb8e161e4cc55b1d4668179272c2347db3acb717d18e21f47d1be4257b]
+2022-04-08 00:26:07,560 DEBUG org.hibernate.engine.jdbc.spi.SqlStatementLogger [pool-2-thread-2] 
+    /* insert com.ssafy.b105.entity.blockchain.Transaction
+        */ insert 
+        into
+            transaction
+            (block_hash, block_number, creates, from_account, gas, gas_price, input_value, max_fee_per_gas, max_priority_fee_per_gas, nonce, public_key, r, raw, s, to_account, transaction_index, type, v, value, hash) 
+        values
+            (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+2022-04-08 00:26:07,561 TRACE org.hibernate.type.descriptor.sql.BasicBinder [pool-2-thread-2] binding parameter [1] as [VARCHAR] - [0x457b6e8bf0196b62f9b27b3441405352d9e591c3ffa95be08d9fdc2e7d7ee2c2]
+2022-04-08 00:26:07,561 TRACE org.hibernate.type.descriptor.sql.BasicBinder [pool-2-thread-2] binding parameter [2] as [NUMERIC] - [71819]
+2022-04-08 00:26:07,561 TRACE org.hibernate.type.descriptor.sql.BasicBinder [pool-2-thread-2] binding parameter [3] as [VARCHAR] - [null]
+2022-04-08 00:26:07,561 TRACE org.hibernate.type.descriptor.sql.BasicBinder [pool-2-thread-2] binding parameter [4] as [VARCHAR] - [0xadeedb149af852ed80162ebd607205544c88f7bf]
+2022-04-08 00:26:07,561 TRACE org.hibernate.type.descriptor.sql.BasicBinder [pool-2-thread-2] binding parameter [5] as [NUMERIC] - [3000000]
+2022-04-08 00:26:07,561 TRACE org.hibernate.type.descriptor.sql.BasicBinder [pool-2-thread-2] binding parameter [6] as [NUMERIC] - [0]
+2022-04-08 00:26:07,562 TRACE org.hibernate.type.descriptor.sql.BasicBinder [pool-2-thread-2] binding parameter [7] as [CLOB] - [0x5a6b26ba000000000000000000000000e827d581ab9780cd6559e2d7099160252f67b6e100000000000000000000000000000000000000000000147f89dc1b9e94800000]
+2022-04-08 00:26:07,562 TRACE org.hibernate.type.descriptor.sql.BasicBinder [pool-2-thread-2] binding parameter [8] as [VARCHAR] - [null]
+2022-04-08 00:26:07,562 TRACE org.hibernate.type.descriptor.sql.BasicBinder [pool-2-thread-2] binding parameter [9] as [VARCHAR] - [null]
+2022-04-08 00:26:07,563 TRACE org.hibernate.type.descriptor.sql.BasicBinder [pool-2-thread-2] binding parameter [10] as [VARCHAR] - [0x1fa]
+2022-04-08 00:26:07,563 TRACE org.hibernate.type.descriptor.sql.BasicBinder [pool-2-thread-2] binding parameter [11] as [VARCHAR] - [null]
+2022-04-08 00:26:07,563 TRACE org.hibernate.type.descriptor.sql.BasicBinder [pool-2-thread-2] binding parameter [12] as [VARCHAR] - [0xb9d280183ddf0ecbc1058fe9350b7cf3c5016d61d1a57f1d7de99eee1ab2975f]
+2022-04-08 00:26:07,563 TRACE org.hibernate.type.descriptor.sql.BasicBinder [pool-2-thread-2] binding parameter [13] as [VARCHAR] - [null]
+2022-04-08 00:26:07,563 TRACE org.hibernate.type.descriptor.sql.BasicBinder [pool-2-thread-2] binding parameter [14] as [VARCHAR] - [null]
+2022-04-08 00:26:07,564 TRACE org.hibernate.type.descriptor.sql.BasicBinder [pool-2-thread-2] binding parameter [15] as [VARCHAR] - [0x86e9413ffe868f1688d3992588ca2d337b307121]
+2022-04-08 00:26:07,564 TRACE org.hibernate.type.descriptor.sql.BasicBinder [pool-2-thread-2] binding parameter [16] as [NUMERIC] - [0]
+2022-04-08 00:26:07,564 TRACE org.hibernate.type.descriptor.sql.BasicBinder [pool-2-thread-2] binding parameter [17] as [VARCHAR] - [0x0]
+2022-04-08 00:26:07,564 TRACE org.hibernate.type.descriptor.sql.BasicBinder [pool-2-thread-2] binding parameter [18] as [BIGINT] - [65]
+2022-04-08 00:26:07,565 TRACE org.hibernate.type.descriptor.sql.BasicBinder [pool-2-thread-2] binding parameter [19] as [NUMERIC] - [0]
+2022-04-08 00:26:07,565 TRACE org.hibernate.type.descriptor.sql.BasicBinder [pool-2-thread-2] binding parameter [20] as [VARCHAR] - [0x8868bfcb8e161e4cc55b1d4668179272c2347db3acb717d18e21f47d1be4257b]
+2022-04-08 00:27:07,570 DEBUG org.hibernate.engine.jdbc.spi.SqlStatementLogger [pool-2-thread-2] 
+    /* load com.ssafy.b105.entity.blockchain.Transaction */ select
+        transactio0_.hash as hash1_7_0_,
+        transactio0_.block_hash as block_ha2_7_0_,
+        transactio0_.block_number as block_nu3_7_0_,
+        transactio0_.creates as creates4_7_0_,
+        transactio0_.from_account as from_acc5_7_0_,
+        transactio0_.gas as gas6_7_0_,
+        transactio0_.gas_price as gas_pric7_7_0_,
+        transactio0_.input_value as input_va8_7_0_,
+        transactio0_.max_fee_per_gas as max_fee_9_7_0_,
+        transactio0_.max_priority_fee_per_gas as max_pri10_7_0_,
+        transactio0_.nonce as nonce11_7_0_,
+        transactio0_.public_key as public_12_7_0_,
+        transactio0_.r as r13_7_0_,
+        transactio0_.raw as raw14_7_0_,
+        transactio0_.s as s15_7_0_,
+        transactio0_.to_account as to_acco16_7_0_,
+        transactio0_.transaction_index as transac17_7_0_,
+        transactio0_.type as type18_7_0_,
+        transactio0_.v as v19_7_0_,
+        transactio0_.value as value20_7_0_ 
+    from
+        transaction transactio0_ 
+    where
+        transactio0_.hash=?
+2022-04-08 00:27:07,571 TRACE org.hibernate.type.descriptor.sql.BasicBinder [pool-2-thread-2] binding parameter [1] as [VARCHAR] - [0xee71b2310d005c094d4097a823472b11c25b24fd9f94d829d21622bd64aba1bc]
+2022-04-08 00:27:07,576 DEBUG org.hibernate.engine.jdbc.spi.SqlStatementLogger [pool-2-thread-2] 
+    /* insert com.ssafy.b105.entity.blockchain.Transaction
+        */ insert 
+        into
+            transaction
+            (block_hash, block_number, creates, from_account, gas, gas_price, input_value, max_fee_per_gas, max_priority_fee_per_gas, nonce, public_key, r, raw, s, to_account, transaction_index, type, v, value, hash) 
+        values
+            (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+2022-04-08 00:27:07,577 TRACE org.hibernate.type.descriptor.sql.BasicBinder [pool-2-thread-2] binding parameter [1] as [VARCHAR] - [0x934fa3d3294bfa9da110dc5ba550b009d25aa5333edf9cb1d9b0b7b8c54049ad]
+2022-04-08 00:27:07,578 TRACE org.hibernate.type.descriptor.sql.BasicBinder [pool-2-thread-2] binding parameter [2] as [NUMERIC] - [71822]
+2022-04-08 00:27:07,578 TRACE org.hibernate.type.descriptor.sql.BasicBinder [pool-2-thread-2] binding parameter [3] as [VARCHAR] - [null]
+2022-04-08 00:27:07,578 TRACE org.hibernate.type.descriptor.sql.BasicBinder [pool-2-thread-2] binding parameter [4] as [VARCHAR] - [0xadeedb149af852ed80162ebd607205544c88f7bf]
+2022-04-08 00:27:07,578 TRACE org.hibernate.type.descriptor.sql.BasicBinder [pool-2-thread-2] binding parameter [5] as [NUMERIC] - [3000000]
+2022-04-08 00:27:07,578 TRACE org.hibernate.type.descriptor.sql.BasicBinder [pool-2-thread-2] binding parameter [6] as [NUMERIC] - [0]
+2022-04-08 00:27:07,579 TRACE org.hibernate.type.descriptor.sql.BasicBinder [pool-2-thread-2] binding parameter [7] as [CLOB] - [0x5a6b26ba000000000000000000000000e827d581ab9780cd6559e2d7099160252f67b6e100000000000000000000000000000000000000000000147f89dc1b9e94800000]
+2022-04-08 00:27:07,579 TRACE org.hibernate.type.descriptor.sql.BasicBinder [pool-2-thread-2] binding parameter [8] as [VARCHAR] - [null]
+2022-04-08 00:27:07,579 TRACE org.hibernate.type.descriptor.sql.BasicBinder [pool-2-thread-2] binding parameter [9] as [VARCHAR] - [null]
+2022-04-08 00:27:07,579 TRACE org.hibernate.type.descriptor.sql.BasicBinder [pool-2-thread-2] binding parameter [10] as [VARCHAR] - [0x1fb]
+2022-04-08 00:27:07,579 TRACE org.hibernate.type.descriptor.sql.BasicBinder [pool-2-thread-2] binding parameter [11] as [VARCHAR] - [null]
+2022-04-08 00:27:07,579 TRACE org.hibernate.type.descriptor.sql.BasicBinder [pool-2-thread-2] binding parameter [12] as [VARCHAR] - [0xc8d180f235ea562560eb70c070dd2ed09441ed3e9567b7cf35960c5b2883fc48]
+2022-04-08 00:27:07,579 TRACE org.hibernate.type.descriptor.sql.BasicBinder [pool-2-thread-2] binding parameter [13] as [VARCHAR] - [null]
+2022-04-08 00:27:07,579 TRACE org.hibernate.type.descriptor.sql.BasicBinder [pool-2-thread-2] binding parameter [14] as [VARCHAR] - [null]
+2022-04-08 00:27:07,580 TRACE org.hibernate.type.descriptor.sql.BasicBinder [pool-2-thread-2] binding parameter [15] as [VARCHAR] - [0x86e9413ffe868f1688d3992588ca2d337b307121]
+2022-04-08 00:27:07,580 TRACE org.hibernate.type.descriptor.sql.BasicBinder [pool-2-thread-2] binding parameter [16] as [NUMERIC] - [0]
+2022-04-08 00:27:07,580 TRACE org.hibernate.type.descriptor.sql.BasicBinder [pool-2-thread-2] binding parameter [17] as [VARCHAR] - [0x0]
+2022-04-08 00:27:07,580 TRACE org.hibernate.type.descriptor.sql.BasicBinder [pool-2-thread-2] binding parameter [18] as [BIGINT] - [65]
+2022-04-08 00:27:07,580 TRACE org.hibernate.type.descriptor.sql.BasicBinder [pool-2-thread-2] binding parameter [19] as [NUMERIC] - [0]
+2022-04-08 00:27:07,580 TRACE org.hibernate.type.descriptor.sql.BasicBinder [pool-2-thread-2] binding parameter [20] as [VARCHAR] - [0xee71b2310d005c094d4097a823472b11c25b24fd9f94d829d21622bd64aba1bc]
+2022-04-08 00:31:52,558 DEBUG org.hibernate.engine.jdbc.spi.SqlStatementLogger [pool-2-thread-2] 
+    /* load com.ssafy.b105.entity.blockchain.Transaction */ select
+        transactio0_.hash as hash1_7_0_,
+        transactio0_.block_hash as block_ha2_7_0_,
+        transactio0_.block_number as block_nu3_7_0_,
+        transactio0_.creates as creates4_7_0_,
+        transactio0_.from_account as from_acc5_7_0_,
+        transactio0_.gas as gas6_7_0_,
+        transactio0_.gas_price as gas_pric7_7_0_,
+        transactio0_.input_value as input_va8_7_0_,
+        transactio0_.max_fee_per_gas as max_fee_9_7_0_,
+        transactio0_.max_priority_fee_per_gas as max_pri10_7_0_,
+        transactio0_.nonce as nonce11_7_0_,
+        transactio0_.public_key as public_12_7_0_,
+        transactio0_.r as r13_7_0_,
+        transactio0_.raw as raw14_7_0_,
+        transactio0_.s as s15_7_0_,
+        transactio0_.to_account as to_acco16_7_0_,
+        transactio0_.transaction_index as transac17_7_0_,
+        transactio0_.type as type18_7_0_,
+        transactio0_.v as v19_7_0_,
+        transactio0_.value as value20_7_0_ 
+    from
+        transaction transactio0_ 
+    where
+        transactio0_.hash=?
+2022-04-08 00:31:52,559 TRACE org.hibernate.type.descriptor.sql.BasicBinder [pool-2-thread-2] binding parameter [1] as [VARCHAR] - [0x156b1c7066c3e599e72599d1dc27bafcfd9108a49a9ac5744b74b21db9d8ee48]
+2022-04-08 00:31:52,561 DEBUG org.hibernate.engine.jdbc.spi.SqlStatementLogger [pool-2-thread-2] 
+    /* insert com.ssafy.b105.entity.blockchain.Transaction
+        */ insert 
+        into
+            transaction
+            (block_hash, block_number, creates, from_account, gas, gas_price, input_value, max_fee_per_gas, max_priority_fee_per_gas, nonce, public_key, r, raw, s, to_account, transaction_index, type, v, value, hash) 
+        values
+            (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+2022-04-08 00:31:52,562 TRACE org.hibernate.type.descriptor.sql.BasicBinder [pool-2-thread-2] binding parameter [1] as [VARCHAR] - [0x3a7be36be0f0b9a8e2f453722ffde3ceb66a47c50224a2c72922edafdca38f15]
+2022-04-08 00:31:52,562 TRACE org.hibernate.type.descriptor.sql.BasicBinder [pool-2-thread-2] binding parameter [2] as [NUMERIC] - [71852]
+2022-04-08 00:31:52,562 TRACE org.hibernate.type.descriptor.sql.BasicBinder [pool-2-thread-2] binding parameter [3] as [VARCHAR] - [null]
+2022-04-08 00:31:52,562 TRACE org.hibernate.type.descriptor.sql.BasicBinder [pool-2-thread-2] binding parameter [4] as [VARCHAR] - [0xadeedb149af852ed80162ebd607205544c88f7bf]
+2022-04-08 00:31:52,562 TRACE org.hibernate.type.descriptor.sql.BasicBinder [pool-2-thread-2] binding parameter [5] as [NUMERIC] - [3000000]
+2022-04-08 00:31:52,562 TRACE org.hibernate.type.descriptor.sql.BasicBinder [pool-2-thread-2] binding parameter [6] as [NUMERIC] - [0]
+2022-04-08 00:31:52,562 TRACE org.hibernate.type.descriptor.sql.BasicBinder [pool-2-thread-2] binding parameter [7] as [CLOB] - [0xdbcaef8b0000000000000000000000006abbc4cd4be4dba60d4b0f7d05355fce1d60fc9a00000000000000000000000000000000000000000000003635c9adc5dea00000]
+2022-04-08 00:31:52,562 TRACE org.hibernate.type.descriptor.sql.BasicBinder [pool-2-thread-2] binding parameter [8] as [VARCHAR] - [null]
+2022-04-08 00:31:52,562 TRACE org.hibernate.type.descriptor.sql.BasicBinder [pool-2-thread-2] binding parameter [9] as [VARCHAR] - [null]
+2022-04-08 00:31:52,562 TRACE org.hibernate.type.descriptor.sql.BasicBinder [pool-2-thread-2] binding parameter [10] as [VARCHAR] - [0x1fc]
+2022-04-08 00:31:52,562 TRACE org.hibernate.type.descriptor.sql.BasicBinder [pool-2-thread-2] binding parameter [11] as [VARCHAR] - [null]
+2022-04-08 00:31:52,563 TRACE org.hibernate.type.descriptor.sql.BasicBinder [pool-2-thread-2] binding parameter [12] as [VARCHAR] - [0xc335f1d7cf90e3d0555f27681262c25f729b76d1adfb67f7e41e31559fb89c63]
+2022-04-08 00:31:52,563 TRACE org.hibernate.type.descriptor.sql.BasicBinder [pool-2-thread-2] binding parameter [13] as [VARCHAR] - [null]
+2022-04-08 00:31:52,563 TRACE org.hibernate.type.descriptor.sql.BasicBinder [pool-2-thread-2] binding parameter [14] as [VARCHAR] - [null]
+2022-04-08 00:31:52,563 TRACE org.hibernate.type.descriptor.sql.BasicBinder [pool-2-thread-2] binding parameter [15] as [VARCHAR] - [0x827196b1fefbc899c7f00656c2cb16865f827ed8]
+2022-04-08 00:31:52,563 TRACE org.hibernate.type.descriptor.sql.BasicBinder [pool-2-thread-2] binding parameter [16] as [NUMERIC] - [0]
+2022-04-08 00:31:52,563 TRACE org.hibernate.type.descriptor.sql.BasicBinder [pool-2-thread-2] binding parameter [17] as [VARCHAR] - [0x0]
+2022-04-08 00:31:52,563 TRACE org.hibernate.type.descriptor.sql.BasicBinder [pool-2-thread-2] binding parameter [18] as [BIGINT] - [65]
+2022-04-08 00:31:52,563 TRACE org.hibernate.type.descriptor.sql.BasicBinder [pool-2-thread-2] binding parameter [19] as [NUMERIC] - [0]
+2022-04-08 00:31:52,563 TRACE org.hibernate.type.descriptor.sql.BasicBinder [pool-2-thread-2] binding parameter [20] as [VARCHAR] - [0x156b1c7066c3e599e72599d1dc27bafcfd9108a49a9ac5744b74b21db9d8ee48]
+2022-04-08 00:32:07,554 DEBUG org.hibernate.engine.jdbc.spi.SqlStatementLogger [pool-2-thread-2] 
+    /* load com.ssafy.b105.entity.blockchain.Transaction */ select
+        transactio0_.hash as hash1_7_0_,
+        transactio0_.block_hash as block_ha2_7_0_,
+        transactio0_.block_number as block_nu3_7_0_,
+        transactio0_.creates as creates4_7_0_,
+        transactio0_.from_account as from_acc5_7_0_,
+        transactio0_.gas as gas6_7_0_,
+        transactio0_.gas_price as gas_pric7_7_0_,
+        transactio0_.input_value as input_va8_7_0_,
+        transactio0_.max_fee_per_gas as max_fee_9_7_0_,
+        transactio0_.max_priority_fee_per_gas as max_pri10_7_0_,
+        transactio0_.nonce as nonce11_7_0_,
+        transactio0_.public_key as public_12_7_0_,
+        transactio0_.r as r13_7_0_,
+        transactio0_.raw as raw14_7_0_,
+        transactio0_.s as s15_7_0_,
+        transactio0_.to_account as to_acco16_7_0_,
+        transactio0_.transaction_index as transac17_7_0_,
+        transactio0_.type as type18_7_0_,
+        transactio0_.v as v19_7_0_,
+        transactio0_.value as value20_7_0_ 
+    from
+        transaction transactio0_ 
+    where
+        transactio0_.hash=?
+2022-04-08 00:32:07,555 TRACE org.hibernate.type.descriptor.sql.BasicBinder [pool-2-thread-2] binding parameter [1] as [VARCHAR] - [0x305c9b132547b079902a0dc4df35ec1116f504eff5e3e341ae9bbbab70954090]
+2022-04-08 00:32:07,557 DEBUG org.hibernate.engine.jdbc.spi.SqlStatementLogger [pool-2-thread-2] 
+    /* insert com.ssafy.b105.entity.blockchain.Transaction
+        */ insert 
+        into
+            transaction
+            (block_hash, block_number, creates, from_account, gas, gas_price, input_value, max_fee_per_gas, max_priority_fee_per_gas, nonce, public_key, r, raw, s, to_account, transaction_index, type, v, value, hash) 
+        values
+            (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+2022-04-08 00:32:07,557 TRACE org.hibernate.type.descriptor.sql.BasicBinder [pool-2-thread-2] binding parameter [1] as [VARCHAR] - [0x127c57f46c111c385ccdf4a35dfe92fe7d0bc6413b6c8cb13668e31018726e3e]
+2022-04-08 00:32:07,557 TRACE org.hibernate.type.descriptor.sql.BasicBinder [pool-2-thread-2] binding parameter [2] as [NUMERIC] - [71853]
+2022-04-08 00:32:07,557 TRACE org.hibernate.type.descriptor.sql.BasicBinder [pool-2-thread-2] binding parameter [3] as [VARCHAR] - [null]
+2022-04-08 00:32:07,557 TRACE org.hibernate.type.descriptor.sql.BasicBinder [pool-2-thread-2] binding parameter [4] as [VARCHAR] - [0xadeedb149af852ed80162ebd607205544c88f7bf]
+2022-04-08 00:32:07,557 TRACE org.hibernate.type.descriptor.sql.BasicBinder [pool-2-thread-2] binding parameter [5] as [NUMERIC] - [3000000]
+2022-04-08 00:32:07,557 TRACE org.hibernate.type.descriptor.sql.BasicBinder [pool-2-thread-2] binding parameter [6] as [NUMERIC] - [0]
+2022-04-08 00:32:07,557 TRACE org.hibernate.type.descriptor.sql.BasicBinder [pool-2-thread-2] binding parameter [7] as [CLOB] - [0xe69d849d0000000000000000000000006abbc4cd4be4dba60d4b0f7d05355fce1d60fc9a00000000000000000000000000000000000000000000003635c9adc5dea00000]
+2022-04-08 00:32:07,558 TRACE org.hibernate.type.descriptor.sql.BasicBinder [pool-2-thread-2] binding parameter [8] as [VARCHAR] - [null]
+2022-04-08 00:32:07,558 TRACE org.hibernate.type.descriptor.sql.BasicBinder [pool-2-thread-2] binding parameter [9] as [VARCHAR] - [null]
+2022-04-08 00:32:07,558 TRACE org.hibernate.type.descriptor.sql.BasicBinder [pool-2-thread-2] binding parameter [10] as [VARCHAR] - [0x1fd]
+2022-04-08 00:32:07,558 TRACE org.hibernate.type.descriptor.sql.BasicBinder [pool-2-thread-2] binding parameter [11] as [VARCHAR] - [null]
+2022-04-08 00:32:07,558 TRACE org.hibernate.type.descriptor.sql.BasicBinder [pool-2-thread-2] binding parameter [12] as [VARCHAR] - [0xf01d96cb0ede60767b6008a81c64e16ecc0315af2cf6c90bb2e54f0916f9b24]
+2022-04-08 00:32:07,558 TRACE org.hibernate.type.descriptor.sql.BasicBinder [pool-2-thread-2] binding parameter [13] as [VARCHAR] - [null]
+2022-04-08 00:32:07,558 TRACE org.hibernate.type.descriptor.sql.BasicBinder [pool-2-thread-2] binding parameter [14] as [VARCHAR] - [null]
+2022-04-08 00:32:07,558 TRACE org.hibernate.type.descriptor.sql.BasicBinder [pool-2-thread-2] binding parameter [15] as [VARCHAR] - [0x5b87a960a2e6845fcf1c30947fe770b857c464e1]
+2022-04-08 00:32:07,558 TRACE org.hibernate.type.descriptor.sql.BasicBinder [pool-2-thread-2] binding parameter [16] as [NUMERIC] - [0]
+2022-04-08 00:32:07,558 TRACE org.hibernate.type.descriptor.sql.BasicBinder [pool-2-thread-2] binding parameter [17] as [VARCHAR] - [0x0]
+2022-04-08 00:32:07,558 TRACE org.hibernate.type.descriptor.sql.BasicBinder [pool-2-thread-2] binding parameter [18] as [BIGINT] - [66]
+2022-04-08 00:32:07,558 TRACE org.hibernate.type.descriptor.sql.BasicBinder [pool-2-thread-2] binding parameter [19] as [NUMERIC] - [0]
+2022-04-08 00:32:07,559 TRACE org.hibernate.type.descriptor.sql.BasicBinder [pool-2-thread-2] binding parameter [20] as [VARCHAR] - [0x305c9b132547b079902a0dc4df35ec1116f504eff5e3e341ae9bbbab70954090]
+2022-04-08 00:35:52,547 DEBUG org.hibernate.engine.jdbc.spi.SqlStatementLogger [pool-2-thread-2] 
+    /* load com.ssafy.b105.entity.blockchain.Transaction */ select
+        transactio0_.hash as hash1_7_0_,
+        transactio0_.block_hash as block_ha2_7_0_,
+        transactio0_.block_number as block_nu3_7_0_,
+        transactio0_.creates as creates4_7_0_,
+        transactio0_.from_account as from_acc5_7_0_,
+        transactio0_.gas as gas6_7_0_,
+        transactio0_.gas_price as gas_pric7_7_0_,
+        transactio0_.input_value as input_va8_7_0_,
+        transactio0_.max_fee_per_gas as max_fee_9_7_0_,
+        transactio0_.max_priority_fee_per_gas as max_pri10_7_0_,
+        transactio0_.nonce as nonce11_7_0_,
+        transactio0_.public_key as public_12_7_0_,
+        transactio0_.r as r13_7_0_,
+        transactio0_.raw as raw14_7_0_,
+        transactio0_.s as s15_7_0_,
+        transactio0_.to_account as to_acco16_7_0_,
+        transactio0_.transaction_index as transac17_7_0_,
+        transactio0_.type as type18_7_0_,
+        transactio0_.v as v19_7_0_,
+        transactio0_.value as value20_7_0_ 
+    from
+        transaction transactio0_ 
+    where
+        transactio0_.hash=?
+2022-04-08 00:35:52,548 TRACE org.hibernate.type.descriptor.sql.BasicBinder [pool-2-thread-2] binding parameter [1] as [VARCHAR] - [0x2c19e6fbbf2875f2a08779cdf35514dae834309e8faacb0bbc99e684af43cce9]
+2022-04-08 00:35:52,549 DEBUG org.hibernate.engine.jdbc.spi.SqlStatementLogger [pool-2-thread-2] 
+    /* insert com.ssafy.b105.entity.blockchain.Transaction
+        */ insert 
+        into
+            transaction
+            (block_hash, block_number, creates, from_account, gas, gas_price, input_value, max_fee_per_gas, max_priority_fee_per_gas, nonce, public_key, r, raw, s, to_account, transaction_index, type, v, value, hash) 
+        values
+            (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+2022-04-08 00:35:52,549 TRACE org.hibernate.type.descriptor.sql.BasicBinder [pool-2-thread-2] binding parameter [1] as [VARCHAR] - [0x19907847ac8bf3e163bd4e9827f18aed7dbf178ff6107627659110d4677683f4]
+2022-04-08 00:35:52,549 TRACE org.hibernate.type.descriptor.sql.BasicBinder [pool-2-thread-2] binding parameter [2] as [NUMERIC] - [71872]
+2022-04-08 00:35:52,550 TRACE org.hibernate.type.descriptor.sql.BasicBinder [pool-2-thread-2] binding parameter [3] as [VARCHAR] - [null]
+2022-04-08 00:35:52,550 TRACE org.hibernate.type.descriptor.sql.BasicBinder [pool-2-thread-2] binding parameter [4] as [VARCHAR] - [0xadeedb149af852ed80162ebd607205544c88f7bf]
+2022-04-08 00:35:52,550 TRACE org.hibernate.type.descriptor.sql.BasicBinder [pool-2-thread-2] binding parameter [5] as [NUMERIC] - [3000000]
+2022-04-08 00:35:52,550 TRACE org.hibernate.type.descriptor.sql.BasicBinder [pool-2-thread-2] binding parameter [6] as [NUMERIC] - [0]
+2022-04-08 00:35:52,550 TRACE org.hibernate.type.descriptor.sql.BasicBinder [pool-2-thread-2] binding parameter [7] as [CLOB] - [0x5a6b26ba000000000000000000000000e827d581ab9780cd6559e2d7099160252f67b6e1000000000000000000000000000000000000000000001b40d74a762d05700000]
+2022-04-08 00:35:52,550 TRACE org.hibernate.type.descriptor.sql.BasicBinder [pool-2-thread-2] binding parameter [8] as [VARCHAR] - [null]
+2022-04-08 00:35:52,550 TRACE org.hibernate.type.descriptor.sql.BasicBinder [pool-2-thread-2] binding parameter [9] as [VARCHAR] - [null]
+2022-04-08 00:35:52,550 TRACE org.hibernate.type.descriptor.sql.BasicBinder [pool-2-thread-2] binding parameter [10] as [VARCHAR] - [0x1fe]
+2022-04-08 00:35:52,550 TRACE org.hibernate.type.descriptor.sql.BasicBinder [pool-2-thread-2] binding parameter [11] as [VARCHAR] - [null]
+2022-04-08 00:35:52,550 TRACE org.hibernate.type.descriptor.sql.BasicBinder [pool-2-thread-2] binding parameter [12] as [VARCHAR] - [0x1189a093dbd48cdf5d381a7661848d74135e1d954d04ad574769cb9c7fc4defc]
+2022-04-08 00:35:52,550 TRACE org.hibernate.type.descriptor.sql.BasicBinder [pool-2-thread-2] binding parameter [13] as [VARCHAR] - [null]
+2022-04-08 00:35:52,550 TRACE org.hibernate.type.descriptor.sql.BasicBinder [pool-2-thread-2] binding parameter [14] as [VARCHAR] - [null]
+2022-04-08 00:35:52,550 TRACE org.hibernate.type.descriptor.sql.BasicBinder [pool-2-thread-2] binding parameter [15] as [VARCHAR] - [0x86e9413ffe868f1688d3992588ca2d337b307121]
+2022-04-08 00:35:52,551 TRACE org.hibernate.type.descriptor.sql.BasicBinder [pool-2-thread-2] binding parameter [16] as [NUMERIC] - [0]
+2022-04-08 00:35:52,551 TRACE org.hibernate.type.descriptor.sql.BasicBinder [pool-2-thread-2] binding parameter [17] as [VARCHAR] - [0x0]
+2022-04-08 00:35:52,551 TRACE org.hibernate.type.descriptor.sql.BasicBinder [pool-2-thread-2] binding parameter [18] as [BIGINT] - [65]
+2022-04-08 00:35:52,551 TRACE org.hibernate.type.descriptor.sql.BasicBinder [pool-2-thread-2] binding parameter [19] as [NUMERIC] - [0]
+2022-04-08 00:35:52,551 TRACE org.hibernate.type.descriptor.sql.BasicBinder [pool-2-thread-2] binding parameter [20] as [VARCHAR] - [0x2c19e6fbbf2875f2a08779cdf35514dae834309e8faacb0bbc99e684af43cce9]
+2022-04-08 00:37:52,559 DEBUG org.hibernate.engine.jdbc.spi.SqlStatementLogger [pool-2-thread-2] 
+    /* load com.ssafy.b105.entity.blockchain.Transaction */ select
+        transactio0_.hash as hash1_7_0_,
+        transactio0_.block_hash as block_ha2_7_0_,
+        transactio0_.block_number as block_nu3_7_0_,
+        transactio0_.creates as creates4_7_0_,
+        transactio0_.from_account as from_acc5_7_0_,
+        transactio0_.gas as gas6_7_0_,
+        transactio0_.gas_price as gas_pric7_7_0_,
+        transactio0_.input_value as input_va8_7_0_,
+        transactio0_.max_fee_per_gas as max_fee_9_7_0_,
+        transactio0_.max_priority_fee_per_gas as max_pri10_7_0_,
+        transactio0_.nonce as nonce11_7_0_,
+        transactio0_.public_key as public_12_7_0_,
+        transactio0_.r as r13_7_0_,
+        transactio0_.raw as raw14_7_0_,
+        transactio0_.s as s15_7_0_,
+        transactio0_.to_account as to_acco16_7_0_,
+        transactio0_.transaction_index as transac17_7_0_,
+        transactio0_.type as type18_7_0_,
+        transactio0_.v as v19_7_0_,
+        transactio0_.value as value20_7_0_ 
+    from
+        transaction transactio0_ 
+    where
+        transactio0_.hash=?
+2022-04-08 00:37:52,559 TRACE org.hibernate.type.descriptor.sql.BasicBinder [pool-2-thread-2] binding parameter [1] as [VARCHAR] - [0x1b2b6be9ac03c572d12b4b51a32fb7aa1f34d44d9e12b384dc04b27e4be267c5]
+2022-04-08 00:37:52,561 DEBUG org.hibernate.engine.jdbc.spi.SqlStatementLogger [pool-2-thread-2] 
+    /* insert com.ssafy.b105.entity.blockchain.Transaction
+        */ insert 
+        into
+            transaction
+            (block_hash, block_number, creates, from_account, gas, gas_price, input_value, max_fee_per_gas, max_priority_fee_per_gas, nonce, public_key, r, raw, s, to_account, transaction_index, type, v, value, hash) 
+        values
+            (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+2022-04-08 00:37:52,561 TRACE org.hibernate.type.descriptor.sql.BasicBinder [pool-2-thread-2] binding parameter [1] as [VARCHAR] - [0x8a2666ca336456a9afb260ace9e73d81868adc100664cb4bea29249ebfd22a4b]
+2022-04-08 00:37:52,562 TRACE org.hibernate.type.descriptor.sql.BasicBinder [pool-2-thread-2] binding parameter [2] as [NUMERIC] - [71882]
+2022-04-08 00:37:52,562 TRACE org.hibernate.type.descriptor.sql.BasicBinder [pool-2-thread-2] binding parameter [3] as [VARCHAR] - [null]
+2022-04-08 00:37:52,562 TRACE org.hibernate.type.descriptor.sql.BasicBinder [pool-2-thread-2] binding parameter [4] as [VARCHAR] - [0xadeedb149af852ed80162ebd607205544c88f7bf]
+2022-04-08 00:37:52,562 TRACE org.hibernate.type.descriptor.sql.BasicBinder [pool-2-thread-2] binding parameter [5] as [NUMERIC] - [3000000]
+2022-04-08 00:37:52,562 TRACE org.hibernate.type.descriptor.sql.BasicBinder [pool-2-thread-2] binding parameter [6] as [NUMERIC] - [0]
+2022-04-08 00:37:52,562 TRACE org.hibernate.type.descriptor.sql.BasicBinder [pool-2-thread-2] binding parameter [7] as [CLOB] - [0xdbcaef8b0000000000000000000000006abbc4cd4be4dba60d4b0f7d05355fce1d60fc9a00000000000000000000000000000000000000000000010f0cf064dd59200000]
+2022-04-08 00:37:52,562 TRACE org.hibernate.type.descriptor.sql.BasicBinder [pool-2-thread-2] binding parameter [8] as [VARCHAR] - [null]
+2022-04-08 00:37:52,562 TRACE org.hibernate.type.descriptor.sql.BasicBinder [pool-2-thread-2] binding parameter [9] as [VARCHAR] - [null]
+2022-04-08 00:37:52,562 TRACE org.hibernate.type.descriptor.sql.BasicBinder [pool-2-thread-2] binding parameter [10] as [VARCHAR] - [0x1ff]
+2022-04-08 00:37:52,562 TRACE org.hibernate.type.descriptor.sql.BasicBinder [pool-2-thread-2] binding parameter [11] as [VARCHAR] - [null]
+2022-04-08 00:37:52,562 TRACE org.hibernate.type.descriptor.sql.BasicBinder [pool-2-thread-2] binding parameter [12] as [VARCHAR] - [0x2d966ac85ad5c2ab24ceae050de898ca444f6650abcc9a8030d8e9ed700ff21c]
+2022-04-08 00:37:52,563 TRACE org.hibernate.type.descriptor.sql.BasicBinder [pool-2-thread-2] binding parameter [13] as [VARCHAR] - [null]
+2022-04-08 00:37:52,563 TRACE org.hibernate.type.descriptor.sql.BasicBinder [pool-2-thread-2] binding parameter [14] as [VARCHAR] - [null]
+2022-04-08 00:37:52,563 TRACE org.hibernate.type.descriptor.sql.BasicBinder [pool-2-thread-2] binding parameter [15] as [VARCHAR] - [0x827196b1fefbc899c7f00656c2cb16865f827ed8]
+2022-04-08 00:37:52,563 TRACE org.hibernate.type.descriptor.sql.BasicBinder [pool-2-thread-2] binding parameter [16] as [NUMERIC] - [0]
+2022-04-08 00:37:52,563 TRACE org.hibernate.type.descriptor.sql.BasicBinder [pool-2-thread-2] binding parameter [17] as [VARCHAR] - [0x0]
+2022-04-08 00:37:52,563 TRACE org.hibernate.type.descriptor.sql.BasicBinder [pool-2-thread-2] binding parameter [18] as [BIGINT] - [65]
+2022-04-08 00:37:52,563 TRACE org.hibernate.type.descriptor.sql.BasicBinder [pool-2-thread-2] binding parameter [19] as [NUMERIC] - [0]
+2022-04-08 00:37:52,563 TRACE org.hibernate.type.descriptor.sql.BasicBinder [pool-2-thread-2] binding parameter [20] as [VARCHAR] - [0x1b2b6be9ac03c572d12b4b51a32fb7aa1f34d44d9e12b384dc04b27e4be267c5]
+2022-04-08 00:38:22,581 DEBUG org.hibernate.engine.jdbc.spi.SqlStatementLogger [pool-2-thread-2] 
+    /* load com.ssafy.b105.entity.blockchain.Transaction */ select
+        transactio0_.hash as hash1_7_0_,
+        transactio0_.block_hash as block_ha2_7_0_,
+        transactio0_.block_number as block_nu3_7_0_,
+        transactio0_.creates as creates4_7_0_,
+        transactio0_.from_account as from_acc5_7_0_,
+        transactio0_.gas as gas6_7_0_,
+        transactio0_.gas_price as gas_pric7_7_0_,
+        transactio0_.input_value as input_va8_7_0_,
+        transactio0_.max_fee_per_gas as max_fee_9_7_0_,
+        transactio0_.max_priority_fee_per_gas as max_pri10_7_0_,
+        transactio0_.nonce as nonce11_7_0_,
+        transactio0_.public_key as public_12_7_0_,
+        transactio0_.r as r13_7_0_,
+        transactio0_.raw as raw14_7_0_,
+        transactio0_.s as s15_7_0_,
+        transactio0_.to_account as to_acco16_7_0_,
+        transactio0_.transaction_index as transac17_7_0_,
+        transactio0_.type as type18_7_0_,
+        transactio0_.v as v19_7_0_,
+        transactio0_.value as value20_7_0_ 
+    from
+        transaction transactio0_ 
+    where
+        transactio0_.hash=?
+2022-04-08 00:38:22,581 TRACE org.hibernate.type.descriptor.sql.BasicBinder [pool-2-thread-2] binding parameter [1] as [VARCHAR] - [0x6d2fe576cd0a61efd6a4fa1c4f7837869bad12379fc48584855bc4f410440b2f]
+2022-04-08 00:38:22,583 DEBUG org.hibernate.engine.jdbc.spi.SqlStatementLogger [pool-2-thread-2] 
+    /* insert com.ssafy.b105.entity.blockchain.Transaction
+        */ insert 
+        into
+            transaction
+            (block_hash, block_number, creates, from_account, gas, gas_price, input_value, max_fee_per_gas, max_priority_fee_per_gas, nonce, public_key, r, raw, s, to_account, transaction_index, type, v, value, hash) 
+        values
+            (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+2022-04-08 00:38:22,584 TRACE org.hibernate.type.descriptor.sql.BasicBinder [pool-2-thread-2] binding parameter [1] as [VARCHAR] - [0x4def023b13738b5a8936f9a7cc7e0d27318c3991be0208e0cce3bd71a5c33004]
+2022-04-08 00:38:22,584 TRACE org.hibernate.type.descriptor.sql.BasicBinder [pool-2-thread-2] binding parameter [2] as [NUMERIC] - [71883]
+2022-04-08 00:38:22,584 TRACE org.hibernate.type.descriptor.sql.BasicBinder [pool-2-thread-2] binding parameter [3] as [VARCHAR] - [null]
+2022-04-08 00:38:22,584 TRACE org.hibernate.type.descriptor.sql.BasicBinder [pool-2-thread-2] binding parameter [4] as [VARCHAR] - [0xadeedb149af852ed80162ebd607205544c88f7bf]
+2022-04-08 00:38:22,584 TRACE org.hibernate.type.descriptor.sql.BasicBinder [pool-2-thread-2] binding parameter [5] as [NUMERIC] - [3000000]
+2022-04-08 00:38:22,584 TRACE org.hibernate.type.descriptor.sql.BasicBinder [pool-2-thread-2] binding parameter [6] as [NUMERIC] - [0]
+2022-04-08 00:38:22,584 TRACE org.hibernate.type.descriptor.sql.BasicBinder [pool-2-thread-2] binding parameter [7] as [CLOB] - [0xe69d849d0000000000000000000000006abbc4cd4be4dba60d4b0f7d05355fce1d60fc9a00000000000000000000000000000000000000000000010f0cf064dd59200000]
+2022-04-08 00:38:22,584 TRACE org.hibernate.type.descriptor.sql.BasicBinder [pool-2-thread-2] binding parameter [8] as [VARCHAR] - [null]
+2022-04-08 00:38:22,584 TRACE org.hibernate.type.descriptor.sql.BasicBinder [pool-2-thread-2] binding parameter [9] as [VARCHAR] - [null]
+2022-04-08 00:38:22,584 TRACE org.hibernate.type.descriptor.sql.BasicBinder [pool-2-thread-2] binding parameter [10] as [VARCHAR] - [0x200]
+2022-04-08 00:38:22,585 TRACE org.hibernate.type.descriptor.sql.BasicBinder [pool-2-thread-2] binding parameter [11] as [VARCHAR] - [null]
+2022-04-08 00:38:22,585 TRACE org.hibernate.type.descriptor.sql.BasicBinder [pool-2-thread-2] binding parameter [12] as [VARCHAR] - [0x85df5f7b5bf8cc63f66856f03c4a790f0ecbed98febeee6bd16a06a60bf96c1b]
+2022-04-08 00:38:22,585 TRACE org.hibernate.type.descriptor.sql.BasicBinder [pool-2-thread-2] binding parameter [13] as [VARCHAR] - [null]
+2022-04-08 00:38:22,585 TRACE org.hibernate.type.descriptor.sql.BasicBinder [pool-2-thread-2] binding parameter [14] as [VARCHAR] - [null]
+2022-04-08 00:38:22,585 TRACE org.hibernate.type.descriptor.sql.BasicBinder [pool-2-thread-2] binding parameter [15] as [VARCHAR] - [0xc84bbde69e6ca85e7bc501edb144c04486f33fd0]
+2022-04-08 00:38:22,585 TRACE org.hibernate.type.descriptor.sql.BasicBinder [pool-2-thread-2] binding parameter [16] as [NUMERIC] - [0]
+2022-04-08 00:38:22,585 TRACE org.hibernate.type.descriptor.sql.BasicBinder [pool-2-thread-2] binding parameter [17] as [VARCHAR] - [0x0]
+2022-04-08 00:38:22,585 TRACE org.hibernate.type.descriptor.sql.BasicBinder [pool-2-thread-2] binding parameter [18] as [BIGINT] - [65]
+2022-04-08 00:38:22,585 TRACE org.hibernate.type.descriptor.sql.BasicBinder [pool-2-thread-2] binding parameter [19] as [NUMERIC] - [0]
+2022-04-08 00:38:22,585 TRACE org.hibernate.type.descriptor.sql.BasicBinder [pool-2-thread-2] binding parameter [20] as [VARCHAR] - [0x6d2fe576cd0a61efd6a4fa1c4f7837869bad12379fc48584855bc4f410440b2f]
+2022-04-08 00:47:22,557 DEBUG org.hibernate.engine.jdbc.spi.SqlStatementLogger [pool-2-thread-2] 
+    /* load com.ssafy.b105.entity.blockchain.Transaction */ select
+        transactio0_.hash as hash1_7_0_,
+        transactio0_.block_hash as block_ha2_7_0_,
+        transactio0_.block_number as block_nu3_7_0_,
+        transactio0_.creates as creates4_7_0_,
+        transactio0_.from_account as from_acc5_7_0_,
+        transactio0_.gas as gas6_7_0_,
+        transactio0_.gas_price as gas_pric7_7_0_,
+        transactio0_.input_value as input_va8_7_0_,
+        transactio0_.max_fee_per_gas as max_fee_9_7_0_,
+        transactio0_.max_priority_fee_per_gas as max_pri10_7_0_,
+        transactio0_.nonce as nonce11_7_0_,
+        transactio0_.public_key as public_12_7_0_,
+        transactio0_.r as r13_7_0_,
+        transactio0_.raw as raw14_7_0_,
+        transactio0_.s as s15_7_0_,
+        transactio0_.to_account as to_acco16_7_0_,
+        transactio0_.transaction_index as transac17_7_0_,
+        transactio0_.type as type18_7_0_,
+        transactio0_.v as v19_7_0_,
+        transactio0_.value as value20_7_0_ 
+    from
+        transaction transactio0_ 
+    where
+        transactio0_.hash=?
+2022-04-08 00:47:22,558 TRACE org.hibernate.type.descriptor.sql.BasicBinder [pool-2-thread-2] binding parameter [1] as [VARCHAR] - [0xfa7b08bcfac80ed87dcb5fb2abfc5594d34934751260560eae842b69d273875b]
+2022-04-08 00:47:22,561 DEBUG org.hibernate.engine.jdbc.spi.SqlStatementLogger [pool-2-thread-2] 
+    /* insert com.ssafy.b105.entity.blockchain.Transaction
+        */ insert 
+        into
+            transaction
+            (block_hash, block_number, creates, from_account, gas, gas_price, input_value, max_fee_per_gas, max_priority_fee_per_gas, nonce, public_key, r, raw, s, to_account, transaction_index, type, v, value, hash) 
+        values
+            (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+2022-04-08 00:47:22,561 TRACE org.hibernate.type.descriptor.sql.BasicBinder [pool-2-thread-2] binding parameter [1] as [VARCHAR] - [0xd1b4e123af03c7e3a2d817dc004d176696170cd2161cbabd7cb6d61c84854689]
+2022-04-08 00:47:22,561 TRACE org.hibernate.type.descriptor.sql.BasicBinder [pool-2-thread-2] binding parameter [2] as [NUMERIC] - [71918]
+2022-04-08 00:47:22,561 TRACE org.hibernate.type.descriptor.sql.BasicBinder [pool-2-thread-2] binding parameter [3] as [VARCHAR] - [null]
+2022-04-08 00:47:22,562 TRACE org.hibernate.type.descriptor.sql.BasicBinder [pool-2-thread-2] binding parameter [4] as [VARCHAR] - [0xadeedb149af852ed80162ebd607205544c88f7bf]
+2022-04-08 00:47:22,562 TRACE org.hibernate.type.descriptor.sql.BasicBinder [pool-2-thread-2] binding parameter [5] as [NUMERIC] - [3000000]
+2022-04-08 00:47:22,562 TRACE org.hibernate.type.descriptor.sql.BasicBinder [pool-2-thread-2] binding parameter [6] as [NUMERIC] - [0]
+2022-04-08 00:47:22,562 TRACE org.hibernate.type.descriptor.sql.BasicBinder [pool-2-thread-2] binding parameter [7] as [CLOB] - [0xdbcaef8b0000000000000000000000006abbc4cd4be4dba60d4b0f7d05355fce1d60fc9a00000000000000000000000000000000000000000000021e19e0c9bab2400000]
+2022-04-08 00:47:22,562 TRACE org.hibernate.type.descriptor.sql.BasicBinder [pool-2-thread-2] binding parameter [8] as [VARCHAR] - [null]
+2022-04-08 00:47:22,562 TRACE org.hibernate.type.descriptor.sql.BasicBinder [pool-2-thread-2] binding parameter [9] as [VARCHAR] - [null]
+2022-04-08 00:47:22,562 TRACE org.hibernate.type.descriptor.sql.BasicBinder [pool-2-thread-2] binding parameter [10] as [VARCHAR] - [0x201]
+2022-04-08 00:47:22,562 TRACE org.hibernate.type.descriptor.sql.BasicBinder [pool-2-thread-2] binding parameter [11] as [VARCHAR] - [null]
+2022-04-08 00:47:22,562 TRACE org.hibernate.type.descriptor.sql.BasicBinder [pool-2-thread-2] binding parameter [12] as [VARCHAR] - [0x810a94cc0b65302798bc46e46eac75909b313b17ccef45368485cca08eb35057]
+2022-04-08 00:47:22,562 TRACE org.hibernate.type.descriptor.sql.BasicBinder [pool-2-thread-2] binding parameter [13] as [VARCHAR] - [null]
+2022-04-08 00:47:22,562 TRACE org.hibernate.type.descriptor.sql.BasicBinder [pool-2-thread-2] binding parameter [14] as [VARCHAR] - [null]
+2022-04-08 00:47:22,562 TRACE org.hibernate.type.descriptor.sql.BasicBinder [pool-2-thread-2] binding parameter [15] as [VARCHAR] - [0x827196b1fefbc899c7f00656c2cb16865f827ed8]
+2022-04-08 00:47:22,562 TRACE org.hibernate.type.descriptor.sql.BasicBinder [pool-2-thread-2] binding parameter [16] as [NUMERIC] - [0]
+2022-04-08 00:47:22,563 TRACE org.hibernate.type.descriptor.sql.BasicBinder [pool-2-thread-2] binding parameter [17] as [VARCHAR] - [0x0]
+2022-04-08 00:47:22,563 TRACE org.hibernate.type.descriptor.sql.BasicBinder [pool-2-thread-2] binding parameter [18] as [BIGINT] - [66]
+2022-04-08 00:47:22,563 TRACE org.hibernate.type.descriptor.sql.BasicBinder [pool-2-thread-2] binding parameter [19] as [NUMERIC] - [0]
+2022-04-08 00:47:22,563 TRACE org.hibernate.type.descriptor.sql.BasicBinder [pool-2-thread-2] binding parameter [20] as [VARCHAR] - [0xfa7b08bcfac80ed87dcb5fb2abfc5594d34934751260560eae842b69d273875b]
+2022-04-08 00:47:37,550 DEBUG org.hibernate.engine.jdbc.spi.SqlStatementLogger [pool-2-thread-2] 
+    /* load com.ssafy.b105.entity.blockchain.Transaction */ select
+        transactio0_.hash as hash1_7_0_,
+        transactio0_.block_hash as block_ha2_7_0_,
+        transactio0_.block_number as block_nu3_7_0_,
+        transactio0_.creates as creates4_7_0_,
+        transactio0_.from_account as from_acc5_7_0_,
+        transactio0_.gas as gas6_7_0_,
+        transactio0_.gas_price as gas_pric7_7_0_,
+        transactio0_.input_value as input_va8_7_0_,
+        transactio0_.max_fee_per_gas as max_fee_9_7_0_,
+        transactio0_.max_priority_fee_per_gas as max_pri10_7_0_,
+        transactio0_.nonce as nonce11_7_0_,
+        transactio0_.public_key as public_12_7_0_,
+        transactio0_.r as r13_7_0_,
+        transactio0_.raw as raw14_7_0_,
+        transactio0_.s as s15_7_0_,
+        transactio0_.to_account as to_acco16_7_0_,
+        transactio0_.transaction_index as transac17_7_0_,
+        transactio0_.type as type18_7_0_,
+        transactio0_.v as v19_7_0_,
+        transactio0_.value as value20_7_0_ 
+    from
+        transaction transactio0_ 
+    where
+        transactio0_.hash=?
+2022-04-08 00:47:37,550 TRACE org.hibernate.type.descriptor.sql.BasicBinder [pool-2-thread-2] binding parameter [1] as [VARCHAR] - [0xe8304c535251eb21791f8a7bf8b6816995cb758f662badc274e86622d697c0e2]
+2022-04-08 00:47:37,552 DEBUG org.hibernate.engine.jdbc.spi.SqlStatementLogger [pool-2-thread-2] 
+    /* insert com.ssafy.b105.entity.blockchain.Transaction
+        */ insert 
+        into
+            transaction
+            (block_hash, block_number, creates, from_account, gas, gas_price, input_value, max_fee_per_gas, max_priority_fee_per_gas, nonce, public_key, r, raw, s, to_account, transaction_index, type, v, value, hash) 
+        values
+            (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+2022-04-08 00:47:37,553 TRACE org.hibernate.type.descriptor.sql.BasicBinder [pool-2-thread-2] binding parameter [1] as [VARCHAR] - [0x0217ffdae39e6ebc62970dd8e78c701ebe474285125013e8345f5a33a327e975]
+2022-04-08 00:47:37,553 TRACE org.hibernate.type.descriptor.sql.BasicBinder [pool-2-thread-2] binding parameter [2] as [NUMERIC] - [71919]
+2022-04-08 00:47:37,553 TRACE org.hibernate.type.descriptor.sql.BasicBinder [pool-2-thread-2] binding parameter [3] as [VARCHAR] - [null]
+2022-04-08 00:47:37,553 TRACE org.hibernate.type.descriptor.sql.BasicBinder [pool-2-thread-2] binding parameter [4] as [VARCHAR] - [0xadeedb149af852ed80162ebd607205544c88f7bf]
+2022-04-08 00:47:37,553 TRACE org.hibernate.type.descriptor.sql.BasicBinder [pool-2-thread-2] binding parameter [5] as [NUMERIC] - [3000000]
+2022-04-08 00:47:37,553 TRACE org.hibernate.type.descriptor.sql.BasicBinder [pool-2-thread-2] binding parameter [6] as [NUMERIC] - [0]
+2022-04-08 00:47:37,553 TRACE org.hibernate.type.descriptor.sql.BasicBinder [pool-2-thread-2] binding parameter [7] as [CLOB] - [0xe69d849d0000000000000000000000006abbc4cd4be4dba60d4b0f7d05355fce1d60fc9a00000000000000000000000000000000000000000000021e19e0c9bab2400000]
+2022-04-08 00:47:37,554 TRACE org.hibernate.type.descriptor.sql.BasicBinder [pool-2-thread-2] binding parameter [8] as [VARCHAR] - [null]
+2022-04-08 00:47:37,554 TRACE org.hibernate.type.descriptor.sql.BasicBinder [pool-2-thread-2] binding parameter [9] as [VARCHAR] - [null]
+2022-04-08 00:47:37,554 TRACE org.hibernate.type.descriptor.sql.BasicBinder [pool-2-thread-2] binding parameter [10] as [VARCHAR] - [0x202]
+2022-04-08 00:47:37,554 TRACE org.hibernate.type.descriptor.sql.BasicBinder [pool-2-thread-2] binding parameter [11] as [VARCHAR] - [null]
+2022-04-08 00:47:37,554 TRACE org.hibernate.type.descriptor.sql.BasicBinder [pool-2-thread-2] binding parameter [12] as [VARCHAR] - [0x95c175e992a14627268a21ce3a45b9cb2add8bc34d95f45edcebd52d1b4c568e]
+2022-04-08 00:47:37,554 TRACE org.hibernate.type.descriptor.sql.BasicBinder [pool-2-thread-2] binding parameter [13] as [VARCHAR] - [null]
+2022-04-08 00:47:37,554 TRACE org.hibernate.type.descriptor.sql.BasicBinder [pool-2-thread-2] binding parameter [14] as [VARCHAR] - [null]
+2022-04-08 00:47:37,554 TRACE org.hibernate.type.descriptor.sql.BasicBinder [pool-2-thread-2] binding parameter [15] as [VARCHAR] - [0xfb899483a74b03f346e986b6dc6787ea190b298a]
+2022-04-08 00:47:37,554 TRACE org.hibernate.type.descriptor.sql.BasicBinder [pool-2-thread-2] binding parameter [16] as [NUMERIC] - [0]
+2022-04-08 00:47:37,554 TRACE org.hibernate.type.descriptor.sql.BasicBinder [pool-2-thread-2] binding parameter [17] as [VARCHAR] - [0x0]
+2022-04-08 00:47:37,554 TRACE org.hibernate.type.descriptor.sql.BasicBinder [pool-2-thread-2] binding parameter [18] as [BIGINT] - [65]
+2022-04-08 00:47:37,555 TRACE org.hibernate.type.descriptor.sql.BasicBinder [pool-2-thread-2] binding parameter [19] as [NUMERIC] - [0]
+2022-04-08 00:47:37,555 TRACE org.hibernate.type.descriptor.sql.BasicBinder [pool-2-thread-2] binding parameter [20] as [VARCHAR] - [0xe8304c535251eb21791f8a7bf8b6816995cb758f662badc274e86622d697c0e2]
+2022-04-08 00:54:22,559 DEBUG org.hibernate.engine.jdbc.spi.SqlStatementLogger [pool-2-thread-2] 
+    /* load com.ssafy.b105.entity.blockchain.Transaction */ select
+        transactio0_.hash as hash1_7_0_,
+        transactio0_.block_hash as block_ha2_7_0_,
+        transactio0_.block_number as block_nu3_7_0_,
+        transactio0_.creates as creates4_7_0_,
+        transactio0_.from_account as from_acc5_7_0_,
+        transactio0_.gas as gas6_7_0_,
+        transactio0_.gas_price as gas_pric7_7_0_,
+        transactio0_.input_value as input_va8_7_0_,
+        transactio0_.max_fee_per_gas as max_fee_9_7_0_,
+        transactio0_.max_priority_fee_per_gas as max_pri10_7_0_,
+        transactio0_.nonce as nonce11_7_0_,
+        transactio0_.public_key as public_12_7_0_,
+        transactio0_.r as r13_7_0_,
+        transactio0_.raw as raw14_7_0_,
+        transactio0_.s as s15_7_0_,
+        transactio0_.to_account as to_acco16_7_0_,
+        transactio0_.transaction_index as transac17_7_0_,
+        transactio0_.type as type18_7_0_,
+        transactio0_.v as v19_7_0_,
+        transactio0_.value as value20_7_0_ 
+    from
+        transaction transactio0_ 
+    where
+        transactio0_.hash=?
+2022-04-08 00:54:22,560 TRACE org.hibernate.type.descriptor.sql.BasicBinder [pool-2-thread-2] binding parameter [1] as [VARCHAR] - [0x5eac317d08bfe5c9e7335a32bbd47f7fd88428b6a4dd1e22ef50bb5b24cd3380]
+2022-04-08 00:54:22,567 DEBUG org.hibernate.engine.jdbc.spi.SqlStatementLogger [pool-2-thread-2] 
+    /* insert com.ssafy.b105.entity.blockchain.Transaction
+        */ insert 
+        into
+            transaction
+            (block_hash, block_number, creates, from_account, gas, gas_price, input_value, max_fee_per_gas, max_priority_fee_per_gas, nonce, public_key, r, raw, s, to_account, transaction_index, type, v, value, hash) 
+        values
+            (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+2022-04-08 00:54:22,568 TRACE org.hibernate.type.descriptor.sql.BasicBinder [pool-2-thread-2] binding parameter [1] as [VARCHAR] - [0xcd64f15e5b0faee2c306dbccb66e4096923bc47bf2eadeb4cbe0155869b4b491]
+2022-04-08 00:54:22,568 TRACE org.hibernate.type.descriptor.sql.BasicBinder [pool-2-thread-2] binding parameter [2] as [NUMERIC] - [71951]
+2022-04-08 00:54:22,568 TRACE org.hibernate.type.descriptor.sql.BasicBinder [pool-2-thread-2] binding parameter [3] as [VARCHAR] - [null]
+2022-04-08 00:54:22,568 TRACE org.hibernate.type.descriptor.sql.BasicBinder [pool-2-thread-2] binding parameter [4] as [VARCHAR] - [0xadeedb149af852ed80162ebd607205544c88f7bf]
+2022-04-08 00:54:22,568 TRACE org.hibernate.type.descriptor.sql.BasicBinder [pool-2-thread-2] binding parameter [5] as [NUMERIC] - [3000000]
+2022-04-08 00:54:22,568 TRACE org.hibernate.type.descriptor.sql.BasicBinder [pool-2-thread-2] binding parameter [6] as [NUMERIC] - [0]
+2022-04-08 00:54:22,568 TRACE org.hibernate.type.descriptor.sql.BasicBinder [pool-2-thread-2] binding parameter [7] as [CLOB] - [0x0e66139f000000000000000000000000dfbd065e4d794a1b98a33a39d18c4a711770884400000000000000000000000000000000000000000000000000000000000000400000000000000000000000000000000000000000000000000000000000000009537570706f727465720000000000000000000000000000000000000000000000]
+2022-04-08 00:54:22,568 TRACE org.hibernate.type.descriptor.sql.BasicBinder [pool-2-thread-2] binding parameter [8] as [VARCHAR] - [null]
+2022-04-08 00:54:22,568 TRACE org.hibernate.type.descriptor.sql.BasicBinder [pool-2-thread-2] binding parameter [9] as [VARCHAR] - [null]
+2022-04-08 00:54:22,568 TRACE org.hibernate.type.descriptor.sql.BasicBinder [pool-2-thread-2] binding parameter [10] as [VARCHAR] - [0x203]
+2022-04-08 00:54:22,569 TRACE org.hibernate.type.descriptor.sql.BasicBinder [pool-2-thread-2] binding parameter [11] as [VARCHAR] - [null]
+2022-04-08 00:54:22,569 TRACE org.hibernate.type.descriptor.sql.BasicBinder [pool-2-thread-2] binding parameter [12] as [VARCHAR] - [0x82145fdd62c806f5bce3de10274aa0cbe8cea67b17b1a9a1d54b97a3921451b6]
+2022-04-08 00:54:22,569 TRACE org.hibernate.type.descriptor.sql.BasicBinder [pool-2-thread-2] binding parameter [13] as [VARCHAR] - [null]
+2022-04-08 00:54:22,569 TRACE org.hibernate.type.descriptor.sql.BasicBinder [pool-2-thread-2] binding parameter [14] as [VARCHAR] - [null]
+2022-04-08 00:54:22,569 TRACE org.hibernate.type.descriptor.sql.BasicBinder [pool-2-thread-2] binding parameter [15] as [VARCHAR] - [0xf778768ad858c5f14f8222f7b02b63c670ae619f]
+2022-04-08 00:54:22,569 TRACE org.hibernate.type.descriptor.sql.BasicBinder [pool-2-thread-2] binding parameter [16] as [NUMERIC] - [0]
+2022-04-08 00:54:22,569 TRACE org.hibernate.type.descriptor.sql.BasicBinder [pool-2-thread-2] binding parameter [17] as [VARCHAR] - [0x0]
+2022-04-08 00:54:22,569 TRACE org.hibernate.type.descriptor.sql.BasicBinder [pool-2-thread-2] binding parameter [18] as [BIGINT] - [66]
+2022-04-08 00:54:22,569 TRACE org.hibernate.type.descriptor.sql.BasicBinder [pool-2-thread-2] binding parameter [19] as [NUMERIC] - [0]
+2022-04-08 00:54:22,569 TRACE org.hibernate.type.descriptor.sql.BasicBinder [pool-2-thread-2] binding parameter [20] as [VARCHAR] - [0x5eac317d08bfe5c9e7335a32bbd47f7fd88428b6a4dd1e22ef50bb5b24cd3380]
+2022-04-08 00:55:22,555 DEBUG org.hibernate.engine.jdbc.spi.SqlStatementLogger [pool-2-thread-2] 
+    /* load com.ssafy.b105.entity.blockchain.Transaction */ select
+        transactio0_.hash as hash1_7_0_,
+        transactio0_.block_hash as block_ha2_7_0_,
+        transactio0_.block_number as block_nu3_7_0_,
+        transactio0_.creates as creates4_7_0_,
+        transactio0_.from_account as from_acc5_7_0_,
+        transactio0_.gas as gas6_7_0_,
+        transactio0_.gas_price as gas_pric7_7_0_,
+        transactio0_.input_value as input_va8_7_0_,
+        transactio0_.max_fee_per_gas as max_fee_9_7_0_,
+        transactio0_.max_priority_fee_per_gas as max_pri10_7_0_,
+        transactio0_.nonce as nonce11_7_0_,
+        transactio0_.public_key as public_12_7_0_,
+        transactio0_.r as r13_7_0_,
+        transactio0_.raw as raw14_7_0_,
+        transactio0_.s as s15_7_0_,
+        transactio0_.to_account as to_acco16_7_0_,
+        transactio0_.transaction_index as transac17_7_0_,
+        transactio0_.type as type18_7_0_,
+        transactio0_.v as v19_7_0_,
+        transactio0_.value as value20_7_0_ 
+    from
+        transaction transactio0_ 
+    where
+        transactio0_.hash=?
+2022-04-08 00:55:22,555 TRACE org.hibernate.type.descriptor.sql.BasicBinder [pool-2-thread-2] binding parameter [1] as [VARCHAR] - [0xdb66f3eb020acfd531f3f1bf6af1713680feb0fa7b5456215cca7b539b2deb9e]
+2022-04-08 00:55:22,564 DEBUG org.hibernate.engine.jdbc.spi.SqlStatementLogger [pool-2-thread-2] 
+    /* insert com.ssafy.b105.entity.blockchain.Transaction
+        */ insert 
+        into
+            transaction
+            (block_hash, block_number, creates, from_account, gas, gas_price, input_value, max_fee_per_gas, max_priority_fee_per_gas, nonce, public_key, r, raw, s, to_account, transaction_index, type, v, value, hash) 
+        values
+            (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+2022-04-08 00:55:22,565 TRACE org.hibernate.type.descriptor.sql.BasicBinder [pool-2-thread-2] binding parameter [1] as [VARCHAR] - [0xb09f9e422aa5dd09fffe41c12c25cadca5c12a0b562e1a5458d7a1bf02188415]
+2022-04-08 00:55:22,565 TRACE org.hibernate.type.descriptor.sql.BasicBinder [pool-2-thread-2] binding parameter [2] as [NUMERIC] - [71955]
+2022-04-08 00:55:22,565 TRACE org.hibernate.type.descriptor.sql.BasicBinder [pool-2-thread-2] binding parameter [3] as [VARCHAR] - [null]
+2022-04-08 00:55:22,565 TRACE org.hibernate.type.descriptor.sql.BasicBinder [pool-2-thread-2] binding parameter [4] as [VARCHAR] - [0xadeedb149af852ed80162ebd607205544c88f7bf]
+2022-04-08 00:55:22,566 TRACE org.hibernate.type.descriptor.sql.BasicBinder [pool-2-thread-2] binding parameter [5] as [NUMERIC] - [3000000]
+2022-04-08 00:55:22,566 TRACE org.hibernate.type.descriptor.sql.BasicBinder [pool-2-thread-2] binding parameter [6] as [NUMERIC] - [0]
+2022-04-08 00:55:22,566 TRACE org.hibernate.type.descriptor.sql.BasicBinder [pool-2-thread-2] binding parameter [7] as [CLOB] - [0x0e66139f000000000000000000000000b5865616f11ffc8a65157c7833857aea93a5926800000000000000000000000000000000000000000000000000000000000000400000000000000000000000000000000000000000000000000000000000000009537570706f727465720000000000000000000000000000000000000000000000]
+2022-04-08 00:55:22,566 TRACE org.hibernate.type.descriptor.sql.BasicBinder [pool-2-thread-2] binding parameter [8] as [VARCHAR] - [null]
+2022-04-08 00:55:22,566 TRACE org.hibernate.type.descriptor.sql.BasicBinder [pool-2-thread-2] binding parameter [9] as [VARCHAR] - [null]
+2022-04-08 00:55:22,566 TRACE org.hibernate.type.descriptor.sql.BasicBinder [pool-2-thread-2] binding parameter [10] as [VARCHAR] - [0x204]
+2022-04-08 00:55:22,566 TRACE org.hibernate.type.descriptor.sql.BasicBinder [pool-2-thread-2] binding parameter [11] as [VARCHAR] - [null]
+2022-04-08 00:55:22,566 TRACE org.hibernate.type.descriptor.sql.BasicBinder [pool-2-thread-2] binding parameter [12] as [VARCHAR] - [0xf7212ead7bedd70186cd17ceff3ea66601e9b3238df1de4cf4ab736d58de72e4]
+2022-04-08 00:55:22,566 TRACE org.hibernate.type.descriptor.sql.BasicBinder [pool-2-thread-2] binding parameter [13] as [VARCHAR] - [null]
+2022-04-08 00:55:22,566 TRACE org.hibernate.type.descriptor.sql.BasicBinder [pool-2-thread-2] binding parameter [14] as [VARCHAR] - [null]
+2022-04-08 00:55:22,566 TRACE org.hibernate.type.descriptor.sql.BasicBinder [pool-2-thread-2] binding parameter [15] as [VARCHAR] - [0xf778768ad858c5f14f8222f7b02b63c670ae619f]
+2022-04-08 00:55:22,566 TRACE org.hibernate.type.descriptor.sql.BasicBinder [pool-2-thread-2] binding parameter [16] as [NUMERIC] - [0]
+2022-04-08 00:55:22,566 TRACE org.hibernate.type.descriptor.sql.BasicBinder [pool-2-thread-2] binding parameter [17] as [VARCHAR] - [0x0]
+2022-04-08 00:55:22,566 TRACE org.hibernate.type.descriptor.sql.BasicBinder [pool-2-thread-2] binding parameter [18] as [BIGINT] - [66]
+2022-04-08 00:55:22,567 TRACE org.hibernate.type.descriptor.sql.BasicBinder [pool-2-thread-2] binding parameter [19] as [NUMERIC] - [0]
+2022-04-08 00:55:22,567 TRACE org.hibernate.type.descriptor.sql.BasicBinder [pool-2-thread-2] binding parameter [20] as [VARCHAR] - [0xdb66f3eb020acfd531f3f1bf6af1713680feb0fa7b5456215cca7b539b2deb9e]
+2022-04-08 01:36:52,572 DEBUG org.hibernate.engine.jdbc.spi.SqlStatementLogger [pool-2-thread-2] 
+    /* load com.ssafy.b105.entity.blockchain.Transaction */ select
+        transactio0_.hash as hash1_7_0_,
+        transactio0_.block_hash as block_ha2_7_0_,
+        transactio0_.block_number as block_nu3_7_0_,
+        transactio0_.creates as creates4_7_0_,
+        transactio0_.from_account as from_acc5_7_0_,
+        transactio0_.gas as gas6_7_0_,
+        transactio0_.gas_price as gas_pric7_7_0_,
+        transactio0_.input_value as input_va8_7_0_,
+        transactio0_.max_fee_per_gas as max_fee_9_7_0_,
+        transactio0_.max_priority_fee_per_gas as max_pri10_7_0_,
+        transactio0_.nonce as nonce11_7_0_,
+        transactio0_.public_key as public_12_7_0_,
+        transactio0_.r as r13_7_0_,
+        transactio0_.raw as raw14_7_0_,
+        transactio0_.s as s15_7_0_,
+        transactio0_.to_account as to_acco16_7_0_,
+        transactio0_.transaction_index as transac17_7_0_,
+        transactio0_.type as type18_7_0_,
+        transactio0_.v as v19_7_0_,
+        transactio0_.value as value20_7_0_ 
+    from
+        transaction transactio0_ 
+    where
+        transactio0_.hash=?
+2022-04-08 01:36:52,576 TRACE org.hibernate.type.descriptor.sql.BasicBinder [pool-2-thread-2] binding parameter [1] as [VARCHAR] - [0x4441dce52b56b75d6e5270c46705be6e63414c0946663e0e67aeb4a4033636b8]
+2022-04-08 01:36:52,583 DEBUG org.hibernate.engine.jdbc.spi.SqlStatementLogger [pool-2-thread-2] 
+    /* insert com.ssafy.b105.entity.blockchain.Transaction
+        */ insert 
+        into
+            transaction
+            (block_hash, block_number, creates, from_account, gas, gas_price, input_value, max_fee_per_gas, max_priority_fee_per_gas, nonce, public_key, r, raw, s, to_account, transaction_index, type, v, value, hash) 
+        values
+            (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+2022-04-08 01:36:52,584 TRACE org.hibernate.type.descriptor.sql.BasicBinder [pool-2-thread-2] binding parameter [1] as [VARCHAR] - [0x3ae319e701203e53b34bc6af48c5d002ebd8c973d0ab68bd54fb983a3b199776]
+2022-04-08 01:36:52,584 TRACE org.hibernate.type.descriptor.sql.BasicBinder [pool-2-thread-2] binding parameter [2] as [NUMERIC] - [72152]
+2022-04-08 01:36:52,584 TRACE org.hibernate.type.descriptor.sql.BasicBinder [pool-2-thread-2] binding parameter [3] as [VARCHAR] - [null]
+2022-04-08 01:36:52,584 TRACE org.hibernate.type.descriptor.sql.BasicBinder [pool-2-thread-2] binding parameter [4] as [VARCHAR] - [0xadeedb149af852ed80162ebd607205544c88f7bf]
+2022-04-08 01:36:52,584 TRACE org.hibernate.type.descriptor.sql.BasicBinder [pool-2-thread-2] binding parameter [5] as [NUMERIC] - [3000000]
+2022-04-08 01:36:52,584 TRACE org.hibernate.type.descriptor.sql.BasicBinder [pool-2-thread-2] binding parameter [6] as [NUMERIC] - [0]
+2022-04-08 01:36:52,584 TRACE org.hibernate.type.descriptor.sql.BasicBinder [pool-2-thread-2] binding parameter [7] as [CLOB] - [0xdbcaef8b0000000000000000000000006abbc4cd4be4dba60d4b0f7d05355fce1d60fc9a00000000000000000000000000000000000000000000003635c9adc5dea00000]
+2022-04-08 01:36:52,585 TRACE org.hibernate.type.descriptor.sql.BasicBinder [pool-2-thread-2] binding parameter [8] as [VARCHAR] - [null]
+2022-04-08 01:36:52,585 TRACE org.hibernate.type.descriptor.sql.BasicBinder [pool-2-thread-2] binding parameter [9] as [VARCHAR] - [null]
+2022-04-08 01:36:52,585 TRACE org.hibernate.type.descriptor.sql.BasicBinder [pool-2-thread-2] binding parameter [10] as [VARCHAR] - [0x205]
+2022-04-08 01:36:52,585 TRACE org.hibernate.type.descriptor.sql.BasicBinder [pool-2-thread-2] binding parameter [11] as [VARCHAR] - [null]
+2022-04-08 01:36:52,585 TRACE org.hibernate.type.descriptor.sql.BasicBinder [pool-2-thread-2] binding parameter [12] as [VARCHAR] - [0xfa3ee7e3cc2eacb5b859854a7eb09428fd464f539739cf02cb4703641d6fe9bd]
+2022-04-08 01:36:52,585 TRACE org.hibernate.type.descriptor.sql.BasicBinder [pool-2-thread-2] binding parameter [13] as [VARCHAR] - [null]
+2022-04-08 01:36:52,585 TRACE org.hibernate.type.descriptor.sql.BasicBinder [pool-2-thread-2] binding parameter [14] as [VARCHAR] - [null]
+2022-04-08 01:36:52,585 TRACE org.hibernate.type.descriptor.sql.BasicBinder [pool-2-thread-2] binding parameter [15] as [VARCHAR] - [0x827196b1fefbc899c7f00656c2cb16865f827ed8]
+2022-04-08 01:36:52,585 TRACE org.hibernate.type.descriptor.sql.BasicBinder [pool-2-thread-2] binding parameter [16] as [NUMERIC] - [0]
+2022-04-08 01:36:52,586 TRACE org.hibernate.type.descriptor.sql.BasicBinder [pool-2-thread-2] binding parameter [17] as [VARCHAR] - [0x0]
+2022-04-08 01:36:52,586 TRACE org.hibernate.type.descriptor.sql.BasicBinder [pool-2-thread-2] binding parameter [18] as [BIGINT] - [66]
+2022-04-08 01:36:52,586 TRACE org.hibernate.type.descriptor.sql.BasicBinder [pool-2-thread-2] binding parameter [19] as [NUMERIC] - [0]
+2022-04-08 01:36:52,586 TRACE org.hibernate.type.descriptor.sql.BasicBinder [pool-2-thread-2] binding parameter [20] as [VARCHAR] - [0x4441dce52b56b75d6e5270c46705be6e63414c0946663e0e67aeb4a4033636b8]
+2022-04-08 01:37:37,548 DEBUG org.hibernate.engine.jdbc.spi.SqlStatementLogger [pool-2-thread-2] 
+    /* load com.ssafy.b105.entity.blockchain.Transaction */ select
+        transactio0_.hash as hash1_7_0_,
+        transactio0_.block_hash as block_ha2_7_0_,
+        transactio0_.block_number as block_nu3_7_0_,
+        transactio0_.creates as creates4_7_0_,
+        transactio0_.from_account as from_acc5_7_0_,
+        transactio0_.gas as gas6_7_0_,
+        transactio0_.gas_price as gas_pric7_7_0_,
+        transactio0_.input_value as input_va8_7_0_,
+        transactio0_.max_fee_per_gas as max_fee_9_7_0_,
+        transactio0_.max_priority_fee_per_gas as max_pri10_7_0_,
+        transactio0_.nonce as nonce11_7_0_,
+        transactio0_.public_key as public_12_7_0_,
+        transactio0_.r as r13_7_0_,
+        transactio0_.raw as raw14_7_0_,
+        transactio0_.s as s15_7_0_,
+        transactio0_.to_account as to_acco16_7_0_,
+        transactio0_.transaction_index as transac17_7_0_,
+        transactio0_.type as type18_7_0_,
+        transactio0_.v as v19_7_0_,
+        transactio0_.value as value20_7_0_ 
+    from
+        transaction transactio0_ 
+    where
+        transactio0_.hash=?
+2022-04-08 01:37:37,549 TRACE org.hibernate.type.descriptor.sql.BasicBinder [pool-2-thread-2] binding parameter [1] as [VARCHAR] - [0xf8bec4f859847e544edb0f3b1cd860efb5f034e7b2bb12f87b1088212b1b191f]
+2022-04-08 01:37:37,550 DEBUG org.hibernate.engine.jdbc.spi.SqlStatementLogger [pool-2-thread-2] 
+    /* insert com.ssafy.b105.entity.blockchain.Transaction
+        */ insert 
+        into
+            transaction
+            (block_hash, block_number, creates, from_account, gas, gas_price, input_value, max_fee_per_gas, max_priority_fee_per_gas, nonce, public_key, r, raw, s, to_account, transaction_index, type, v, value, hash) 
+        values
+            (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+2022-04-08 01:37:37,550 TRACE org.hibernate.type.descriptor.sql.BasicBinder [pool-2-thread-2] binding parameter [1] as [VARCHAR] - [0x6069ad13e926b3f326016089ceddedaa36e2427eca8aaebd2f63da0be788b7a7]
+2022-04-08 01:37:37,552 TRACE org.hibernate.type.descriptor.sql.BasicBinder [pool-2-thread-2] binding parameter [2] as [NUMERIC] - [72154]
+2022-04-08 01:37:37,552 TRACE org.hibernate.type.descriptor.sql.BasicBinder [pool-2-thread-2] binding parameter [3] as [VARCHAR] - [null]
+2022-04-08 01:37:37,552 TRACE org.hibernate.type.descriptor.sql.BasicBinder [pool-2-thread-2] binding parameter [4] as [VARCHAR] - [0xadeedb149af852ed80162ebd607205544c88f7bf]
+2022-04-08 01:37:37,552 TRACE org.hibernate.type.descriptor.sql.BasicBinder [pool-2-thread-2] binding parameter [5] as [NUMERIC] - [3000000]
+2022-04-08 01:37:37,552 TRACE org.hibernate.type.descriptor.sql.BasicBinder [pool-2-thread-2] binding parameter [6] as [NUMERIC] - [0]
+2022-04-08 01:37:37,552 TRACE org.hibernate.type.descriptor.sql.BasicBinder [pool-2-thread-2] binding parameter [7] as [CLOB] - [0xe69d849d0000000000000000000000006abbc4cd4be4dba60d4b0f7d05355fce1d60fc9a00000000000000000000000000000000000000000000003635c9adc5dea00000]
+2022-04-08 01:37:37,552 TRACE org.hibernate.type.descriptor.sql.BasicBinder [pool-2-thread-2] binding parameter [8] as [VARCHAR] - [null]
+2022-04-08 01:37:37,552 TRACE org.hibernate.type.descriptor.sql.BasicBinder [pool-2-thread-2] binding parameter [9] as [VARCHAR] - [null]
+2022-04-08 01:37:37,552 TRACE org.hibernate.type.descriptor.sql.BasicBinder [pool-2-thread-2] binding parameter [10] as [VARCHAR] - [0x206]
+2022-04-08 01:37:37,553 TRACE org.hibernate.type.descriptor.sql.BasicBinder [pool-2-thread-2] binding parameter [11] as [VARCHAR] - [null]
+2022-04-08 01:37:37,553 TRACE org.hibernate.type.descriptor.sql.BasicBinder [pool-2-thread-2] binding parameter [12] as [VARCHAR] - [0xcadc239c68f363f98d00c3152bb2395a972712d7d8ddb48e50d65914b93c8e90]
+2022-04-08 01:37:37,553 TRACE org.hibernate.type.descriptor.sql.BasicBinder [pool-2-thread-2] binding parameter [13] as [VARCHAR] - [null]
+2022-04-08 01:37:37,553 TRACE org.hibernate.type.descriptor.sql.BasicBinder [pool-2-thread-2] binding parameter [14] as [VARCHAR] - [null]
+2022-04-08 01:37:37,553 TRACE org.hibernate.type.descriptor.sql.BasicBinder [pool-2-thread-2] binding parameter [15] as [VARCHAR] - [0x463775dc879dd1f2d6b287047cd5924743a5812c]
+2022-04-08 01:37:37,553 TRACE org.hibernate.type.descriptor.sql.BasicBinder [pool-2-thread-2] binding parameter [16] as [NUMERIC] - [0]
+2022-04-08 01:37:37,553 TRACE org.hibernate.type.descriptor.sql.BasicBinder [pool-2-thread-2] binding parameter [17] as [VARCHAR] - [0x0]
+2022-04-08 01:37:37,553 TRACE org.hibernate.type.descriptor.sql.BasicBinder [pool-2-thread-2] binding parameter [18] as [BIGINT] - [66]
+2022-04-08 01:37:37,553 TRACE org.hibernate.type.descriptor.sql.BasicBinder [pool-2-thread-2] binding parameter [19] as [NUMERIC] - [0]
+2022-04-08 01:37:37,553 TRACE org.hibernate.type.descriptor.sql.BasicBinder [pool-2-thread-2] binding parameter [20] as [VARCHAR] - [0xf8bec4f859847e544edb0f3b1cd860efb5f034e7b2bb12f87b1088212b1b191f]
+2022-04-08 01:42:37,551 DEBUG org.hibernate.engine.jdbc.spi.SqlStatementLogger [pool-2-thread-2] 
+    /* load com.ssafy.b105.entity.blockchain.Transaction */ select
+        transactio0_.hash as hash1_7_0_,
+        transactio0_.block_hash as block_ha2_7_0_,
+        transactio0_.block_number as block_nu3_7_0_,
+        transactio0_.creates as creates4_7_0_,
+        transactio0_.from_account as from_acc5_7_0_,
+        transactio0_.gas as gas6_7_0_,
+        transactio0_.gas_price as gas_pric7_7_0_,
+        transactio0_.input_value as input_va8_7_0_,
+        transactio0_.max_fee_per_gas as max_fee_9_7_0_,
+        transactio0_.max_priority_fee_per_gas as max_pri10_7_0_,
+        transactio0_.nonce as nonce11_7_0_,
+        transactio0_.public_key as public_12_7_0_,
+        transactio0_.r as r13_7_0_,
+        transactio0_.raw as raw14_7_0_,
+        transactio0_.s as s15_7_0_,
+        transactio0_.to_account as to_acco16_7_0_,
+        transactio0_.transaction_index as transac17_7_0_,
+        transactio0_.type as type18_7_0_,
+        transactio0_.v as v19_7_0_,
+        transactio0_.value as value20_7_0_ 
+    from
+        transaction transactio0_ 
+    where
+        transactio0_.hash=?
+2022-04-08 01:42:37,552 TRACE org.hibernate.type.descriptor.sql.BasicBinder [pool-2-thread-2] binding parameter [1] as [VARCHAR] - [0xb4f09aa00b2dfbc66f11f8b12e3ceb157e4c70444a5be0db29302e19d272d53d]
+2022-04-08 01:42:37,554 DEBUG org.hibernate.engine.jdbc.spi.SqlStatementLogger [pool-2-thread-2] 
+    /* insert com.ssafy.b105.entity.blockchain.Transaction
+        */ insert 
+        into
+            transaction
+            (block_hash, block_number, creates, from_account, gas, gas_price, input_value, max_fee_per_gas, max_priority_fee_per_gas, nonce, public_key, r, raw, s, to_account, transaction_index, type, v, value, hash) 
+        values
+            (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+2022-04-08 01:42:37,555 TRACE org.hibernate.type.descriptor.sql.BasicBinder [pool-2-thread-2] binding parameter [1] as [VARCHAR] - [0x6976cf0826f8587988b7946825dfa9413e7820e79f71741f40b3874dbeb4b4c0]
+2022-04-08 01:42:37,555 TRACE org.hibernate.type.descriptor.sql.BasicBinder [pool-2-thread-2] binding parameter [2] as [NUMERIC] - [72178]
+2022-04-08 01:42:37,555 TRACE org.hibernate.type.descriptor.sql.BasicBinder [pool-2-thread-2] binding parameter [3] as [VARCHAR] - [null]
+2022-04-08 01:42:37,555 TRACE org.hibernate.type.descriptor.sql.BasicBinder [pool-2-thread-2] binding parameter [4] as [VARCHAR] - [0xadeedb149af852ed80162ebd607205544c88f7bf]
+2022-04-08 01:42:37,555 TRACE org.hibernate.type.descriptor.sql.BasicBinder [pool-2-thread-2] binding parameter [5] as [NUMERIC] - [3000000]
+2022-04-08 01:42:37,555 TRACE org.hibernate.type.descriptor.sql.BasicBinder [pool-2-thread-2] binding parameter [6] as [NUMERIC] - [0]
+2022-04-08 01:42:37,556 TRACE org.hibernate.type.descriptor.sql.BasicBinder [pool-2-thread-2] binding parameter [7] as [CLOB] - [0xdbcaef8b0000000000000000000000006abbc4cd4be4dba60d4b0f7d05355fce1d60fc9a00000000000000000000000000000000000000000000021e19e0c9bab2400000]
+2022-04-08 01:42:37,556 TRACE org.hibernate.type.descriptor.sql.BasicBinder [pool-2-thread-2] binding parameter [8] as [VARCHAR] - [null]
+2022-04-08 01:42:37,557 TRACE org.hibernate.type.descriptor.sql.BasicBinder [pool-2-thread-2] binding parameter [9] as [VARCHAR] - [null]
+2022-04-08 01:42:37,557 TRACE org.hibernate.type.descriptor.sql.BasicBinder [pool-2-thread-2] binding parameter [10] as [VARCHAR] - [0x207]
+2022-04-08 01:42:37,557 TRACE org.hibernate.type.descriptor.sql.BasicBinder [pool-2-thread-2] binding parameter [11] as [VARCHAR] - [null]
+2022-04-08 01:42:37,557 TRACE org.hibernate.type.descriptor.sql.BasicBinder [pool-2-thread-2] binding parameter [12] as [VARCHAR] - [0xa2ad221ec95eb206ec1f3c782b5aa90115698346546889950afb92818025faf5]
+2022-04-08 01:42:37,557 TRACE org.hibernate.type.descriptor.sql.BasicBinder [pool-2-thread-2] binding parameter [13] as [VARCHAR] - [null]
+2022-04-08 01:42:37,557 TRACE org.hibernate.type.descriptor.sql.BasicBinder [pool-2-thread-2] binding parameter [14] as [VARCHAR] - [null]
+2022-04-08 01:42:37,558 TRACE org.hibernate.type.descriptor.sql.BasicBinder [pool-2-thread-2] binding parameter [15] as [VARCHAR] - [0x827196b1fefbc899c7f00656c2cb16865f827ed8]
+2022-04-08 01:42:37,558 TRACE org.hibernate.type.descriptor.sql.BasicBinder [pool-2-thread-2] binding parameter [16] as [NUMERIC] - [0]
+2022-04-08 01:42:37,558 TRACE org.hibernate.type.descriptor.sql.BasicBinder [pool-2-thread-2] binding parameter [17] as [VARCHAR] - [0x0]
+2022-04-08 01:42:37,558 TRACE org.hibernate.type.descriptor.sql.BasicBinder [pool-2-thread-2] binding parameter [18] as [BIGINT] - [66]
+2022-04-08 01:42:37,558 TRACE org.hibernate.type.descriptor.sql.BasicBinder [pool-2-thread-2] binding parameter [19] as [NUMERIC] - [0]
+2022-04-08 01:42:37,559 TRACE org.hibernate.type.descriptor.sql.BasicBinder [pool-2-thread-2] binding parameter [20] as [VARCHAR] - [0xb4f09aa00b2dfbc66f11f8b12e3ceb157e4c70444a5be0db29302e19d272d53d]
+2022-04-08 01:43:07,546 DEBUG org.hibernate.engine.jdbc.spi.SqlStatementLogger [pool-2-thread-2] 
+    /* load com.ssafy.b105.entity.blockchain.Transaction */ select
+        transactio0_.hash as hash1_7_0_,
+        transactio0_.block_hash as block_ha2_7_0_,
+        transactio0_.block_number as block_nu3_7_0_,
+        transactio0_.creates as creates4_7_0_,
+        transactio0_.from_account as from_acc5_7_0_,
+        transactio0_.gas as gas6_7_0_,
+        transactio0_.gas_price as gas_pric7_7_0_,
+        transactio0_.input_value as input_va8_7_0_,
+        transactio0_.max_fee_per_gas as max_fee_9_7_0_,
+        transactio0_.max_priority_fee_per_gas as max_pri10_7_0_,
+        transactio0_.nonce as nonce11_7_0_,
+        transactio0_.public_key as public_12_7_0_,
+        transactio0_.r as r13_7_0_,
+        transactio0_.raw as raw14_7_0_,
+        transactio0_.s as s15_7_0_,
+        transactio0_.to_account as to_acco16_7_0_,
+        transactio0_.transaction_index as transac17_7_0_,
+        transactio0_.type as type18_7_0_,
+        transactio0_.v as v19_7_0_,
+        transactio0_.value as value20_7_0_ 
+    from
+        transaction transactio0_ 
+    where
+        transactio0_.hash=?
+2022-04-08 01:43:07,547 TRACE org.hibernate.type.descriptor.sql.BasicBinder [pool-2-thread-2] binding parameter [1] as [VARCHAR] - [0x8c175813bf08e53df685db48a88c7618309bf91239f1668a8d3bf8b2ac4b3ef0]
+2022-04-08 01:43:07,548 DEBUG org.hibernate.engine.jdbc.spi.SqlStatementLogger [pool-2-thread-2] 
+    /* insert com.ssafy.b105.entity.blockchain.Transaction
+        */ insert 
+        into
+            transaction
+            (block_hash, block_number, creates, from_account, gas, gas_price, input_value, max_fee_per_gas, max_priority_fee_per_gas, nonce, public_key, r, raw, s, to_account, transaction_index, type, v, value, hash) 
+        values
+            (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+2022-04-08 01:43:07,549 TRACE org.hibernate.type.descriptor.sql.BasicBinder [pool-2-thread-2] binding parameter [1] as [VARCHAR] - [0xd63c931ceb16bc5edc2aa42710027fcda369ccba0ee0639b5c42a68910dcb3ed]
+2022-04-08 01:43:07,549 TRACE org.hibernate.type.descriptor.sql.BasicBinder [pool-2-thread-2] binding parameter [2] as [NUMERIC] - [72181]
+2022-04-08 01:43:07,549 TRACE org.hibernate.type.descriptor.sql.BasicBinder [pool-2-thread-2] binding parameter [3] as [VARCHAR] - [null]
+2022-04-08 01:43:07,549 TRACE org.hibernate.type.descriptor.sql.BasicBinder [pool-2-thread-2] binding parameter [4] as [VARCHAR] - [0xadeedb149af852ed80162ebd607205544c88f7bf]
+2022-04-08 01:43:07,549 TRACE org.hibernate.type.descriptor.sql.BasicBinder [pool-2-thread-2] binding parameter [5] as [NUMERIC] - [3000000]
+2022-04-08 01:43:07,549 TRACE org.hibernate.type.descriptor.sql.BasicBinder [pool-2-thread-2] binding parameter [6] as [NUMERIC] - [0]
+2022-04-08 01:43:07,550 TRACE org.hibernate.type.descriptor.sql.BasicBinder [pool-2-thread-2] binding parameter [7] as [CLOB] - [0xe69d849d0000000000000000000000006abbc4cd4be4dba60d4b0f7d05355fce1d60fc9a00000000000000000000000000000000000000000000021e19e0c9bab2400000]
+2022-04-08 01:43:07,550 TRACE org.hibernate.type.descriptor.sql.BasicBinder [pool-2-thread-2] binding parameter [8] as [VARCHAR] - [null]
+2022-04-08 01:43:07,550 TRACE org.hibernate.type.descriptor.sql.BasicBinder [pool-2-thread-2] binding parameter [9] as [VARCHAR] - [null]
+2022-04-08 01:43:07,550 TRACE org.hibernate.type.descriptor.sql.BasicBinder [pool-2-thread-2] binding parameter [10] as [VARCHAR] - [0x208]
+2022-04-08 01:43:07,550 TRACE org.hibernate.type.descriptor.sql.BasicBinder [pool-2-thread-2] binding parameter [11] as [VARCHAR] - [null]
+2022-04-08 01:43:07,550 TRACE org.hibernate.type.descriptor.sql.BasicBinder [pool-2-thread-2] binding parameter [12] as [VARCHAR] - [0xd4bd21561718b2b4066cf44300a2eeab41183c8535d7c650b58599384cd9cc46]
+2022-04-08 01:43:07,550 TRACE org.hibernate.type.descriptor.sql.BasicBinder [pool-2-thread-2] binding parameter [13] as [VARCHAR] - [null]
+2022-04-08 01:43:07,550 TRACE org.hibernate.type.descriptor.sql.BasicBinder [pool-2-thread-2] binding parameter [14] as [VARCHAR] - [null]
+2022-04-08 01:43:07,551 TRACE org.hibernate.type.descriptor.sql.BasicBinder [pool-2-thread-2] binding parameter [15] as [VARCHAR] - [0xfb899483a74b03f346e986b6dc6787ea190b298a]
+2022-04-08 01:43:07,551 TRACE org.hibernate.type.descriptor.sql.BasicBinder [pool-2-thread-2] binding parameter [16] as [NUMERIC] - [0]
+2022-04-08 01:43:07,551 TRACE org.hibernate.type.descriptor.sql.BasicBinder [pool-2-thread-2] binding parameter [17] as [VARCHAR] - [0x0]
+2022-04-08 01:43:07,551 TRACE org.hibernate.type.descriptor.sql.BasicBinder [pool-2-thread-2] binding parameter [18] as [BIGINT] - [66]
+2022-04-08 01:43:07,551 TRACE org.hibernate.type.descriptor.sql.BasicBinder [pool-2-thread-2] binding parameter [19] as [NUMERIC] - [0]
+2022-04-08 01:43:07,551 TRACE org.hibernate.type.descriptor.sql.BasicBinder [pool-2-thread-2] binding parameter [20] as [VARCHAR] - [0x8c175813bf08e53df685db48a88c7618309bf91239f1668a8d3bf8b2ac4b3ef0]
+2022-04-08 01:47:07,548 DEBUG org.hibernate.engine.jdbc.spi.SqlStatementLogger [pool-2-thread-2] 
+    /* load com.ssafy.b105.entity.blockchain.Transaction */ select
+        transactio0_.hash as hash1_7_0_,
+        transactio0_.block_hash as block_ha2_7_0_,
+        transactio0_.block_number as block_nu3_7_0_,
+        transactio0_.creates as creates4_7_0_,
+        transactio0_.from_account as from_acc5_7_0_,
+        transactio0_.gas as gas6_7_0_,
+        transactio0_.gas_price as gas_pric7_7_0_,
+        transactio0_.input_value as input_va8_7_0_,
+        transactio0_.max_fee_per_gas as max_fee_9_7_0_,
+        transactio0_.max_priority_fee_per_gas as max_pri10_7_0_,
+        transactio0_.nonce as nonce11_7_0_,
+        transactio0_.public_key as public_12_7_0_,
+        transactio0_.r as r13_7_0_,
+        transactio0_.raw as raw14_7_0_,
+        transactio0_.s as s15_7_0_,
+        transactio0_.to_account as to_acco16_7_0_,
+        transactio0_.transaction_index as transac17_7_0_,
+        transactio0_.type as type18_7_0_,
+        transactio0_.v as v19_7_0_,
+        transactio0_.value as value20_7_0_ 
+    from
+        transaction transactio0_ 
+    where
+        transactio0_.hash=?
+2022-04-08 01:47:07,557 TRACE org.hibernate.type.descriptor.sql.BasicBinder [pool-2-thread-2] binding parameter [1] as [VARCHAR] - [0x34ffa6ddf08493b05acae02c396939ae1a9e2158ce672da33f6dd0d450b63cde]
+2022-04-08 01:47:07,560 DEBUG org.hibernate.engine.jdbc.spi.SqlStatementLogger [pool-2-thread-2] 
+    /* insert com.ssafy.b105.entity.blockchain.Transaction
+        */ insert 
+        into
+            transaction
+            (block_hash, block_number, creates, from_account, gas, gas_price, input_value, max_fee_per_gas, max_priority_fee_per_gas, nonce, public_key, r, raw, s, to_account, transaction_index, type, v, value, hash) 
+        values
+            (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+2022-04-08 01:47:07,561 TRACE org.hibernate.type.descriptor.sql.BasicBinder [pool-2-thread-2] binding parameter [1] as [VARCHAR] - [0xaf675ae950de40edb15bf599d774f440f0db10bb91cc1fd24eeb1d857cbf0849]
+2022-04-08 01:47:07,561 TRACE org.hibernate.type.descriptor.sql.BasicBinder [pool-2-thread-2] binding parameter [2] as [NUMERIC] - [72206]
+2022-04-08 01:47:07,563 TRACE org.hibernate.type.descriptor.sql.BasicBinder [pool-2-thread-2] binding parameter [3] as [VARCHAR] - [null]
+2022-04-08 01:47:07,563 TRACE org.hibernate.type.descriptor.sql.BasicBinder [pool-2-thread-2] binding parameter [4] as [VARCHAR] - [0xadeedb149af852ed80162ebd607205544c88f7bf]
+2022-04-08 01:47:07,563 TRACE org.hibernate.type.descriptor.sql.BasicBinder [pool-2-thread-2] binding parameter [5] as [NUMERIC] - [3000000]
+2022-04-08 01:47:07,563 TRACE org.hibernate.type.descriptor.sql.BasicBinder [pool-2-thread-2] binding parameter [6] as [NUMERIC] - [0]
+2022-04-08 01:47:07,563 TRACE org.hibernate.type.descriptor.sql.BasicBinder [pool-2-thread-2] binding parameter [7] as [CLOB] - [0x5a6b26ba000000000000000000000000e827d581ab9780cd6559e2d7099160252f67b6e100000000000000000000000000000000000000000000d256e6a1270cb3d00000]
+2022-04-08 01:47:07,563 TRACE org.hibernate.type.descriptor.sql.BasicBinder [pool-2-thread-2] binding parameter [8] as [VARCHAR] - [null]
+2022-04-08 01:47:07,563 TRACE org.hibernate.type.descriptor.sql.BasicBinder [pool-2-thread-2] binding parameter [9] as [VARCHAR] - [null]
+2022-04-08 01:47:07,564 TRACE org.hibernate.type.descriptor.sql.BasicBinder [pool-2-thread-2] binding parameter [10] as [VARCHAR] - [0x209]
+2022-04-08 01:47:07,564 TRACE org.hibernate.type.descriptor.sql.BasicBinder [pool-2-thread-2] binding parameter [11] as [VARCHAR] - [null]
+2022-04-08 01:47:07,564 TRACE org.hibernate.type.descriptor.sql.BasicBinder [pool-2-thread-2] binding parameter [12] as [VARCHAR] - [0x52870aac3d1002984bae8d848038d498190fea89f17172e8c24a34a798ddcc78]
+2022-04-08 01:47:07,564 TRACE org.hibernate.type.descriptor.sql.BasicBinder [pool-2-thread-2] binding parameter [13] as [VARCHAR] - [null]
+2022-04-08 01:47:07,564 TRACE org.hibernate.type.descriptor.sql.BasicBinder [pool-2-thread-2] binding parameter [14] as [VARCHAR] - [null]
+2022-04-08 01:47:07,564 TRACE org.hibernate.type.descriptor.sql.BasicBinder [pool-2-thread-2] binding parameter [15] as [VARCHAR] - [0x86e9413ffe868f1688d3992588ca2d337b307121]
+2022-04-08 01:47:07,564 TRACE org.hibernate.type.descriptor.sql.BasicBinder [pool-2-thread-2] binding parameter [16] as [NUMERIC] - [0]
+2022-04-08 01:47:07,564 TRACE org.hibernate.type.descriptor.sql.BasicBinder [pool-2-thread-2] binding parameter [17] as [VARCHAR] - [0x0]
+2022-04-08 01:47:07,564 TRACE org.hibernate.type.descriptor.sql.BasicBinder [pool-2-thread-2] binding parameter [18] as [BIGINT] - [66]
+2022-04-08 01:47:07,565 TRACE org.hibernate.type.descriptor.sql.BasicBinder [pool-2-thread-2] binding parameter [19] as [NUMERIC] - [0]
+2022-04-08 01:47:07,565 TRACE org.hibernate.type.descriptor.sql.BasicBinder [pool-2-thread-2] binding parameter [20] as [VARCHAR] - [0x34ffa6ddf08493b05acae02c396939ae1a9e2158ce672da33f6dd0d450b63cde]
+2022-04-08 01:47:22,561 DEBUG org.hibernate.engine.jdbc.spi.SqlStatementLogger [pool-2-thread-2] 
+    /* load com.ssafy.b105.entity.blockchain.Transaction */ select
+        transactio0_.hash as hash1_7_0_,
+        transactio0_.block_hash as block_ha2_7_0_,
+        transactio0_.block_number as block_nu3_7_0_,
+        transactio0_.creates as creates4_7_0_,
+        transactio0_.from_account as from_acc5_7_0_,
+        transactio0_.gas as gas6_7_0_,
+        transactio0_.gas_price as gas_pric7_7_0_,
+        transactio0_.input_value as input_va8_7_0_,
+        transactio0_.max_fee_per_gas as max_fee_9_7_0_,
+        transactio0_.max_priority_fee_per_gas as max_pri10_7_0_,
+        transactio0_.nonce as nonce11_7_0_,
+        transactio0_.public_key as public_12_7_0_,
+        transactio0_.r as r13_7_0_,
+        transactio0_.raw as raw14_7_0_,
+        transactio0_.s as s15_7_0_,
+        transactio0_.to_account as to_acco16_7_0_,
+        transactio0_.transaction_index as transac17_7_0_,
+        transactio0_.type as type18_7_0_,
+        transactio0_.v as v19_7_0_,
+        transactio0_.value as value20_7_0_ 
+    from
+        transaction transactio0_ 
+    where
+        transactio0_.hash=?
+2022-04-08 01:47:22,562 TRACE org.hibernate.type.descriptor.sql.BasicBinder [pool-2-thread-2] binding parameter [1] as [VARCHAR] - [0xd2fa04369563367de338efac2657a6971589094f83bc9ea2e86602a953a94b13]
+2022-04-08 01:47:22,564 DEBUG org.hibernate.engine.jdbc.spi.SqlStatementLogger [pool-2-thread-2] 
+    /* insert com.ssafy.b105.entity.blockchain.Transaction
+        */ insert 
+        into
+            transaction
+            (block_hash, block_number, creates, from_account, gas, gas_price, input_value, max_fee_per_gas, max_priority_fee_per_gas, nonce, public_key, r, raw, s, to_account, transaction_index, type, v, value, hash) 
+        values
+            (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+2022-04-08 01:47:22,565 TRACE org.hibernate.type.descriptor.sql.BasicBinder [pool-2-thread-2] binding parameter [1] as [VARCHAR] - [0xb24e195db106e5bde60c29e1dbadcafebfed43fe0b49de6444b5e37252fc4a1f]
+2022-04-08 01:47:22,565 TRACE org.hibernate.type.descriptor.sql.BasicBinder [pool-2-thread-2] binding parameter [2] as [NUMERIC] - [72208]
+2022-04-08 01:47:22,565 TRACE org.hibernate.type.descriptor.sql.BasicBinder [pool-2-thread-2] binding parameter [3] as [VARCHAR] - [null]
+2022-04-08 01:47:22,565 TRACE org.hibernate.type.descriptor.sql.BasicBinder [pool-2-thread-2] binding parameter [4] as [VARCHAR] - [0xadeedb149af852ed80162ebd607205544c88f7bf]
+2022-04-08 01:47:22,565 TRACE org.hibernate.type.descriptor.sql.BasicBinder [pool-2-thread-2] binding parameter [5] as [NUMERIC] - [3000000]
+2022-04-08 01:47:22,565 TRACE org.hibernate.type.descriptor.sql.BasicBinder [pool-2-thread-2] binding parameter [6] as [NUMERIC] - [0]
+2022-04-08 01:47:22,565 TRACE org.hibernate.type.descriptor.sql.BasicBinder [pool-2-thread-2] binding parameter [7] as [CLOB] - [0x5a6b26ba000000000000000000000000e827d581ab9780cd6559e2d7099160252f67b6e100000000000000000000000000000000000000000000d256e6a1270cb3d00000]
+2022-04-08 01:47:22,565 TRACE org.hibernate.type.descriptor.sql.BasicBinder [pool-2-thread-2] binding parameter [8] as [VARCHAR] - [null]
+2022-04-08 01:47:22,565 TRACE org.hibernate.type.descriptor.sql.BasicBinder [pool-2-thread-2] binding parameter [9] as [VARCHAR] - [null]
+2022-04-08 01:47:22,565 TRACE org.hibernate.type.descriptor.sql.BasicBinder [pool-2-thread-2] binding parameter [10] as [VARCHAR] - [0x20a]
+2022-04-08 01:47:22,566 TRACE org.hibernate.type.descriptor.sql.BasicBinder [pool-2-thread-2] binding parameter [11] as [VARCHAR] - [null]
+2022-04-08 01:47:22,566 TRACE org.hibernate.type.descriptor.sql.BasicBinder [pool-2-thread-2] binding parameter [12] as [VARCHAR] - [0xdb338bbf344ed36cc22c71a8416f18597d48fadfbc203575a2604946afb11353]
+2022-04-08 01:47:22,566 TRACE org.hibernate.type.descriptor.sql.BasicBinder [pool-2-thread-2] binding parameter [13] as [VARCHAR] - [null]
+2022-04-08 01:47:22,566 TRACE org.hibernate.type.descriptor.sql.BasicBinder [pool-2-thread-2] binding parameter [14] as [VARCHAR] - [null]
+2022-04-08 01:47:22,566 TRACE org.hibernate.type.descriptor.sql.BasicBinder [pool-2-thread-2] binding parameter [15] as [VARCHAR] - [0x86e9413ffe868f1688d3992588ca2d337b307121]
+2022-04-08 01:47:22,566 TRACE org.hibernate.type.descriptor.sql.BasicBinder [pool-2-thread-2] binding parameter [16] as [NUMERIC] - [0]
+2022-04-08 01:47:22,566 TRACE org.hibernate.type.descriptor.sql.BasicBinder [pool-2-thread-2] binding parameter [17] as [VARCHAR] - [0x0]
+2022-04-08 01:47:22,566 TRACE org.hibernate.type.descriptor.sql.BasicBinder [pool-2-thread-2] binding parameter [18] as [BIGINT] - [65]
+2022-04-08 01:47:22,566 TRACE org.hibernate.type.descriptor.sql.BasicBinder [pool-2-thread-2] binding parameter [19] as [NUMERIC] - [0]
+2022-04-08 01:47:22,567 TRACE org.hibernate.type.descriptor.sql.BasicBinder [pool-2-thread-2] binding parameter [20] as [VARCHAR] - [0xd2fa04369563367de338efac2657a6971589094f83bc9ea2e86602a953a94b13]
+2022-04-08 01:48:22,586 DEBUG org.hibernate.engine.jdbc.spi.SqlStatementLogger [pool-2-thread-2] 
+    /* load com.ssafy.b105.entity.blockchain.Transaction */ select
+        transactio0_.hash as hash1_7_0_,
+        transactio0_.block_hash as block_ha2_7_0_,
+        transactio0_.block_number as block_nu3_7_0_,
+        transactio0_.creates as creates4_7_0_,
+        transactio0_.from_account as from_acc5_7_0_,
+        transactio0_.gas as gas6_7_0_,
+        transactio0_.gas_price as gas_pric7_7_0_,
+        transactio0_.input_value as input_va8_7_0_,
+        transactio0_.max_fee_per_gas as max_fee_9_7_0_,
+        transactio0_.max_priority_fee_per_gas as max_pri10_7_0_,
+        transactio0_.nonce as nonce11_7_0_,
+        transactio0_.public_key as public_12_7_0_,
+        transactio0_.r as r13_7_0_,
+        transactio0_.raw as raw14_7_0_,
+        transactio0_.s as s15_7_0_,
+        transactio0_.to_account as to_acco16_7_0_,
+        transactio0_.transaction_index as transac17_7_0_,
+        transactio0_.type as type18_7_0_,
+        transactio0_.v as v19_7_0_,
+        transactio0_.value as value20_7_0_ 
+    from
+        transaction transactio0_ 
+    where
+        transactio0_.hash=?
+2022-04-08 01:48:22,586 TRACE org.hibernate.type.descriptor.sql.BasicBinder [pool-2-thread-2] binding parameter [1] as [VARCHAR] - [0x3adf0dabe4dd880c4ecb621c561d040b68efc87a15dc7ea34634458920c66c96]
+2022-04-08 01:48:22,588 DEBUG org.hibernate.engine.jdbc.spi.SqlStatementLogger [pool-2-thread-2] 
+    /* insert com.ssafy.b105.entity.blockchain.Transaction
+        */ insert 
+        into
+            transaction
+            (block_hash, block_number, creates, from_account, gas, gas_price, input_value, max_fee_per_gas, max_priority_fee_per_gas, nonce, public_key, r, raw, s, to_account, transaction_index, type, v, value, hash) 
+        values
+            (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+2022-04-08 01:48:22,588 TRACE org.hibernate.type.descriptor.sql.BasicBinder [pool-2-thread-2] binding parameter [1] as [VARCHAR] - [0x77c51dbad7c5aa0a9502210733c6c33452d872d55274fa2c90fb3e9dbc472847]
+2022-04-08 01:48:22,588 TRACE org.hibernate.type.descriptor.sql.BasicBinder [pool-2-thread-2] binding parameter [2] as [NUMERIC] - [72214]
+2022-04-08 01:48:22,588 TRACE org.hibernate.type.descriptor.sql.BasicBinder [pool-2-thread-2] binding parameter [3] as [VARCHAR] - [null]
+2022-04-08 01:48:22,588 TRACE org.hibernate.type.descriptor.sql.BasicBinder [pool-2-thread-2] binding parameter [4] as [VARCHAR] - [0xadeedb149af852ed80162ebd607205544c88f7bf]
+2022-04-08 01:48:22,588 TRACE org.hibernate.type.descriptor.sql.BasicBinder [pool-2-thread-2] binding parameter [5] as [NUMERIC] - [3000000]
+2022-04-08 01:48:22,588 TRACE org.hibernate.type.descriptor.sql.BasicBinder [pool-2-thread-2] binding parameter [6] as [NUMERIC] - [0]
+2022-04-08 01:48:22,589 TRACE org.hibernate.type.descriptor.sql.BasicBinder [pool-2-thread-2] binding parameter [7] as [CLOB] - [0x5a6b26ba000000000000000000000000e827d581ab9780cd6559e2d7099160252f67b6e100000000000000000000000000000000000000000000d256e6a1270cb3d00000]
+2022-04-08 01:48:22,589 TRACE org.hibernate.type.descriptor.sql.BasicBinder [pool-2-thread-2] binding parameter [8] as [VARCHAR] - [null]
+2022-04-08 01:48:22,589 TRACE org.hibernate.type.descriptor.sql.BasicBinder [pool-2-thread-2] binding parameter [9] as [VARCHAR] - [null]
+2022-04-08 01:48:22,589 TRACE org.hibernate.type.descriptor.sql.BasicBinder [pool-2-thread-2] binding parameter [10] as [VARCHAR] - [0x20b]
+2022-04-08 01:48:22,589 TRACE org.hibernate.type.descriptor.sql.BasicBinder [pool-2-thread-2] binding parameter [11] as [VARCHAR] - [null]
+2022-04-08 01:48:22,589 TRACE org.hibernate.type.descriptor.sql.BasicBinder [pool-2-thread-2] binding parameter [12] as [VARCHAR] - [0xe43756afe0132fa4a701b4ae873468ffe99e7d8e5a28755a9cbdc4a60320804e]
+2022-04-08 01:48:22,589 TRACE org.hibernate.type.descriptor.sql.BasicBinder [pool-2-thread-2] binding parameter [13] as [VARCHAR] - [null]
+2022-04-08 01:48:22,589 TRACE org.hibernate.type.descriptor.sql.BasicBinder [pool-2-thread-2] binding parameter [14] as [VARCHAR] - [null]
+2022-04-08 01:48:22,589 TRACE org.hibernate.type.descriptor.sql.BasicBinder [pool-2-thread-2] binding parameter [15] as [VARCHAR] - [0x86e9413ffe868f1688d3992588ca2d337b307121]
+2022-04-08 01:48:22,589 TRACE org.hibernate.type.descriptor.sql.BasicBinder [pool-2-thread-2] binding parameter [16] as [NUMERIC] - [0]
+2022-04-08 01:48:22,589 TRACE org.hibernate.type.descriptor.sql.BasicBinder [pool-2-thread-2] binding parameter [17] as [VARCHAR] - [0x0]
+2022-04-08 01:48:22,589 TRACE org.hibernate.type.descriptor.sql.BasicBinder [pool-2-thread-2] binding parameter [18] as [BIGINT] - [65]
+2022-04-08 01:48:22,589 TRACE org.hibernate.type.descriptor.sql.BasicBinder [pool-2-thread-2] binding parameter [19] as [NUMERIC] - [0]
+2022-04-08 01:48:22,589 TRACE org.hibernate.type.descriptor.sql.BasicBinder [pool-2-thread-2] binding parameter [20] as [VARCHAR] - [0x3adf0dabe4dd880c4ecb621c561d040b68efc87a15dc7ea34634458920c66c96]
+2022-04-08 03:11:52,574 DEBUG org.hibernate.engine.jdbc.spi.SqlStatementLogger [pool-2-thread-2] 
+    /* load com.ssafy.b105.entity.blockchain.Transaction */ select
+        transactio0_.hash as hash1_7_0_,
+        transactio0_.block_hash as block_ha2_7_0_,
+        transactio0_.block_number as block_nu3_7_0_,
+        transactio0_.creates as creates4_7_0_,
+        transactio0_.from_account as from_acc5_7_0_,
+        transactio0_.gas as gas6_7_0_,
+        transactio0_.gas_price as gas_pric7_7_0_,
+        transactio0_.input_value as input_va8_7_0_,
+        transactio0_.max_fee_per_gas as max_fee_9_7_0_,
+        transactio0_.max_priority_fee_per_gas as max_pri10_7_0_,
+        transactio0_.nonce as nonce11_7_0_,
+        transactio0_.public_key as public_12_7_0_,
+        transactio0_.r as r13_7_0_,
+        transactio0_.raw as raw14_7_0_,
+        transactio0_.s as s15_7_0_,
+        transactio0_.to_account as to_acco16_7_0_,
+        transactio0_.transaction_index as transac17_7_0_,
+        transactio0_.type as type18_7_0_,
+        transactio0_.v as v19_7_0_,
+        transactio0_.value as value20_7_0_ 
+    from
+        transaction transactio0_ 
+    where
+        transactio0_.hash=?
+2022-04-08 03:11:52,579 TRACE org.hibernate.type.descriptor.sql.BasicBinder [pool-2-thread-2] binding parameter [1] as [VARCHAR] - [0xd3ee1d7f411e66ae5e9d88cae865b173ecee4627d6446eba6f41dfe3a2088ab6]
+2022-04-08 03:11:52,585 DEBUG org.hibernate.engine.jdbc.spi.SqlStatementLogger [pool-2-thread-2] 
+    /* insert com.ssafy.b105.entity.blockchain.Transaction
+        */ insert 
+        into
+            transaction
+            (block_hash, block_number, creates, from_account, gas, gas_price, input_value, max_fee_per_gas, max_priority_fee_per_gas, nonce, public_key, r, raw, s, to_account, transaction_index, type, v, value, hash) 
+        values
+            (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+2022-04-08 03:11:52,586 TRACE org.hibernate.type.descriptor.sql.BasicBinder [pool-2-thread-2] binding parameter [1] as [VARCHAR] - [0x21dab891addbe057d9f62ca289f4ee90f766b0c145cb7c25a8c5f58e9a0cdff8]
+2022-04-08 03:11:52,586 TRACE org.hibernate.type.descriptor.sql.BasicBinder [pool-2-thread-2] binding parameter [2] as [NUMERIC] - [72591]
+2022-04-08 03:11:52,586 TRACE org.hibernate.type.descriptor.sql.BasicBinder [pool-2-thread-2] binding parameter [3] as [VARCHAR] - [null]
+2022-04-08 03:11:52,586 TRACE org.hibernate.type.descriptor.sql.BasicBinder [pool-2-thread-2] binding parameter [4] as [VARCHAR] - [0xadeedb149af852ed80162ebd607205544c88f7bf]
+2022-04-08 03:11:52,586 TRACE org.hibernate.type.descriptor.sql.BasicBinder [pool-2-thread-2] binding parameter [5] as [NUMERIC] - [3000000]
+2022-04-08 03:11:52,587 TRACE org.hibernate.type.descriptor.sql.BasicBinder [pool-2-thread-2] binding parameter [6] as [NUMERIC] - [0]
+2022-04-08 03:11:52,587 TRACE org.hibernate.type.descriptor.sql.BasicBinder [pool-2-thread-2] binding parameter [7] as [CLOB] - [0xdbcaef8b0000000000000000000000005529fa8e6f672ea012867f7c82dc16b0e3004ea200000000000000000000000000000000000000000000001b1ae4d6e2ef500000]
+2022-04-08 03:11:52,587 TRACE org.hibernate.type.descriptor.sql.BasicBinder [pool-2-thread-2] binding parameter [8] as [VARCHAR] - [null]
+2022-04-08 03:11:52,587 TRACE org.hibernate.type.descriptor.sql.BasicBinder [pool-2-thread-2] binding parameter [9] as [VARCHAR] - [null]
+2022-04-08 03:11:52,587 TRACE org.hibernate.type.descriptor.sql.BasicBinder [pool-2-thread-2] binding parameter [10] as [VARCHAR] - [0x20c]
+2022-04-08 03:11:52,587 TRACE org.hibernate.type.descriptor.sql.BasicBinder [pool-2-thread-2] binding parameter [11] as [VARCHAR] - [null]
+2022-04-08 03:11:52,587 TRACE org.hibernate.type.descriptor.sql.BasicBinder [pool-2-thread-2] binding parameter [12] as [VARCHAR] - [0xbc5e19a947aa10ca87e0e36facaf96ac85a6cac991fadac962919279792ea757]
+2022-04-08 03:11:52,587 TRACE org.hibernate.type.descriptor.sql.BasicBinder [pool-2-thread-2] binding parameter [13] as [VARCHAR] - [null]
+2022-04-08 03:11:52,587 TRACE org.hibernate.type.descriptor.sql.BasicBinder [pool-2-thread-2] binding parameter [14] as [VARCHAR] - [null]
+2022-04-08 03:11:52,587 TRACE org.hibernate.type.descriptor.sql.BasicBinder [pool-2-thread-2] binding parameter [15] as [VARCHAR] - [0x827196b1fefbc899c7f00656c2cb16865f827ed8]
+2022-04-08 03:11:52,588 TRACE org.hibernate.type.descriptor.sql.BasicBinder [pool-2-thread-2] binding parameter [16] as [NUMERIC] - [0]
+2022-04-08 03:11:52,588 TRACE org.hibernate.type.descriptor.sql.BasicBinder [pool-2-thread-2] binding parameter [17] as [VARCHAR] - [0x0]
+2022-04-08 03:11:52,588 TRACE org.hibernate.type.descriptor.sql.BasicBinder [pool-2-thread-2] binding parameter [18] as [BIGINT] - [66]
+2022-04-08 03:11:52,588 TRACE org.hibernate.type.descriptor.sql.BasicBinder [pool-2-thread-2] binding parameter [19] as [NUMERIC] - [0]
+2022-04-08 03:11:52,588 TRACE org.hibernate.type.descriptor.sql.BasicBinder [pool-2-thread-2] binding parameter [20] as [VARCHAR] - [0xd3ee1d7f411e66ae5e9d88cae865b173ecee4627d6446eba6f41dfe3a2088ab6]
+2022-04-08 03:12:37,549 DEBUG org.hibernate.engine.jdbc.spi.SqlStatementLogger [pool-2-thread-2] 
+    /* load com.ssafy.b105.entity.blockchain.Transaction */ select
+        transactio0_.hash as hash1_7_0_,
+        transactio0_.block_hash as block_ha2_7_0_,
+        transactio0_.block_number as block_nu3_7_0_,
+        transactio0_.creates as creates4_7_0_,
+        transactio0_.from_account as from_acc5_7_0_,
+        transactio0_.gas as gas6_7_0_,
+        transactio0_.gas_price as gas_pric7_7_0_,
+        transactio0_.input_value as input_va8_7_0_,
+        transactio0_.max_fee_per_gas as max_fee_9_7_0_,
+        transactio0_.max_priority_fee_per_gas as max_pri10_7_0_,
+        transactio0_.nonce as nonce11_7_0_,
+        transactio0_.public_key as public_12_7_0_,
+        transactio0_.r as r13_7_0_,
+        transactio0_.raw as raw14_7_0_,
+        transactio0_.s as s15_7_0_,
+        transactio0_.to_account as to_acco16_7_0_,
+        transactio0_.transaction_index as transac17_7_0_,
+        transactio0_.type as type18_7_0_,
+        transactio0_.v as v19_7_0_,
+        transactio0_.value as value20_7_0_ 
+    from
+        transaction transactio0_ 
+    where
+        transactio0_.hash=?
+2022-04-08 03:12:37,550 TRACE org.hibernate.type.descriptor.sql.BasicBinder [pool-2-thread-2] binding parameter [1] as [VARCHAR] - [0xaa980aa017b5150fffdaa3da612846742ed737f1f6d8516614504bbf17c067aa]
+2022-04-08 03:12:37,553 DEBUG org.hibernate.engine.jdbc.spi.SqlStatementLogger [pool-2-thread-2] 
+    /* insert com.ssafy.b105.entity.blockchain.Transaction
+        */ insert 
+        into
+            transaction
+            (block_hash, block_number, creates, from_account, gas, gas_price, input_value, max_fee_per_gas, max_priority_fee_per_gas, nonce, public_key, r, raw, s, to_account, transaction_index, type, v, value, hash) 
+        values
+            (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+2022-04-08 03:12:37,553 TRACE org.hibernate.type.descriptor.sql.BasicBinder [pool-2-thread-2] binding parameter [1] as [VARCHAR] - [0x302d0525734a914645308e7f20b49850aa2463df1e7982d759521b1dbe9a031b]
+2022-04-08 03:12:37,554 TRACE org.hibernate.type.descriptor.sql.BasicBinder [pool-2-thread-2] binding parameter [2] as [NUMERIC] - [72592]
+2022-04-08 03:12:37,554 TRACE org.hibernate.type.descriptor.sql.BasicBinder [pool-2-thread-2] binding parameter [3] as [VARCHAR] - [null]
+2022-04-08 03:12:37,554 TRACE org.hibernate.type.descriptor.sql.BasicBinder [pool-2-thread-2] binding parameter [4] as [VARCHAR] - [0xadeedb149af852ed80162ebd607205544c88f7bf]
+2022-04-08 03:12:37,554 TRACE org.hibernate.type.descriptor.sql.BasicBinder [pool-2-thread-2] binding parameter [5] as [NUMERIC] - [3000000]
+2022-04-08 03:12:37,554 TRACE org.hibernate.type.descriptor.sql.BasicBinder [pool-2-thread-2] binding parameter [6] as [NUMERIC] - [0]
+2022-04-08 03:12:37,554 TRACE org.hibernate.type.descriptor.sql.BasicBinder [pool-2-thread-2] binding parameter [7] as [CLOB] - [0xe69d849d0000000000000000000000005529fa8e6f672ea012867f7c82dc16b0e3004ea200000000000000000000000000000000000000000000001b1ae4d6e2ef500000]
+2022-04-08 03:12:37,554 TRACE org.hibernate.type.descriptor.sql.BasicBinder [pool-2-thread-2] binding parameter [8] as [VARCHAR] - [null]
+2022-04-08 03:12:37,554 TRACE org.hibernate.type.descriptor.sql.BasicBinder [pool-2-thread-2] binding parameter [9] as [VARCHAR] - [null]
+2022-04-08 03:12:37,554 TRACE org.hibernate.type.descriptor.sql.BasicBinder [pool-2-thread-2] binding parameter [10] as [VARCHAR] - [0x20d]
+2022-04-08 03:12:37,554 TRACE org.hibernate.type.descriptor.sql.BasicBinder [pool-2-thread-2] binding parameter [11] as [VARCHAR] - [null]
+2022-04-08 03:12:37,555 TRACE org.hibernate.type.descriptor.sql.BasicBinder [pool-2-thread-2] binding parameter [12] as [VARCHAR] - [0x113016730847633b434fb72916ac91d64d81c99fa69ba105b9bba61d3cd93def]
+2022-04-08 03:12:37,555 TRACE org.hibernate.type.descriptor.sql.BasicBinder [pool-2-thread-2] binding parameter [13] as [VARCHAR] - [null]
+2022-04-08 03:12:37,555 TRACE org.hibernate.type.descriptor.sql.BasicBinder [pool-2-thread-2] binding parameter [14] as [VARCHAR] - [null]
+2022-04-08 03:12:37,555 TRACE org.hibernate.type.descriptor.sql.BasicBinder [pool-2-thread-2] binding parameter [15] as [VARCHAR] - [0xfb899483a74b03f346e986b6dc6787ea190b298a]
+2022-04-08 03:12:37,555 TRACE org.hibernate.type.descriptor.sql.BasicBinder [pool-2-thread-2] binding parameter [16] as [NUMERIC] - [0]
+2022-04-08 03:12:37,555 TRACE org.hibernate.type.descriptor.sql.BasicBinder [pool-2-thread-2] binding parameter [17] as [VARCHAR] - [0x0]
+2022-04-08 03:12:37,555 TRACE org.hibernate.type.descriptor.sql.BasicBinder [pool-2-thread-2] binding parameter [18] as [BIGINT] - [66]
+2022-04-08 03:12:37,555 TRACE org.hibernate.type.descriptor.sql.BasicBinder [pool-2-thread-2] binding parameter [19] as [NUMERIC] - [0]
+2022-04-08 03:12:37,555 TRACE org.hibernate.type.descriptor.sql.BasicBinder [pool-2-thread-2] binding parameter [20] as [VARCHAR] - [0xaa980aa017b5150fffdaa3da612846742ed737f1f6d8516614504bbf17c067aa]
+2022-04-08 04:44:52,594 DEBUG org.hibernate.engine.jdbc.spi.SqlStatementLogger [pool-2-thread-2] 
+    /* load com.ssafy.b105.entity.blockchain.Transaction */ select
+        transactio0_.hash as hash1_7_0_,
+        transactio0_.block_hash as block_ha2_7_0_,
+        transactio0_.block_number as block_nu3_7_0_,
+        transactio0_.creates as creates4_7_0_,
+        transactio0_.from_account as from_acc5_7_0_,
+        transactio0_.gas as gas6_7_0_,
+        transactio0_.gas_price as gas_pric7_7_0_,
+        transactio0_.input_value as input_va8_7_0_,
+        transactio0_.max_fee_per_gas as max_fee_9_7_0_,
+        transactio0_.max_priority_fee_per_gas as max_pri10_7_0_,
+        transactio0_.nonce as nonce11_7_0_,
+        transactio0_.public_key as public_12_7_0_,
+        transactio0_.r as r13_7_0_,
+        transactio0_.raw as raw14_7_0_,
+        transactio0_.s as s15_7_0_,
+        transactio0_.to_account as to_acco16_7_0_,
+        transactio0_.transaction_index as transac17_7_0_,
+        transactio0_.type as type18_7_0_,
+        transactio0_.v as v19_7_0_,
+        transactio0_.value as value20_7_0_ 
+    from
+        transaction transactio0_ 
+    where
+        transactio0_.hash=?
+2022-04-08 04:44:52,595 TRACE org.hibernate.type.descriptor.sql.BasicBinder [pool-2-thread-2] binding parameter [1] as [VARCHAR] - [0xfcee2287340a5b31eb8d06c0266ef265088b85421df33dbe5c02ea0f5454e8be]
+2022-04-08 04:44:52,600 DEBUG org.hibernate.engine.jdbc.spi.SqlStatementLogger [pool-2-thread-2] 
+    /* insert com.ssafy.b105.entity.blockchain.Transaction
+        */ insert 
+        into
+            transaction
+            (block_hash, block_number, creates, from_account, gas, gas_price, input_value, max_fee_per_gas, max_priority_fee_per_gas, nonce, public_key, r, raw, s, to_account, transaction_index, type, v, value, hash) 
+        values
+            (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+2022-04-08 04:44:52,600 TRACE org.hibernate.type.descriptor.sql.BasicBinder [pool-2-thread-2] binding parameter [1] as [VARCHAR] - [0x8f5e334c3730f4a1dbf858c4a2a7c305fb8a54aa0ac00491bec78f4fee81b86d]
+2022-04-08 04:44:52,600 TRACE org.hibernate.type.descriptor.sql.BasicBinder [pool-2-thread-2] binding parameter [2] as [NUMERIC] - [73035]
+2022-04-08 04:44:52,601 TRACE org.hibernate.type.descriptor.sql.BasicBinder [pool-2-thread-2] binding parameter [3] as [VARCHAR] - [null]
+2022-04-08 04:44:52,601 TRACE org.hibernate.type.descriptor.sql.BasicBinder [pool-2-thread-2] binding parameter [4] as [VARCHAR] - [0xadeedb149af852ed80162ebd607205544c88f7bf]
+2022-04-08 04:44:52,601 TRACE org.hibernate.type.descriptor.sql.BasicBinder [pool-2-thread-2] binding parameter [5] as [NUMERIC] - [3000000]
+2022-04-08 04:44:52,601 TRACE org.hibernate.type.descriptor.sql.BasicBinder [pool-2-thread-2] binding parameter [6] as [NUMERIC] - [0]
+2022-04-08 04:44:52,601 TRACE org.hibernate.type.descriptor.sql.BasicBinder [pool-2-thread-2] binding parameter [7] as [CLOB] - [0xdbcaef8b0000000000000000000000006abbc4cd4be4dba60d4b0f7d05355fce1d60fc9a00000000000000000000000000000000000000000000021e19e0c9bab2400000]
+2022-04-08 04:44:52,601 TRACE org.hibernate.type.descriptor.sql.BasicBinder [pool-2-thread-2] binding parameter [8] as [VARCHAR] - [null]
+2022-04-08 04:44:52,601 TRACE org.hibernate.type.descriptor.sql.BasicBinder [pool-2-thread-2] binding parameter [9] as [VARCHAR] - [null]
+2022-04-08 04:44:52,601 TRACE org.hibernate.type.descriptor.sql.BasicBinder [pool-2-thread-2] binding parameter [10] as [VARCHAR] - [0x20e]
+2022-04-08 04:44:52,601 TRACE org.hibernate.type.descriptor.sql.BasicBinder [pool-2-thread-2] binding parameter [11] as [VARCHAR] - [null]
+2022-04-08 04:44:52,601 TRACE org.hibernate.type.descriptor.sql.BasicBinder [pool-2-thread-2] binding parameter [12] as [VARCHAR] - [0xae40e1c5ab01c2a6288d2895269f8f5472278cfb85d5a42031013c167f89f7a4]
+2022-04-08 04:44:52,602 TRACE org.hibernate.type.descriptor.sql.BasicBinder [pool-2-thread-2] binding parameter [13] as [VARCHAR] - [null]
+2022-04-08 04:44:52,602 TRACE org.hibernate.type.descriptor.sql.BasicBinder [pool-2-thread-2] binding parameter [14] as [VARCHAR] - [null]
+2022-04-08 04:44:52,602 TRACE org.hibernate.type.descriptor.sql.BasicBinder [pool-2-thread-2] binding parameter [15] as [VARCHAR] - [0x827196b1fefbc899c7f00656c2cb16865f827ed8]
+2022-04-08 04:44:52,602 TRACE org.hibernate.type.descriptor.sql.BasicBinder [pool-2-thread-2] binding parameter [16] as [NUMERIC] - [0]
+2022-04-08 04:44:52,602 TRACE org.hibernate.type.descriptor.sql.BasicBinder [pool-2-thread-2] binding parameter [17] as [VARCHAR] - [0x0]
+2022-04-08 04:44:52,602 TRACE org.hibernate.type.descriptor.sql.BasicBinder [pool-2-thread-2] binding parameter [18] as [BIGINT] - [65]
+2022-04-08 04:44:52,602 TRACE org.hibernate.type.descriptor.sql.BasicBinder [pool-2-thread-2] binding parameter [19] as [NUMERIC] - [0]
+2022-04-08 04:44:52,602 TRACE org.hibernate.type.descriptor.sql.BasicBinder [pool-2-thread-2] binding parameter [20] as [VARCHAR] - [0xfcee2287340a5b31eb8d06c0266ef265088b85421df33dbe5c02ea0f5454e8be]
+2022-04-08 04:44:52,643 DEBUG org.hibernate.engine.jdbc.spi.SqlStatementLogger [pool-2-thread-2] 
+    /* load com.ssafy.b105.entity.blockchain.Transaction */ select
+        transactio0_.hash as hash1_7_0_,
+        transactio0_.block_hash as block_ha2_7_0_,
+        transactio0_.block_number as block_nu3_7_0_,
+        transactio0_.creates as creates4_7_0_,
+        transactio0_.from_account as from_acc5_7_0_,
+        transactio0_.gas as gas6_7_0_,
+        transactio0_.gas_price as gas_pric7_7_0_,
+        transactio0_.input_value as input_va8_7_0_,
+        transactio0_.max_fee_per_gas as max_fee_9_7_0_,
+        transactio0_.max_priority_fee_per_gas as max_pri10_7_0_,
+        transactio0_.nonce as nonce11_7_0_,
+        transactio0_.public_key as public_12_7_0_,
+        transactio0_.r as r13_7_0_,
+        transactio0_.raw as raw14_7_0_,
+        transactio0_.s as s15_7_0_,
+        transactio0_.to_account as to_acco16_7_0_,
+        transactio0_.transaction_index as transac17_7_0_,
+        transactio0_.type as type18_7_0_,
+        transactio0_.v as v19_7_0_,
+        transactio0_.value as value20_7_0_ 
+    from
+        transaction transactio0_ 
+    where
+        transactio0_.hash=?
+2022-04-08 04:44:52,644 TRACE org.hibernate.type.descriptor.sql.BasicBinder [pool-2-thread-2] binding parameter [1] as [VARCHAR] - [0x411c645a0d5b04b76be51988077936ac81ae7f68aabb8260715a3b6d11df70cb]
+2022-04-08 04:44:52,646 DEBUG org.hibernate.engine.jdbc.spi.SqlStatementLogger [pool-2-thread-2] 
+    /* insert com.ssafy.b105.entity.blockchain.Transaction
+        */ insert 
+        into
+            transaction
+            (block_hash, block_number, creates, from_account, gas, gas_price, input_value, max_fee_per_gas, max_priority_fee_per_gas, nonce, public_key, r, raw, s, to_account, transaction_index, type, v, value, hash) 
+        values
+            (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+2022-04-08 04:44:52,647 TRACE org.hibernate.type.descriptor.sql.BasicBinder [pool-2-thread-2] binding parameter [1] as [VARCHAR] - [0x5389705ae4a28415b580308dcf8118d22695f33d14db6b5ed02f2f6eca2b4f8f]
+2022-04-08 04:44:52,648 TRACE org.hibernate.type.descriptor.sql.BasicBinder [pool-2-thread-2] binding parameter [2] as [NUMERIC] - [73038]
+2022-04-08 04:44:52,648 TRACE org.hibernate.type.descriptor.sql.BasicBinder [pool-2-thread-2] binding parameter [3] as [VARCHAR] - [null]
+2022-04-08 04:44:52,648 TRACE org.hibernate.type.descriptor.sql.BasicBinder [pool-2-thread-2] binding parameter [4] as [VARCHAR] - [0xadeedb149af852ed80162ebd607205544c88f7bf]
+2022-04-08 04:44:52,648 TRACE org.hibernate.type.descriptor.sql.BasicBinder [pool-2-thread-2] binding parameter [5] as [NUMERIC] - [3000000]
+2022-04-08 04:44:52,649 TRACE org.hibernate.type.descriptor.sql.BasicBinder [pool-2-thread-2] binding parameter [6] as [NUMERIC] - [0]
+2022-04-08 04:44:52,649 TRACE org.hibernate.type.descriptor.sql.BasicBinder [pool-2-thread-2] binding parameter [7] as [CLOB] - [0xe69d849d0000000000000000000000006abbc4cd4be4dba60d4b0f7d05355fce1d60fc9a00000000000000000000000000000000000000000000021e19e0c9bab2400000]
+2022-04-08 04:44:52,649 TRACE org.hibernate.type.descriptor.sql.BasicBinder [pool-2-thread-2] binding parameter [8] as [VARCHAR] - [null]
+2022-04-08 04:44:52,649 TRACE org.hibernate.type.descriptor.sql.BasicBinder [pool-2-thread-2] binding parameter [9] as [VARCHAR] - [null]
+2022-04-08 04:44:52,649 TRACE org.hibernate.type.descriptor.sql.BasicBinder [pool-2-thread-2] binding parameter [10] as [VARCHAR] - [0x20f]
+2022-04-08 04:44:52,649 TRACE org.hibernate.type.descriptor.sql.BasicBinder [pool-2-thread-2] binding parameter [11] as [VARCHAR] - [null]
+2022-04-08 04:44:52,650 TRACE org.hibernate.type.descriptor.sql.BasicBinder [pool-2-thread-2] binding parameter [12] as [VARCHAR] - [0x194c85b1ef01201bc9190b4582afea458b9cd253ab4354f68a91c869957d3ef3]
+2022-04-08 04:44:52,650 TRACE org.hibernate.type.descriptor.sql.BasicBinder [pool-2-thread-2] binding parameter [13] as [VARCHAR] - [null]
+2022-04-08 04:44:52,650 TRACE org.hibernate.type.descriptor.sql.BasicBinder [pool-2-thread-2] binding parameter [14] as [VARCHAR] - [null]
+2022-04-08 04:44:52,650 TRACE org.hibernate.type.descriptor.sql.BasicBinder [pool-2-thread-2] binding parameter [15] as [VARCHAR] - [0x463775dc879dd1f2d6b287047cd5924743a5812c]
+2022-04-08 04:44:52,650 TRACE org.hibernate.type.descriptor.sql.BasicBinder [pool-2-thread-2] binding parameter [16] as [NUMERIC] - [0]
+2022-04-08 04:44:52,650 TRACE org.hibernate.type.descriptor.sql.BasicBinder [pool-2-thread-2] binding parameter [17] as [VARCHAR] - [0x0]
+2022-04-08 04:44:52,650 TRACE org.hibernate.type.descriptor.sql.BasicBinder [pool-2-thread-2] binding parameter [18] as [BIGINT] - [65]
+2022-04-08 04:44:52,650 TRACE org.hibernate.type.descriptor.sql.BasicBinder [pool-2-thread-2] binding parameter [19] as [NUMERIC] - [0]
+2022-04-08 04:44:52,651 TRACE org.hibernate.type.descriptor.sql.BasicBinder [pool-2-thread-2] binding parameter [20] as [VARCHAR] - [0x411c645a0d5b04b76be51988077936ac81ae7f68aabb8260715a3b6d11df70cb]
