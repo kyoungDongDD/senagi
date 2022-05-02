@@ -232,7 +232,7 @@
 
 `우아한 형제들` 기술블로그에서 [git flow](https://techblog.woowahan.com/2553/) 참고하여 Git 컨벤션 및 Git flow 를 정하여 작업하였습니다.
 
-`dev branch`, `work branch` , `feat branch`  , `realese brach` 등 기능별, 용도별로 브랜치를 분기하여 사용하였습니다.
+`dev branch`, `work branch` , `feat branch`  , `release brach` 등 기능별, 용도별로 브랜치를 분기하여 사용하였습니다.
 
 개발에 사용한 자세한 Git 컨벤션 및 GitFlow [링크](https://www.notion.so/Git-lab-convention-cd1dfddaba964b6da0795f2932acb56b)에 적어 놓았습니다
 
