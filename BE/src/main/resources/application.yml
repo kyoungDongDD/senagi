@@ -1,7 +1,12 @@
 server:
   ssl:
+<<<<<<< HEAD
+    key-store: classpath:j6b105.p.ssafy.io.p12
+    key-store-password: ssafyb105
+=======
     key-store: classpath:senagi.site.p12
     key-store-password: ssafy
+>>>>>>> dev
     key-store-type: PKCS12
     key-alias: ssafy
 
@@ -10,7 +15,11 @@ spring:
     include: eth
 
   datasource:
+<<<<<<< HEAD
+    url: jdbc:mysql://mysql:3306/nobaddonation?useSSL=false&serverTimezone=UTC&autoReconnect=true
+=======
     url: jdbc:mysql://senagi.site:17177/nobaddonation?useSSL=false&serverTimezone=UTC&autoReconnect=true
+>>>>>>> dev
     username: ssafy
     password: ssafyb105
     driver-class-name: com.mysql.cj.jdbc.Driver
@@ -24,6 +33,10 @@ spring:
     defer-datasource-initialization: true
     database-platform: org.hibernate.dialect.MySQL8Dialect
 
+<<<<<<< HEAD
+
+=======
+>>>>>>> dev
   security:
     oauth2:
       client:
@@ -40,6 +53,19 @@ spring:
         #페이지 기본 사이즈
         default-page-size: 12
 
+<<<<<<< HEAD
+jwt:
+  header: Authorization
+  #HS512 알고리즘을 사용할 것이기 때문에 512bit, 즉 64byte 이상의 secret key를 사용해야 한다.
+  #echo 'silvernine-tech-spring-boot-jwt-tutorial-secret-silvernine-tech-spring-boot-jwt-tutorial-secret'|base64
+  secret: c2lsdmVybmluZS10ZWNoLXNwcm
+  token-validity-in-seconds: 86400
+
+
+logging.level:
+  org.hibernate.SQL: debug
+  org.hibernate.type: trace
+=======
   servlet:
     multipart:
       maxFileSize: 100MB
@@ -59,3 +85,4 @@ logging.level:
 uploadPath:
   path: "./imgs/"
 
+>>>>>>> dev

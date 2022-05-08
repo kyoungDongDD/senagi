@@ -1,3 +1,10 @@
+<<<<<<< HEAD
+import { Dialog, DialogActions, DialogContent, DialogTitle, Button, Grid} from '@mui/material';
+import Text from '../../atoms/Text';
+import BillTable from '../../molecules/BillTable';
+import { makeStyles } from '@mui/styles';
+import styled from '@emotion/styled';
+=======
 import { useEffect, useState } from 'react';
 import { Dialog, DialogActions, DialogContent, DialogTitle, Button, Grid } from '@mui/material';
 import Text from '../../atoms/Text';
@@ -8,10 +15,31 @@ import styled from '@emotion/styled';
 import PaymentAPI from '../../../../api/paymentAPI';
 import { useParams } from 'react-router-dom';
 import { v4 as uuidv4 } from 'uuid';
+>>>>>>> dev
 
 const useStyles = makeStyles((theme) => {
   return {
     root: {
+<<<<<<< HEAD
+      "&.MuiButton-root": {
+        border: "1px black solid",
+      },
+      "&.MuiDialogActions": {
+        justifyContent: "center"
+      }
+    },
+    withdrawlButton: {
+      "&.MuiButton-root": {
+        border: "1px white solid",
+        "&:hover": {
+          border: "1px #f4ba34 solid"
+        }
+      },
+    },
+    withdrawlText: {
+      "&.MuiDialogTitle-root": {
+        margin: "auto",
+=======
       '&.MuiButton-root': {
         border: '1px black solid',
       },
@@ -30,6 +58,7 @@ const useStyles = makeStyles((theme) => {
     withdrawlText: {
       '&.MuiDialogTitle-root': {
         margin: 'auto',
+>>>>>>> dev
       },
     },
   };
@@ -44,7 +73,11 @@ const WithdrawalButton = styled(Button)`
   color: white;
   margin: auto;
   width: 200px;
+<<<<<<< HEAD
+`
+=======
 `;
+>>>>>>> dev
 
 const CancelButton = styled(Button)`
   background-color: white;
@@ -55,8 +88,12 @@ const CancelButton = styled(Button)`
   color: black;
   margin: auto;
   width: 200px;
+<<<<<<< HEAD
+`
+=======
 `;
 
+>>>>>>> dev
 const AttachButton = styled(Button)`
   background-color: white;
   &:hover {
@@ -65,6 +102,57 @@ const AttachButton = styled(Button)`
   }
   color: black;
   margin: auto;
+<<<<<<< HEAD
+`
+
+function WithdrawModal(props) {
+  const classes = useStyles();
+
+  return (
+    <div>
+      <Dialog
+        open={props.isOpen}
+        onClose={props.handleClose}
+        aria-labelledby="alert-dialog-title"
+        aria-describedby="alert-dialog-description"
+      >
+        <DialogTitle id="alert-dialog-title" className={classes.withdrawlText}>
+          <Text className="header1" text="출금 신청하기"/>
+        </DialogTitle>
+        <DialogContent>
+          <Grid container spacing={2}>
+            <Grid item xs={6} md={4}>
+              <img src="" alt="" />
+              <AttachButton className={classes.root} fullWidth>영수증 첨부</AttachButton>
+            </Grid>
+            <Grid item xs={6} md={8}>
+              <BillTable />
+            </Grid>
+          </Grid>
+        </DialogContent>
+        <DialogActions
+          className={classes.root}
+          >
+          <WithdrawalButton
+            className={classes.withdrawlButton}
+            onClick={props.handleClose}>
+            출금신청
+          </WithdrawalButton>
+          <CancelButton
+            variant="outlined"
+            className={classes.root}
+            onClick={props.handleClose}>
+            취소
+          </CancelButton>
+        </DialogActions>
+      </Dialog>
+    </div>
+  );
+}
+
+
+export default WithdrawModal;
+=======
 `;
 
 // 모달 사이즈 전체 화면의 90%로 고정
@@ -222,3 +310,4 @@ function WithdrawModal(props) {
 }
 
 export default WithdrawModal;
+>>>>>>> dev

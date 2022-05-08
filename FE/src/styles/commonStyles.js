@@ -26,11 +26,19 @@ const commonStyles = css`
   * {
     font-family: 'GM';
   }
+<<<<<<< HEAD
+  
+  body {
+    margin: 0;
+  }
+  
+=======
 
   body {
     margin: 0;
   }
 
+>>>>>>> dev
   .header1 {
     font-style: normal;
     font-weight: 700;
@@ -92,6 +100,8 @@ const commonStyles = css`
     letter-spacing: -0.02em;
     font-family: 'GM';
   }
+<<<<<<< HEAD
+=======
   .campaignHeader {
     font-style: normal;
     font-weight: 700;
@@ -137,6 +147,7 @@ const commonStyles = css`
     width: 1200px;
     margin: 0 auto;
   }
+>>>>>>> dev
 `;
 
 export default commonStyles;

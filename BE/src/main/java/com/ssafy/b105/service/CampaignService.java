@@ -1,5 +1,24 @@
 package com.ssafy.b105.service;
 
+<<<<<<< HEAD
+import com.ssafy.b105.dto.CampaignRequestDto;
+import com.ssafy.b105.dto.CampaignResponseDto;
+import com.ssafy.b105.entity.Campaign;
+import com.ssafy.b105.entity.CampaignHashtag;
+import com.ssafy.b105.entity.Hashtag;
+import com.ssafy.b105.repository.CampaignRepository;
+import com.ssafy.b105.repository.HashtagRepository;
+import java.sql.Timestamp;
+import java.time.Instant;
+import java.time.LocalDateTime;
+import java.time.ZoneId;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Optional;
+import java.util.TimeZone;
+import lombok.Builder;
+import lombok.RequiredArgsConstructor;
+=======
 import com.nimbusds.jose.util.IOUtils;
 import com.ssafy.b105.dto.CampaignListDto;
 import com.ssafy.b105.dto.CampaignRequestDto;
@@ -37,17 +56,47 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.data.crossstore.ChangeSetPersister;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
+>>>>>>> dev
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 @Service
 @Transactional(readOnly = true)
 @RequiredArgsConstructor
+<<<<<<< HEAD
+@Builder
+=======
 @Slf4j
+>>>>>>> dev
 public class CampaignService {
 
     private final CampaignRepository campaignRepository;
     private final HashtagRepository hashtagRepository;
+<<<<<<< HEAD
+
+
+    @Transactional
+    public CampaignResponseDto createCampaign(CampaignRequestDto campaignRequestDto) {
+
+        Campaign campaign = Campaign.from(campaignRequestDto);
+
+        List<Hashtag> hashtags = findAndSaveHashtags(campaignRequestDto.getHashtags());
+
+        hashtags.forEach(
+            hashtag -> {
+                CampaignHashtag campaignHashtag = CampaignHashtag.builder()
+                    .campaign(campaign)
+                    .hashtag(hashtag)
+                    .build();
+                campaign.getCampaignHashtags().add(campaignHashtag);
+            }
+        );
+
+        return CampaignResponseDto.from(campaignRepository.save(campaign));
+    }
+
+
+=======
     private final UserRepository userRepository;
     private final ReceiptRepository receiptRepository;
     private final CampaignContractService campaignContractService;
@@ -134,19 +183,43 @@ public class CampaignService {
         }
     }
 
+>>>>>>> dev
     @Transactional
     public CampaignResponseDto detailCampaign(Campaign campaign) {
         //조회수 증가
         campaign.addViewCount();
+<<<<<<< HEAD
+        //id로 캠페인 찾기
+        return CampaignResponseDto.from(campaign);
+=======
         Long balance = tokenContractService.balanceOf(campaign.getAccount());
         //id로 캠페인 찾기
         log.info("detailCampaign balance 값 : {}",balance);
         return CampaignResponseDto.of(campaign,balance);
+>>>>>>> dev
     }
 
     //해쉬태그 저장 및 중복검사
     private List<Hashtag> findAndSaveHashtags(List<String> hashtags) {
         List<Hashtag> results = new ArrayList<>();
+<<<<<<< HEAD
+        hashtags.forEach(
+            tag ->
+                results.add(
+                    hashtagRepository.findByName(tag)
+                        .orElseGet(() ->
+                            hashtagRepository.save(Hashtag.builder()
+                                .name(tag)
+                                .build()
+                            )
+                        )
+                )
+        );
+        return results;
+    }
+
+
+=======
         hashtags.forEach(tag -> results.add(hashtagRepository.findByName(tag)
             .orElseGet(() -> hashtagRepository.save(Hashtag.builder().name(tag).build()))));
         return results;
@@ -187,4 +260,5 @@ public class CampaignService {
                 throw new IllegalArgumentException();
         }
     }
+>>>>>>> dev
 }

@@ -1,9 +1,14 @@
 package com.ssafy.b105.entity.blockchain;
 
 import com.ssafy.b105.dto.blockchain.NewWalletDto;
+<<<<<<< HEAD
+import com.ssafy.b105.entity.User;
+import java.math.BigInteger;
+=======
 import com.ssafy.b105.entity.user.User;
 import java.math.BigInteger;
 import javax.persistence.CascadeType;
+>>>>>>> dev
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -48,6 +53,11 @@ public class Wallet {
   }
 
   public void chargeBalance(BigInteger amount) {
+<<<<<<< HEAD
+    balance.add(amount);
+  }
+
+=======
     this.balance = balance.add(amount);
   }
 
@@ -55,4 +65,5 @@ public class Wallet {
 
   public void setBalance(BigInteger amount) {this.balance = amount;}
 
+>>>>>>> dev
 }

@@ -1,3 +1,13 @@
+<<<<<<< HEAD
+import { configureStore } from '@reduxjs/toolkit';
+import counterReducer from '../components/pages/counterSlice';
+
+export default configureStore({
+  reducer: {
+    counter: counterReducer,
+  },
+});
+=======
 import { combineReducers } from 'redux';
 import { configureStore } from '@reduxjs/toolkit';
 import { persistReducer, persistStore } from 'redux-persist';
@@ -31,3 +41,4 @@ export const store = configureStore({
 export const persistor = persistStore(store);
 
 export default { store, persistor };
+>>>>>>> dev

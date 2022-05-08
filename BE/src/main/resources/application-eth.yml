@@ -15,4 +15,8 @@ eth:
   admin:
     wallet: 'admin.wallet'
     password: 'ssafyb105'
+<<<<<<< HEAD
+    account: '0xadeedb149af852ed80162ebd607205544c88f7bf'
+=======
     account: '0xadEedB149AF852Ed80162EBd607205544c88f7Bf'
+>>>>>>> dev

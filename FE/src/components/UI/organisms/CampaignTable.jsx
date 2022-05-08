@@ -1,4 +1,8 @@
+<<<<<<< HEAD
+import { useEffect, useState } from 'react';
+=======
 import { useEffect, useState, useRef, useLayoutEffect } from 'react';
+>>>>>>> dev
 import '../../../styles/CampaignTable.css';
 import UserButton from '../molecules/UserButton';
 import Dday from '../molecules/D-Day';
@@ -7,6 +11,54 @@ import CardContent from '@mui/material/CardContent';
 import Typography from '@mui/material/Typography';
 import ProgressBar from '../molecules/ProgressBar';
 import styled from '@emotion/styled';
+<<<<<<< HEAD
+
+function CampaignTable() {
+  const [width, setwidth] = useState(0);
+
+  const resizeWindow = () => {
+    setwidth(window.innerWidth);
+  };
+
+  useEffect(() => {
+    console.log(width);
+  }, [width]);
+
+  return (
+    <div>
+      <p>캠페인 및 보호소 정보</p>
+      <table className="myTable headerV">
+        <tr>
+          <td>사업기간</td>
+          <td>2022.03.05 ~ 2022.12.31</td>
+        </tr>
+        <tr>
+          <td>보호소</td>
+          <td>마석유기견보호소</td>
+        </tr>
+        <tr>
+          <td>태그</td>
+          <td>
+            <button>태그버튼 만들기!</button>
+          </td>
+        </tr>
+      </table>
+      <Card sx={{ maxWidth: 900, minWidth: 321 }} style={{ position: 'relative' }}>
+        <CardContent>
+          <Dday dday="15" />
+          <Typography variant="h5" component="div">
+            100,100,000 원
+          </Typography>
+          <ProgressBar id="size" percent="0.5" width={350} />
+          <RightContainer>
+            <Typography
+              sx={{ fontSize: 16 }}
+              style={{ marginTop: '10px' }}
+              color="text.secondary"
+              gutterBottom
+            >
+              50,000,000원
+=======
 import DonateModal from './Modal/DonateModal';
 
 function CampaignTable(props) {
@@ -83,12 +135,19 @@ function CampaignTable(props) {
               gutterBottom
             >
               {targeMoney.toLocaleString()}원
+>>>>>>> dev
             </Typography>
           </RightContainer>
         </CardContent>
       </Card>
+<<<<<<< HEAD
+
+      <UserButton type="submit" fullWidth variant="contained" text="캠페인 기부하기" size="large" />
+    </div>
+=======
       <DonateModal shelterName={shelterName} thumbnailImageUrl={thumbnailImageUrl} title={title} />
     </>
+>>>>>>> dev
   );
 }
 
@@ -99,6 +158,8 @@ const RightContainer = styled.div`
   display: block;
   text-align: right;
 `;
+<<<<<<< HEAD
+=======
 
 const TagButton = styled.button`
   margin: 0px 4px 0px 4px;
@@ -128,3 +189,4 @@ const TagButton = styled.button`
 // const Max = styled.div`
 //   max-width: 900px;
 // `;
+>>>>>>> dev

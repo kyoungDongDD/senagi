@@ -6,6 +6,9 @@ import KeyboardArrowLeftIcon from '@mui/icons-material/KeyboardArrowLeft';
 import KeyboardArrowRightIcon from '@mui/icons-material/KeyboardArrowRight';
 import ZoomImage from './ZoomImage';
 
+<<<<<<< HEAD
+const ReceiptImage = () => {
+=======
 const ReceiptImage = (props) => {
   //영수증 이미지 props 받은 후 가공
   const { receipImages } = props;
@@ -18,6 +21,7 @@ const ReceiptImage = (props) => {
     });
   }
 
+>>>>>>> dev
   const slickRef = useRef(null);
 
   const settings = {
@@ -31,7 +35,11 @@ const ReceiptImage = (props) => {
     slidesToScroll: 1,
 
     customPaging: function (i) {
+<<<<<<< HEAD
+      const imgSrc = images[i].src;
+=======
       const imgSrc = receipArr[i].src;
+>>>>>>> dev
       return (
         <PagingAnchor>
           <Paging src={imgSrc} />
@@ -45,9 +53,15 @@ const ReceiptImage = (props) => {
   return (
     <Wrap>
       <Slick ref={slickRef} {...settings}>
+<<<<<<< HEAD
+        {images.map((v, i) => {
+          return (
+            <SlickItems key={`${v.title}_${i}`}>
+=======
         {receipArr.map((v, index) => {
           return (
             <SlickItems key={index}>
+>>>>>>> dev
               <img src={v.src} alt="이미지없음" />
             </SlickItems>
           );
@@ -183,3 +197,25 @@ const Paging = styled.span`
   background-size: 100% 100%;
   filter: grayscale(1);
 `;
+<<<<<<< HEAD
+// 4. 샘플이미지
+const images = [
+  {
+    src: 'https://www.artinsight.co.kr/data/tmp/1910/20191029212614_fawslbwd.jpg',
+    title: '1',
+  },
+  {
+    src: 'https://www.artinsight.co.kr/data/tmp/1910/20191029212649_esiekzxf.jpg',
+    title: '2',
+  },
+  {
+    src: 'https://www.artinsight.co.kr/data/tmp/1910/20191029212707_zcrkccgp.jpg',
+    title: '3',
+  },
+  {
+    src: 'https://www.artinsight.co.kr/data/tmp/1910/20191029212724_pacwfbiz.jpg',
+    title: '4',
+  },
+];
+=======
+>>>>>>> dev

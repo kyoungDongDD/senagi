@@ -1,5 +1,17 @@
 package com.ssafy.b105.controller;
 
+<<<<<<< HEAD
+import com.ssafy.b105.dto.UserFormDTO;
+import com.ssafy.b105.entity.User;
+import com.ssafy.b105.service.UserService;
+import lombok.RequiredArgsConstructor;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.annotation.*;
+
+import javax.validation.Valid;
+=======
 import com.ssafy.b105.dto.LoginRequestDto;
 import com.ssafy.b105.dto.LoginResponseDto;
 import com.ssafy.b105.auth.Jwt.domain.AuthenticationResult;
@@ -23,10 +35,17 @@ import org.springframework.web.bind.annotation.*;
 import javax.validation.Valid;
 import java.util.HashSet;
 import java.util.Set;
+>>>>>>> dev
 
 @RestController
 @RequestMapping("/api/auth")
 @RequiredArgsConstructor
+<<<<<<< HEAD
+public class UserController {
+
+  private final UserService userService;
+
+=======
 @Slf4j
 public class UserController {
 
@@ -34,6 +53,7 @@ public class UserController {
   private final UserService userService;
 
 
+>>>>>>> dev
   @GetMapping("/duplicate/principal")
   public ResponseEntity<Boolean> duplicatePrincipalCheck(@RequestParam String principal){
     return ResponseEntity.ok(userService.duplicatePrincipalCheck(principal));
@@ -45,6 +65,17 @@ public class UserController {
 
   @PostMapping("/signup/supporter")
   public ResponseEntity<?> insertSupporter(
+<<<<<<< HEAD
+    @Valid @RequestBody UserFormDTO dto,
+    BindingResult bindingResult  ) {
+    if (bindingResult.hasErrors()) {
+      return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+    }
+
+    User accountDB = userService.saveOrUpdateUser(dto.toEntity());
+
+    return new ResponseEntity<>(accountDB, HttpStatus.CREATED);
+=======
     @Valid @RequestBody SignupDto dto) throws ChangeSetPersister.NotFoundException {
 
     Set<Authority> authorities = new HashSet<>();
@@ -65,10 +96,23 @@ public class UserController {
     authority.setUser(user);
     userService.saveOrUpdateUser(user, MemberType.Supporter);
     return new ResponseEntity<>(user, HttpStatus.CREATED);
+>>>>>>> dev
   }
 
   @PostMapping("/signup/shelter")
   public ResponseEntity<?> insertShelter(
+<<<<<<< HEAD
+    @Valid @RequestBody UserFormDTO dto,
+    BindingResult bindingResult  ) {
+    if (bindingResult.hasErrors()) {
+      return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+    }
+    User accountDB = userService.saveOrUpdateUser(dto.toEntity());
+
+    return new ResponseEntity<>(accountDB, HttpStatus.CREATED);
+  }
+}
+=======
     @Valid @RequestBody SignupDto dto) throws ChangeSetPersister.NotFoundException {
 
     Set<Authority> authorities = new HashSet<>();
@@ -119,3 +163,4 @@ public class UserController {
   }
 
 }
+>>>>>>> dev

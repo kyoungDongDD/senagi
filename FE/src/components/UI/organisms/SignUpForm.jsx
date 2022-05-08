@@ -1,3 +1,10 @@
+<<<<<<< HEAD
+import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
+import Text from '../atoms/Text';
+import UserButton from '../molecules/UserButton';
+// import axios from 'axios';
+=======
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import Text from '../atoms/Text';
@@ -7,6 +14,7 @@ import SignUpJoinButton from '../molecules/SignUpJoinButton';
 import AccountsAPI from '../../../api/accountsAPI';
 import SignUpSpinner from './SignUpSpinner';
 import { validateEmail, validateName, validatePwd } from '../../../utils/validation';
+>>>>>>> dev
 import {
   Button,
   TextField,
@@ -26,6 +34,84 @@ const FormHelperTexts = styled(FormHelperText)`
 `;
 
 function SignUpForm() {
+<<<<<<< HEAD
+  const [checked, setChecked] = useState(false);
+  const [emailError, setEmailError] = useState('');
+  const [passwordState, setPasswordState] = useState('');
+  const [passwordError, setPasswordError] = useState('');
+  const [nameError, setNameError] = useState('');
+  const [registerError, setRegisterError] = useState('');
+  const history = useNavigate();
+
+  const handleAgree = (event) => {
+    setChecked(event.target.checked);
+  };
+
+  // // API 요청
+  // const onhandlePost = async (data) => {
+  //   const { email, name, password } = data;
+  //   const postData = { email, name, password };
+
+  //   // post
+  //   await axios
+  //     .post('/user/signUp', postData)
+  //     .then(function (response) {
+  //       console.log(response, '성공');
+  //       history.push('/login');
+  //     })
+  //     .catch(function (err) {
+  //       console.log(err);
+  //       setRegisterError('회원가입에 실패하였습니다. 다시한번 확인해 주세요.');
+  //     });
+  // };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+
+    const data = new FormData(e.currentTarget);
+    const joinData = {
+      email: data.get('email'),
+      name: data.get('name'),
+      password: data.get('password'),
+      rePassword: data.get('rePassword'),
+    };
+    const { email, name, password, rePassword } = joinData;
+
+    // 이메일 유효성 검사
+    const emailRegex =
+      /([\w-.]+)@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.)|(([\w-]+\.)+))([a-zA-Z]{2,4}|[0-9]{1,3})(\]?)$/;
+    if (!emailRegex.test(email)) setEmailError('올바른 이메일 형식이 아닙니다.');
+    else setEmailError('');
+
+    // 비밀번호 유효성 검사
+    const passwordRegex = /^(?=.*[a-zA-Z])(?=.*[!@#$%^*+=-])(?=.*[0-9]).{8,25}$/;
+    if (!passwordRegex.test(password))
+      setPasswordState('숫자+영문자+특수문자 조합으로 8자리 이상 입력해주세요!');
+    else setPasswordState('');
+
+    // 비밀번호 확인 검사
+    if (password !== rePassword) setPasswordError('비밀번호가 일치하지 않습니다.');
+    else setPasswordError('');
+
+    // 이름 유효성 검사
+    const nameRegex = /^[가-힣a-zA-Z]+$/;
+    if (!nameRegex.test(name) || name.length < 1) setNameError('올바른 닉네임을 입력해주세요.');
+    else setNameError('');
+
+    // // 회원가입 동의 체크
+    // if (!checked) alert('회원가입 약관에 동의해주세요.');
+
+    // if (
+    //   emailRegex.test(email) &&
+    //   passwordRegex.test(password) &&
+    //   password === rePassword &&
+    //   nameRegex.test(name) &&
+    //   checked
+    // ) {
+    //   onhandlePost(joinData);
+    // }
+  };
+=======
   const [joinData, setJoinData] = useState([]); // 회원가입 정보 저장
   const [idError, setIdError] = useState('');
   const [idFl, setIdFl] = useState(false);
@@ -191,6 +277,7 @@ function SignUpForm() {
     }
   };
 
+>>>>>>> dev
   return (
     <Box
       sx={{
@@ -202,19 +289,31 @@ function SignUpForm() {
       }}
     >
       <Text className="header1" text="회원가입" />
+<<<<<<< HEAD
+      <Box component="form" noValidate onSubmit={handleSubmit} sx={{ mt: 1 }}>
+=======
       <Box component="form" noValidate sx={{ mt: 1 }}>
+>>>>>>> dev
         <Grid container spacing={1}>
           <Grid item xs={8}>
             <TextField
               required
               autoFocus
               fullWidth
+<<<<<<< HEAD
+              type="email"
+              id="email"
+              name="email"
+              label="이메일 주소"
+              error={emailError !== '' || false}
+=======
               type="id"
               id="id"
               name="id"
               label="이메일 주소"
               error={idError !== '' || false}
               onChange={(e) => setJoin(e, 'userId')}
+>>>>>>> dev
             />
           </Grid>
           <Grid item xs={4}>
@@ -228,15 +327,24 @@ function SignUpForm() {
                 height: '100%',
               }}
               fullWidth
+<<<<<<< HEAD
+              onClick={() => console.log('아이디중복체크API')}
+=======
               onClick={idCheck}
+>>>>>>> dev
             >
               중복확인
             </Button>
           </Grid>
         </Grid>
+<<<<<<< HEAD
+        <FormHelperTexts>{emailError}</FormHelperTexts>
+        <TextField
+=======
         <FormHelperTexts>{idError}</FormHelperTexts>
         <TextField
           sx={{ mt: 1 }}
+>>>>>>> dev
           required
           fullWidth
           type="password"
@@ -244,11 +352,17 @@ function SignUpForm() {
           name="password"
           label="비밀번호 (숫자+영문자+특수문자 8자리 이상)"
           error={passwordState !== '' || false}
+<<<<<<< HEAD
+        />
+        <FormHelperTexts>{passwordState}</FormHelperTexts>
+        <TextField
+=======
           onChange={(e) => setJoin(e, 'userPw')}
         />
         <FormHelperTexts>{passwordState}</FormHelperTexts>
         <TextField
           sx={{ mt: 1 }}
+>>>>>>> dev
           required
           fullWidth
           type="password"
@@ -256,25 +370,39 @@ function SignUpForm() {
           name="rePassword"
           label="비밀번호 확인"
           error={passwordError !== '' || false}
+<<<<<<< HEAD
+=======
           onChange={(e) => setJoin(e, 'userPwOk')}
+>>>>>>> dev
         />
         <FormHelperTexts>{passwordError}</FormHelperTexts>
         <Grid container spacing={1}>
           <Grid item xs={8}>
             <TextField
+<<<<<<< HEAD
+=======
               sx={{ mt: 1 }}
+>>>>>>> dev
               required
               fullWidth
               id="name"
               name="name"
+<<<<<<< HEAD
+              label="닉네임"
+              error={nameError !== '' || false}
+=======
               label="닉네임 (한글, 영문 대소문자)"
               error={nameError !== '' || false}
               onChange={(e) => setJoin(e, 'userName')}
+>>>>>>> dev
             />
           </Grid>
           <Grid item xs={4}>
             <Button
+<<<<<<< HEAD
+=======
               sx={{ mt: 1 }}
+>>>>>>> dev
               type="submit"
               variant="outlined"
               style={{
@@ -284,7 +412,11 @@ function SignUpForm() {
                 height: '100%',
               }}
               fullWidth
+<<<<<<< HEAD
+              onClick={() => console.log('닉네임중복체크API')}
+=======
               onClick={nameCheck}
+>>>>>>> dev
             >
               중복확인
             </Button>
@@ -295,6 +427,11 @@ function SignUpForm() {
           control={<Checkbox onChange={handleAgree} color="primary" />}
           label="세나기의 회원가입 약관에 동의합니다."
         />
+<<<<<<< HEAD
+        <UserButton type="submit" fullWidth variant="contained" text="회원가입" size="large" />
+        <FormHelperTexts>{registerError}</FormHelperTexts>
+        <Button
+=======
         <UserButton
           sx={{ mt: 1 }}
           type="submit"
@@ -307,10 +444,20 @@ function SignUpForm() {
         <FormHelperTexts>{registerError}</FormHelperTexts>
         <SignUpJoinButton />
         {/* <Button
+>>>>>>> dev
           type="submit"
           fullWidth
           variant="text"
           disableRipple
+<<<<<<< HEAD
+          href="#"
+          // 보호소 회원으로 가입하기 구글 폼
+          style={{ backgroundColor: 'transparent', justifyContent: 'flex-end' }}
+        >
+          <span style={{ color: 'black' }}>보호소 회원으로&nbsp;</span>가입하기
+        </Button>
+      </Box>
+=======
           onClick={() => window.open('https://forms.gle/yEsAD4UyDmoP1z7z8', '_blank')}
           style={{ backgroundColor: 'transparent', justifyContent: 'flex-end' }}
         >
@@ -318,6 +465,7 @@ function SignUpForm() {
         </Button> */}
       </Box>
       {loading && <SignUpSpinner loading={loading} />}
+>>>>>>> dev
     </Box>
   );
 }

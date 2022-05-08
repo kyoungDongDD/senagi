@@ -34,12 +34,22 @@ public class TokenContractServiceImpl implements
       BigInteger chargedAmount = BalanceConverter.longToBigInteger(amount, decimals);
       TransactionReceipt receipt = tokenMgr.chargeToken(wallet.getAccount(),
           chargedAmount)
+<<<<<<< HEAD
+          .sendAsync().get();
+=======
           .send();
+>>>>>>> dev
       wallet.chargeBalance(chargedAmount);
       return new AmountDto(
           receipt.getTransactionHash(),
           BalanceConverter.bigIntegerToLong(wallet.getBalance(),decimals));
+<<<<<<< HEAD
+    } catch (InterruptedException e) {
+      e.printStackTrace();
+    } catch (ExecutionException e) {
+=======
     } catch (Exception e) {
+>>>>>>> dev
       e.printStackTrace();
     }
     return null;
@@ -48,6 +58,12 @@ public class TokenContractServiceImpl implements
   @Override
   public Long balanceOf(Wallet wallet) {
     try {
+<<<<<<< HEAD
+      return BalanceConverter.bigIntegerToLong(tokenMgr.balanceOf(wallet.getAccount()).sendAsync().get(),decimals);
+    } catch (InterruptedException e) {
+      e.printStackTrace();
+    } catch (ExecutionException e) {
+=======
       return BalanceConverter.bigIntegerToLong(tokenMgr.balanceOf(wallet.getAccount()).send(),decimals);
     } catch (Exception e) {
       e.printStackTrace();
@@ -70,6 +86,7 @@ public class TokenContractServiceImpl implements
     try {
       return BalanceConverter.bigIntegerToLong(tokenMgr.balanceOf(account).send(),decimals);
     } catch (Exception e) {
+>>>>>>> dev
       e.printStackTrace();
     }
     return 0L;
@@ -78,8 +95,15 @@ public class TokenContractServiceImpl implements
   @Override
   public String getTokenName() {
     try {
+<<<<<<< HEAD
+      return tokenMgr.name().sendAsync().get();
+    } catch (InterruptedException e) {
+      e.printStackTrace();
+    } catch (ExecutionException e) {
+=======
       return tokenMgr.name().send();
     } catch (Exception e) {
+>>>>>>> dev
       e.printStackTrace();
     }
     return "";
@@ -88,8 +112,15 @@ public class TokenContractServiceImpl implements
   @Override
   public String getTokenSymbol() {
     try {
+<<<<<<< HEAD
+      return tokenMgr.symbol().sendAsync().get();
+    } catch (InterruptedException e) {
+      e.printStackTrace();
+    } catch (ExecutionException e) {
+=======
       return tokenMgr.symbol().send();
     } catch (Exception e) {
+>>>>>>> dev
       e.printStackTrace();
     }
     return "";

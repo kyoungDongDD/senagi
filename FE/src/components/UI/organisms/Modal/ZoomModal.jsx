@@ -1,7 +1,16 @@
+<<<<<<< HEAD
+import * as React from 'react';
+import { styled, Box } from '@mui/system';
+import ModalUnstyled from '@mui/base/ModalUnstyled';
+
+
+
+=======
 import { useState } from 'react';
 import { styled, Box } from '@mui/system';
 import ModalUnstyled from '@mui/base/ModalUnstyled';
 
+>>>>>>> dev
 const style = {
   width: 400,
   bgcolor: 'background.paper',
@@ -12,7 +21,11 @@ const style = {
 };
 
 export default function ZoomModal() {
+<<<<<<< HEAD
+  const [open, setOpen] = React.useState(false);
+=======
   const [open, setOpen] = useState(false);
+>>>>>>> dev
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
 
@@ -58,4 +71,8 @@ const Backdrop = styled('div')`
   left: 0;
   background-color: white(0, 0, 0, 0.5);
   -webkit-tap-highlight-color: transparent;
+<<<<<<< HEAD
 `;
+=======
+`;
+>>>>>>> dev

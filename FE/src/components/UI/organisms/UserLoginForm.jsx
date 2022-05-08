@@ -1,3 +1,44 @@
+<<<<<<< HEAD
+import GoogleLoginButton from '../atoms/GoogleLoginButton';
+import UserButton from '../molecules/UserButton';
+import Text from '../atoms/Text';
+import { Link } from 'react-router-dom';
+
+import { Typography, Box, TextField, FormControlLabel, Checkbox, Button } from '@mui/material';
+
+import styled from '@emotion/styled';
+
+const StyledText = styled(Text)`
+  display: inline-block;
+
+  color: black;
+`;
+
+const StyledLink = styled(Link)`
+  display: inline-block;
+
+  color: blue;
+
+  text-decoration: none;
+
+  &:focus,
+  &:hover,
+  &:visited,
+  &:link,
+  &:active {
+    text-decoration: none;
+  }
+`;
+
+function UserLoginForm() {
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    const data = new FormData(event.currentTarget);
+    console.log({
+      email: data.get('email'),
+      password: data.get('password'),
+    });
+=======
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import GoogleLoginButton from '../atoms/GoogleLoginButton';
@@ -56,6 +97,7 @@ function UserLoginForm() {
           title: '로그인 실패 :(',
         });
       });
+>>>>>>> dev
   };
 
   return (
@@ -68,8 +110,12 @@ function UserLoginForm() {
       }}
     >
       <Text className="header1" text="로그인" />
+<<<<<<< HEAD
+      <Box component="form" noValidate onSubmit={handleSubmit} sx={{ mt: 1 }}>
+=======
       {/* <Box component="form" noValidate sx={{ mt: 1 }}> */}
       <Box component="form" noValidate onSubmit={logIn} sx={{ mt: 1 }}>
+>>>>>>> dev
         <TextField
           margin="normal"
           required
@@ -79,7 +125,10 @@ function UserLoginForm() {
           name="email"
           autoComplete="email"
           autoFocus
+<<<<<<< HEAD
+=======
           onChange={(e) => setJoin(e, 'userId')}
+>>>>>>> dev
         />
         <TextField
           margin="normal"
@@ -90,6 +139,18 @@ function UserLoginForm() {
           type="password"
           id="password"
           autoComplete="current-password"
+<<<<<<< HEAD
+        />
+        <Link to="/home">
+          <UserButton type="submit" fullWidth variant="contained" text="로그인" size="large" />
+        </Link>
+        <GoogleLoginButton />
+        <br />
+        <StyledText className="linktext" text="아직도 세나기를 이용하고 있지 않으신가요? &nbsp;" />
+        <StyledLink to="/signup" className="linktext">
+          {'가입하기'}
+        </StyledLink>
+=======
           onChange={(e) => setJoin(e, 'userPw')}
         />
         <UserButton
@@ -103,6 +164,7 @@ function UserLoginForm() {
         <GoogleLoginButton />
         <br />
         <UserJoinButton />
+>>>>>>> dev
       </Box>
     </Box>
   );

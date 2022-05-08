@@ -1,3 +1,44 @@
+<<<<<<< HEAD
+import Slide from '../UI/organisms/ArticleImg';
+import ConditionSection from '../UI/organisms/ConditionSection';
+import Grid from '@mui/material/Grid';
+import ImgCard from '../UI/organisms/DonationInfoCard';
+import { Box } from '@mui/material';
+
+function CampaignManagement() {
+  return (
+    <div>
+      <Slide />
+      <ConditionSection />
+      <Box sx={{ pl: 40, pr: 40, pt: 10 }}>
+        <Grid container spacing={4} justifyContent={'flex-start'}>
+          <Grid item xs={4}>
+            <ImgCard />
+          </Grid>
+          <Grid item xs={4}>
+            <ImgCard />
+          </Grid>
+          <Grid item xs={4}>
+            <ImgCard />
+          </Grid>
+          <Grid item xs={4}>
+            <ImgCard />
+          </Grid>
+          <Grid item xs={4}>
+            <ImgCard />
+          </Grid>
+          <Grid item xs={4}>
+            <ImgCard />
+          </Grid>
+          <Grid item xs={4}>
+            <ImgCard />
+          </Grid>
+          <Grid item xs={4}>
+            <ImgCard />
+          </Grid>
+        </Grid>
+      </Box>
+=======
 import { useState, useEffect } from 'react';
 import { Grid, Tab, Box, MenuItem, FormControl, Select } from '@mui/material';
 import { TabContext, TabList, TabPanel } from '@mui/lab';
@@ -140,6 +181,7 @@ function CampaignManagement() {
         </TabContext>
         <Pagination total={posts.length} limit={limit} page={page} setPage={setPage} />
       </ListBox>
+>>>>>>> dev
     </div>
   );
 }

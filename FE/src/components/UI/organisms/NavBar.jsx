@@ -1,3 +1,27 @@
+<<<<<<< HEAD
+import * as React from 'react';
+import { styled, alpha } from '@mui/material/styles';
+import AppBar from '@mui/material/AppBar';
+import Box from '@mui/material/Box';
+import Toolbar from '@mui/material/Toolbar';
+import IconButton from '@mui/material/IconButton';
+import Typography from '@mui/material/Typography';
+import Menu from '@mui/material/Menu';
+import MenuIcon from '@mui/icons-material/Menu';
+import Container from '@mui/material/Container';
+import Button from '@mui/material/Button';
+import Tooltip from '@mui/material/Tooltip';
+import MenuItem from '@mui/material/MenuItem';
+import InputBase from '@mui/material/InputBase';
+import SearchIcon from '@mui/icons-material/Search';
+
+import { Link } from 'react-router-dom';
+
+const pages = ['캠페인', '사업소개', '마이페이지'];
+
+const NavBar = () => {
+  const [anchorElNav, setAnchorElNav] = React.useState(null);
+=======
 import { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Link, useNavigate } from 'react-router-dom';
@@ -46,10 +70,18 @@ const NavBar = () => {
 
   const userInfo = useSelector((state) => state.user.value.userInfo);
   console.log('userInfo', userInfo);
+>>>>>>> dev
 
   const handleOpenNavMenu = (event) => {
     setAnchorElNav(event.currentTarget);
   };
+<<<<<<< HEAD
+
+  const handleCloseNavMenu = () => {
+    setAnchorElNav(null);
+  };
+
+=======
   // 유저 정보 확인
   const user = useSelector((state) => state.user.value.userInfo);
   const roles = user.roles[0];
@@ -98,6 +130,7 @@ const NavBar = () => {
   };
 
   // navbar 디자인
+>>>>>>> dev
   const Search = styled('div')(({ theme }) => ({
     position: 'relative',
     borderRadius: theme.shape.borderRadius,
@@ -140,12 +173,15 @@ const NavBar = () => {
     },
   }));
 
+<<<<<<< HEAD
+=======
   const handleLogout = () => {
     dispatch(logout());
     alert('로그아웃 되었습니다.');
     navigate('/');
   };
 
+>>>>>>> dev
   return (
     // navbar배경색 변경 #F4BA3499
     <AppBar position="static" style={{ background: 'inherit' }}>
@@ -157,7 +193,11 @@ const NavBar = () => {
             component="div"
             sx={{ mr: 2, display: { xs: 'none', md: 'flex' } }}
           >
+<<<<<<< HEAD
+            <Link to="/nav">
+=======
             <Link to="/home">
+>>>>>>> dev
               <img src={require('../../../assets/logo.png')} alt="logo" />
             </Link>
           </Typography>
@@ -232,6 +272,15 @@ const NavBar = () => {
                 {page}
               </Button>
             ))}
+<<<<<<< HEAD
+            {/* 닉네임아이콘/닉네임/로그아웃 */}
+            {/* <AccountCircleIcon 
+              color='action'
+              padding='1000px'
+            />
+            <p>나는김경동</p> */}
+          </Box>
+=======
           </Box>
           <StyledBox
             sx={{
@@ -263,18 +312,23 @@ const NavBar = () => {
               func={handleLogout}
             />
           </StyledBox>
+>>>>>>> dev
           <Box sx={{ flexGrow: 0 }}>
             <Tooltip title="Enter를 눌러 찾기">
               <Search>
                 <SearchIconWrapper>
                   <SearchIcon color="action" />
                 </SearchIconWrapper>
+<<<<<<< HEAD
+                <StyledInputBase placeholder="검색하기" inputProps={{ 'aria-label': 'search' }} />
+=======
                 <StyledInputBase
                   placeholder="검색하기"
                   inputProps={{ 'aria-label': 'search' }}
                   name="SearchKeyword"
                   onKeyPress={onCheckEnter}
                 />
+>>>>>>> dev
               </Search>
             </Tooltip>
           </Box>

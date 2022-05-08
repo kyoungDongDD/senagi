@@ -1,10 +1,24 @@
+<<<<<<< HEAD
+import React from 'react';
+=======
 import React, { useEffect, useState } from 'react';
+>>>>>>> dev
 import CampaignCard from './CampaignCard';
 import Grid from '@mui/material/Grid';
 import CampaignTable from './CampaignTable';
 
 import styled from '@emotion/styled';
 
+<<<<<<< HEAD
+function CampaignDetail() {
+  return (
+    <div>
+      <br></br>
+      <Grid container justifyContent={'space-evenly'}>
+        <Grid item xs={1}></Grid>
+        <Grid item xs={12} md={6}>
+          <CampaginImg src={require('../../../assets/test5.jpg')} />
+=======
 function CampaignDetail(props) {
   const {
     id,
@@ -32,11 +46,22 @@ function CampaignDetail(props) {
         <Grid item xs={10} md={7} lg={7}>
           <CampaginImg src={`https://senagi.site/api/imgs/${contentImageUrl}`} />
           {/* contentImageUrl */}
+>>>>>>> dev
           <p>
             후원금은 보호소의 영수증 제출을 통해 해당 캠페인을 위해 사용한 금액만큼만 전달됩니다.
             <br></br>
             후원 잔액은 해당 보호소의 자체 캠페인으로 전달되어 사용될 수 있습니다.
           </p>
+<<<<<<< HEAD
+          <CampaignTable />
+        </Grid>
+        <Grid item xs={6} md={2}>
+          <CardPosition>
+            <CampaignCard />
+          </CardPosition>
+        </Grid>
+        <Grid item xs={1}></Grid>
+=======
           <CampaignTable
             targetDonation={targetDonation}
             shelterName={shelterName}
@@ -66,6 +91,7 @@ function CampaignDetail(props) {
           {/* </CardPosition> */}
         </Grid>
         <Grid item xs={1} md={1} lg={1}></Grid>
+>>>>>>> dev
       </Grid>
     </div>
   );
@@ -79,6 +105,11 @@ const CampaginImg = styled.img`
   border-radius: 3px;
   object-fit: fill;
 `;
+<<<<<<< HEAD
+const CardPosition = styled.div`
+  position: fixed;
+`;
+=======
 // const CardPosition = styled.div`
 //   position: fixed;
 // `;
@@ -86,3 +117,4 @@ const CampaginImg = styled.img`
 // const StyledGrid = styled(Grid)`
 //   margin: 1rem;
 // `;
+>>>>>>> dev

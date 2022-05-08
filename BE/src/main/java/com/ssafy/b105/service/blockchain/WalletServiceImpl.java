@@ -1,10 +1,17 @@
 package com.ssafy.b105.service.blockchain;
 
 import com.ssafy.b105.dto.blockchain.NewWalletDto;
+<<<<<<< HEAD
+import com.ssafy.b105.entity.User;
+import com.ssafy.b105.entity.blockchain.Wallet;
+import com.ssafy.b105.entity.blockchain.wrapper.token.Token;
+import com.ssafy.b105.repository.blockchain.TransactionRepository;
+=======
 import com.ssafy.b105.entity.user.User;
 import com.ssafy.b105.entity.blockchain.Wallet;
 import com.ssafy.b105.repository.blockchain.TransactionRepository;
 import com.ssafy.b105.entity.blockchain.wrapper.token.Token;
+>>>>>>> dev
 import com.ssafy.b105.repository.blockchain.WalletRepository;
 import com.ssafy.b105.utils.BalanceConverter;
 import com.ssafy.b105.utils.BlockchainConnector;
@@ -39,6 +46,10 @@ public class WalletServiceImpl implements WalletService {
     try {
       NewWalletDto newWalletDto = connector.createAccount();
       Wallet wallet = Wallet.of(user, newWalletDto);
+<<<<<<< HEAD
+      walletRepository.save(wallet);
+=======
+>>>>>>> dev
       return Optional.ofNullable(wallet);
     } catch (Exception e) {
       e.printStackTrace();
@@ -53,9 +64,15 @@ public class WalletServiceImpl implements WalletService {
   }
 
   @Override
+<<<<<<< HEAD
+  public Long findBalanceByUser(User user) throws ExecutionException, InterruptedException {
+    Wallet wallet = findByUser(user);
+    BigInteger balance = tokenMgr.balanceOf(wallet.getAccount()).sendAsync().get();
+=======
   public Long findBalanceByUser(User user) throws Exception {
     Wallet wallet = findByUser(user);
     BigInteger balance = tokenMgr.balanceOf(wallet.getAccount()).send();
+>>>>>>> dev
     return BalanceConverter.bigIntegerToLong(balance, decimals);
   }
 

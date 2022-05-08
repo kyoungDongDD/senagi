@@ -1,3 +1,27 @@
+<<<<<<< HEAD
+import GoogleLoginButton from '../atoms/GoogleLoginButton';
+import UserButton from '../molecules/UserButton';
+import Text from '../atoms/Text';
+
+import {
+  Link,
+  Typography,
+  Box,
+  TextField,
+  FormControlLabel,
+  Checkbox,
+  Button,
+} from '@mui/material';
+
+function ShelterLoginForm() {
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    const data = new FormData(event.currentTarget);
+    console.log({
+      email: data.get('email'),
+      password: data.get('password'),
+    });
+=======
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
@@ -50,6 +74,7 @@ function ShelterLoginForm() {
           title: '로그인 실패 :(',
         });
       });
+>>>>>>> dev
   };
 
   return (
@@ -62,7 +87,11 @@ function ShelterLoginForm() {
       }}
     >
       <Text className="header1" text="로그인" />
+<<<<<<< HEAD
+      <Box component="form" noValidate onSubmit={handleSubmit} sx={{ mt: 1 }}>
+=======
       <Box component="form" noValidate onSubmit={logIn} sx={{ mt: 1 }}>
+>>>>>>> dev
         <TextField
           margin="normal"
           required
@@ -72,7 +101,10 @@ function ShelterLoginForm() {
           name="email"
           autoComplete="email"
           autoFocus
+<<<<<<< HEAD
+=======
           onChange={(e) => setJoin(e, 'userId')}
+>>>>>>> dev
         />
         <TextField
           margin="normal"
@@ -83,6 +115,10 @@ function ShelterLoginForm() {
           type="password"
           id="password"
           autoComplete="current-password"
+<<<<<<< HEAD
+        />
+        <UserButton type="submit" fullWidth variant="contained" text="로그인" size="large" />
+=======
           onChange={(e) => setJoin(e, 'userPw')}
         />
         <UserButton
@@ -94,6 +130,7 @@ function ShelterLoginForm() {
           func={logIn}
         />
         <ShelterJoinButton />
+>>>>>>> dev
       </Box>
     </Box>
   );

@@ -1,7 +1,11 @@
 package com.ssafy.b105.dto;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
+<<<<<<< HEAD
+import com.ssafy.b105.entity.User;
+=======
 import com.ssafy.b105.entity.user.User;
+>>>>>>> dev
 import com.sun.istack.NotNull;
 import com.sun.istack.Nullable;
 import lombok.*;

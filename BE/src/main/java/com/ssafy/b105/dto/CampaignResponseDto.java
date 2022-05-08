@@ -2,11 +2,19 @@ package com.ssafy.b105.dto;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonFormat.Shape;
+<<<<<<< HEAD
+import com.ssafy.b105.entity.Campaign;
+import com.ssafy.b105.entity.CampaignType;
+import com.sun.istack.NotNull;
+import com.sun.istack.Nullable;
+import java.time.LocalDate;
+=======
 import com.ssafy.b105.entity.campaign.Campaign;
 import com.ssafy.b105.entity.campaign.CampaignType;
 import com.sun.istack.NotNull;
 import com.sun.istack.Nullable;
 
+>>>>>>> dev
 import java.time.LocalDateTime;
 import java.util.List;
 import lombok.AllArgsConstructor;
@@ -41,6 +49,12 @@ public class CampaignResponseDto {
     private Long targetDonation;
 
     @Nullable
+<<<<<<< HEAD
+    @JsonFormat(shape = Shape.STRING,pattern = "yyyy-MM-dd",timezone = "Asia/Seoul")
+    private LocalDateTime endDate;
+
+    //@NotNull
+=======
     private Long balance;
 
     @Nullable
@@ -48,6 +62,7 @@ public class CampaignResponseDto {
     private LocalDateTime endDate;
 
     @NotNull
+>>>>>>> dev
     private String account;
 
     @NotNull
@@ -59,6 +74,12 @@ public class CampaignResponseDto {
     @JsonFormat(shape = Shape.STRING,pattern = "yyyy-MM-dd",timezone = "Asia/Seoul")
     private LocalDateTime lastModifiedDate;
 
+<<<<<<< HEAD
+    @Nullable
+    private List<String> hashtags;
+
+    public static CampaignResponseDto from(Campaign campaign) {
+=======
     @NotNull
     private String shelterName;
 
@@ -66,6 +87,7 @@ public class CampaignResponseDto {
     private List<String> hashtags;
 
     public static CampaignResponseDto of(Campaign campaign, Long balance) {
+>>>>>>> dev
         if (campaign == null) {
             return null;
         }
@@ -85,9 +107,14 @@ public class CampaignResponseDto {
             .endDate(campaign.getEndDate())
             .lastModifiedDate(campaign.getLastModifiedDate())
             .hashtags(campaign.getHashtag())
+<<<<<<< HEAD
+            .build();
+    }
+=======
             .shelterName(campaign.getUser().getName())
             .balance(balance)
             .build();
     }
 
+>>>>>>> dev
 }
