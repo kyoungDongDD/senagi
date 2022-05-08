@@ -5,6 +5,7 @@ FROM openjdk:11 as builder
 COPY . .
 
 # RUN 명령어는 Shell의 커맨드와 같습니다. 도커 이미지 빌드과정 중 필요한 명령어 실행을 위해 사용됩니다.
+RUN chmod +x ./gradlew
 RUN ./gradlew clean build
 
 FROM openjdk:11

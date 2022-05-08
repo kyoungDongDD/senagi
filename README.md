@@ -49,15 +49,6 @@
 <img src="https://img.shields.io/badge/AWS-232F3E?style=flat-square&logo=amazon aws&logoColor=white"/>
 <img src="https://img.shields.io/badge/Docker-20.10.14-4479A1?style=flat-square&logo=Docker&logoColor=white"/>
 <img src="https://img.shields.io/badge/NGINX-1.18.0(Ubuntu)-009639?style=flat-square&logo=NGINX&logoColor=white"/>
-<<<<<<< HEAD
-</td>
-    </tr>
-    <td><b>Block-chain </td>
-    <td>Go</td>
-    </tr>
-    <tr>
-    <td><b>Tools</td>
-=======
 <img src="https://img.shields.io/badge/Jenkins-2.332.1-D24939?style=flat-square&logo=Jenkins&logoColor=white"/>
 </td>
     </tr>
@@ -69,7 +60,6 @@
     </tr>
     <tr>
     <td><b>Tools</b></td>
->>>>>>> dev
     <td>
     <img src="https://img.shields.io/badge/Notion-333333?style=flat-square&logo=Notion&logoColor=white"/>
     <img src="https://img.shields.io/badge/GitLab-FCA121?style=flat-square&logo=GitLab&logoColor=white"/>
@@ -127,10 +117,6 @@
 
   ![온보딩페이지](README.assets/온보딩페이지-16493851733732.gif)
 
-  
-  
-  
-  
   ## **4. 시연 영상**
   
   👇 시연 영상 youtube 👇
@@ -138,6 +124,8 @@
   https://www.youtube.com/watch?v=3itie8Ch4S0
   
   
+
+
 
 ---
 
@@ -262,7 +250,6 @@
 
 
 
-
 ## 👨‍💻 **프로젝트 진행**
 
 ------
@@ -271,7 +258,7 @@
 
 `우아한 형제들` 기술블로그에서 [git flow](https://techblog.woowahan.com/2553/) 참고하여 Git 컨벤션 및 Git flow 를 정하여 작업하였습니다.
 
-`dev branch`, `work branch` , `feat branch`  , `realese brach` 등 기능별, 용도별로 브랜치를 분기하여 사용하였습니다.
+`dev branch`, `work branch` , `feat branch`  , `release brach` 등 기능별, 용도별로 브랜치를 분기하여 사용하였습니다.
 
 개발에 사용한 자세한 Git 컨벤션 및 GitFlow [링크](https://www.notion.so/Git-lab-convention-cd1dfddaba964b6da0795f2932acb56b)에 적어 놓았습니다
 
